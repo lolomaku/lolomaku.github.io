@@ -7,13 +7,13 @@
     <title>James Anthony Consulting</title>
     <meta name="author" content="">
     <meta name="description" content="">
-    	<link rel="preload" href="http://fonts.googleapis.com/css?family=Raleway:300,400,500" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="http://fonts.googleapis.com/css?family=Raleway:300,400,500" as="style" onload="this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:300,400,500"></noscript>
-    	<link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="css/font-awesome.min.css"></noscript>
 	<link rel="preload" href="css/framework.css" as="style" onload="this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="css/framework.css"></noscript>
-    	<link rel="preload" href="css/style.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="css/style.css" as="style" onload="this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="css/style.css"></noscript>
 	<script>
 		(function(w){
@@ -107,6 +107,54 @@
 		    }
 		  }
 		}( this ));
+	</script>
+	<script type="text/javascript">
+		var scripts = [
+			  'jquery.min.js',
+			  'plugins.min.js',
+			  'video.min.js',
+			  'custom.min.js'
+			];
+			var src;
+			var script;
+			var pendingScripts = [];
+			var firstScript = document.scripts[0];
+
+			// Watch scripts load in IE
+			function stateChange() {
+			  // Execute as many scripts in order as we can
+			  var pendingScript;
+			  while (pendingScripts[0] && pendingScripts[0].readyState == 'loaded') {
+			    pendingScript = pendingScripts.shift();
+			    // avoid future loading events from this script (eg, if src changes)
+			    pendingScript.onreadystatechange = null;
+			    // can't just appendChild, old IE bug if element isn't closed
+			    firstScript.parentNode.insertBefore(pendingScript, firstScript);
+			  }
+			}
+
+			// loop through our script urls
+			while (src = scripts.shift()) {
+			  if ('async' in firstScript) { // modern browsers
+			    script = document.createElement('script');
+			    script.async = false;
+			    script.src = src;
+			    document.head.appendChild(script);
+			  }
+			  else if (firstScript.readyState) { // IE<10
+			    // create a script and add it to our todo pile
+			    script = document.createElement('script');
+			    pendingScripts.push(script);
+			    // listen for state changes
+			    script.onreadystatechange = stateChange;
+			    // must set src AFTER adding onreadystatechange listener
+			    // else we’ll miss the loaded event for cached scripts
+			    script.src = src;
+			  }
+			  else { // fall back to defer
+			    document.write('<script src="' + src + '" defer></'+'script>');
+			  }
+			}
 	</script>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -496,10 +544,10 @@
 	
 	
 <!--LOAD SCRIPTS-->
-<script src="js/jquery.min.js"></script>
-<script src="js/plugins.min.js"></script>
-<script src="js/video.min.js"></script>
-<script src="js/custom.min.js"></script>
+<script rel="subresource" src="js/jquery.min.js" ></script>
+<script rel="subresource" src="js/plugins.min.js"></script>
+<script rel="subresource" src="js/video.min.js"></script>
+<script rel="subresource" src="js/custom.min.js"></script>
 <script>
     $(function() {
         var BV = new $.BigVideo({useFlashForFirefox:false});
