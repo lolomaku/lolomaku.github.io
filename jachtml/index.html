@@ -11,6 +11,426 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/framework.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css" media="all">
+		body {
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 26px;
+  font-size: 14px;
+  color: rgb(65, 65, 65);
+  background-color: rgb(255, 255, 255);
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+h3,
+h4,
+a {
+  font-weight: 300;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(231, 76, 60);
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+.wrapper {
+  margin: 0px auto;
+  width: 960px;
+  position: relative;
+}
+
+strong {
+  font-weight: 500;
+}
+
+section {
+  padding: 60px 0px 20px;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+small {
+  display: block;
+  font-size: 20px;
+}
+
+.button {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+section {
+  z-index: 99;
+  position: relative;
+}
+
+.small-padding {
+  padding: 23px 0px 0px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(229, 229, 229);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(229, 229, 229);
+  background-color: rgb(0, 0, 0);
+  color: rgb(217, 207, 207);
+}
+
+.light {
+  font-weight: 300;
+}
+
+header {
+  padding: 25px 0px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 9999;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(229, 229, 229);
+  box-shadow: rgba(100, 100, 100, 0.2) 0px 1px 1px, rgb(251, 251, 251) 0px 1px 0px inset;
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+header * {
+  margin-bottom: 0px !important;
+}
+
+#selectnav {
+  float: right;
+  padding-top: 15px;
+}
+
+#selectnav li {
+  float: left;
+  margin-left: 25px;
+}
+
+#selectnav li a {
+  color: rgb(65, 65, 65);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+#selectnav li a.active {
+  color: rgb(231, 76, 60);
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/parallax.png);
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
+}
+
+.full * {
+  color: rgb(255, 255, 255);
+  font-weight: 300;
+}
+
+.full.video {
+  background-image: none;
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+.button.white.light {
+  background-image: none;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 22px;
+  position: absolute;
+  bottom: 50px;
+  margin: 0px 0px 0px -70px;
+  left: 50%;
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+.mute {
+  right: 20px;
+  position: absolute;
+  bottom: 20px;
+  font-size: 28px;
+}
+
+.isotope-alt-image div {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: none;
+  background-color: rgba(231, 76, 60, 0.85098);
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  color: rgb(255, 255, 255);
+  text-align: left;
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+.isotope-alt-image div h4 {
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+}
+
+.isotope-alt-image div h4 small {
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 1180px) {
+  .wrapper {
+    width: 1180px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  #selectnav li {
+    float: left;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #selectnav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 959px) and (min-width: 768px) {
+  .wrapper {
+    width: 768px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 479px;
+    margin: 0px auto;
+    position: relative;
+  }
+
+  .one_fourth,
+  .three_fourths {
+    width: 100%;
+  }
+
+  header .one_fourth,
+  header .three_fourths {
+    width: 50%;
+    margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .wrapper {
+    width: 300px;
+    margin: 0px auto;
+    position: relative;
+  }
+}
+
+.logobig {
+  right: 0px;
+}
+
+html,
+body,
+div,
+h3,
+h4,
+p,
+a,
+img,
+small,
+strong,
+ul,
+li {
+  border: 0px;
+  outline: rgb(0, 0, 0);
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  margin: 0px;
+  padding: 0px;
+}
+
+:focus {
+  outline: rgb(0, 0, 0);
+}
+
+body {
+  line-height: 1;
+  color: rgb(0, 0, 0);
+}
+
+ul {
+  list-style: none;
+}
+
+.clearfix::after {
+  content: '.';
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+.clearfix {
+  display: block;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.one_fourth {
+  width: 22%;
+}
+
+.three_fourths {
+  width: 74%;
+}
+
+.three_fourths,
+.one_fourth {
+  position: relative;
+  margin-right: 4%;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.last {
+  margin-right: 0px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 100%;
+  line-height: 1.65;
+  font-family: serif;
+}
+
+body {
+  word-wrap: break-word;
+}
+
+small {
+  font-size: 12px;
+}
+
+h3,
+h4 {
+  line-height: 1.4;
+  margin-top: 0px;
+  text-rendering: optimizelegibility;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 0.825em;
+}
+
+h4 {
+  font-size: 1.3333333333333333rem;
+  margin-bottom: 1.2375em;
+}
+
+p {
+  margin: auto auto 1.4em;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 13px;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(222, 222, 222);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  margin: 0px 10px 3px 0px;
+}
+
+.button.white {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(222, 222, 222) rgb(216, 216, 216) rgb(211, 211, 211);
+  color: rgb(85, 85, 85);
+  text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+  box-shadow: rgb(234, 234, 234) 0px 1px 1px, rgb(251, 251, 251) 0px 1px 0px inset;
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url(../fonts/fontawesome-webfont.eot?#iefix&v=4.0.0) format('embedded-opentype'), url(../fonts/fontawesome-webfont.woff?v=4.0.0) format('woff'), url(../fonts/fontawesome-webfont.ttf?v=4.0.0) format('truetype'), url(../fonts/fontawesome-webfont.svg?v=4.0.0#fontawesomeregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+	</style>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
