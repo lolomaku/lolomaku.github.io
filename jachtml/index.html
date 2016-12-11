@@ -11,6 +11,17 @@
     <link async rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link async rel="stylesheet" type="text/css" href="css/framework.css">
     <link async rel="stylesheet" type="text/css" href="css/style.css">
+	    <script>
+		var cb = function() {
+		var l = document.createElement('link'); l.rel = 'stylesheet';
+		l.href = 'css/style.css';
+		var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+		};
+		var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+		webkitRequestAnimationFrame || msRequestAnimationFrame;
+		if (raf) raf(cb);
+		else window.addEventListener('load', cb);
+	</script>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
