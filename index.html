@@ -1,304 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="keywords" content="redhoodedninja, red, hood, redhood, ninja, red ninja, redhooded ninja, reddit ninja" />
-	<meta name="description" content="An abandoned domain!" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Abandoned Property Notice</title>
+	<title>Mark</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Sacramento');
+		html, body {
+		    height: 100%;
+		}
 
-	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#00aba9">
-	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-
-	<style>
-		@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
-
-
-		body{
-			width: 65%;
+		html {
+		    display: table;
+		    margin: auto;
+		}
+		body {
+		    display: table-cell;
+		    vertical-align: middle;
+		    background: #202322;
+		}
+		.meepmorp {
+			height: 200px;
+			width: 350px;
+			margin: auto;
+		}
+		.bg-3 {
+			background: #F3F3F3;
+			color: #fff;
 			margin: 0 auto;
-			font-size: 1.3em;
-			background: #999;
-			color: #3C3C3C;
 		}
-		div {
-			margin-top: 5%;
-			background: #F2F2F2;
-			font-family: "Open Sans",sans-serif;
-			padding: 30px 22px;
+
+		/* Common button styles */
+		.button {
+			cursor: pointer;
+			float: left;
+			height: 60px;
+			min-width: 300px;
+			max-width: 400px;
+			display: block;
+			margin: 1em;
+			padding: 1em 2em;
+			border: none;
+			background: none;
+			color: inherit;
+			vertical-align: middle;
+			position: relative;
+			z-index: 1;
+			-webkit-backface-visibility: hidden;
+			-moz-osx-font-smoothing: grayscale;
 		}
-		a, a:hover, a:visited {
-			text-decoration: none;
-			color: #990000;
+		.button:focus {
+			outline: none;
 		}
-		a:hover, a:focus {
-			color: red;
+		.button > span {
+			vertical-align: middle;
 		}
-		span {
-			color: #990000;
+
+		.bg-3 .button {
+			color: #fff;
+			border-color: #fff;
+		}
+
+		/* Sizes */
+		.button--size-s {
+			font-size: 14px;
+		}
+		.button--size-m {
+			font-size: 16px;
+		}
+		.button--size-l {
+			font-size: 18px;
+		}
+
+		/* Typography and Roundedness */
+		.button--text-upper {
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+		.button--text-thin {
+			font-weight: 300;
+		}
+		.button--text-medium {
+			font-weight: 500;
+		}
+		.button--text-thick {
 			font-weight: 600;
 		}
+		.button--round-s {
+			border-radius: 5px;
+		}
+		.button--round-m {
+			border-radius: 15px;
+		}
+		.button--round-l {
+			border-radius: 40px;
+		}
 
-	    @media (max-width: 700px) {
-	      body {
-	       width: 80%;
-	       font-size: 1.1em;
-	      }
-	    }
+		/* Borders */
+		.button--border-thin {
+			border: 1px solid;
+		}
+		.button--border-medium {
+			border: 2px solid;
+		}
+		.button--border-thick {
+			border: 3px solid;
+		}
 
-	    @media (max-width: 500px) {
-	      body {
-	       width: 90%;
-	       font-size: 1em;
-	      }
-	      
-	    }
+		.button--nuka {
+			margin: 1em 2em;
+			-webkit-transition: color 0.3s;
+			transition: color 0.3s;
+			-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+			transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+			}
+			.button--nuka.button--inverted {
+				color: #37474f;
+			}
+			.button--nuka::before,
+			.button--nuka::after {
+				content: '';
+				position: absolute;
+				border-radius: inherit;
+				background: #78936D;
+				z-index: -1;
+			}
+			.button--nuka::before {
+				top: -4px;
+				bottom: -4px;
+				left: -4px;
+				right: -4px;
+				opacity: 0.2;
+				-webkit-transform: scale3d(0.7, 1, 1);
+				transform: scale3d(0.7, 1, 1);
+				-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+				transition: transform 0.3s, opacity 0.3s;
+			}
+			.button--nuka::after {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				-webkit-transform: scale3d(1.1, 1, 1);
+				transform: scale3d(1.1, 1, 1);
+				-webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
+				transition: transform 0.3s, background-color 0.3s;
+			}
+			.button--nuka::before,
+			.button--nuka::after {
+				-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+				transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+			}
+			.button--nuka.button--inverted::before,
+			.button--nuka.button--inverted::after {
+				background: #fff;
+			}
+			.button--nuka:hover {
+				color: #fff;
+			}
+			.button--nuka:hover::before {
+				opacity: 1;
+			}
+			.button--nuka:hover::after {
+				background: url(home_bg.jpg) no-repeat center center fixed #fff;
+			}
+			.button--nuka.button--inverted:hover::after {
+				background: #78936D;
+			}
+			.button--nuka:hover::after,
+			.button--nuka:hover::before {
+				-webkit-transform: scale3d(1, 1, 1);
+				transform: scale3d(1, 1, 1);
+			}
+			a {
+				text-decoration: none;
+				color: #fff;
+			}
+			.littlejungleresort {
+				margin: -.1em 0 0;
+				font-family: 'Sacramento', cursive;
+				font-size: 2.2em;
+			}
+		}
 	</style>
-
 </head>
 <body>
-	<div>This domain is owned by a <span>PHILOSOPHER</span>. He thought he liked this domain when he leashed it, until recently when he searched the words "Red Hooded Ninja" on many search engines only to find that it is associated with PORN. Because of this unfortunate event, he decided to be a <span><a href="http://futureweb.ninja">FUTURE WEB NINJA</a></span> instead. You might find it broken for now but he is trying to construct an adorable website for that domain. Thank you.</div>
-
-<!--- 
-
-date: 7-31-15 4pm
-agent: MarkPCVG_12345
-caller:
-security: Y/N
-Issue:
-Actions Taken:
-
-Greeting:
-Thank you for calling time warner cable, My name is calvin, How may I help you today?
-
-Build Rapport:
-Oh, Internet is important for me too and I understand how it feels to lose it.
-I see, I completely understand you do not want to troubleshoot however we could get your issue resolved today. Do you mind if we give this a quick try over the phone?
-Can I have your name please?
-Alright then, first I need to pull up your account in order for me to run some diagnostics on your modem. So, can I please have the phone number associated to the account?
-
-
-
-Verification:
-I now have the account pulled up. For verification purposes, can I have your pin please?
-
-Oh ok, how about the last 4 digits of your social security.
-
-Set Expectation:
-
-Here's what I will do, let me go ahead and check if this is caused by an outage. However if this is not caused by an outage, I can definitely schedule a technician to come
-to your house within this week.
-
-I did the core checks and there is no outage in your area right now. I will now go ahead and schedule a technician for you.
-
-Is your home number a good call back number for the technician to use?
-Quick reminder, there should be someone in your home who is at least 18 years and above and who speaks english when the technician arrives.
-
-Just for the heads up, if we send a tech immediately and they found out that it's not a TWC issue you might be charged for the trip.
-For example ___ if it is a misuse or a customer error. Rest assured if it is a TWC error, like a defective equipment, the charge will be waved.
-
-Resolution:
-Good news! I was able to schedule an appointment  I will be sending a technician tom July 31, 2015 4-5p. I'll make sure that the technician arrive on time, they are experts on what they do and help you resolved
- whatever concerns that you have regarding your internet connection.
-
-Do you have any special instructions for the technician?
-
-Recap:
-Ms. Smith, Just to do a quick recap, you called to request a technician because you already did the troubleshooting steps with the other representative, 
-I performed the core checks on your account and I placed a work order for a technician at the soonest possible time.
-
-Sales:
-Ms Smith, since I already have you on the phone and I can see that you currently have the standard package, we currently have a good deal right now that for 
-only an additional $10 you will be able to upgrade your internet speed to a turbo package. Which will actually give you a better internet speed
-
-
-Proactive:
-So Ms Smith, In case you encounter connection issues in the future, it's possible for you 
-to check the status of your modem or if there's an outage in your area, you can even
-resched the tech appointment through MyAccount in the TWC website or by using the TWC
-app on your phone.
-
-Alright then, is there anything else I can help you with?
-
-> document the details of every call
-> provide history and helpful info to 
-the next call center representative
-
-- always write a note regardless of customer's
-reason for calling
-
-- provide accurate info to help get to the root of the
-problem
-
-how to write notes
-write notes that are
-
--on topic
-> identify the purpose for the customer's call
-> summarize the entire conversation
-
-;what was the issue
-;what steps did you take to resolve the issue
-;is follow-up needed
-
--objective
-> avoid  adding your opinion to the note.
-> document only the facts
-
-;unbiased
-; a fair representation of both sides of the story
-
--complete
-> always place notes on the account.
-> even if the customer is calling to inquire about a
-channel number
-> any amount of info can be helpful in the future
-
-;time of call
-;ticket numbers
-;payment amounts
-;authorization numbers
-;follow-up dates
-
--professional
-> customer notes are considered legal documents
-> others will read them
-> write them in a professional manner
-
-;not necessary to quote profanity or derogatory language
-;cx stated they were unhappy
-;cx requested to speak with a sup
-;escalated call. cx would not stop using profanity
-
-
--simple
-> brief
-> clear
-> concise
-
-;review your note
-;shorten wordy or complex sentences
-
-
-customer is unhappy
-internet is slow for the past 2 weeks
-customer reboot 2-3 times some days
-no outage
-tech appointment - wednesday evening
-credited 2 weeks of slow internet
-$12.74
-
-PRODUCTS
-box - set top terminal or converter
-DP - digital phone
-vid - Video/Vable
-HDDVR - High Definition DVR
-HDTV - High Definition Television
-HN - Home Networking
-HSO - Internet ; High Speed online
-IOP - International One Price Plan
-VOD - Videon on Demand
-OTG - On-Time Guarantee
-PPV - Pay Per View
-PLG - Price Lock Guarantee
-RR - Road Runner
-SPP - Service Protection Plan
-
-INTERNAL DEPARTMENT
-BC - Business Class
-CS - Customer Service
-CCare - Customer Care
-Coll - Collections
-Disp - Dispatch
-HD - Help Desk
-NHD - National Help Desk
-PC - Payment Center
-ReM - Resource Management
-Rep - Call Center Representative
-Ret - Retention
-Tech - Technician or Field Technician
-Tech Ops - Technical Operations
-QA - Quality Assurance
-
-CALL CENTER
-acct - Account
-a/o - Additional Outlet
-auth# - Authorization number
-bal - balance
-c/b - Call back
-CCI - Customer Called In
-ch# - Channel Number (ch line for channel line up)
-Cust Ed - Customer Education
-> Providing cx an explanation.
-COD - Payment at install/ cash on delivery
-delinq - delinquent
-disco - Hard disconnect (soft disco for soft disconnect)
->soft - remotely disabling services
->hard - tech will disco from the tap
-esc - escalated
-LMTC - Left Message To Call
-MOA - Moved Out of Area
-n/a - no answer
-NT - No Truck or Office only
-> No technician is needed for addressable services.
-ptp - Promise to pay
-p/u eq - Pick up equipment
-send hit - Send a signal to the customer's equipment
-sub - customer
-t/c - trouble call
-t/s - troubleshoot
-xo - cancel or canceled
-wo - work order
-
-COMMON
-add - address
-appt - appointment
-asap - as soon as possible
-b/c - because
-cc - credit card
-ck# - check number
-dep - deposit
-ETA - estimated time of arrival
-exp - expired
-inc - increased
-inq - inquire, inquired, inquiring
-mo - month
-pd - paid
-pmt - payment
-rcvd - recieved
-re - regarding
-ref - referred
-req - requested, request, or requesting
-sch - schedule, scheduled, scheduling
-srvcs - services
-sup - supervisor
-w/ - will or with
-xfer - transfer
-wks - weeks
-
-rtr - router
-
-
-
-CARTRN235
-teachus4
-
-
--->
+	<div class="meepmorp">
+		<div class="box bg-3">
+			<button class="button button--nuka"><a href="Little Jungle Site/index.html" class="littlejungleresort">Little Jungle Resort</a></button>
+		</div>
+	</div>
 </body>
 </html>
