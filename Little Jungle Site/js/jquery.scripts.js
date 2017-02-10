@@ -237,7 +237,7 @@ function initialize() {
 		map: map,
 		icon: companyImage,
 		shadow: companyShadow,
-		title:"Whitmans",
+		title:"Little Jungle Resort",
 		zIndex: 3});
 }
 
