@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		@font-face {
+			font-family: 'HelveticaNeueLTStd-Md';
+			src:  url('fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
+				  url('fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
+				  url('fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
+		}
+		@font-face {
+			font-family: 'Montserrat-Bold';
+			src:  url('fonts/Montserrat-Bold.woff2') format('woff2'),
+				  url('fonts/Montserrat-Bold.woff') format('woff'),
+				  url('fonts/Montserrat-Bold.ttf') format('truetype');
+		}
+		@font-face {
+			font-family: 'HelveticaNeueLTStd-Lt';
+			src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+				  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+				  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+		}
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		.clearfix {
+			display: inline-block;
+		}
+		header {
+			position: absolute;
+			top: 0;
+			height: 70px;
+			width: 100%;
+			background: #3498db;
+		}
+		.contain1200px {
+			width: 1200px;
+			height: inherit;
+			margin: 0 auto;
+		}
+		.contain1024px {
+			width: 1024px;
+			margin: 60px auto 0;
+		}
+		.contain600px {
+			width: 600px;
+			margin: 60px auto 0;
+		}
+		.headerlogo {
+			width: 90px;
+			margin: 11px 0 0 0;
+			float: left;
+		}
+		.searchicon {
+			width: 30px;
+			margin: 17px 0 0 0;
+			float: right;
+		}
+		nav {
+			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+			width: 800px;
+			margin: 0 auto;
+		}
+		ul {
+		    list-style-type: none;
+		    margin: 0 auto;
+		    padding: 0;
+		}
+		li {
+		   -webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		   box-sizing: border-box;
+		   margin: 15px 0 0 0;
+		   float: left;
+		   width: 150px;
+		   text-align: center;
+		}
+		li:last-child {
+			width: 200px;
+		}
+		a {
+			text-decoration: none;
+			color: #e4e4e5;
+			font-size: 26px;
+		}
+
+
+		.intro {
+			margin: 70px 0 0 0;
+			height: 365px;
+			width: 100%;
+			background: #0074a7;
+			text-align: center;
+		}
+		.expertise {
+			height: 700px;
+			width: 100%;
+			background: #e6e6e6;
+			text-align: center;
+		}
+		h1 {
+			font-family: 'Montserrat-Bold', sans-serif;
+			font-size: 56px;
+			margin: 0;
+		}
+		h2 {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 32px;
+			margin: 0;
+		}
+		h3 {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 26px;
+			margin: 5px 0 0 0;
+		}
+		.svnhndrd {
+			width: 700px;
+			margin: 0 auto;
+		}
+		.padded {
+			padding-bottom: 100px;
+		}
+		.center {
+			margin: 0 auto;
+		}
+		.darktext {
+			color: #333;
+		}
+		.lightext {
+			color: #e4e4e5;
+		}
+
+
+
+		.expertise ul {
+			width: 1200px;
+			margin: 60px auto 0;
+		}
+		.expertise ul li {
+			height: 200px;
+			width: 380px;
+			background: black;
+			margin: 10px;
+		}
+
+		h5 {
+			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+			font-size: 20px;
+			margin: 0;
+			color: #fff;
+		}
+		p {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 20px;
+			margin: 0;
+			color: #fff;
+		}
+
+
+		button {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 28px;
+			height: 55px;
+			border-radius: 10px; 
+			-moz-border-radius: 10px; 
+			-webkit-border-radius: 10px; 
+			border: 0px solid #95A5A6;
+			background: #95A5A6;
+			margin: 20px 5px;
+			padding: 0 15px;
+			color: #fff;
+		}
+
+		footer {
+			height: 400px;
+			width: 100%;
+			background: #3498db;
+			border-bottom: 15px solid #007dc3;
+		}
+		footer ul {
+			margin: 60px auto 0;
+			height: 300px !important;
+		}
+		footer ul li {
+			width: 300px;
+			height: inherit;
+			margin: 60px 50px 0;
+			text-align: left;
+		}
+		footer ul li:last-child {
+			width: 300px;
+			height: 300px;
+			margin: 0 50px;
+			text-align: left;
+		}
+		.footerlogo {
+			width: 240px;
+			margin: 70px auto 0;
+			float: right;
+		}
+		.last-bit {
+			height: 30px;
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.copyright {
+			width: 50%;
+			float: left;
+			font-size: 18px;
+			text-align: left;
+			margin: -45px 0 0 50px;
+		}
+		.terms {
+			width: 50%;
+			float: right;
+			text-align: right;
+			margin: -45px 50px 0 0;
+		}
+		.terms a{
+			font-size: 18px;
+		}
+
+
+		
+	</style>
+</head>
+<body>
+	<header>
+		<div class="contain1200px">
+			<img src="img/empauerlogo.png" class="headerlogo">
+			<img src="img/search-icon.png" class="searchicon">
+			<nav>
+				<ul>
+					<li><a href="">About</a></li>
+					<li><a href="">Solutions</a></li>
+					<li><a href="">Expertise</a></li>
+					<li><a href="">Insights</a></li>
+					<li><a href="">Request Demo</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="root">
+		<section class="intro">
+			<div class="contain600px clearfix lightext">
+				<h1>Our Expertise</h1>
+				<h2>Providing expertise, global insights, local knowledge and innovative solutions.</h2>
+				<button>
+					<a href="">Sectors</a>	
+				</button>
+				<button>
+					<a href="">Services</a>
+				</button>
+			</div>
+		</section>
+		<section class="expertise">
+			<div class="contain1024px clearfix darktext">
+				<h1>Expertise in your sector</h1>
+				<h3>Our expertise across sustainability, allows us to understand complex and commercial challenges, design tailored solutions, and deliver programs that meet objectives.</h2>
+			</div>
+			<ul class="clearfix">
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+			</ul>
+		</section>
+		<section class="expertise padded">
+			<div class="contain1024px clearfix darktext">
+				<h1>Services</h1>
+				<h3 class="svnhndrd">Our team of sustainability experts provide a comprehensive range of services across industry sectors</h2>
+			</div>
+			<ul class="clearfix">
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+				<li><a href=""><img src=""></a></li>
+			</ul>
+		</section>
+		<footer>
+			<ul class="contain1200px">
+				<li><h5>Contact us at:</h5><p>+61 3 9020 7295</p></li>
+				<li><h5>We operate globally.</h5><p>We're based at:<br/>21-23 Stewart Street<br/>Richmond, VIC 3121<br/>Australia</p></li>
+				<li><img src="img/empauerlogo.png" class="footerlogo"></li>
+			</ul>
+			<div class="last-bit">
+				<h5 class="copyright">&copy; 2017 Empauer Pty Ltd.</h5>
+				<p class="terms"><a href="">Terms &amp; Conditions</a> | <a href="">Privacy Policy</a></p>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
