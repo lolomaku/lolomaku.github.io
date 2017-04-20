@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<style type="text/css">
 		@font-face {
 			font-family: 'HelveticaNeueLTStd-Md';
@@ -25,8 +27,12 @@
 			padding: 0;
 			margin: 0;
 		}
-		.clearfix {
-			display: inline-block;
+		.clearfix:after {
+		   content: " ";
+		   visibility: hidden;
+		   display: block;
+		   height: 0;
+		   clear: both;
 		}
 		header {
 			position: absolute;
@@ -35,27 +41,29 @@
 			width: 100%;
 			background: #3498db;
 		}
-		.contain1200px {
-			width: 1200px;
+		.contain1100px {
+			width: 1100px;
 			height: inherit;
 			margin: 0 auto;
 		}
 		.contain1024px {
 			width: 1024px;
-			margin: 60px auto 0;
+			margin: 0 auto;
+			padding-top: 60px;
 		}
 		.contain600px {
 			width: 600px;
-			margin: 60px auto 0;
+		    margin: 70px auto 0;
+		    padding-top: 60px;
 		}
 		.headerlogo {
-			width: 90px;
-			margin: 11px 0 0 0;
+			width: 100px;
+			margin: 15px 0 0 20px;
 			float: left;
 		}
 		.searchicon {
 			width: 30px;
-			margin: 17px 0 0 0;
+			margin: 17px 50px 0 0;
 			float: right;
 		}
 		nav {
@@ -72,13 +80,13 @@
 		   -webkit-box-sizing: border-box;
 		   -moz-box-sizing: border-box;
 		   box-sizing: border-box;
-		   margin: 15px 0 0 0;
+		   margin: 18px 0 0 0;
 		   float: left;
 		   width: 150px;
 		   text-align: center;
 		}
 		li:last-child {
-			width: 200px;
+			width: 180px;
 		}
 		a {
 			text-decoration: none;
@@ -160,6 +168,7 @@
 
 
 		button {
+			display: table-cell;
 			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
 			font-size: 28px;
 			height: 55px;
@@ -169,8 +178,11 @@
 			border: 0px solid #95A5A6;
 			background: #95A5A6;
 			margin: 20px 5px;
-			padding: 0 15px;
+			padding: 0 15px 3px;
 			color: #fff;
+		}
+		button a {
+			margin: -2px;
 		}
 
 		footer {
@@ -180,29 +192,33 @@
 			border-bottom: 15px solid #007dc3;
 		}
 		footer ul {
-			margin: 60px auto 0;
+			margin: 0 auto;
 			height: 300px !important;
 		}
 		footer ul li {
-			width: 300px;
+			width: 341px;
 			height: inherit;
-			margin: 60px 50px 0;
+			margin: 0;
+			text-align: left;
+		}
+		footer ul li:nth-child(2) {
+			width: 341px;
+			margin-left: 20px;
 			text-align: left;
 		}
 		footer ul li:last-child {
-			width: 300px;
-			height: 300px;
-			margin: 0 50px;
+			width: 341px;
+			margin-left: -20px;
 			text-align: left;
 		}
 		.footerlogo {
 			width: 240px;
-			margin: 70px auto 0;
+			margin: 0;
 			float: right;
 		}
 		.last-bit {
 			height: 30px;
-			width: 1200px;
+			width: 1024px;
 			margin: 0 auto;
 		}
 		.copyright {
@@ -210,13 +226,13 @@
 			float: left;
 			font-size: 18px;
 			text-align: left;
-			margin: -45px 0 0 50px;
+			margin: -45px 0 0 0;
 		}
 		.terms {
 			width: 50%;
 			float: right;
 			text-align: right;
-			margin: -45px 50px 0 0;
+			margin: -45px 0 0 0;
 		}
 		.terms a{
 			font-size: 18px;
@@ -228,8 +244,8 @@
 </head>
 <body>
 	<header>
-		<div class="contain1200px">
-			<img src="img/empauerlogo.png" class="headerlogo">
+		<div class="contain1100px clearfix">
+			<img src="img/headerlogo.png" class="headerlogo">
 			<img src="img/search-icon.png" class="searchicon">
 			<nav>
 				<ul>
@@ -284,7 +300,7 @@
 			</ul>
 		</section>
 		<footer>
-			<ul class="contain1200px">
+			<ul class="contain1024px">
 				<li><h5>Contact us at:</h5><p>+61 3 9020 7295</p></li>
 				<li><h5>We operate globally.</h5><p>We're based at:<br/>21-23 Stewart Street<br/>Richmond, VIC 3121<br/>Australia</p></li>
 				<li><img src="img/empauerlogo.png" class="footerlogo"></li>
