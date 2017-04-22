@@ -4,292 +4,12 @@
 	<title>About</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<style type="text/css">
-		@font-face {
-			font-family: 'HelveticaNeueLTStd-Md';
-			src:  url('fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
-				  url('fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
-				  url('fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'Montserrat-Bold';
-			src:  url('fonts/Montserrat-Bold.woff2') format('woff2'),
-				  url('fonts/Montserrat-Bold.woff') format('woff'),
-				  url('fonts/Montserrat-Bold.ttf') format('truetype');
-		}
-		@font-face {
-			font-family: 'HelveticaNeueLTStd-Lt';
-			src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
-				  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
-				  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
-		}
-		body {
-			padding: 0;
-			margin: 0;
-		}
-		.clearfix:after {
-		   content: " ";
-		   visibility: hidden;
-		   display: block;
-		   height: 0;
-		   clear: both;
-		}
-		header {
-			position: absolute;
-			top: 0;
-			height: 70px;
-			width: 100%;
-			background: #3498db;
-		}
-		.contain1100px {
-			width: 1200px;
-			height: inherit;
-			margin: 0 auto;
-		}
-		.contain1024px {
-			width: 1024px;
-			margin: 0 auto;
-			padding-top: 60px;
-		}
-		.contain600px {
-			width: 600px;
-		    margin: 70px auto 0;
-		    padding-top: 60px;
-		}
-		.headerlogo {
-			width: 107px;
-			margin: 15px 0 0 20px;
-			float: left;
-		}
-		.searchicon {
-			width: 35px;
-			margin: 17px 20px 0 0;
-			float: right;
-		}
-		nav {
-			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
-			width: 800px;
-			margin: 0 auto;
-		}
-		ul {
-		    list-style-type: none;
-		    margin: 0 auto;
-		    padding: 0;
-		}
-		li {
-		   -webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		   box-sizing: border-box;
-		   margin: 18px 0 0 0;
-		   float: left;
-		   width: 150px;
-		   text-align: center;
-		}
-		li:last-child {
-			width: 195px;
-			text-align: right;
-		}
-
-		nav ul li:first-child {
-			margin-left: 10px;
-		}
-		nav ul li:nth-child(2) {
-			margin-left: -10px;
-		}
-
-		a {
-			text-decoration: none;
-			color: #e4e4e5;
-			font-size: 26px;
-		}
-		.center	{
-			margin: 75px auto 0;
-			width: 1200px;
-			height: 456px;
-		}
-
-
-		.intro {
-			margin: 70px 0 0 0;
-			height: 365px;
-			width: 100%;
-			background: url("img/EmpouerFormulaDesign.png") #0074a7 center no-repeat;
-			text-align: center;
-		}
-		.expertise {
-			height: 700px;
-			width: 100%;
-			background: #e6e6e6;
-			text-align: center;
-		}
-		h1 {
-			font-family: 'Montserrat-Bold', sans-serif;
-			letter-spacing: -3px;
-			font-size: 56px;
-			margin: 0;
-		}
-		h2 {
-			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-			font-size: 32px;
-			margin: 0;
-		}
-		h3 {
-			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-			font-size: 26px;
-			margin: 5px 0 0 0;
-		}
-		.svnhndrd {
-			width: 700px;
-			margin: 0 auto;
-		}
-		.padded {
-			padding-bottom: 100px;
-		}
-		.center {
-			margin: 0 auto;
-		}
-		.darktext {
-			color: #333;
-		}
-		.lightext {
-			color: #e4e4e5;
-		}
-		.expertise ul {
-			width: 1200px;
-			margin: 60px auto 0;
-		}
-		.expertise ul li {
-			height: 322px;
-			width: 344px;
-			background: #3498db;
-			margin: 10px;
-		}
-		h5 {
-			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
-			font-size: 20px;
-			margin: 0;
-			color: #fff;
-		}
-		p {
-			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-			font-size: 20px;
-			margin: 10px 0px;
-			color: #333;
-		}
-		button {
-			display: table-cell;
-			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-			font-size: 20px;
-			height: 65px;
-			width: auto;
-			border-radius: 10px; 
-			-moz-border-radius: 10px; 
-			-webkit-border-radius: 10px; 
-			border: 0px solid #95A5A6;
-			background: #95A5A6;
-			margin: 20px 5px;
-			padding: 0 15px 3px;
-			color: #fff;
-		}
-		
-		footer {
-			height: 400px;
-			width: 100%;
-			background: #3498db;
-			border-bottom: 15px solid #007dc3;
-		}
-		footer ul {
-			margin: 0 auto;
-			height: 300px !important;
-		}
-		footer ul li {
-			width: 341px;
-			height: inherit;
-			margin: 0;
-			text-align: left;
-		}
-		footer ul li:nth-child(2) {
-			width: 341px;
-			margin-left: 20px;
-			text-align: left;
-		}
-		footer ul li:last-child {
-			width: 341px;
-			margin-left: -20px;
-			text-align: left;
-		}
-		footer ul li p {
-			color: #fff;
-		}
-		.footerlogo {
-			width: 240px;
-			margin: 0;
-			float: right;
-		}
-		.last-bit {
-			height: 30px;
-			width: 1024px;
-			margin: 0 auto;
-		}
-		.copyright {
-			width: 50%;
-			float: left;
-			font-size: 18px;
-			text-align: left;
-			margin: -45px 0 0 0;
-		}
-		.terms {
-			width: 50%;
-			float: right;
-			text-align: right;
-			margin: -45px 0 0 0;
-		}
-		.terms a{
-			font-size: 18px;
-		}
-		aside {
-			margin: 0px;
-			padding: 0px;
-			float: left;
-			width: 30%;
-			display: inline-block;
-		}
-
-		article {
-			margin:20px 20px 20px 50px;
-			width: 60%;
-			display: inline-block;
-
-		}
-
-		.companyinfo {
-			padding-bottom: 50px;
-		}
-
-		.calltoaction{
-			background-color: #ecf0f1;
-			padding-top: 30px;
-			padding-bottom: 30px;
-		}
-		.ctctext {
-			display: inline-block;
-			width: 50%;
-			margin-left: 40px;
-		}
-
-		.ctcbtn {
-			float: right;
-			margin-right: 60px;
-			margin-top: 0px;
-		}
-		
-		
-	</style>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 	<header>
-		<div class="contain1100px clearfix">
+		<div class="contain1200px clearfix">
 			<img src="img/headerlogo.png" class="headerlogo">
 			<img src="img/search-icon.png" class="searchicon">
 			<nav>
@@ -306,97 +26,68 @@
 	<div class="root">
 		<section class="intro">
 			<div class="contain600px clearfix lightext">
-					<h1>About</h1>
+					<h1 class="header-bottom-margin">About</h1>
 					<h2>No out of box solutions.</h2>
 					<h2>Tailoring to your needs.</h2>
 			</div>
 		</section>
 
-		<section class="expertise">
+		<section class="about">
 			<div class="contain1024px clearfix darktext">
-				<h1>Sustainability Made Simple</h1>
-				<h3>Our aim is simple - cut through the clutter and provide businesses with leading tools, global insights and expertise in sustainability.</h2>
+				<h1 class="smallerh1">Sustainability Made Simple</h1>
+				<h3>Our aim is simple - cut through the clutter and provide businesses with<br/>leading tools, global insights and expertise in sustainability.</h2>
 			</div>
-			<ul class="clearfix woot">
-				<li><a href=""><img src="img/square_image.jpg"></a></li>
-				<li><a href=""><h2>Global Reach,</h2>
-								<h2>Local Touch</h2></a></li>
-				<li><a href=""><img src="img/square_image.jpg"></a></li>
-
-				<li><a href=""><h2>Partering</h2>
-								<h2>for Profit</h2></a></li>
-				<li><a href=""><img src="img/square_image.jpg"></a></li>
-				<li><a href=""><h2>Enhancing</h2>
-								<h2>business</h2>
-								<h2>performance</h2></a></li>
-
-				<li><a href=""><img src="img/square_image.jpg"></a></li>
-				<li><a href=""><h2>Business</h2>
-								<h2>Opportunities</h2>
-								<h2>through</h2>
-								<h2>Sustainability</h2></a></li>
-				<li><a href=""><img src="img/square_image.jpg"></a></li>
+			<ul class="clearfix list3x3">
+				<li class="box-image"></li>
+				<li><h1 class="box-text">Global Reach,<br>Local Touch</h1></li>
+				<li class="box-image"></li>
+				<li><h1 class="box-text">Partering<br>for Profit</h1></li>
+				<li class="box-image"></li>
+				<li><h1 class="box-text">Enhancing<br>business<br>performance</h1></li>
+				<li class="box-image"></li>
+				<li><h1 class="box-text">Business<br>Opportunities<br>through<br>Sustainability</h1></a></li>
+				<li class="box-image"></li>
 			</ul>
 		</section>
 
-		<!--<section class="expertise padded">
-			<div class="contain1024px clearfix darktext">
-				<h1>Services</h1>
-				<h3 class="svnhndrd">Our team of sustainability experts provide a comprehensive range of services across industry sectors</h2>
-			</div>
-			<ul class="clearfix">
-				<li><a href=""><img src=""></a></li>
-				<li><a href=""><img src=""></a></li>
-				<li><a href=""><img src=""></a></li>
-				<li><a href=""><img src=""></a></li>
-				<li><a href=""><img src=""></a></li>
-				<li><a href=""><img src=""></a></li>
-			</ul>
-		</section>-->
-
-		<section class="about companyinfo">
+		<section class="companyinfo">
 			
-			<div class="contain1024px darktext">
+			<div class="contain1080px">
 				
-				<aside><img src="img/empauer.png" alt=""></aside>
+				<img class="about-logo" src="img/empauer.png" alt="">
 
-				<article>
-					<h2>Empauer (pronounced "Empower")</h2>
-					<p>Empauer is a leading sustainability consultancy, with a team of experts across international offices; to meet your sustainability services needs. Our aim is to help you realize opportunities throughout your business.</p>
+				<div class="black contain650px">
+					<h1>Empauer (pronounced "Empower")</h1>
+					<p class="black">Empauer is a leading sustainability consultancy, with a team of experts across international offices; to meet your sustainability services needs. Our aim is to help you realize opportunities throughout your business.</p>
 
-					<p>We understand that sustainability means different things to different companies. To achieve your sustainability and business goals, we invest the time to actively listen and engage your business, matching your requirements with the necessary expertise.</p>
+					<p class="black">We understand that sustainability means different things to different companies. To achieve your sustainability and business goals, we invest the time to actively listen and engage your business, matching your requirements with the necessary expertise.</p>
 
-					<p>We are client focused, partnering with clients to find solutions that enhance sustainability performance and profit. Our approach is not to offer "out of a box" solutions, but to build something that clients need and adds value.</p>
-				</article>
-
-			</div>
-
-			<div class="contain1024px darktext">
-				
-				<aside><img src="img/selerant.png" alt=""></aside>
-
-				<article>
-					<h2>Empauer is a Selerant company</h2>
-
-					<p>Founded in 1990, Selerant Corporation is a leading global provider of processed-based product lifecycle management (PLM) software and consulting services within three core manufacturing segments: Food & Beverages, Personal Care/Pharamaceutical and Specialty Chemicals.</p>
-
-					<p>With primary operating regions in New York, NY, Milan, Italy, and Shanghai, China and offices around the world, Selerant has a large global presence to meet the needs of our customers.</p>
-				</article>
-
-			</div>
-
-			<div class="contain1024px calltoaction darktext">
-				
-				<div class="ctctext">
-					<h3>Curabitur aliquam augue quis.</h3>
-					<h3>Laoreet scelerisque. Integer feugiat auctor.</h3>
+					<p class="black">We are client focused, partnering with clients to find solutions that enhance sustainability performance and profit. Our approach is not to offer "out of a box" solutions, but to build something that clients need and adds value.</p>
 				</div>
+			</div>
+			<div class="contain1080px-2">
+				
+				<img class="about-logo" src="img/selerant.png" alt="">
 
-				<button class="ctcbtn">
+				<div class="black contain650px">
+					<h1>Empauer is a Selerant company</h1>
+
+					<p class="black">Founded in 1990, Selerant Corporation is a leading global provider of processed-based product lifecycle management (PLM) software and consulting services within three core manufacturing segments: Food &amp; Beverages, Personal Care/Pharamaceutical and Specialty Chemicals.</p>
+
+					<p class="black">With primary operating regions in New York, NY, Milan, Italy, and Shanghai, China and offices around the world, Selerant has a large global presence to meet the needs of our customers.</p>
+				</div>
+			</div>
+		</section>
+
+			<div class="calltoaction">
+					<h5>Curabitur aliquam augue quis.<br>Laoreet scelerisque. Integer feugiat auctor.</h5>
+				<button class="about-calltoaction">
 					<a href="">Call to Action Button</a>
 				</button>
 
-			</div>
+			</div> 
+
+			-->
 
 		</section>
 

@@ -1,0 +1,405 @@
+/*FONTS USED*/
+@font-face {
+	font-family: 'HelveticaNeueLTStd-Md';
+	src:  url('fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
+		  url('fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
+		  url('fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Montserrat-Bold';
+	src:  url('fonts/Montserrat-Bold.woff2') format('woff2'),
+		  url('fonts/Montserrat-Bold.woff') format('woff'),
+		  url('fonts/Montserrat-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'HelveticaNeueLTStd-Lt';
+	src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+		  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+		  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+}
+
+/*COMMON TO ALL PAGES*/
+body {
+	padding: 0;
+	margin: 0;
+}
+.clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+header {
+	position: absolute;
+	top: 0;
+	height: 70px;
+	width: 100%;
+	background: #3498db;
+}
+.contain1200px {
+	width: 1200px;
+	height: inherit;
+	margin: 0 auto;
+}
+.contain1080px {
+	background: white;
+	width: 1080px;
+	height: 430px;
+	margin: -40px auto 0;
+	z-index: 10;
+}
+.contain1080px-2 {
+	background: white;
+	width: 1080px;
+	height: 350px;
+	margin: 0 auto;
+	z-index: 10;
+}
+.contain1024px {
+	width: 1024px;
+	margin: 0 auto;
+	padding-top: 60px;
+}
+.contain700px {
+	width: 700px;
+	margin: 0 auto;
+}
+.contain650px {
+	width: 600px;
+    margin: 50px 50px 0px;
+    float: right;
+}
+.contain600px {
+	width: 600px;
+    margin: 70px auto 0;
+    padding-top: 60px;
+}
+.headerlogo {
+	width: 107px;
+	margin: 15px 0 0 20px;
+	float: left;
+}
+.searchicon {
+	width: 35px;
+	margin: 17px 20px 0 0;
+	float: right;
+}
+
+/*NAV BAR*/
+nav {
+	font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+	width: 800px;
+	margin: 0 auto;
+}
+ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+li {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   margin: 18px 0 0 0;
+   float: left;
+   width: 150px;
+   text-align: center;
+}
+li:last-child {
+	width: 195px;
+	text-align: right;
+}
+
+nav ul li:first-child {
+	margin-left: 10px;
+}
+nav ul li:nth-child(2) {
+	margin-left: -10px;
+}
+
+a {
+	text-decoration: none;
+	color: #e4e4e5;
+	font-size: 26px;
+}
+
+/*FOOTER*/
+footer {
+	height: 400px;
+	width: 100%;
+	background: #3498db;
+	border-bottom: 15px solid #007dc3;
+}
+footer ul {
+	margin: 0 auto;
+	height: 300px !important;
+}
+footer ul li {
+	width: 341px;
+	height: inherit;
+	margin: 0;
+	text-align: left;
+}
+footer ul li:nth-child(2) {
+	width: 341px;
+	margin-left: 20px;
+	text-align: left;
+}
+footer ul li:last-child {
+	width: 341px;
+	margin-left: -20px;
+	text-align: left;
+}
+.footerlogo {
+	width: 240px;
+	margin: 0;
+	float: right;
+}
+.last-bit {
+	height: 30px;
+	width: 1024px;
+	margin: 0 auto;
+}
+.copyright {
+	width: 50%;
+	float: left;
+	font-size: 18px;
+	text-align: left;
+	margin: -45px 0 0 0;
+}
+.terms {
+	width: 50%;
+	float: right;
+	text-align: right;
+	margin: -45px 0 0 0;
+}
+.terms a{
+	font-size: 18px;
+}
+
+/*TEXTS*/
+h1 {
+	font-family: 'Montserrat-Bold', sans-serif;
+	letter-spacing: -3px;
+	line-height: 80px;
+	font-size: 56px;
+	margin: 0;
+}
+h2 {
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 32px;
+	margin: 0;
+}
+h3 {
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 26px;
+	margin: 5px 0 0 0;
+	line-height: 35px;
+}
+h5 {
+	font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+	font-size: 20px;
+	margin: 0;
+	color: #fff;
+}
+p {
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 20px;
+	margin: 0;
+	color: #fff;
+}
+.darktext {
+	color: #333 !important;
+}
+.black {
+	color: #000 !important;
+}
+.lightext {
+	color: #e4e4e5;
+}
+.smallerh1 {
+	font-size: 46px;
+}
+
+/*BUTTONS*/
+button {
+	display: table-cell;
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 28px;
+	height: 55px;
+	border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	border: 0px solid #95A5A6;
+	background: #95A5A6;
+	margin: 20px 5px;
+	padding: 0 15px 3px;
+	color: #fff;
+}
+button a {
+	margin: -2px;
+}
+
+
+/*ABOUT PAGE*/
+.header-bottom-margin {
+	margin-bottom: 10px;
+	margin-top: 25px;
+}
+.box-text {
+	text-align: left;
+	color: #fff;
+	font-size: 30px;
+	margin: 25px 0 0 25px;
+	line-height: 40px;
+	letter-spacing: -2px;
+}
+.about {
+	height: 1370px;
+	width: 100%;
+	background: #e6e6e6;
+	text-align: center;
+}
+.about ul {
+	width: 1092px;
+	margin: 60px auto 0;
+}
+.about ul li {
+	background: #007dc3 !important;
+	width: 344px !important;
+	height: 322px !important;
+	margin: 10px;
+
+}
+.about ul li.box-image {
+	background: url("img/square_image.jpg") #e6e6e6 !important;
+}
+.about-logo {
+	width: 300px;
+	margin: 70px 0 0 50px;
+	float: left;
+}
+.contain1080px-2 .about-logo {
+	width: 300px;
+	margin: 30px 0 0 50px;
+	float: left;
+}
+.contain650px h1 {
+	font-size: 30px;
+	letter-spacing: -2px;
+	line-height: normal;
+	margin:  0 0 0 -2px
+}
+
+.contain650px p {
+	line-height: 24px;
+	text-align: left;
+	margin: 15px 0 0 0;
+}
+.calltoaction {
+	height: 135px;
+	width: 1000px;
+	background: #ecf0f1;
+	margin: 10px auto 30px;
+}
+.calltoaction h5 {
+	color: #333;
+	float: left;
+	letter-spacing: .5px;
+	font-size: 23px;
+	margin: 40px;
+}
+.about-calltoaction {
+	float: right;
+	margin: 40px;
+}
+
+
+/*EXPERTISE PAGE*/
+.center	{
+	margin: 75px auto 0;
+	width: 1200px;
+	height: 456px;
+}
+.left {
+	text-align: left;
+	color: #fff;
+	font-size: 30px;
+	margin: 15px 0 0 15px;
+	line-height: 30px;
+	letter-spacing: -2px;
+}
+.padded {
+	padding-bottom: 100px;
+}
+.intro {
+	margin: 70px 0 0 0;
+	height: 365px;
+	width: 100%;
+	background: url("img/EmpouerFormulaDesign.png") #0074a7 center no-repeat;
+	text-align: center;
+}
+.expertise {
+	height: 700px;
+	width: 100%;
+	background: #e6e6e6;
+	text-align: center;
+}
+.expertise ul {
+	width: 1200px;
+	margin: 60px auto 0;
+}
+.expertise ul li {
+	height: 198px;
+	width: 380px;
+	background: black;
+	margin: 10px;
+}
+.cover1 {
+	background: url("img/agri.jpg") #e6e6e6 !important;
+}
+.cover2 {
+	background: url("img/consumer.jpg") #e6e6e6 !important;
+}
+.cover3 {
+	background: url("img/food.jpg") #e6e6e6 !important;
+}
+.cover4 {
+	background: url("img/packaging.jpg") #e6e6e6 !important;
+}
+.cover5 {
+	background: url("img/pharma.jpg") #e6e6e6 !important;
+}
+.cover6 {
+	background: url("img/retail.jpg") #e6e6e6 !important;
+	text-align: left !important;
+}
+.cover7 {
+	background: #27ae60 !important;
+}
+.cover8 {
+	background: #8e44ad !important;
+}
+.cover9 {
+	background: #95a5a6 !important;
+}
+.cover10 {
+	background: #2c3e50 !important;
+}
+.cover11 {
+	background: #e74c3c !important;
+}
+.cover12 {
+	background:#f39c12 !important;
+	text-align: left !important;
+}
+.arrows {
+	margin: 100px 0 0px 290px !important;
+}
+.arrows2 {
+	margin: 65px 0 0px 290px !important;
+}
+.arrows3 {
+	margin: 100px 0 0px 308px !important;
+}
