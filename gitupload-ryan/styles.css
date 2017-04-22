@@ -5,6 +5,13 @@
 		  url('fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
 		  url('fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
 }
+
+@font-face {
+	font-family: 'HelveticaNeueLTStd-Lt';
+	src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+		  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+		  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+}
 @font-face {
 	font-family: 'Montserrat-Bold';
 	src:  url('fonts/Montserrat-Bold.woff2') format('woff2'),
@@ -12,10 +19,10 @@
 		  url('fonts/Montserrat-Bold.ttf') format('truetype');
 }
 @font-face {
-	font-family: 'HelveticaNeueLTStd-Lt';
-	src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
-		  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
-		  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+	font-family: 'Montserrat-Regular';
+	src:  url('fonts/Montserrat-Regular.woff2') format('woff2'),
+		  url('fonts/Montserrat-Regular.woff') format('woff'),
+		  url('fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 /*COMMON TO ALL PAGES*/
@@ -223,7 +230,7 @@ p {
 }
 
 /*BUTTONS*/
-button {
+button, input[type=submit] {
 	display: table-cell;
 	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
 	font-size: 28px;
@@ -236,6 +243,7 @@ button {
 	margin: 20px 5px;
 	padding: 0 15px 3px;
 	color: #fff;
+	cursor: pointer;
 }
 button a {
 	margin: -2px;
