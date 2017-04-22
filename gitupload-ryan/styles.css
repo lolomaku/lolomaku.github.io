@@ -273,7 +273,7 @@ button a {
 
 }
 .about ul li.box-image {
-	background: url("img/square_image.jpg") #e6e6e6 !important;
+	background: url("img/square_image.png") #e6e6e6 !important;
 }
 .about-logo {
 	width: 300px;
@@ -313,6 +313,7 @@ button a {
 .about-calltoaction {
 	float: right;
 	margin: 40px;
+	width: 260px;
 }
 
 
