@@ -219,6 +219,12 @@ p {
 .darktext {
 	color: #333 !important;
 }
+.hometextd {
+	color: #030303 !important;
+}
+.hometextl {
+	color: #e4e4e5 !important;
+}
 .black {
 	color: #000 !important;
 }
@@ -242,10 +248,10 @@ button, input[type=submit] {
 	background: #95A5A6;
 	margin: 20px 5px;
 	padding: 0 15px 3px;
-	color: #fff;
 	cursor: pointer;
 }
 button a {
+	color: #fff !important;
 	margin: -2px;
 }
 
@@ -341,6 +347,14 @@ button a {
 }
 .padded {
 	padding-bottom: 100px;
+}
+.home {
+	margin: 70px 0 0 0;
+	height: 420px;
+	width: 100%;
+	background: #e4e4e5 center no-repeat;
+	text-align: center;
+	color: #030303;
 }
 .intro {
 	margin: 70px 0 0 0;
@@ -521,3 +535,93 @@ input[type=submit].button {
 }
 
 /*HOME*/
+section.home-2 {
+	width: 100%;
+	height: 419px;
+	text-align: center;
+	margin: 0 auto;
+	background: url("img/heroimage.png") no-repeat center center; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+}
+section.home-3 {
+	width: 100%;
+	height: 1600px;
+	background: #fff;
+	padding-top: 60px;
+}
+.home-bg-image {
+	padding-top: 80px;
+}
+.homediv {
+	width: 1200px;
+	height: 480px;
+	margin: 20px auto;
+	background: #fff;
+}
+.sixty {
+	width: 55%;
+	height: inherit;
+	background: #fff;
+	float: left;
+	padding-bottom: 30px;
+}
+.fifty {
+	width: 50%;
+	height: inherit;
+	background: #fff;
+	float: left;
+}
+.forty {
+	width: 45%;
+	height: inherit;
+	background: #fff;
+	float: left;
+	padding-bottom: 40px;
+}
+.fifty img {
+	margin: 10px 0 0 50px;
+}
+.fifty h1, .sixty h1, .forty h1 {
+	color: #007cc3;
+	line-height: 55px;
+}
+.fifty p, .sixty p, .forty p {
+	margin-top: 18px;
+	color: #3b3b3b;
+	font-size: 30px;
+}
+.fifty h1, .fifty p {
+	margin-left: -20px;
+	margin-right: 20px;
+}
+.fifty p span, .sixty p span, .forty p span {
+	font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+	text-decoration: underline;
+	font-size: 30px;
+}
+.fifty button {
+	margin-top: 28px;
+	margin-left: -20px;
+}
+button.btn-orange {
+	background: #ff5124;
+	margin-left: 5px;
+}
+.sixty p, .sixty h1, .sixty button {
+	margin-left: 50px;
+}
+.sixty button {
+	margin-top: 28px;
+}
+.sixty h1 {
+	margin-top: 0px;
+}
+.pad50 {
+	padding-left: 50px
+}
+img.compliance {
+	margin-top: -100px;
+}
