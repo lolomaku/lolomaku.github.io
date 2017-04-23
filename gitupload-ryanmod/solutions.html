@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/normalize.css">
+	<style>
+						@font-face {
+							font-family: 'HelveticaNeueLTStd-Md';
+							src:  url('fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
+								  url('fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
+								  url('fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
+						}
+
+						@font-face {
+							font-family: 'HelveticaNeueLTStd-Lt';
+							src:  url('fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+								  url('fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+								  url('fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+						}
+						@font-face {
+							font-family: 'Montserrat-Bold';
+							src:  url('fonts/Montserrat-Bold.woff2') format('woff2'),
+								  url('fonts/Montserrat-Bold.woff') format('woff'),
+								  url('fonts/Montserrat-Bold.ttf') format('truetype');
+						}
+						@font-face {
+							font-family: 'Montserrat-Regular';
+							src:  url('fonts/Montserrat-Regular.woff2') format('woff2'),
+								  url('fonts/Montserrat-Regular.woff') format('woff'),
+								  url('fonts/Montserrat-Regular.ttf') format('truetype');
+						}
+						.clearfix:after {
+						   content: " ";
+						   visibility: hidden;
+						   display: block;
+						   height: 0;
+						   clear: both;
+						}
+						button, input[type=submit] {
+							display: table-cell;
+							font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+							height: 55px;
+							border-radius: 10px; 
+							-moz-border-radius: 10px; 
+							-webkit-border-radius: 10px; 
+							border: 0px solid #95A5A6;
+							background: #95A5A6;
+							margin: 20px 5px;
+							padding: 0 15px 3px;
+							cursor: pointer;
+						}
+						button.btn-orange {
+							background: #ff5124;
+						}
+				a {
+					text-decoration: none;
+					color: #fff;
+					font-size: 26px;
+				}
+				h1 {
+					font-family: 'Montserrat-Bold', sans-serif;
+					font-size: 56px;
+					line-height: 80px;
+					letter-spacing: -3px;
+					margin: 0;
+				}
+				h2 {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 32px;
+					margin: 0;
+				}
+				h3 {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 26px;
+					margin: 0;
+					line-height: 35px;
+				}
+				h4 {
+					font-family: 'Montserrat-Regular', sans-serif;
+					font-size: 28px;
+					margin: 0;
+					line-height: 35px;
+				}
+				h5 {
+					font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+					font-size: 20px;
+					margin: 0;
+					color: #fff;
+				}
+				p {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 20px;
+					margin: 0;
+					color: #fff;
+				}
+
+		body{
+			margin: 0;
+		}
+
+		div.root {
+			background: gray;
+			width: 100%;
+		}
+		section.intro {
+			position: relative;
+			width: 100%;
+			height: 365px;
+			background: url("img/EmpouerFormulaDesign.png") #0074a7 center no-repeat;
+			margin: 0 auto;
+		}
+		div.intro-text {
+			position: absolute;
+			margin: auto;
+			width: 400px;
+			height: 200px;
+			top: 0; left: 0; bottom: 0; right: 0;
+			text-align: center;
+			color: #e4e4e4;
+		}
+
+
+
+
+		section.solutions-row1 {
+			position: relative;
+			width: 100%;
+			height: 1280px;
+			background: #e6e6e6;
+			overflow: auto;
+			color: #333;
+		}
+		div.solutions-row1-text {
+			position: absolute;
+			top: 50px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			overflow: auto;
+			width: 750px;
+			height: 300px;
+			text-align: center;
+		}
+		div.solutions-row1-text img {
+			margin-top: 20px;
+		}
+		div.solutions-row1-media {
+			position: absolute;
+			top: 350px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			width: 1040px;
+			height: 600px;
+			overflow: auto;
+			background: black;
+		}
+		div.solutions-row1-clmns {
+			position: absolute;
+			top: 950px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			overflow: auto;
+			width: 1040px;
+			height: 320px;
+		}
+		div.solutions-row1-clmn {
+			width: 50%;
+			height: inherit;
+			float: left;
+		}
+		div.solutions-row1-clmn p {
+			margin: 40px 30px 0;
+			color: #333;
+		}
+		div.solutions-row1-clmn button {
+			margin-left: 30px;
+		}
+		div.solutions-row1-clmn {
+			overflow: auto;
+		}
+		div.solutions-row1-clmn ul {
+			list-style: none;
+			margin-top: 40px;
+			margin: 40px auto 0;
+		}
+		div.solutions-row1-clmn ul li {
+			background: url('img/solutions/bullet.png') no-repeat left top;
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 20px;
+			color: #333;
+			height: 30px;
+			padding-left: 30px;
+			margin: 5px 10px 0 0;
+		}
+		div.solutions-row1-clmn ul li:last-child {
+			height: 50px;
+		}
+
+
+
+
+		section.solutions-row2 {
+			position: relative;
+			width: 100%;
+			height: 450px;
+			background: #3498db;
+			overflow: auto;
+			color: #333;
+		}
+		div.nestle-text {
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			width: 940px;
+			height: 350px;
+			text-align: center;
+			margin: auto;
+		}
+		div.nestle-text p {
+			font-family: 'Montserrat-Regular', sans-serif;
+			font-size: 26px;
+			line-height: 30px;
+			margin: 25px 10px 30px;
+		}
+		div.nestle-text p.nestle-note {
+			text-transform: uppercase;
+			font-size: 17px;
+			line-height: 20px;
+			margin-top: 40px;
+			color: #00334a;
+		}
+
+
+
+
+		section.solutions-row3 {
+			position: relative;
+			width: 100%;
+			height: 2350px;
+			background: #fff;
+			overflow: auto;
+		}
+		section.solutions-row3 p{
+			font-size: 18px;
+			padding: 15px 0px;
+			color: #333;
+		}
+		section.solutions-row3 h1, section.solutions-row3 h3 {
+			color: #333;
+		}
+		section.solutions-row3 ul {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 18px;
+			padding: 0;
+			padding-left: 25px;
+			color: #333;
+		}
+		div.EcodEx.image {
+			width: 50%;
+			float: left;
+		}
+		div.EcodEx.text {
+			width: 50%;
+			float: left;
+		}
+		div.EcodEx.row1 {
+			position: absolute;
+			top: 50px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			height: 120px;
+			width: 675px;
+			text-align: center;
+		}
+		div.EcodEx.row2 img.adjusted {
+			margin-left: 40px;
+			width: 390px;
+		}
+		div.EcodEx.row2 {
+			position: absolute;
+			top: 230px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			height: 420px;
+			width: 960px;
+			text-align: left;
+		}
+		div.EcodEx.row3 {
+			position: absolute;
+			top: 710px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			height: 320px;
+			width: 960px;
+			text-align: left;
+		}
+		div.EcodEx.row3 img.adjusted {
+			width: 465px;
+		}
+		div.EcodEx.row4 {
+			position: absolute;
+			top: 1050px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			height: 320px;
+			width: 960px;
+			text-align: left;
+		}
+		div.EcodEx.row4 img.adjusted {
+			width: 370px;
+			margin-left: 50px;
+		}
+		div.EcodEx.row5 {
+			position: absolute;
+			top: 1430px; left: 0; bottom: 0; right: 0;
+			margin: 0 auto;
+			height: 320px;
+			width: 960px;
+			text-align: left;
+		}
+		div.EcodEx p, div.EcodEx h4, div.EcodEx ul  {
+			margin: 0 20px;
+		}
+
+
+
+		section.solutions-row4 {
+			position: relative;
+			width: 100%;
+			height: 900px;
+			overflow: auto;
+			background: #ecf0f1;
+		}
+		div.consulting-root {
+			width: 1000px;
+			margin: 0 auto;
+			color: #333;
+		}
+		div.consult.row1 {
+			width: 1020px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		div.consult.row2 {
+			position: relative;
+			width: 1020px;
+			text-align: left;
+			margin: 0 auto;
+		}
+		div.consult.row2 h4 {
+			position: absolute;
+			margin-left: 20px;
+			top: 90px; left: 0; bottom: 0; right: 0;
+		}
+		div.consult.row2 p {
+			position: absolute;
+			top: 130px; left: 0; bottom: 0; right: 0;
+			margin-left: 20px;
+			color: #333;
+			width: 475px;
+		}
+		div.consult.row2 h5 {
+			position: absolute;
+			top: 130px; left: 560px; bottom: 0; right: 0;
+			color: #333;
+
+		}
+		div.consult.row2 ul {
+			position: absolute;
+			top: 170px; left: 560px; bottom: 0; right: 0;
+			color: #333;
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 20px;
+			margin: 0;
+		}
+
+		.common-actionable {
+			position: absolute;
+			top: 2160px; left: 0; bottom: 0; right: 0;
+			height: 135px;
+			width: 1000px;
+			background: #ecf0f1;
+			margin: 10px auto 30px;
+		}
+		.common-actionable h5 {
+			color: #333;
+			float: left;
+			letter-spacing: .5px;
+			font-size: 23px;
+			margin: 40px 0 40px 40px;
+			width: 600px;
+		}
+		.common-actionable button {
+			float: right;
+			margin: 40px;
+		}
+		.common-actionable.white {
+			top: 700px; left: 0; bottom: 0; right: 0;
+			background: #fff;
+		}
+
+
+
+		@media screen and (max-width: 1199px) {
+		    
+		}
+
+		@media screen and (max-width: 1039px) {
+			section {
+				height: auto !important;
+			}
+
+		    div.intro-text, div.solutions-row1-text, div.solutions-row1-media, div.solutions-row1-clmns {
+		    	position: relative;
+		    	top: 0; left: 0; bottom: 0; right: 0;
+		    	width: 100%;
+		    }
+		    div.intro-text {
+		    	padding: 50px 0;
+		    	margin: 0 auto;
+		    }
+		    div.intro-text h1, div.intro-text h2{
+		    	margin: 0;
+		    }
+
+
+
+			div.solutions-row1-text {
+				height: auto;
+				padding: 30px 0;
+			}
+			div.solutions-row1-text h3 {
+				margin: 0 30px;
+			}
+		    div.solutions-row1-text img {
+				width: 450px;
+			}
+		    div.solutions-row1-clmns {
+		    	height: auto;
+		    }
+			div.solutions-row1-clmn p {
+				margin: 0;
+				padding: 30px 30px 0;
+				color: #333;
+			}
+		    div.solutions-row1-clmn {
+				width: 100%;
+				height: 230px;
+				float: none;
+			}
+			div.solutions-row1-clmn.left {
+				height: auto;
+			}
+			div.solutions-row1-clmn.right {
+				margin-top: 0;
+			}
+
+
+
+			div.nestle-text {
+				position: relative;
+		    	top: 0; left: 0; bottom: 0; right: 0;
+		    	height: auto;
+		    	width: 100%;
+		    	padding: 30px 0 20px 0;
+			}
+			div.nestle-text img {
+				width: 500px;
+			}
+			div.nestle-text p {
+				margin: 0;
+				padding: 20px 30px 0;
+			}
+
+
+			div.EcodEx-explained {
+				position: relative;
+				top: 0; left: 0; bottom: 0; right: 0;
+				width: 100%;
+				padding-bottom: 30px;
+				height: auto;
+			}
+
+			div.EcodEx.row1, div.EcodEx.row2, div.EcodEx.row3, div.EcodEx.row4, div.EcodEx.row5 {
+				position: relative;
+		    	top: 0; left: 0; bottom: 0; right: 0;
+		    	height: auto;
+		    	width: 100%;
+		    	padding: 30px 0 20px 0;
+			}
+
+			div.EcodEx.image, div.EcodEx.text {
+				width: 100%;
+				float: none;
+			}
+			div.EcodEx.text {
+				margin: 0 auto;
+				padding: 30px;
+				width: 70vw;
+			}
+			div.EcodEx.text h4 {
+				text-align: center;
+			}
+
+			div.EcodEx.row2 img.adjusted, div.EcodEx.row3 img.adjusted, div.EcodEx.row4 img.adjusted {
+				display: block;
+				margin: 0 auto;
+			}
+
+			
+			section.solutions-row4 {
+				height: auto;
+				
+			}
+			div.consulting-root {
+				width: 100%;
+				height: auto;
+				margin: 0;
+			}
+			div.consult.row1 {
+				width: 70vw;
+				margin: 0 auto;
+			}
+			div.consult.row1 h1 {
+				padding: 30px 0 0 0;
+			}
+			div.consult.row1 h3 {
+				padding: 0 0 40px 0;
+			}
+			div.consult.row2 {
+				position: relative;
+				width: 1020px;
+				text-align: left;
+				margin: 0 auto;
+			}
+			div.consult.row2 h4, div.consult.row2 p, div.consult.row2 h5, div.consult.row2 ul {
+				position: relative;
+		    	top: 0; left: 0; bottom: 0; right: 0;
+		    	height: auto;
+		    	width: 100%;
+		    	margin: 0;
+			}
+			div.consult.row2 h4 {
+				padding: 0 0 20px;
+				text-align: center;
+			}
+			div.consult.row2 p {
+				width: 80vw;
+				padding: 0 0 20px;
+				margin: 0 auto;
+			}
+
+			.common-actionable {
+				position: relative;
+				top: 0; left: 0; bottom: 0; right: 0;
+				height: auto;
+				width: 100%;
+				padding: 30px 0;
+				margin: 0;
+			}
+			.common-actionable h5 {
+				float: none;
+				margin: 0 auto;
+				padding: 0 30px 30px;
+				width: 80vw;
+				text-align: center;
+			}
+			.common-actionable button{
+				float: none;
+				display: block;
+				width: auto;
+				margin: 0 auto;
+			}
+			.common-actionable.white {
+				position: relative;
+				top: 0; left: 0; bottom: 0; right: 0;
+			}
+
+			.container {
+			    display: -webkit-box;
+			    display: -moz-box;
+			    display: -ms-flexbox;
+			    display: -webkit-flex;
+			    display: flex;
+			    -webkit-box-orient: vertical;
+			    -moz-box-orient: vertical;
+			    -webkit-flex-direction: column;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    /* optional */
+			    -webkit-box-align: start;
+			    -moz-box-align: start;
+			    -ms-flex-align: start;
+			    -webkit-align-items: flex-start;
+			    align-items: flex-start;
+			  }
+
+			  .container .first_div {
+			    -webkit-box-ordinal-group: 2;
+			    -moz-box-ordinal-group: 2;
+			    -ms-flex-order: 2;
+			    -webkit-order: 2;
+			    order: 2;
+			  }
+
+			  .container .second_div {
+			    -webkit-box-ordinal-group: 1;
+			    -moz-box-ordinal-group: 1;
+			    -ms-flex-order: 1;
+			    -webkit-order: 1;
+			    order: 1;
+			  }
+		}
+
+		@media screen and (max-width: 620px) {
+			h1 {
+				font-size: 40px;
+				line-height: 50px;
+			}
+			h2 {
+				font-size: 25px;
+				line-height: 30px;
+			}
+			h3 {
+				font-size: 22px;
+				line-height: 26px;
+			}
+			div.solutions-row1-text img {
+				width: 60vw;
+				margin-top: 10px;
+			}
+			button {
+				margin: 20px 5px 0;
+				padding: 0 12px 2px;
+			}
+			button a{
+				font-size: 20px;
+			}
+			div.solutions-row1-clmn.right {
+				margin-top: 0;
+			}
+
+			div.nestle-text {
+				height: auto;
+			}
+			div.nestle-text img {
+				width: 350px;
+			}
+			div.nestle-text p {
+				font-size: 20px;
+				line-height: 25px;
+			}
+			div.nestle-text p.nestle-note {
+				font-size: 14px;
+				line-height: 16px;
+			}
+
+			div.EcodEx.text {
+				width: 90vw;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="root"> 
+		<section class="intro">
+			<div class="intro-text">
+				<h1>Solutions</h1>
+				<h2>Empowering your options</h2>
+				<button>
+					<a href="">Technology</a>
+				</button>
+				<button>
+					<a href="">Consulting</a>
+				</button>
+			</div>
+		</section>
+		<section class="solutions-row1">
+			<div class="solutions-row1-text">
+					<h1>Technology Solutions</h1>
+					<h3>Suspendisse consectetur finibus mi, et porttitor felis maximus et.</h3>
+					<img src="img/solutions/EcodEXlogo.png" alt="">
+			</div>
+			<div class="solutions-row1-media"></div>
+			<div class="solutions-row1-clmns">
+				<div class="solutions-row1-clmn left">
+					<p>EcodEX is a eco-design software tool for evaluating and understanding the environmental impacts of packaging products.<br><br>Designed to be used by non-experts, it helps companies improve the sustainability of new products or the existing portfolio, in a cost-effective and simple way.</p>
+					<button class="btn-orange">
+						<a href="">Discover More</a>
+					</button>
+				</div>
+				<div class="solutions-row1-clmn right">
+					<ul>
+						<li>Certified to ISO 14040-14044</li>
+						<li>Enables a 360 degree view of your product</li>
+						<li>Used by leading global companies</li>
+						<li>Empowers decision making</li>
+						<li>Supported globally by leading software developers</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="solutions-row2">
+			<div class="nestle-text">
+				<img src="img/solutions/NestleLogo.png" alt="">
+				<p>
+					Nestlé aims at making sustainability related data and tools widely available.  This reinforces the credibility of the approach and improves the sustainability of the industry and supply chain partners.<br>The EcodEX tool, has been developed by an external software provider, and is available commercially through Empauer.
+				</p>
+				<p class="nestle-note">
+					Urs Schenker (2016)<br>on How life cycle assessment supports decision making at Nestlé
+				</p>
+			</div>
+		</section>
+		<section class="solutions-row3">
+			<div class="EcodEx-explained">
+				<div class="EcodEx row1">
+					<h1>EcodEX built for business</h1>
+					<h3>Designed by industry for industry</h3>
+				</div>
+				<div class="EcodEx row2">
+					<div class="EcodEx image">
+						<img src="img/solutions/EcodEX-one.png" alt="" class="adjusted">
+					</div>
+					<div class="EcodEx text">
+						<h4>Extensive Feature Set</h4>
+						<p>EcodEX follows a multi criteria approach to evaluate the impact of products across;</p>
+						<ul>
+							<li>Global Warming Potential</li>
+							<li>Energy Use</li>
+							<li>Land Use</li>
+							<li>Water Consumption</li>
+							<li>Solid Waste</li>
+							<li>Eutrophication</li>
+							<li>Package to Weight Ratio</li>
+						</ul>
+						<p>The flexibility of EcodEX permits indicators to be added and/or removed; aligning reporting  to a company’s business goals and strategy.</p>
+					</div>
+				</div>
+				<div class="EcodEx row3 container">
+					<div class="EcodEx text first_div">
+						<h4>Simulation &amp; What If Analysis</h4>
+						<p>EcodEX compares various options and performs simulations to determine the optimal improvement to a product. This brings the benefit of being able to simulate changes to products, such as:</p>
+						<ul>
+							<li>Simulate changes in the packaging of a product</li>
+							<li>Simulate changes in the ingredients of a recipe</li>
+							<li>Simulate changes in the manufacturing process</li>
+							<li>Simulate supplier or other sourcing changes, like geography or agricultural practices</li>
+						</ul>
+					</div>
+					<div class="EcodEx image second_div">
+						<img src="img/solutions/EcodEX-two.png" alt="" class="adjusted">
+					</div>
+				</div>
+				<div class="EcodEx row4">
+					<div class="EcodEx image">
+						<img src="img/solutions/EcodEX-three.png" alt="" class="adjusted">
+					</div>
+					<div class="EcodEx text">
+						<h4>Strategic Design Support</h4>
+						<p>Consumer goods companies operate in an environment of daunting technical, regulatory and commercial uncertainties. Throughout the business lifecycle, companies now face critical decisions related to sustainability of their products and business. </p>
+						<ul>
+							<li>Designed by leading industry experts in consideration of real life commercial practices</li>
+							<li>EcodEX models data within the tool itself, powerful interrogation, clear scientific methodology Removes cumbersome interpretation reports and time delays</li>
+							<li>Powered by EcoInvent Databases</li>
+						</ul>
+					</div>
+				</div>
+				<div class="EcodEx row5">
+					<div class="EcodEx text">
+						<h4>Seamless Integration</h4>
+						<p>Many companies seek to improve the sustainability of their products and business.  Research indicates that the integration of lifecycle impact analysis into the new product development cycle can provide substantial benefits towards achieving this goal such as:</p>
+						<ul>
+							<li>Simple, quick, cost-effective analysis of the environment impact of an experimental product prior to launch,</li>
+							<li>Evaluation of different packaging design ideas or ingredients, and</li>
+							<li>Screen and make suppliers responsible for the environmental impact of their raw materials.</li>
+						</ul>
+
+						<br><br>
+
+						<h4>Seamless Integration</h4>
+						<p>Empauer appreciates that market forces shape client priorities and needs. Through our global network and our in-house software developers, we are able to quickly customize EcodEX to meet client specific requirements.</p>
+
+						<br><br>
+
+						<h4>Ease of Implementation</h4>
+						<p>Empauer works with each client to ensure that EcodEX is introduced in accordance to a client’s timeline and implementation requirements. This includes training and technical elements before rollout and post rollout. </p>
+					</div>
+					<div class="EcodEx text">
+						<h4>Flexible Solutions</h4>
+						<p>EcodEX can be made available through various options, contact us to discuss the best solution that fits your requirements;</p>
+						<ul>
+							<li>LCA Consulting – case by case product / packaging assessments</li>
+							<li>Web Application Solution</li>
+							<li>Standalone Software Solution</li>
+							<li>ERP Integrated Software Solution</li>
+						</ul>
+
+						<br><br>
+
+						<h4>Effective Communications</h4>
+						<p>EcodEx can be used to make results understandable and easily accessible to all stakeholders, including R&amp;D scientists, LCA experts, managers, packaging engineers, procurement, etc. Results can be used as the basis of marketing claim for B2B.</p>
+
+						<br><br>
+
+						<h4>Global Support Network</h4>
+						<p>EcodEX is backed by a global software development house with over 25 years of experience working with multinational organizations with expertise with consumer goods companies.</p>
+					</div>
+				</div>
+				<div class="common-actionable">
+					<h5>Learn how leading multinationals use EcodEX to inform design decisions for sustainable products</h5>
+					<button class="btn-orange">
+						<a href="">Request a Demo</a>
+					</button>
+				</div>
+			</div>
+		</section>
+		<section class="solutions-row4">
+			<div class="consulting-root">
+				<div class="consult row1">
+					<h1>Consulting</h1>
+					<h3>We understand that not all businesses have the time and resources to conduct in-depth analysis on their products and/or packaging. That is why Empauer offers a range of services whereby assessments are conducted on behalf of clients.</h3>
+				</div>
+			</div>
+			<div class="consulting-root">
+				<div class="consult row2">
+					<h4>Improve efficiency, eliminate waste</h4>
+					<p>Empauer's consulting services provide a comprehensive approach for gathering information, presenting results and identifying opportunities for improvement.<br><br>No matter the scale of operation, we make the complex simple so you can focus on what matters most. Let us do some of the heavy lifting and you'll see results that benefit your business and the environment.<br><br>Our consultancy services help our partners navigate the complex world of sustainability and how to translate organisational values into actions.</p>
+					<h5>We consult across</h5>
+					<ul>
+						<li>Corporate Sustainability Reporting</li>
+						<li>Supply Chain Review</li>
+						<li>The Circular Economy</li>
+						<li>Carbon Footprinting</li>
+						<li>Greenhouse Gas Reporting</li>
+						<li>Product Life Cycle Assessments</li>
+						<li>Product Design</li>
+						<li>Food Waste</li>
+						<li>Packaging and Product Assessments</li>
+					</ul>
+				</div>
+				<div class="common-actionable white">
+					<h5>Learn how leading multinationals use EcodEX to inform design decisions for sustainable products</h5>
+					<button class="btn-orange">
+						<a href="">Request a Demo</a>
+					</button>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
