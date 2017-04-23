@@ -412,3 +412,110 @@ button a {
 .arrows3 {
 	margin: 100px 0 0px 308px !important;
 }
+
+/*CONTACT*/
+section.contact {
+	width: 100%;
+	height: 1420px;
+	background: #e6e6e6;
+	text-align: center;
+}
+div.colmn {
+	margin-top: 100px;
+	width: 50%;
+	float: left;
+	text-align: left;
+}
+div.colmn object {
+	width: 100%;
+	height: 1020px;
+}
+div.colmn h1 {
+	font-size: 28px;
+}
+div.colmn h1, div.colmn p, div.colmn img  {
+	margin-left: 40px;
+	color: #333333;
+}
+div.colmn img {
+	margin-top: 30px;
+}
+
+/*FORM*/
+.contact-form {
+    width: 520px;
+    margin: 0 auto;
+}
+fieldset {
+    border: none;
+    font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+}
+input, select, textarea {
+    border: none;
+    font-family: 'Montserrat-Regular', sans-serif;
+    letter-spacing: -1px;
+    color: #333;
+}
+.fl-l {
+    float: left;
+}
+span {
+    font-size: 20px;
+    margin-left: 5px;
+    padding-bottom: 20px;
+}
+span.margin10px {
+    margin-left: 15px;
+}
+input.hs-input {
+    height: 55px;
+    margin-top: 13px;
+    text-indent: 10px;
+}
+input.firstname, input.lastname {
+    width: 240px;
+    font-size: 26px;
+}
+input.lastname {
+    margin-left: 10px;
+}
+input.organization, input.email {
+    width: 490px;
+    font-size: 26px;
+}
+div.hs_country {
+    margin: 13px 0 0 0;
+}
+select.country {
+    margin-top: 13px;
+    height: 55px;
+    width: 490px;
+    text-indent: 10px;
+    font-size: 26px;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    color: #757575;
+}
+select.country option{
+    color: #333;
+}
+textarea.message {
+    resize: none;
+    margin-top: 13px;
+    height: 415px;
+    width: 470px;
+    font-size: 26px;
+    padding: 10px;
+    -webkit-appearance: none;
+}
+textarea:focus, input:focus,  select:focus{
+    outline: none;
+}
+input[type=submit].button {
+    float: right;
+    margin-right: 15px;
+}
