@@ -99,6 +99,11 @@ header {
 	margin: 17px 20px 0 0;
 	float: right;
 }
+a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 26px;
+}
 
 /*NAV BAR*/
 nav {
@@ -120,7 +125,7 @@ li {
    width: 150px;
    text-align: center;
 }
-li:last-child {
+nav li:last-child {
 	width: 195px;
 	text-align: right;
 }
@@ -131,8 +136,7 @@ nav ul li:first-child {
 nav ul li:nth-child(2) {
 	margin-left: -10px;
 }
-
-a {
+nav a {
 	text-decoration: none;
 	color: #e4e4e5;
 	font-size: 26px;
