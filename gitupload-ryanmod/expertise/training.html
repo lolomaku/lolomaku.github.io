@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Empauer Training</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<style>
+						@font-face {
+							font-family: 'HelveticaNeueLTStd-Md';
+							src:  url('../fonts/HelveticaNeueLTStd-Md.woff2') format('woff2'),
+								  url('../fonts/HelveticaNeueLTStd-Md.woff') format('woff'),
+								  url('../fonts/HelveticaNeueLTStd-Md.ttf') format('truetype');
+						}
+
+						@font-face {
+							font-family: 'HelveticaNeueLTStd-Lt';
+							src:  url('../fonts/HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+								  url('../fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+								  url('../fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype');
+						}
+						@font-face {
+							font-family: 'Montserrat-Bold';
+							src:  url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+								  url('../fonts/Montserrat-Bold.woff') format('woff'),
+								  url('../fonts/Montserrat-Bold.ttf') format('truetype');
+						}
+						@font-face {
+							font-family: 'Montserrat-Regular';
+							src:  url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+								  url('../fonts/Montserrat-Regular.woff') format('woff'),
+								  url('../fonts/Montserrat-Regular.ttf') format('truetype');
+						}
+		/*COMMON ELEMENTS*/
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		ul li{
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+		a {
+					text-decoration: none;
+					color: #fff;
+					font-size: 26px;
+				}
+				h1 {
+					font-family: 'Montserrat-Bold', sans-serif;
+					font-size: 56px;
+					line-height: 80px;
+					letter-spacing: -3px;
+					margin: 0;
+				}
+				h2 {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 32px;
+					margin: 0;
+				}
+				h3 {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 26px;
+					margin: 0;
+					line-height: 35px;
+				}
+				h4 {
+					font-family: 'Montserrat-Regular', sans-serif;
+					font-size: 28px;
+					margin: 0;
+					line-height: 35px;
+				}
+				h5 {
+					font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+					font-size: 20px;
+					margin: 0;
+					color: #fff;
+				}
+				p {
+					font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+					font-size: 20px;
+					margin: 0;
+					color: #fff;
+				}
+				button, input[type=submit] {
+							display: table-cell;
+							font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+							height: 55px;
+							border-radius: 10px; 
+							-moz-border-radius: 10px; 
+							-webkit-border-radius: 10px; 
+							border: 0px solid #95A5A6;
+							background: #95A5A6;
+							margin: 20px 5px;
+							padding: 0 15px 3px;
+							cursor: pointer;
+						}
+						button.btn-orange {
+							background: #ff5124;
+						}
+
+				.common-actionable {
+					height: 135px;
+					width: 1000px;
+					background: #ecf0f1;
+					margin: 10px auto 30px;
+				}
+				.common-actionable h5 {
+					color: #333;
+					float: left;
+					letter-spacing: .5px;
+					font-size: 23px;
+					margin: 40px 0 40px 40px;
+					width: 600px;
+				}
+				.common-actionable button {
+					float: right;
+					margin: 40px;
+				}
+				.common-actionable.white {
+					top: 700px; left: 0; bottom: 0; right: 0;
+					background: #fff;
+				}
+
+		nav.secondarynav {
+			position: relative;
+			width: 100%;
+			height: 48px;
+			background: #007dc3;
+			border-bottom: 2px solid #3498db;
+		}
+		nav.secondarynav ul {
+			position: absolute;
+			top: ; left: 0; bottom: 0; right: 0;
+			margin: auto 25px;
+			padding: 17px 0 13px;
+			color: #fff;
+			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+
+		}
+		nav.secondarynav ul li {
+			padding: 0 10px 0 0;
+		}	
+		nav.secondarynav ul li a{
+			font-size: 16px;
+			margin-top: -10px;
+		}
+		nav.secondarynav ul li:after {
+			display: inline-block;
+			content : url('../img/expertise-display/arrow.png');
+			margin-left: 10px;
+
+		}
+		nav.secondarynav ul li:first-child {
+			padding-left: 0;
+		}
+		nav.secondarynav ul li:last-child:after {
+			content: none;
+		}
+
+
+		section.expertise-intro {
+			background: #007dc3;
+			padding: 60px 0 80px;
+		}
+		section.expertise-intro h1, section.expertise-intro h2 {
+			color: #e4e4e4;
+			margin: 0 50px;
+		}
+
+		section.expertise-content {
+			position: relative;
+			background: #e6e6e6;
+			padding: 60px 0 700px;
+		}
+		div.expertise-content-intro {
+			margin: 0 50px;
+		}
+		div.expertise-content-intro h1, div.expertise-content-intro h2 {
+			color: #333;
+		}
+		div.expertise-content-intro h1 {
+			line-height: 46px;
+			font-size: 44px;
+		}
+		div.expertise-content-intro h2 {
+			padding-top: 15px;
+		}
+
+		section.expertise-content img {
+			width: 90vw;
+			display: block;
+			margin: 30px auto;
+		}
+		div.left, div.right {
+			position: relative;
+			width: 45vw;
+			float: left;
+		}
+		div.right {
+			float: right;
+		}
+		div.expertise-content-more p, div.expertise-content-more ul {
+			color: #333;
+		}
+		div.left p, div.left ul{
+			margin-left: 90px;
+		}
+		div.right p, div.right ul {
+			margin-right: 90px;
+		}
+		div.left ul, div.right ul {
+			font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+			font-size: 20px;
+			list-style-type: disc;
+			margin: 30px 50px;
+		}
+		div.left ul li, div.right ul li {
+			float: none;
+		}
+
+		section.expertise-slider {
+			width: 100%;
+			position: relative;
+			background: black;
+		}
+		div.expertise-slider-intro {
+			position: relative;
+			width: 90vw;
+			margin: -400px auto 0;
+			background: white;
+		}
+		div.expertise-slider-intro h1, div.expertise-slider-intro h2 {
+			margin: 0 40px;
+		}
+		div.expertise-slider-intro h1 {
+			padding: 50px 0 0 0;
+		}
+		div.expertise-slider-intro h2 {
+			padding: 20px 0 0;
+		}
+
+		.slider {
+			font-family: 'HelveticaNeueLTStd-Md', sans-serif;
+			width: 90vw;
+			margin: 0 auto;
+			padding: 50px 0;
+			background: white;
+		}
+
+		.clickme {
+		    background-color: green;
+		    color: #333;
+		    display: block;
+		    margin-bottom: 5px;
+		    padding: 20px 10px;
+		    border: 2px solid #333;
+		    border-left: 0;
+		    border-right: 0;
+		}
+
+		.box {
+			font-size: 20px;
+		    background-color: #ccc;
+		    margin: 20px 50px;
+		    padding: 5px 10px;
+		    width: auto;
+		}
+		.box p {
+					    color: #333;
+		}
+	</style>
+</head>
+<body>
+	<div class="root">
+		<nav class="secondarynav">
+			<ul>
+				<li><a href="http://www.empaurer.com"><img src="../img/expertise-display/home.png" alt=""></a></li>
+				<li><a href="../expertise.html">Our Expertise</a></li>
+				<li><a href="">Training &amp; Workshops</a></li>
+			</ul>
+		</nav>
+		<section class="expertise-intro">
+			<h1>Training &amp; Workshops</h1>
+			<h2>Enhance the knowledge and the sustainability performance of your organisation with our range of training and workshops.</h2>
+		</section>
+		<section class="expertise-content">
+			<div class="expertise-content-intro">
+				<h1>Empowering your team with knowledge.</h1>
+				<h2>It is often said, "knowledge is power". For an organisation, having a well informed knowledgeable team is critical to achieve a high level of business performance.</h2>
+			</div>
+			<img src="../img/expertise-display/AgribusinessPhoto.jpg" alt="">
+			<div class="expertise-content-more">
+				<div class="left">
+				<p>Empauer offers a range of training services and programs. Our mantra of “no out of box” solutions means that we listen to your requirements and take the time to understand your situation. What is delivered is a program that meets your needs.</p>
+
+				<p>The value offered in bespoke training and workshops present the opportunity for companies to expand the knowledge-base of their team and organization across a variety of environmental and business areas. </p>
+
+				<p>Created and conducted by our team of subject matter experts, all training and workshops are interactive, engaging and provide real life commercial applications relevant to each organization and their markets. </p>
+
+
+					<br><br>
+				</div>
+				<div class="right">
+				
+				<p>Our training and workshops cover the following topics;</p>
+						<ul>
+						<li>Eco-Design Tools</li>
+						<li>Procurement</li>
+						<li>Sustainable Packaging</li>
+						<li>Product Sustainability</li>
+						<li>End of Life Strategies</li>
+						<li>Design for Sustainability</li>
+						<li>Sustainability Strategies</li>
+						<li>Life Cycle Assessments</li>
+						</ul>
+
+			</div>
+			</div>
+		</section>
+	
+
+	
+	</div>
+	<script>
+		// Hide all the elements in the DOM that have a class of "box"
+		$('.box').hide();
+
+		// Make sure all the elements with a class of "clickme" are visible and bound
+		// with a click event to toggle the "box" state
+
+		var $clickSlider = $('.box');
+
+		$('.clickme').each(function() {
+		    $(this).show(0).on('click', function(e) {
+		        // This is only needed if your using an anchor to target the "box" elements
+		        e.preventDefault();
+		        
+		        // Find the next "box" element in the DOM
+		        var $boxToggle = $(this).next('.box').slideToggle('fast', function() {
+		        	$clickSlider.not($boxToggle).filter(':visible').stop(true).slideUp('slow');
+		        });
+		    });
+		});
+	</script>
+</body>
+</html>
