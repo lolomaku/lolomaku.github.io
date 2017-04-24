@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Empauer Training</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<div class="root">
+		<nav class="secondarynav">
+			<ul>
+				<li><a href="http://www.empaurer.com"><img src="../img/expertise-display/home.png" alt=""></a></li>
+				<li><a href="../expertise.html">Our Expertise</a></li>
+				<li><a href="">Training &amp; Workshops</a></li>
+			</ul>
+		</nav>
+		<section class="expertise-intro">
+			<h1>Training &amp; Workshops</h1>
+			<h2>Enhance the knowledge and the sustainability performance of your organisation with our range of training and workshops.</h2>
+		</section>
+		<section class="expertise-content">
+			<div class="expertise-content-intro">
+				<h1>Empowering your team with knowledge.</h1>
+				<h2>It is often said, "knowledge is power". For an organisation, having a well informed knowledgeable team is critical to achieve a high level of business performance.</h2>
+			</div>
+			<img src="../img/expertise-display/AgribusinessPhoto.jpg" alt="">
+			<div class="expertise-content-more">
+				<div class="left">
+				<p>Empauer offers a range of training services and programs. Our mantra of “no out of box” solutions means that we listen to your requirements and take the time to understand your situation. What is delivered is a program that meets your needs.</p>
+
+				<p>The value offered in bespoke training and workshops present the opportunity for companies to expand the knowledge-base of their team and organization across a variety of environmental and business areas. </p>
+
+				<p>Created and conducted by our team of subject matter experts, all training and workshops are interactive, engaging and provide real life commercial applications relevant to each organization and their markets. </p>
+
+
+					<br><br>
+				</div>
+				<div class="right">
+				
+				<p>Our training and workshops cover the following topics;</p>
+						<ul>
+						<li>Eco-Design Tools</li>
+						<li>Procurement</li>
+						<li>Sustainable Packaging</li>
+						<li>Product Sustainability</li>
+						<li>End of Life Strategies</li>
+						<li>Design for Sustainability</li>
+						<li>Sustainability Strategies</li>
+						<li>Life Cycle Assessments</li>
+						</ul>
+
+			</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-colmns3x1">
+				<div class="athird footer-left">
+					<h5>Contact us at:</h5><p>+61 3 9020 7295</p>
+				</div>
+				<div class="athird">
+					<h5>We operate globally.</h5><p>We're based at:<br/>21-23 Stewart Street<br/>Richmond, VIC 3121<br/>Australia</p>
+				</div>
+				<div class="athird">
+					<img src="../img/empauerlogo.png">
+				</div>
+			</div>
+			<div class="footer-colmns2x1">
+				<p class="copyright">&copy; 2017 Empauer Pty Ltd.</p>
+				<p class="terms"><a href="../termsConditions.html">Terms &amp; Conditions</a> | <a href="../privacy.html">Privacy Policy</a></p>
+			</div>
+		</footer>
+	</div>
+	<script>
+		// Hide all the elements in the DOM that have a class of "box"
+		$('.box').hide();
+
+		// Make sure all the elements with a class of "clickme" are visible and bound
+		// with a click event to toggle the "box" state
+
+		var $clickSlider = $('.box');
+
+		$('.clickme').each(function() {
+		    $(this).show(0).on('click', function(e) {
+		        // This is only needed if your using an anchor to target the "box" elements
+		        e.preventDefault();
+		        
+		        // Find the next "box" element in the DOM
+		        var $boxToggle = $(this).next('.box').slideToggle('fast', function() {
+		        	$clickSlider.not($boxToggle).filter(':visible').stop(true).slideUp('slow');
+		        });
+		    });
+		});
+	</script>
+</body>
+</html>

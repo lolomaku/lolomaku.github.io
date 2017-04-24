@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Empauer Packaging &amp; Product Assessment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<div class="root">
+		<nav class="secondarynav">
+			<ul>
+				<li><a href="http://www.empaurer.com"><img src="../img/expertise-display/home.png" alt=""></a></li>
+				<li><a href="../expertise.html">Our Expertise</a></li>
+				<li><a href="">Packaging &amp; Product Assessments</a></li>
+			</ul>
+		</nav>
+		<section class="expertise-intro">
+			<h1>Packaging &amp; Product Assessments</h1>
+			<h2>The reality of manufacturing is that every activity in the creation of a product has an environmental impact. The ability to uncover, know and understand those environmental impacts presents major opportunities for business.</h2>
+		</section>
+		<section class="expertise-content">
+			<div class="expertise-content-intro">
+				<h1>Know your product.</h1>
+				<h2>We understand that not all businesses have the time or internal resources to conduct an in-depth analysis on their products and packaging. To assist those in this situation, Empauer offers a service whereby environmental impact assessments are conducted on their behalf. </h2>
+			</div>
+			<img src="../img/expertise-display/AgribusinessPhoto.jpg" alt="">
+			<div class="expertise-content-more">
+				<div class="left">
+					<p>Each project is undertaken by Empauer is overseen by a Life Cycle Assessment (LCA) expert. Utilising the power of EcodEX, our ISO Certified Eco-design tool, we provide highly detailed, actionable information you can use to enhance sustainable design.</p>
+
+					<p>Working with your team, our step-by-step method starts with compiling a manufacturing overview that details all materials and/or ingredients used in the production of your product/packaging.  This data gathering extends to mapping your supply chain so that a complete scenario can be assessed. </p>
+
+					<br><br>
+				</div>
+				<div class="right">
+					<p>Once this data is collected, it enables us to generate a comprehensive report of your packaging and/or product’s impacts throughout its lifecycle.</p>
+
+					<p>Our commitment does not conclude with the handing over of a report. We take the initiative and work with our clients to ensure that results are understood and strategies can be developed from the information generated.</p>
+
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-colmns3x1">
+				<div class="athird footer-left">
+					<h5>Contact us at:</h5><p>+61 3 9020 7295</p>
+				</div>
+				<div class="athird">
+					<h5>We operate globally.</h5><p>We're based at:<br/>21-23 Stewart Street<br/>Richmond, VIC 3121<br/>Australia</p>
+				</div>
+				<div class="athird">
+					<img src="../img/empauerlogo.png">
+				</div>
+			</div>
+			<div class="footer-colmns2x1">
+				<p class="copyright">&copy; 2017 Empauer Pty Ltd.</p>
+				<p class="terms"><a href="../termsConditions.html">Terms &amp; Conditions</a> | <a href="../privacy.html">Privacy Policy</a></p>
+			</div>
+		</footer>
+	</div>
+	<script>
+		// Hide all the elements in the DOM that have a class of "box"
+		$('.box').hide();
+
+		// Make sure all the elements with a class of "clickme" are visible and bound
+		// with a click event to toggle the "box" state
+
+		var $clickSlider = $('.box');
+
+		$('.clickme').each(function() {
+		    $(this).show(0).on('click', function(e) {
+		        // This is only needed if your using an anchor to target the "box" elements
+		        e.preventDefault();
+		        
+		        // Find the next "box" element in the DOM
+		        var $boxToggle = $(this).next('.box').slideToggle('fast', function() {
+		        	$clickSlider.not($boxToggle).filter(':visible').stop(true).slideUp('slow');
+		        });
+		    });
+		});
+	</script>
+</body>
+</html>
