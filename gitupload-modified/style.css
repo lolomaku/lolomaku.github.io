@@ -381,6 +381,7 @@ section.solutions-row3 h1, section.solutions-row3 h3 {
 	color: #333;
 }
 section.solutions-row3 ul {
+	list-style-type: disc;
 	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
 	font-size: 18px;
 	padding: 0;
@@ -491,6 +492,7 @@ div.consult.row2 h5 {
 	color: #333;
 }
 div.consult.row2 ul {
+	list-style-type: disc;
 	position: absolute;
 	top: 170px; left: 560px; bottom: 0; right: 0;
 	color: #333;
