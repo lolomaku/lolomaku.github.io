@@ -242,7 +242,7 @@ nav.primarynav {
 .navlogo{
 	display: block;
 	position: absolute;
-	top: 0; bottom: 0; left: 20px;
+	top: 0; bottom: 0; left: 50px;
 	margin: auto 0;
 }
 .navsearch{
@@ -266,6 +266,9 @@ nav.primarynav {
 @media screen and (max-width: 1039px) {
 	.navsearch {
 		display: none;
+	}
+	.navlogo {
+		left: 20px;
 	}
 	#trigger {
 		display: block;
@@ -676,6 +679,9 @@ div.consult.row2 ul {
 	section.solutions-row1 {
 		padding-bottom: 0px;
 	}
+	div.solutions-row1-media {
+		padding-bottom: 35px;
+	}
 	div.solutions-row1-text {
 		height: auto;
 		padding: 30px 0;
@@ -690,8 +696,8 @@ div.consult.row2 ul {
 		height: auto;
 	}
 	div.solutions-row1-clmn p {
-		margin: 0;
-		padding: 30px 30px 0;
+		width: 90vw;
+		margin: 20px auto 0;
 		color: #333;
 	}
 	div.solutions-row1-clmn {
@@ -706,8 +712,11 @@ div.consult.row2 ul {
 		margin-top: 0;
 	}
 	div.solutions-row1-clmn.right ul{
-		margin-top: 20px;
-		margin-left: 50px;
+		margin-top: 30px;
+		margin-left: 5vw;
+	}
+	div.solutions-row1-clmn button {
+		margin-left: 5vw;
 	}
 	/*///////////////////////////////////////////////////////////////*/
 	div.nestle-text {
@@ -766,7 +775,7 @@ div.consult.row2 ul {
 		margin: 0;
 	}
 	div.consult.row1 {
-		width: 70vw;
+		width: 90vw;
 		margin: 0 auto;
 	}
 	div.consult.row1 h1 {
@@ -797,12 +806,12 @@ div.consult.row2 ul {
 		text-align: center;
 	}
 	div.consult.row2 p {
-		width: 80vw;
+		width: 90vw;
 		padding: 0 0 20px;
 		margin: 0 auto;
 	}
 	div.consult.row2 ul {
-		width: 70vw;
+		width: 85vw;
 		padding: 0 0 50px;
 		margin: 0 auto;
 	}
@@ -1037,6 +1046,14 @@ nav.secondarynav ul li:last-child:after {
 	}
 }
 
+@media screen and (max-width: 1199px) {
+	nav.secondarynav ul{
+		width: 90vw;
+		margin: 0;
+		margin-left: 5vw;
+	}
+}
+
 /*///////////////////////////////////////////////////////////////*/
 section.expertise-intro {
 	background: #007dc3;
@@ -1062,7 +1079,8 @@ section.expertise-content {
 }
 div.expertise-content-intro {
 	text-align: left;
-	margin: 0 50px;
+	width: 90vw;
+    margin: 0 auto;
 }
 div.expertise-content-intro h1, div.expertise-content-intro h2 {
 	color: #333;
@@ -1112,8 +1130,12 @@ div.expertise-content-more ul {
 }
 
 @media screen and (max-width: 1039px) {
-	section.expertise-intro h1, section.expertise-intro h2, section.expertise-content, div.expertise-content-intro h1, div.expertise-content-intro h2 {
+	section.expertise-content, section.expertise-intro h1, section.expertise-intro h2, div.expertise-content-intro h1, div.expertise-content-intro h2 {
 		width: 100%;
+	}
+	section.expertise-intro div.text-contain {
+		width: 90vw;
+		margin: 0 auto;
 	}
 	section.expertise-content img {
 		width: 90vw;
@@ -1128,11 +1150,12 @@ div.expertise-content-more ul {
 		margin: 0;
 	}
 	div.expertise-content-more p {
-		display: inline-block;
-		margin: 0 50px 10px;
+		display: block;
+		width: 90vw;
+		margin: 0 auto;
 	}
 	div.expertise-content-more ul {
-		margin-left: 70px;
+		margin-left: 10vw;
 	}
 }
 
@@ -1309,10 +1332,10 @@ div.common-actionable.about {
 		float: none;
 		display: block;
 		width: 300px;
-		margin: 70px auto 0;
+		margin: 70px 0 0 20px;
 	}
 }
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1039px) {
 	div.about-contain-all div aside {
 		width: auto;
 	}
@@ -1507,7 +1530,8 @@ section.contactus div.form aside object {
 		float: none;
 	}
 	section.contactus div.form aside h1, section.contactus div.form aside p {
-		margin: 0 50px;
+		width: 90vw;
+    	margin: 0 auto;
 	}
 	section.contactus div.form aside object {
 		width: 90vw;
@@ -1721,6 +1745,11 @@ div.resources-clmns a, div.resources-clmns span {
 
 @media screen and (max-width: 399px) {
 	div.resources-clmn-container {
+		width: 90vw;
+	}
+	div.resources-clmns, div.resources-clmns img{
 		width: 100%;
+		margin: 0 auto;
+		float: none;
 	}
 }
