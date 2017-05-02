@@ -1503,7 +1503,7 @@ section.contactus div.form aside h1, section.contactus div.form aside p {
 	padding: 0;
 }
 section.contactus div.form aside h1 {
-	line-height: 28px;
+	line-height: 30px;
 	font-size: 28px;
 }
 section.contactus div.form aside img {
@@ -1518,7 +1518,7 @@ section.contactus div.form aside object {
 }
 @media screen and (max-width: 1199px) {
 	section.contactus div {
-		width: 100%;
+		width: 95%;
 	}
 	section.contactus div h1, section.contactus div h3 {
 		margin: 0 50px;
@@ -1536,6 +1536,11 @@ section.contactus div.form aside object {
 	section.contactus div.form aside object {
 		width: 90vw;
 		margin: 0 auto;
+	}
+}
+@media screen and (max-width: 1039px) {
+	section.contactus {
+		padding-bottom: 30px;
 	}
 }
 @media screen and (max-width: 600px) {
@@ -1655,8 +1660,11 @@ textarea:focus, input:focus,  select:focus{
     outline: none;
 }
 input[type=submit].button {
-    float: right;
-    margin-right: 0;
+	display: block;
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
     font-size: 28px;
     color: #fff;
 }
