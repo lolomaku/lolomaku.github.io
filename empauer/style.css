@@ -136,6 +136,8 @@ section.intro div.text-contain.oneline {
 @media screen and (max-width: 1039px) {
 	section.intro div.text-contain {
 		width: 100%;
+		height: initial;
+		padding: 30px 0;
 	}
 	section.intro div.text-contain h1, section.intro div.text-contain h2 {
 		margin: 0 50px;
