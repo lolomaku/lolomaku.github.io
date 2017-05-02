@@ -1711,6 +1711,9 @@ div.resources-clmns a, div.resources-clmns span {
 	}
 }
 @media screen and (max-width: 799px) {
+	div.resources-intro {
+		width: 90vw;
+	}
 	div.resources-clmn-container {
 		width: 400px;
 	}
