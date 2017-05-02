@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Empauer Software Development</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<header>
+		<nav class="primarynav" >
+			<a href="../index.html"><img src="../img/headerlogo.png" alt="" class="navlogo"></a>
+			<img src="../img/search-icon.png" class="navsearch">
+			<img src="../img/nav-icon.png" alt="" id="trigger">
+			<ul id="nav">
+				<li><a href="../about.html">About</a></li>
+				<li><a href="../solutions.html">Solutions</a></li>
+				<li><a href="../expertise.html">Expertise</a></li>
+				<li><a href="../resources.html">Resources</a></li>
+				<li><a href="../contact.html">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="root">
+		<nav class="secondarynav">
+			<ul>
+				<li><a href="../index.html"><img src="../img/expertise-display/home.png" alt=""></a></li>
+				<li><a href="../expertise.html">Our Expertise</a></li>
+				<li><a href="">Software Development</a></li>
+			</ul>
+		</nav>
+		<section class="expertise-intro">
+			<div class="text-contain">
+				<h1>Software Development</h1>
+				<h2>Organizations know that software specifically designed to meet their exact business processes will not only ensure they operate more efficiently but will also gain an advantage over their competitors.</h2>
+			</div>
+		</section>
+		<section class="expertise-content">
+			<div class="expertise-content-intro">
+				<h1>Designed for you.</h1>
+				<h2>As a part of Selerant, we have over 25 years of experience developing customized software for companies across a wide variety of industries.</h2>
+			</div>
+			<img src="../img/expertise-display/software.jpg" alt="">
+			<div class="expertise-content-more">
+				<div class="left">
+					<p>Selerant’s experience in the design and deployment of software ensures that all software development projects undertaken meet the highest of standards, performance and management reporting.</p>
+
+					<p>With a dedicated and in-house development team, we are able to create and integrate software tools that add great value with little disruption to business operations; we are focused to develop software that meet the ever-changing needs of our clients and their industries.</p>
+
+					<p>Our approach in developing software is consultative, considered and robust. We are acutely aware that bespoke software provides clients with the ultimate business advantage; we set out to provide tools that meet exact requirements. To achieve this and provide long-term success, we provide system integration, maintenance and support for all software developed.</p>
+
+
+					<br><br>
+				</div>
+				<div class="right">
+					<p>Our experience traverses such complex industries such as;</p>
+						<ul>
+						<li>Food and Beverages</li>
+						<li>Agriculture</li>
+						<li>Chemical manufacturing</li>
+						<li>Pharmaceuticals </li>
+						<li>Personal Care</li>
+						<li>Cosmetics</li>
+						<li>Apparel</li>
+						<li>Retail</li>
+						<li>Packaging </li>
+						<li>Food Ingredients</li>
+						<li>Material manufacturing.</li>
+						</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+	<footer>
+		<div class="footer-colmns3x1">
+			<div class="athird footer-left">
+				<h5>Contact us at:</h5><p>+61 3 9020 7295</p>
+			</div>
+			<div class="athird footer-left">
+				<h5>We operate globally.</h5><p>We're based at:<br/>21-23 Stewart Street<br/>Richmond, VIC 3121<br/>Australia</p>
+			</div>
+			<div class="athird">
+				<img src="../img/empauerlogo.png">
+			</div>
+		</div>
+		<div class="footer-colmns2x1">
+			<p class="copyright">&copy; 2017 Empauer Pty Ltd.</p>
+			<p class="terms"><a href="../termsConditions.html">Terms &amp; Conditions</a> | <a href="../privacy.html">Privacy Policy</a></p>
+		</div>
+	</footer>
+	<script type="text/javascript" src="../js/nav.js"></script>
+	<script>
+		// Hide all the elements in the DOM that have a class of "box"
+		$('.box').hide();
+
+		// Make sure all the elements with a class of "clickme" are visible and bound
+		// with a click event to toggle the "box" state
+
+		var $clickSlider = $('.box');
+
+		$('.clickme').each(function() {
+		    $(this).show(0).on('click', function(e) {
+		        // This is only needed if your using an anchor to target the "box" elements
+		        e.preventDefault();
+		        
+		        // Find the next "box" element in the DOM
+		        var $boxToggle = $(this).next('.box').slideToggle('fast', function() {
+		        	$clickSlider.not($boxToggle).filter(':visible').stop(true).slideUp('slow');
+		        });
+		    });
+		});
+	</script>
+</body>
+</html>
