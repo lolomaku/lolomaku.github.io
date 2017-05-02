@@ -64,6 +64,8 @@ button, input[type=submit] {
 	margin: 20px 5px;
 	padding: 0 15px 3px;
 	cursor: pointer;
+	color: #fff;
+	font-size: 26px;
 }
 button.btn-orange {
 	background: #ff5124;
@@ -113,7 +115,7 @@ section.intro {
 	position: relative;
 	background: url("img/EmpouerFormulaDesign.png") #0074a7 left repeat;
 	width: 100%;
-	height: 350px;
+	min-height: 350px;
 }
 section.intro div.text-contain {
 	position: absolute;
@@ -135,12 +137,11 @@ section.intro div.text-contain.oneline {
 }
 @media screen and (max-width: 1039px) {
 	section.intro div.text-contain {
-		width: 100%;
-		height: initial;
+		width: 90vw;
 		padding: 30px 0;
 	}
 	section.intro div.text-contain h1, section.intro div.text-contain h2 {
-		margin: 0 50px;
+		margin: 0 auto;
 	}
 }
 
@@ -475,7 +476,6 @@ div.solutions-row1-clmn ul li {
 	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
 	font-size: 20px;
 	color: #333;
-	height: 30px;
 	padding-left: 30px;
 	margin: 5px 10px 0 0;
 }
@@ -658,7 +658,7 @@ div.consult.row2 ul {
 
 
 @media screen and (max-width: 1039px) {
-	section.solutions-row1, section.solutions-row3 {
+	section.solutions-row1, section.solutions-row2, section.solutions-row3 {
 		height: auto;
 	}
 
@@ -684,6 +684,7 @@ div.consult.row2 ul {
 	}
 	div.solutions-row1-text {
 		height: auto;
+		width: 90vw;
 		padding: 30px 0;
 	}
 	div.solutions-row1-text h3 {
@@ -746,7 +747,12 @@ div.consult.row2 ul {
 		top: 0; left: 0; bottom: 0; right: 0;
 		height: auto;
 		width: 100%;
-		padding: 30px 0 20px 0;
+		padding: 0;
+		padding-bottom: 20px;
+	}
+	div.EcodEx.row1 {
+		padding-top: 30px;
+		padding-bottom: 30px;
 	}
 	div.EcodEx.image, div.EcodEx.text {
 		width: 100%;
@@ -754,16 +760,29 @@ div.consult.row2 ul {
 	}
 	div.EcodEx.text {
 		margin: 0 auto;
-		padding: 30px;
-		width: 70vw;
+		width: 800px;
+	}
+	div.EcodEx.text.seamless {
+		padding-top: 0px;
 	}
 	div.EcodEx.text h4 {
 		text-align: center;
+	}
+	div.EcodEx p, div.EcodEx h4, div.EcodEx ul {
+		margin: 0;
 	}
 
 	div.EcodEx.row2 img.adjusted, div.EcodEx.row3 img.adjusted, div.EcodEx.row4 img.adjusted {
 		display: block;
 		margin: 0 auto;
+		padding: 20px 0;
+	}
+	div.EcodEx br {
+		font-size: 20px;
+	}
+	section.solutions-row3 ul {
+		padding-left: 0;
+		margin-left: 25px;
 	}
 	/*///////////////////////////////////////////////////////////////*/
 	section.solutions-row4 {
@@ -860,7 +879,7 @@ div.consult.row2 ul {
 		line-height: 30px;
 	}
 	h3 {
-		font-size: 22px;
+		font-size: 20px;
 		line-height: 26px;
 	}
 	div.solutions-row1-text img {
@@ -868,10 +887,8 @@ div.consult.row2 ul {
 		margin-top: 10px;
 	}
 	button {
-		margin: 20px 5px 0;
+		margin: 20px 0 0;
 		padding: 0 12px 2px;
-	}
-	button a{
 		font-size: 20px;
 	}
 	div.solutions-row1-clmn.right {
@@ -897,6 +914,11 @@ div.consult.row2 ul {
 		width: 90vw;
 	}
 }
+@media screen and (max-width: 500px) {
+	div.EcodEx.row2 img.adjusted, div.EcodEx.row3 img.adjusted, div.EcodEx.row4 img.adjusted {
+		width: 90vw;
+	}
+}
 
 /*EXPERTISE-INDEX-PAGE*/
 section.expertise {
@@ -905,7 +927,9 @@ section.expertise {
 	text-align: center;
 }
 section.expertise div {
-	margin: 0 50px;
+	padding: 60px 0;
+    width: 90vw;
+    margin: 0 auto;
 	padding: 60px 0;
 }
 section.expertise div h1, section.expertise div h3 {
@@ -939,17 +963,12 @@ section.expertise ul li img {
 	right: 15px;
 }
 @media screen and (max-width: 1199px) {
-	section.expertise ul {
+	section.expertise ul, section.expertise div, section.expertise div h1, section.expertise div h3 {
 		width: 800px;
 	}
 }
-@media screen and (max-width: 1039px) {
-	section.expertise div h1, section.expertise div h3 {
-	width: 100%;
-	}
-}
 @media screen and (max-width: 799px) {
-	section.expertise ul {
+	section.expertise ul, section.expertise div, section.expertise div h1, section.expertise div h3 {
 		width: 90vw;
 	}
 	section.expertise ul li {
@@ -1358,6 +1377,10 @@ div.common-actionable.about {
 	}
 }
 @media screen and (max-width: 799px) {
+	section.about div {
+	    width: 90vw;
+	    margin: 0 auto;
+	}
 	section.about ul {
 		width: 90vw;
 	}
@@ -1433,6 +1456,9 @@ div.about-contain-all.index h1 {
 	div.about-contain-all.index div img {
 		margin: 70px auto 0;
 	}
+	div.about-contain-all.index div aside {
+		width: 80vw;
+	}
 	div.about-contain-all.index div aside.compliance {
 		width: 80vw;
 		margin: 0 auto;
@@ -1450,14 +1476,27 @@ div.about-contain-all.index h1 {
 		display: initial;
 	}
 }
+@media screen and (max-width: 799px) {
+	div.about-contain-all.index h1 {
+		font-size: 40px;
+	    line-height: 50px;
+	}
+	div.about-contain-all div aside p {
+		font-size: 22px;
+	}
+}
 @media screen and (max-width: 700px) {
+	section.home h1, section.home h2 {
+		margin: 0 auto;
+		width: 90vw;
+	}
 	div.about-contain-all.index div aside {
 		width: 90vw;
 		padding: 0;
 		margin: 0;
 	}
 	div.about-contain-all.index div img, div.about-contain-all.index div img.compliance {
-		width: 80vw;
+		width: 90vw;
 	}
 }
 @media screen and (max-width: 400px) {
@@ -1537,8 +1576,9 @@ section.contactus div.form aside object {
 		width: 90vw;
 		margin: 0 auto;
 	}
-}
-@media screen and (max-width: 1039px) {
+	section.contactus div.form aside img {
+		width: 90vw;
+	}
 	section.contactus {
 		padding-bottom: 30px;
 	}
@@ -1665,7 +1705,7 @@ input[type=submit].button {
     width: 100%;
     margin: 0 auto;
     margin-top: 20px;
-    font-size: 28px;
+    font-size: 26px;
     color: #fff;
 }
 
@@ -1682,6 +1722,9 @@ input[type=submit].button {
 	span {
 		display: inline-block;
     	padding: 13px 0 0 0;
+	}
+	input[type=submit].button {
+		font-size: 20px;
 	}
 }
 
@@ -1705,6 +1748,20 @@ div.resources-clmns {
 	width: 380px;
 	margin: 0 10px;
 	float: left;
+}
+div.img1, div.img2, div.img3 {
+	display: block;	
+	width: 380px;
+	height: 170px;
+}
+div.img1 {
+	background: url("img/resources/level4.png") #e6e6e6;
+}
+div.img2 {
+	background: url("img/resources/level2.png") #e6e6e6;
+}
+div.img3 {
+	background: url("img/resources/level6.png") #e6e6e6;
 }
 div.resources-clmns h1 {
 	font-size: 30px;
@@ -1747,17 +1804,49 @@ div.resources-clmns a, div.resources-clmns span {
 		width: 90vw;
 	}
 	div.resources-clmn-container {
-		width: 400px;
-	}
-}
-
-@media screen and (max-width: 399px) {
-	div.resources-clmn-container {
 		width: 90vw;
 	}
-	div.resources-clmns, div.resources-clmns img{
+	div.resources-clmns {
 		width: 100%;
 		margin: 0 auto;
 		float: none;
+	}
+	div.img1, div.img2, div.img3 {
+		width: 90vw;
+		background-size: 100%;
+		background-repeat: no-repeat;
+	    background-position: center center;
+	}
+}
+
+
+@media screen and (max-width: 799px) {
+	section.intro div.text-contain {
+		height: 200px;
+	}
+	section.intro div.text-contain.twolines {
+		height: 170px;
+	}
+	section.intro div.text-contain.oneline {
+		height: 100px;
+	}
+	section.intro div.text-contain.about {
+		height: 100px;
+	}
+}
+@media screen and (max-width: 523px) {
+	section.intro div.text-contain {
+		height: 280px;
+	}
+	section.intro div.text-contain.expertise {
+		height: 200px;
+	}
+}
+@media screen and (max-width: 344px) {
+	section.intro div.text-contain {
+		height: 330px;
+	}
+	section.index.intro {
+		height: 400px;
 	}
 }
