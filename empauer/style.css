@@ -1707,6 +1707,17 @@ div.resources-clmns a, div.resources-clmns span {
 
 @media screen and (max-width: 1199px) {
 	div.resources-clmn-container {
-		width: 1040px;
+		width: 800px;
+	}
+}
+@media screen and (max-width: 799px) {
+	div.resources-clmn-container {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 399px) {
+	div.resources-clmn-container {
+		width: 100%;
 	}
 }
