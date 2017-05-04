@@ -62,7 +62,7 @@ button, input[type=submit] {
 	border: 0px solid #95A5A6;
 	background: #95A5A6;
 	margin: 20px 5px;
-	padding: 0 15px 3px;
+	padding: 0 15px;
 	cursor: pointer;
 	color: #fff;
 	font-size: 26px;
@@ -138,7 +138,7 @@ section.intro div.text-contain.oneline {
 @media screen and (max-width: 1039px) {
 	section.intro div.text-contain {
 		width: 90vw;
-		padding: 30px 0;
+		padding: 40px 0;
 	}
 	section.intro div.text-contain h1, section.intro div.text-contain h2 {
 		margin: 0 auto;
@@ -243,6 +243,7 @@ nav.primarynav {
 .navlogo{
 	display: block;
 	position: absolute;
+	width: 103px;
 	top: 0; bottom: 0; left: 50px;
 	margin: auto 0;
 }
@@ -344,6 +345,7 @@ div.footer-colmns3x1 div.athird.footer-left p, div.footer-colmns3x1 div.athird.f
 div.footer-colmns3x1 div.athird img {
 	display: block;
 	margin: 0 auto;
+	width: 250px;
 }
 p.copyright {
 	width: 30%;
@@ -872,7 +874,7 @@ div.consult.row2 ul {
 @media screen and (max-width: 799px) {
 	h1 {
 		font-size: 40px;
-		line-height: 50px;
+		line-height: 40px;
 	}
 	h2 {
 		font-size: 25px;
@@ -1811,6 +1813,12 @@ div.resources-clmns a, div.resources-clmns span {
 		margin: 0 auto;
 		float: none;
 	}
+	div.resources-clmns h1 {
+		padding-top: 20px;
+	}
+	div.resources-clmns h1.marginfix {
+		padding-top: 0;
+	}
 	div.img1, div.img2, div.img3 {
 		width: 90vw;
 		background-size: 100%;
@@ -1836,7 +1844,7 @@ div.resources-clmns a, div.resources-clmns span {
 }
 @media screen and (max-width: 523px) {
 	section.intro div.text-contain {
-		height: 280px;
+		height: 250px;
 	}
 	section.intro div.text-contain.expertise {
 		height: 200px;
