@@ -61,7 +61,7 @@ ul li{
 	padding: 0;
 }
 button, input[type=submit] {
-	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	position: relative;
 	border-radius: 10px; 
 	-moz-border-radius: 10px; 
 	-webkit-border-radius: 10px; 
@@ -77,8 +77,13 @@ button, input[type=submit] {
 button.btn-orange {
 	background: #ff5124;
 }
+button span{
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	margin: auto;
+	width: 150px;
+	height: auto;
+}
 a {
-	display: inline-block;
 	text-decoration: none;
 	color: #fff;
 	font-size: 26px;
