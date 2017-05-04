@@ -36,9 +36,16 @@
 
 /*COMMON*/
 html, html a {
-    -webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	text-rendering: geometricPrecision;
+	font-smooth: always;
+
+	font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: subpixel-antialiased;
 	-moz-osx-font-smoothing: grayscale;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-shadow: 0.1px #fff;
 }
 body {
 	margin: 0;
