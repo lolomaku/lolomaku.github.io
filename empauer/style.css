@@ -24,6 +24,7 @@
 		  url('fonts/Montserrat-Regular.woff') format('woff'),
 		  url('fonts/Montserrat-Regular.ttf') format('truetype');
 }
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /*CLEARFIX*/
 .clearfix:after {
@@ -62,6 +63,7 @@ ul li{
 }
 button, input[type=submit] {
 	position: relative;
+	font-family: 'Roboto', sans-serif;
 	border-radius: 10px; 
 	-moz-border-radius: 10px; 
 	-webkit-border-radius: 10px; 
@@ -76,12 +78,6 @@ button, input[type=submit] {
 }
 button.btn-orange {
 	background: #ff5124;
-}
-button span{
-	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-	margin: auto;
-	width: 150px;
-	height: auto;
 }
 a {
 	text-decoration: none;
