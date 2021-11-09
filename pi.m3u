@@ -1,6 +1,4 @@
 #EXTM3U
-#EXTINF:-1 group-title="All",#EXTVLCOPT:http-referrer=https://ssh101.com/
-https://tna5.bozztv.com/cltv36/index.m3u8
 #EXTINF:-1 group-title="All",Super Radyo DZBB [Not 24/7]
 http://stream.gmanews.tv/ioslive/livestream/chunklist.m3u8?wowzasessionid=693701106
 #EXTINF:-1 group-title="All",DepEd TV (480p) [Offline]
