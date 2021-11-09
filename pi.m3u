@@ -1,0 +1,1516 @@
+#EXTM3U
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/5.png" tvg-url="" group-title="",Videoke
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/77.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/5.png" tvg-url="" group-title="",GMA 7
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/5.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/02/GTV_Philippines_%28official_logo%29.png/revision/latest/scale-to-width-down/2000?cb=20210302112414" tvg-url="" group-title="",GTV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/7.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/111.png" tvg-url="" group-title="",KAPAMILYA CHANNEL
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/11.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/36.png" tvg-url="" group-title="",TV5
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/8.m3u8
+
+#EXTINF:-1 tvg-chno="030" tvg-logo="https://www.kindpng.com/picc/b/470-4700247_velvet-sky-png.png" group-title="Movies",Cinema One
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/14.m3u8
+
+#EXTINF:-1 tvg-chno="030" tvg-logo="" group-title="Movies",Tagalized Movie Channel
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/9.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/38.png" tvg-url="" group-title="",Jeepney TV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/76.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/39.png" tvg-url="" group-title="",PBO
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/12.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/38.png" tvg-url="" group-title="",VIVA Cinema
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/13.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",MYX
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/75.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",CNN PH
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/10.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="Philippines" tvg-country="PH" tvg-language="tagalog" tvg-logo=" tvg-url="" group-title="",ANC
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/37.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Teleradyo
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/41.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",One PH
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/42.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Cinemo
+http://qqtv.nl:8080/live/shah/shah123/273501.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",PBA Rush
+http://tigerfights.xyz:80/live/Cadillac/Cadillac/2599149.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",NBA TV Philippines
+http://tigerfights.xyz:80/live/Cadillac/Cadillac/2599167.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",NBA TV
+http://stream.tvtap.live:8081/live/nba.stream/chunks.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/7.png" tvg-url="" group-title="",HBO
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/15.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Cinemax
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/16.m3u8
+
+#EXTINF:-1 tvg-id="Erz.foxmovies" tvg-language="ind" tvg-id="foxmovies" group-title="Movies" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAHinEzezD_Omvsyp0PBPe24FfV-4CRiLbIg&usqp=CAU",FOX Movies
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/17.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Fox Action Movies
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/18.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/54.png" tvg-url="" group-title="",Star Movies
+http://nwbz1u.ecm.tm/806B6CF/89181e/SM_FHD_ENG_STARMOVIES/tracks-v1a1/index.m3u8?token=0558356b27398f74c6bf8c39e301782c428ed290f867e554a01803391e8c4b7a6aaad7d48e3e787343a8016a19f53525901742eec53149fdab8b48638675db1861b214b3bb6fc805c4d74009919a599ed109eed659786102baca816127c71a6dbbaf76e1e70877ded5b130fe58&mac=00:1A:79:4B:57:A3&ip=27.96.95.31&magic_server=MAIN_MP
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/54.png" tvg-url="" group-title="",SONY PIX
+http://nwbz1u.ecm.tm/806B6CF/89181e/SM_FHD-ENG-SONYPIX/tracks-v1a1/index.m3u8?token=0558356b27398f74c6bf8c39ec01782c363a514dbf50000c6c8a1fdf5898adc68bee8059e6e513dcb693c1e2c3fa3ee96a38a82ce0b5a699482eea64c3da350d68b96f4841599956bb1bb02ab5f9d8bf5cffb57c876776baf4dfb952b86133e6cebfa4191979d24d01ce&mac=00:1A:79:4B:57:A3&ip=27.96.95.31&magic_server=MAIN_MP
+
+#EXTINF:-1 tvg-logo="http://kamiselaluada.com/img/prive.png" group-title="Movies",&privé
+http://89.187.182.181:9090/SM_FHD_ENG_ANDPRIVE/tracks-v1a1/index.m3u8
+#EXTINF:-1 tvg-logo="https://en.m.wikipedia.org/wiki/%26flix#/media/File%3A%26flix_logo.png" group-title="Movies",&flix
+http://qqtv.nl:8080/shah/shah123/7252
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Fox FamilyMovies
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/19.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Warner TV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/21.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",RED BY HBO
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/20.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Hits Movie
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/22.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Dreamworks
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/23.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",FOX
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/81.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",FX
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/64.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/108.png" tvg-url="" group-title="",FOX SPORTS 
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/36.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/108.png" tvg-url="" group-title="",FOX SPORTS 2
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/31.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/83/Fox_sports_3.png" tvg-url="" group-title="",ESPN
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/32.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",EURO SPORTS 
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/48.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Fight
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/82.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Animax
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/24.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Cartoon Network
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/29.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/41/Boomerang_tv_logo.png" tvg-url="" group-title="",Boomerang
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/30.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/89.png" tvg-url="" group-title="",DISNEY CHANNEL
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/25.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",DISNEY JR
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/26.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Nick JR
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/27.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Baby TV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/86.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Nick
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/28.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",One Piece TV
+http://stitcher-ipv4.pluto.tv:80/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",BBC Earth
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/33.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Discovery
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/45.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Discovery Asia
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/46.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",National Geographic
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/50.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Nat Geo Wild
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/51.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Nat Geo People
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/52.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",History
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/53.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Animal Planet
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/49.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Crime Investigation
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/35.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/66.png" tvg-url="" group-title="",ETC
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/60.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",AXN
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/62.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",TLC
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/47.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",BlueAntEnt
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/56.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",BlueAntEXT
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/57.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",TechStorm
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/78.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",KBS World
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/65.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",TVN
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/85.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Lifetime
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/55.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Fox Life
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/61.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Metro
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/58.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Paramount Network
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/59.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/104.png" tvg-url="" group-title="",CNN
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/38.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",Fox News
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/39.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",CNBC
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/43.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",BBC World News
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/40.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo="" tvg-url="" group-title="",NHK World
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/92.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Bloomberg
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/44.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Solar Sports
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/34.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",CCTN
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/4.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Island Living
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/6.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Fox Crime
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/63.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",MTV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/66.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Fashion TV
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/96.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",RT
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/93.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",TVE
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/83.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",DW
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/94.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",France 24
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/95.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Formosa
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/84.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",Lotus Macau
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/91.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="NEW WORLD CATV" tvg-country="PH" tvg-language="ASIA" tvg-logo=" tvg-url="" group-title="",RAI Italia
+http://fp.visualsec.net:8443/live/49qZMikUqHPKJ1FNMR-CzA/1631873875/90.m3u8
+
+#EXTINF:-1 tvg-chno="114" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/DZBB594.svg/1200px-DZBB594.svg.png" group-title="News",Super Radyo DZBB
+http://stream.gmanews.tv/ioslive/livestream/playlist.m3u8
+
+#EXTINF:0,HBO
+http://85.203.33.88/live/WswfNVL548/GUP0Nh12/17074.ts
+#EXTINF:-1 tvg-logo="https://en.m.wikipedia.org/wiki/File:HBOHits-ASIA.png" group-title="Movies",HBO Hits
+http://macneth.medianewsonline.com/hbohits.m3u8
+#EXTINF:-1 tvg-language="ind" tvg-id="Erz.hbosig" group-title="Movies" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqgQ-cN5yusvMzGPj6R67n3Wd2zGJHse90jw&usqp=CAU", HBO Signature
+http://macneth.medianewsonline.com/hbosig.m3u8
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="CinemaBoxOffice",HBO Family
+http://macneth.medianewsonline.com/hbofam.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/cc/cinemax_asia.png" group-title="MOVIES",Cinemax
+http://macneth.medianewsonline.com/cinemax.m3u8
+
+
+#EXTINF:-1 tvg-language="ind" tvg-id="Erz.foxfamilymovies" group-title="Movies" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj7MpyYIzXUJYT4nrG_Djfk_c1PpUKR-s0Sg&usqp=CAU",FOX FAMILY Movies
+http://185.180.221.194:8278/streams/d/Foxfamily/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ea/Fox_action_movies.jpg" group-title="Movies", FOX ACTION MOVIES
+http://185.180.221.194:8278/streams/d/Foxactionhd/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_global.png" group-title="MOVIES",FOX HD
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/FOX-HD-1080p/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_crime_global.png" group-title="MOVIES",FOX Crime
+http://185.180.221.194:8278/streams/d/Foxcrime/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://banner2.cleanpng.com/20180816/iyh/kisspng-fx-movie-channel-logo-film-fox-movies-5b75c13334cf59.8544058815344438272163.jpg" group-title="Movies",FOX MOVIES PREMIUM HD
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/FOXMOVIES-HD-1080p/chunks.m3u8
+
+#EXTINF:-1 tvg-logo="" group-title="Movies",Warner TV
+http://203.154.243.89:11205/
+
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox-life-us.png" group-title="MOVIES",FOX Life
+https://livecdn.fptplay.net/foxlive/foxlifehd_2000.stream/chunklist.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",FOX Movies HD
+http://s30.tv1c.xyz:80/live.ts?channelId=110&deviceUser=vjekoslav.skare&devicePass=kZqKLoNnDMyAUrlO2ucV&uid=16603
+
+
+#EXTINF:-1 tvg-logo="http://pici.life/IN/StarMovies.png" group-title="Movies",Starmovies
+http://tvcloud.live:8080/live/nihZvyQb5u/msKwEIMDkP/16019.ts
+
+#EXTINF:-1 tvg-logo="http://pici.life/IN/StarMovies.png" group-title="Movies",Starmovies backup
+http://mytv.fun:8080/live/nyw4khr5b/d2akcbm98x/672448.ts
+
+#EXTINF:-1   tvg-logo="" group-title="",Starmovies HD
+http://103.153.39.34:8000/play/a04f/index.m3u8
+
+#EXTINF:0 tvg-id="FX.us" group-title="Channels",US: FX
+http://stream.tvtap.live:8081/live/us-fx.stream/chunks.m3u8
+
+#EXTINF:-1   tvg-logo="https://logos.fandom.com/wiki/OuterMax?file=Outermax.png" group-title="",Cinemax Outermax
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/6154/index.m3u8
+
+#EXTINF:-1   tvg-logo="https://www.lyngsat.com/logo/tv/tt/thrillermax-us.png" group-title="",Thrillermax
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/6152/index.m3u8
+
+#EXTINF:-1   tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-D3QSt-XPEquBHGCHOTayZ8bhD5Pz2Efadw&usqp=CAU" group-title="",Cinemax East
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/6155/index.m3u8
+
+#EXTINF:-1   tvg-logo="https://www.pngitem.com/pimgs/b/21-213544_tv-land-logo-png.png" group-title="",Showtime
+http://85.203.33.88/grandee2/hb2Xmf40/13666?play_token=pCbzDWnw5h
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO Zone
+http://stream.tvtap.live:8081/live/us-hbozone.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO USA
+http://stream.tvtap.live:8081/live/us-hbo.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO Family USA
+http://stream.tvtap.live:8081/live/us-hbofamily.stream/chunks.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="Philippines" tvg-country="PH" tvg-language="tagalog" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/06/SET_Pix.png" tvg-url="" group-title="",SONY Pix
+http://iptvtree.net:8080/live/32ad147d/055af3e9/49539.ts
+
+#EXTINF:-1   tvg-logo="" group-title="",Movies X
+http://hpull.kktv8.com/livekktv/128600025/playlist.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",Movies Now
+http://103.157.237.18:8000/play/725
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO
+http://s30.tv1c.xyz:80/live.ts?channelId=111&deviceUser=vjekoslav.skare&devicePass=kZqKLoNnDMyAUrlO2ucV&uid=16603
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO2
+http://s30.tv1c.xyz:80/live.ts?channelId=112&deviceUser=vjekoslav.skare&devicePass=kZqKLoNnDMyAUrlO2ucV&uid=16603
+
+#EXTINF:-1   tvg-logo="" group-title="",HBO3
+http://s30.tv1c.xyz:80/live.ts?channelId=113&deviceUser=vjekoslav.skare&devicePass=kZqKLoNnDMyAUrlO2ucV&uid=16603
+
+#EXTINF:-1   tvg-logo="" group-title="",13th Street
+http://58.65.171.202:8000/play/15910/index.m3u8
+
+#EXTINF:-1   tvg-logo="" group-title="",Starz Cinema
+http://stream.tvtap.live:8081/live/us-starzcinema.stream/chunks.m3u8
+
+#EXTINF:-1   tvg-logo="" group-title="",Starz
+http://stream.tvtap.live:8081/live/us-starz.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",Starz Comedy
+http://stream.tvtap.live:8081/live/us-starz-comedy.stream/chunks.m3u8
+
+#EXTINF:-1   tvg-logo="" group-title="",Showtime backup
+http://stream.tvtap.live:8081/live/us-cinemax.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",Actionmax
+http://stream.tvtap.live:8081/live/us-cinemaxaction.stream/chunks.m3u8
+
+#EXTINF:-1   tvg-logo="" group-title="",5 Starmax
+http://stream.tvtap.live:8081/live/us-cinemax-5starmax.stream/chunks.m3u8
+
+#EXTINF:0,Hits Movie
+http://185.180.221.194:8278/streams/d/Hitsmovie/playlist.m3u8
+
+
+#EXTINF:-1   tvg-logo="https://cdn.freebiesupply.com/logos/large/2x/amc-logo-png-transparent.png" group-title="",AMC
+http://85.203.33.88/live/Ua6qQ33FRZ602/fIpMiI4082/13104.ts
+
+
+#EXTINF:-1   tvg-logo="" group-title="",Hallmark
+http://stream.tvtap.live:8081/live/us-hallmark.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="" group-title="",USA Network
+http://stream.tvtap.live:8081/live/us-usanet.stream/chunks.m3u8
+
+
+#EXTINF:-1   tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b3/MNX_logo.png" group-title="",MNX
+http://evdibac.com/live/307241001327/307241001327/83605.ts
+
+
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/bb/blue-ant-extreme-ca.png" group-title="KNOWLEDGE",Blue Ant Extreme
+https://livecdn.fptplay.net/hda/blueantext_hls.smil/chunklist_b2500000.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/bb/blue-ant-entertainment-ca.png" group-title="KNOWLEDGE",BlueAnt Entertainment HD
+https://livecdn.fptplay.net/hda/blueantent_hls.smil/chunklist_b2500000.m3u8
+
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/RV70kRkT/BLACK-CINEMA.png" group-title="MOVIES",BLACK CINEMA
+https://stitcher.pluto.tv/stitch/hls/channel/561c5b0dada51f8004c4d855/997452/playlist.m3u8?terminate=false&embedPartner=&serverSideAds=true&paln=&includeExtendedEvents=&architecture=&deviceId=889540f0-712d-11e8-b9ec-8ba319deeadf&deviceVersion=37.0.2049.0&appVersion=2.0.0&deviceType=web&deviceMake=Chrome&sid=6e360db0-724b-11e8-be77-bf4d1417b012&advertisingId=&deviceLat=38.5783&deviceLon=-90.6666&deviceDNT=0&deviceModel=Chrome&userId=&appName=&app_name=&appStoreUrl=
+
+#EXTINF:-1 tvg-logo="https://i.imgur.com/hcLUKfv.jpg" group-title="Movies",Hallmark Movies & More
+https://dai2.xumo.com/xumocdn/p=redbox&deviceid=&is_lat=&subp=RedboxdesktopWebLinux/amagi_hls_data_xumo1212A-rokuhallmark/CDN/playlist.m3u8
+#EXTINF:0 tvg-country="UN" tvg-logo="" group-title="Undefined",AXN
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/AXN-HD-1080p/playlist.m3u8?checkedby:iptvcat.com
+#EXTINF:-1 tvg-id="ParamountChannel.th" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/f/fe/Paramount_Network_%28Black%29_Logo.png" group-title="Movies",Paramount Network
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/PARAMOUNT-HD-720p/playlist.m3u8
+
+#EXTINF:-1   tvg-logo="https://cdn.i.haymarketmedia.asia/?n=campaign-india%2fcontent%2f20160518002140249257_MN.PNG" group-title="",MN+
+http://evdibac.com/live/307241001327/307241001327/83603.ts
+
+#EXTINF:-1 tvg-id="Erz.one" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaQNIlMpggEMfg_Mj3PXS6sqFyzuJKylyCw&usqp=CAU" group-title="Movies", Sony One
+http://185.180.221.194:8278/streams/d/SetOne/playlist.m3u8
+#EXTINF:-1 tvg-id="(no tvg-id)" tvg-name="New K Movies" tvg-logo="https://kmpinoy.com.ph/img/k-icon.png" group-title="PH LOCAL & CABLE",New K Movies 
+https://newidco-newmovies-1.samsung.wurl.com/manifest/playlist.m3u8 
+#EXTINF:-1 tvg-id="Erz.TvnMovies" group-title="Movies" Tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaTiLRA2QhTQQrDpfY7m-wJSLEggFESRIjKA&usqp=CAU",tvN Movie
+http://51.15.12.163:8080/Ainamanja/6a4fef36/157596?token=ShUNAEFcElxECg0AXw8BVVJUBAlUAQRYVAJWVAZVAAJUBlJQV1cIA1EaGEZKTREDAFhpWAUVDwsABVRVA05DFkJSFz5bUBJcRA0NXQ8AQUpDQV9cBBUPCAAAWlcDVVdUCRtHEVtQElxECQRcAQ9BSkNQTkUERVtYWm4HB0ELAgYTDQsUXlgcRAlWawBcVAIIBRcME1AVGRtfQhNADQwUD10bRwNbQEIHEl0WXhsAUVBDGRRSDkJbTURIQVgVLC1BHRUAGUZRXhUPV1pGAxsXFUMZFFgSaEdcRUURB1YPBBETDUdREBgSCwdAawdWVw0DAkFfXg9EFwMUA0FOFQ8ODVhDChNtRFkCRAIWVQgLW1JDSA==
+
+#EXTINF:0,KBS World
+https://livecdn.fptplay.net/sdb/kbs_hls.smil/chunklist_b1200000.m3u8
+
+#EXTINF:0,tvN EN
+http://50.7.161.82:8278/streams/d/TVN/playlist.m3u8
+
+#EXTINF:0,KIX
+https://livecdn.fptplay.net/hda/kixhd_hls.smil/chunklist_b2500000.m3u8
+
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/7/73/Zee_Cinema_2017.svg/revision/latest/scale-to-width-down/2000?cb=20191222192752" group-title="Movies",Zee Cinema
+https://y5w8j4a9.ssl.hwcdn.net/cinemausa/tracks-v1a1/index.m3u8
+#EXTINF:-1 tvg-id="MovieKingdom.us" tvg-name="Movie Kingdom" tvg-country="US" tvg-language="English" tvg-logo="https://i.imgur.com/pIuJqYk.png" tvg-url="" group-title="Movies",Movie Kingdom
+https://a.jsrdn.com/broadcast/e9b4093a41/+0000/high/c.m3u8
+
+#EXTINF:0 tvg-id="ext" group-title="Channels",US: AMC Network http://we.caughtyousnooping.club:80/live/mYaESHd3Zf/3BbeDHHvtu/662.m3u8
+
+#EXTINF:-1 tvg-chno="043" tvg-logo="" group-title="Movies",Thrill
+http://45.126.83.51/qwr9ew/s/s34/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.linkpicture.com/q/1_228.jpg" group-title="MOVIES",K+ (Movies)
+http://210.210.155.35:80/uq2663/h/h08/01.m3u8
+
+#EXTINF:-1   tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU-D8-OyCvq0BxguTno60TDTBxWwqkSAJ0NQ&usqp=CAU" group-title="MALAY_PRO",CCM
+http://185.180.221.194:8278/streams/d/Celestial2/playlist.m3u8
+
+#EXTINF:-1 group-title="Movies" tvg-logo="https://static.mncnow.id/images/channel/194e8f64/cd64_r32.jpg",Celestial Movies [HEVC]
+http://50.7.161.82:8278/streams/d/Celestial/playlist.m3u8
+
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="CinemaBoxOffice",MoviesComedy
+https://a.jsrdn.com/broadcast/e9b4093a41/+0000/c.m3u8
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="CinemaBoxOffice",LaughtTv
+https://playout4multirtmp.tulix.tv/live7/Stream1/chunklist_w1897993124.m3u8
+
+#EXTINF:0 tvg-country="JP" tvg-logo="https://www.pngkit.com/png/full/306-3060218_astro-logo-png.png" group-title="Undefined",Aniplus
+http://clientportal-worldiptv.club:8080/live/sharon/123456/28708.ts
+
+#EXTINF:-1 tvg-chno="052" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/1200px-Cartoon_Network_2010_logo.svg.png" group-title="Kids",Cartoon Network HD
+http://185.180.221.194:8278/streams/d/Cn/playlist.m3u8
+#EXTINF:-1 tvg-chno="053" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/2019_Disney_Channel_logo.svg/250px-2019_Disney_Channel_logo.svg.png" group-title="Kids",Disney Channel HD
+http://185.180.221.194:8278/streams/d/Disneyxd/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBRxfXEAMBs7E80jrHmayn7EdcZT4q9xd1Qw&usqp=CAU" group-title="Kids",Disney Channel http://185.180.221.194:8278/streams/d/Disneyxd/playlist.m3u8
+#EXTINF:-1 tvg-chno="275" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Disney_XD_-_2015.svg/200px-Disney_XD_-_2015.svg.png" group-title="Kids",Disney XD
+http://stream.tvtap.live:8081/live/disneyxd.stream/chunks.m3u8
+#EXTINF:0,Disney Junior
+http://51.79.82.231:8080/US_DISNEY_JR_EAST_USA/video.m3u8
+#EXTINF:-1 tvg-chno="260" tvg-logo="" group-title="Kids",Nickelodeon HD
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/1069/index.m3u8
+#EXTINF:-1 tvg-chno="050" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nickelodeon_2009_logo.svg/250px-Nickelodeon_2009_logo.svg.png" group-title="Kids",Nickelodeon JR
+http://185.180.221.194:8278/streams/d/Nickelodeon/playlist.m3u8
+#EXTINF:-1 tvg-chno="260" tvg-logo="" group-title="Kids",Nickelodeon SD
+http://stream.tvtap.live:8081/live/us-nick.stream/chunks.m3u8
+#EXTINF:-1 tvg-chno="056" tvg-logo="https://mpng.subpng.com/20180721/aq/kisspng-boomerang-logo-television-channel-tom-and-jerry-dog-5b53c4af10de42.3513045215322164950691.jpg" group-title="Kids",Boomerang
+http://stream.tvtap.live:8081/live/us-boomerang.stream/chunks.m3u8
+
+#EXTINF:0 tvg-country="JP" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/85/Animax_old_logo.png" group-title="Undefined",Animax
+https://redlabmcdn.s.llnwi.net/jp01/bs14/tracks-v1a1/mono.m3u8?checkedby:iptvcat.com
+
+#EXTINF:-1 tvg-chno="063" tvg-logo="http://assets.stickpng.com/images/5842aa04a6515b1e0ad75b07.png" group-title="",ABC
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/1087/index.m3u8
+
+
+#EXTINF:-1 tvg-chno="063" tvg-logo="https://www.freepnglogos.com/uploads/nba-logo-png/nba-logo-png-5.png" group-title="Sports",NBA TV
+http://stream.tvtap.live:8081/live/nba.stream/chunks.m3u8
+
+#EXTINF: -1 tvg-logo="https://i.ibb.co/ZdCMHQd/01.png" group-title="UFC 264: Poirier vs. McGregor 3", UFC Network
+http://qqtv.nl:8080/Phillip123/Phillip123/57428
+#EXTINF:-1 tvg-logo="https://i.pinimg.com/originals/36/2c/df/362cdf027667b94febe879732352ec3b.png" group-title="SPORTS1", UFC
+https://live-k2302-kbp.1plus1.video/sport/smil:sport.smil/chunklist_b6000000.m3u8
+#EXTINF:-1 tvg-logo="https://i.pinimg.com/originals/36/2c/df/362cdf027667b94febe879732352ec3b.png" group-title="SPORTS1", UFC 2
+https://stadiumlivein-i.akamaihd.net/hls/live/522512/mux_4/master.m3u8
+#EXTINF:0 tvg-id="ext" group-title="Channels",WWE Network
+http://185.180.221.194:8278/streams/d/Wwe/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="http://assets.stickpng.com/images/5847f1b0cef1014c0b5e485d.png" tvg-url="" group-title="",ESPN
+http://dimapro.cz:8080/00:1A:79:17:0A:A2/@@jsjdsjdjsdj/39090?play_token=BDdHmBUvsa
+#EXTINF:-1 tvg-chno="215" tvg-logo="https://iconape.com/wp-content/files/dk/284289/png/284289.png" group-title="Sports",ESPN 2
+http://164.68.124.111/espn2.m3u8
+#EXTINF:-1 tvg-chno="214" tvg-logo="2fc11b217987f2a740e4519c6afdbd1f.png" group-title="Sports",ESPNU
+http://164.68.124.111/espnu.m3u8
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="MALAY_PRO",Foxsport1
+http://185.180.221.194:8278/streams/d/Foxsports/playlist.m3u8
+#EXTINF:-1   tvg-logo="https://www.pngitem.com/pimgs/b/394-3949767_fox-sports-png.png" group-title="MALAY_PRO",Foxsport2
+http://185.180.221.194:8278/streams/d/Foxsports2/playlist.m3u8
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="MALAY_PRO",Foxsport3
+http://185.180.221.194:8278/streams/d/Foxsports3/playlist.m3u8
+
+
+#EXTINF:-1   tvg-logo="https://download.logo.wine/logo/BT_Sport/BT_Sport-Logo.wine.png" group-title="",BT SPORT 1
+http://85.203.33.88/grandee2/hb2Xmf40/14657
+
+#EXTINF:-1   tvg-logo="https://download.logo.wine/logo/BT_Sport/BT_Sport-Logo.wine.png" group-title="",BT SPORT 2
+http://85.203.33.88/grandee2/hb2Xmf40/14658
+
+#EXTINF:-1   tvg-logo="https://download.logo.wine/logo/BT_Sport/BT_Sport-Logo.wine.png" group-title="",BT SPORT 3
+http://85.203.33.88/grandee2/hb2Xmf40/14659
+
+#EXTINF:-1   tvg-logo="163c76813bd361f488e8776587cd4c3c.png" group-title="",BOX Nation
+http://iptvtree.net:8080/live/32ad147d/055af3e9/4719.ts
+
+#EXTINF:-1   tvg-logo="https://www.pngkey.com/png/full/43-437180_mlb-png.png" group-title="",MLB Network
+http://85.203.33.88/grandee2/hb2Xmf40/10699
+
+#EXTINF:-1   tvg-logo="https://www.vhv.rs/dpng/f/7-70231_nfl-logo-png.png" group-title="",NFL Network
+http://iptvtree.net:8080/32ad147d/055af3e9/2367
+
+#EXTINF:-1   tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/20/Bein_sport_logo.png" group-title="",beIN SPORTS 1
+http://202.150.161.68:4000/play/a001/index.m3u8
+
+#EXTINF:-1   tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/20/Bein_sport_logo.png" group-title="",beIN SPORTS 2
+http://202.150.161.68:4000/play/a002/index.m3u8
+
+#EXTINF:-1   tvg-logo="http://onegolftv.com/wp-content/uploads/2018/08/onegolf-HD-with-image-512.png" group-title="",ONE Golf
+http://162.250.201.58:6211/pk/ONEGOLF/index.m3u8
+#EXTINF:-1 tvg-id="Erz.racing.com" tvg-id="racing.com" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo77lsqXqigLhbErZHWThurPEsM73yMLWQ_Q&usqp=CAU" group-title="Sports",RACING.COM
+https://racingvic-i.akamaized.net/hls/live/598695/racingvic/1500.m3u8?id=eroz_brebes.m3u8
+#EXTINF:-1 tvg-id="Erz.tennischannel" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhaeeDAPm83xdiNTUmJURkoEinjn65b1eMyg&usqp=CAU" group-title="Sports",Tennis Channel
+https://playoutengine.sinclairstoryline.com/playout/9f87522c-5a0e-4ff4-b82c-d5564216132f/eroz_brebes.m3u8
+#EXTINF:-1 tvg-id="Erz.redbulltv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzDQcvIAJCdTmmsLxQMSSrG-PhoNhIDdvWvA&usqp=CAU" group-title="Sports", Redbull TV
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_6660.m3u8?id=eroz_brebes.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/f4/TNT_2016.svg" group-title="", TNT West
+http://185.183.34.118/iptv/F59KKDMP2GN7ZB/1102/index.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/f4/TNT_2016.svg" group-title="", TNT East
+http://cloudcdn.tk/live/alfnuf2009/JXXZ71470/13666.ts
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/440px-2019_Discovery_logo.svg.png" group-title="Factual",Discovery
+http://iptvtree.net:8080/live/32ad147d/055af3e9/755.ts
+
+#EXTINF:-1 group-title="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8b/Discovery_science_new_logo_2017.png",Discovery Science
+http://iptvtree.net:8080/live/32ad147d/055af3e9/2301.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/f0/Discovery-asia.png" tvg-url="" group-title="",Discovery Asia
+http://iptvtree.net:8080/live/32ad147d/055af3e9/273829.ts
+
+#EXTINF:-1 group-title="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d5/Smithsonian_Channel.png",Smithsonian Channel Asia 1080p
+https://smithsonianaus-samsungau.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-chno="081" tvg-logo="" group-title="FactEnt",History
+http://stream.tvtap.live:8081/live/us-history.stream/chunks.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d1/H2_channel_logo.PNG" tvg-url="" group-title="",History 2
+http://iptvtree.net:8080/live/32ad147d/055af3e9/1601.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://logos.fandom.com/wiki/Planet_Earth?file=PlanetEarth.png" tvg-url="" group-title="",Planet Earth
+http://iptvtree.net:8080/live/32ad147d/055af3e9/7693.ts
+http://iptvtree.net:8080/live/32ad147d/055af3e9/7693.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/44/BBC_Earth_logo.png" tvg-url="" group-title="",BBC Earth
+http://iptvtree.net:8080/live/32ad147d/055af3e9/23271.ts
+
+#EXTINF:-1 tvg-chno="084" tvg-logo="" group-title="FactEnt",Nat Geo
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A81.0)%20Gecko%2F20100101%20Firefox%2F81.0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+https://livecdn.fptplay.net/foxlive/natgeohd_hls.smil/chunklist_b2500000.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/NatGeo_People_logo.png" tvg-url="" group-title="",Nat Geo People
+http://evdibac.com/live/307241077254/307241077254/78906.ts
+
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d6/Nat_Geo_Wild_logo.png" tvg-url="" group-title="",Nat Geo Wild
+http://evdibac.com/live/307241077254/307241077254/81020.ts
+
+#EXTINF:-1 tvg-chno="085" tvg-logo="" group-title="FactEnt",Animal Planet
+http://stream.tvtap.live:8081/live/ap9.stream/chunks.m3u8
+
+#EXTINF:-1 tvg-chno="243" tvg-logo="https://i.ibb.co/X8hFFP4/Love-Nature-Type-Mask-FINAL-highres-removebg-preview-1.png" group-title="FactEnt",Love Nature
+http://bamus-eng-roku.amagi.tv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://www.pngarts.com/files/11/ID-Channel-Logo-PNG-Transparent-Image.png" tvg-url="" group-title="",ID
+http://85.203.33.88/grandee2/hb2Xmf40/18071
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="https://en.m.wikipedia.org/wiki/File:Crime_and_Investigation_logo.png" tvg-url="" group-title="",Crime Investigation
+http://iptvtree.net:8080/live/32ad147d/055af3e9/273263.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="" tvg-language="" tvg-logo="https://www.seekpng.com/png/full/336-3361315_cinemax-logo-png.png" tvg-url="" group-title="",HGTV
+http://50.7.161.82:8278/streams/d/HGTV/playlist.m3u8
+
+ #EXTINF:-1 tvg-id="Erz.afterschoolcartoons" tvg-name="" tvg-country="id" tvg-language="Indonesian" tvg-logo="https://images.pluto.tv/channels/56171fafada51f8004c4b40f/colorLogoPNG.png" tvg-url="" group-title="Kids",After School Cartoons
+https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/56171fafada51f8004c4b40f/master.m3u8?terminate=false&deviceType=web&deviceMake=web&deviceModel=web&sid=990&deviceId=56171fafada51f8004c4b40f&deviceVersion=DNT&appVersion=DNT&deviceDNT=0&userId=&advertisingId=&deviceLat=&deviceLon=&app_name=&appName=web&buildVersion=&appStoreUrl=&architecture=&includeExtendedEvents=false&marketingRegion=US&serverSideAds=false
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJSDGK8PLXO3Ee56xYSa1SZ53XSHPAXYr-1Q&usqp=CAU" group-title="Kids",Baby tv
+http://185.180.221.194:8278/streams/d/Babytv/playlist.m3u8
+#EXTINF: -1 tvg-id="Erz.babbyfirst" tvg-logo="https://i.ibb.co/vXR7t9p/Baby-First-TV.png" group-title="Kids", BABY FIRST
+https://livecdn.fptplay.net/qnetlive/babyfirst_2000.stream/eroz_brebes.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/pp/pbs_kids_us.png" group-title="Kids",PBS Kids
+https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8
+#EXTINF:-1 tvg-chno="265" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/ZooMoo_logo.svg/1200px-ZooMoo_logo.svg.png" group-title="Kids",Zoo Moo
+https://rockentertainment-zoomoo-1.samsung.wurl.com/manifest/1200.m3u8
+#EXTINF:-1 tvg-chno="266" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a5/Da_Vinci.svg/revision/latest/scale-to-width-down/2000?cb=20191208233628" group-title="Kids",Da Vinci
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A81.0)%20Gecko%2F20100101%20Firefox%2F81.0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/DAVINCY-HD-1080p/playlist.m3u8
+#EXTINF:-1 tvg-chno="267" tvg-logo="https://www.cordcuttersnews.com/wp-content/uploads/2020/01/logo-happykids.png" group-title="Kids",HappyKids
+https://happykids-vizio.amagi.tv/playlist480p.m3u8
+
+#EXTINF:-1 tvg-chno="269" tvg-logo="https://image.roku.com/developer_channels/prod/e64f00dee32742bcbcdf72213ebe760e0cc47cb22b1a92f55d61f736e16cdf63.png" group-title="Kids",Kartoon Fun Time
+https://simultv.s.llnwi.net/n4s4/KartoonCircus/interlink.m3u8
+#EXTINF:-1 tvg-chno="270" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a5/Pw_logo_1000_rotate.png" group-title="Kids",Pocket.watch
+https://pocketwatch.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-chno="273" tvg-logo="https://www.accesswire.com/users/newswire/images/593608/kid-central-tran.png" group-title="Kids",Kid Central
+https://simultv.s.llnwi.net/n4s4/kidcentral/interlink.m3u8
+#EXTINF:-1 tvg-chno="274" tvg-logo="" group-title="Kids",Kidoodle TV
+https://kidoodletv-kdtv-1.samsung.wurl.com/manifest/playlist.m3u8
+
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN5BgvTvLLqIht8NRNTroIRJtjkux9IoahNA&usqp=CAU" group-title="Kids",SuperToons
+https://kedoo-supertoonstv-1-gb.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9t7McNeAWB7GIaWxBxDuU0Bjq5jce1ZtopQ&usqp=CAU" group-title="Kids",Toons Googles
+https://toongoggles-toongoggles-3-au.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-id="Erz.bigbuckbunny" tvg-logo="https://i.ibb.co/X3w32yh/big.jpg" group-title="Kids", Big Buck Bunny
+https://wowzaec2demo.streamlock.net/live/bigbuckbunny/eroz_brebes.m3u8
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/ss/space_toon_ae_indonesia.png" group-title="Kids",Spacetoon
+https://streams.spacetoon.com/live/stchannel/smil:livesmil.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="Erz.cocoro" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdZK9z8FTVHQWGzhCy3EpjZw9ntPLplbq1mQ&usqp=CAU" group-title="Kids",CocoRo
+https://4ea7abcc97144832b81dc50c6e8d6330.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Roku_Cocoro/playlist.m3u8?id=eroz_brebes.m3u8
+#EXTINF:-1 tvg-logo="https://thumbs2.imgbox.com/ec/ef/JOOW0D7l_t.png" group-title="Kids",Kabillion
+https://dai2.xumo.com/amagi_hls_data_xumo1212A-redboxkabillion/CDN/playlist.m3u8?p=redbox&deviceid=&is_lat=&subp=RedboxdesktopWebWindows
+
+#EXTINF:-1 tvg-chno="107" tvg-logo="" group-title="Lifestyle",MTV
+http://unilivemtveu-lh.akamaihd.net/i/mtvno_1@346424/index_1250_av-p.m3u8
+
+#EXTINF:-1 tvg-id="MTVHitsEurope.us" tvg-name="MTV Hits" tvg-country="EUR" tvg-language="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/MTV_Hits_2017_logo.svg/1200px-MTV_Hits_2017_logo.svg.png" tvg-url="" group-title="Music",MTV Hits
+http://unilivemtveu-lh.akamaihd.net/i/mtvno_1@346424/index_3500_av-p.m3u8?sd=10&rebase=on
+
+#EXTINF:-1 tvg-id="Erz.Sexykpop" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS65OUGMlPULxBGuFtMNJwN4d0rYrmk7spUgw&usqp=CAU" group-title="Music", Sexy Kpop Tv
+https://srv1.zcast.com.br/kpoptv/kpoptv/playlist.m3u8
+
+#EXTINF:-1 tvg-id="Erz.Sexykpop" tvg-logo="" group-title="Music",The K-POP
+http://kkhyoyoyo.duckdns.org:9999/klive/api/url.m3u8?m=url&s=tving&i=C43342&q=SD&apikey=0MENK2CJI5
+
+#EXTINF:-1 tvg-id="Erz.CitraDangdut" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdM12SRKBVaURgO2BZAb7DdwSNnXQoGFluNw&usqp=CAU" group-title="Music", Hits Music Now
+https://livestreamdirect-edgetv.mediaworks.nz/edgetv.m3u8
+
+#EXTINF:-1 tvg-id="Erz.vivatv" tvg-name="Viva Music" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUipIO7SHetcgggbId_g7Z1eFTsAzcYCc65Q&usqp=CAU" group-title="Music",Viva
+http://195.9.195.19:8001/hls2/vivarussia/index.m3u8
+
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="ASIA" tvg-logo="http://103.65.184.145:8445/logo/105.png" tvg-url="" group-title="",ANC
+http://iptvtree.net:8080/live/32ad147d/055af3e9/144844.ts
+
+
+#EXTINF:-1, tvg-id="Erz.Aljazeera" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTzaSkvPQnyjLyeduhqtcPXMWE9qx8goqRew&usqp=CAU" group-title="News",Aljazeera
+https://live-hls-web-aje.getaj.net/AJE/index.m3u8
+#EXTINF:-1 tvg-logo="https://s.abcnews.com/assets/beta/assets/abcn_images/abcnews_pearl_stacked.png" group-title="News",ABC News
+https://abc-iview-mediapackagestreams-2.akamaized.net/out/v1/6e1cc6d25ec0480ea099a5399d73bc4b/index.m3u8
+#EXTINF:-1 tvg-id="Erz.NBCNewsNOW.us" tvg-name="NBC News NOW" tvg-country="US" tvg-language="English" tvg-logo="http://images.pluto.tv/channels/5df97894467dfa00091c873c/colorLogoPNG.png" tvg-url="" group-title="News",NBC News NOW
+https://dai2.xumo.com/xumocdn/p=redbox&deviceid=&is_lat=&subp=RedboxdesktopWebLinux/amagi_hls_data_xumo1212A-xumo-nbcnewsnow/CDN/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSli9bnkUkL1zdr6L7zCSNNxqEg9yO7ZRsPTQ&usqp=CAU" group-title="News", CGTN
+https://news.cgtn.com/resource/live/english/cgtn-news.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFoI7yaRVJNtf_IHF9hGY6EyEhmq-uMwlX_w&usqp=CAU" group-title="News", Bloomberg
+https://liveprodapnortheast.global.ssl.fastly.net/ap1/Channel-APTVqvs-AWS-tokyo-1/Source-APTVqvs-1000-1_live.m3u8?id=eroz_brebes.m3u8
+#EXTINF:-1, tvg-id="Erz.CNNInternational.us" tvg-name="CNN International" tvg-country="INT" tvg-language="English" tvg-logo="https://i.imgur.com/2BXCg0x.jpg" tvg-url="" group-title="News",CNN International
+https://cnn-cnninternational-1-gb.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/98u0MKu.png" group-title="News", Arirang
+http://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDXgDXUkNs8feAbNLvwqfEPVDFuU0QFjQPFw&usqp=CAU" group-title="News", Sky News
+https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2xBMXe2j4JYs0QtSblSyE6WmiFCVMgpeMSA&usqp=CAU" group-title="News", CBN News
+http://bcliveuniv-lh.akamaihd.net/i/iptv1_1@194050/master.m3u8
+#EXTINF:-1 tvg-logo="https://static.cnbctv18.com/assets/images/cnbc-logo.png?v=1.png" group-title="News",CNBC 18
+https://cnbctv18-lh.akamaihd.net/i/cnbctv18_1@174868/index_5_av-p.m3u8
+#EXTINF:-1 tvg-id="Erz.nhkworld" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFnf22GZ9YOwThSvjiqOhWlfFy2G2Sn2RL9Q&usqp=CAU" group-title="News",NHK WORLD
+https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/global/2003458/live.m3u8
+#EXTINF:-1 tvg-id="Erz.cna" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUCGEZmL8teDAAV7qsLQXmc-XW3lRh2BzJFw&usqp=CAU" group-title="News", Channel news asia
+https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_3.m3u8
+#EXTINF:-1, tvg-logo="https://i.postimg.cc/sgzJcvKK/VOA.jpg" group-title="News",VOA
+http://voa-lh.akamaihd.net/i/voa_mpls_tvmc3_3@320295/master.m3u8
+
+#EXTINF:-1 tvg-id="russia-today" tvg-name="Russia Today" tvg-language="English" tvg-logo="https://i.imgur.com/fXqy322.png" tvg-country="RU" tvg-url="https://iptvx.one/epg/epg.xml.gz" group-title="News",RT
+https://rt-news.secure.footprint.net/1103.m3u8
+#EXTINF:-1 tvg-logo="https://www.bark.us/blog/wp-content/uploads/2019/04/Fox-news-logo.png" group-title="News",Fox News
+http://1111296894.rsc.cdn77.org/ls-54548-2/tracks-v1a1/mono.m3u8
+
+#EXTINF:-1 tvg-chno="062" tvg-logo="" group-title="Sports",Fox Sports
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A81.0)%20Gecko%2F20100101%20Firefox%2F81.0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5a74b8e1e22a61737979c6bf/master.m3u8?terminate=false&deviceType=web&deviceMake=web&deviceModel=web&sid=705&deviceId=5a74b8e1e22a61737979c6bf&deviceVersion=DNT&appVersion=DNT&deviceDNT=0&userId=&advertisingId=&deviceLat=&deviceLon=&app_name=&appName=web&buildVersion=&appStoreUrl=&architecture=&includeExtendedEvents=false&marketingRegion=US&serverSideAds=false
+
+#EXTINF:-1 tvg-chno="064" tvg-logo="https://battle-arena.my/wp-content/uploads/2018/09/egg_logo_reversed__B.png" group-title="Sports",eGG Network
+http://45.126.83.51/uq2663/h/h22/02.m3u8
+#EXTINF:-1 tvg-chno="065" tvg-logo="" group-title="Sports",Stadium
+https://dai.google.com/linear/hls/event/0jRU1DBXSW6a_TFheLfAUQ/master.m3u8
+
+#EXTINF:-1   tvg-logo="https://i.postimg.cc/8C3TkKc3/TVKUSHAREEXT.png" group-title="MALAY_PRO",TLC
+http://185.180.221.194:8278/streams/d/Tlc/playlist.m3u8
+
+
+#EXTINF:-1 tvg-chno="089" tvg-logo="" group-title="FactEnt",Travel
+http://stream.tvtap.live:8081/live/usa-travel.stream/chunks.m3u8
+
+
+#EXTINF:-1 tvg-chno="101" tvg-logo="" group-title="Lifestyle",AFN
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A81.0)%20Gecko%2F20100101%20Firefox%2F81.0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+http://htv-drm-live-cdn.fptplay.net/CDN-FPT02/AFC-HD-1080p/playlist.m3u8
+#EXTINF:-1 tvg-chno="102" tvg-logo="" group-title="Lifestyle",Food Network
+http://iptvstream.xyz:8080/Mcnsi/7210db0d/2315
+
+#EXTINF:-1 tvg-chno="106" tvg-logo="https://files.company.fashiontv.com/wp-content/themes/fashiontv2015/images/fashiontv_logo_356_55.png?ver=2" group-title="Lifestyle",Fashion TV
+https://fash1043.cloudycdn.services/slive/_definst_/ftv_ftv_pg13_zw9_27065_ftv_pg13_196_hls.smil/chunklist_b900000_t64MzYwcA==.m3u8
+
+#EXTINF:-1 tvg-chno="109" tvg-logo="" group-title="Lifestyle",Lively Place
+https://aenetworks-ae-1.roku.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 tvg-chno="109" tvg-logo="" group-title="Lifestyle",Skills + Thrills
+https://aenetworks-skills-thrills-1.plex.wurl.com/manifest/playlist.m3u8
+
+#EXTINF:-1 tvg-chno="129" tvg-logo="" group-title="News",NewsNOW from Fox
+http://fox-foxnewsnow-samsungus.amagi.tv/playlist.m3u8
+
+
+#EXTINF:-1 tvg-chno="135" tvg-logo="" group-title="News",DW
+https://m-c010-j2apps.s.llnwi.net/hls/8023.DWEnglish.in_360p/index.m3u8
+#EXTINF:-1 tvg-chno="136" tvg-logo="" group-title="News",RT
+https://rt-news.secure.footprint.net/1103.m3u8
+#EXTINF:-1 tvg-chno="137" tvg-logo="" group-title="News",NHK World Japan
+https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/global/2003458/live.m3u8
+
+#EXTINF:-1 tvg-chno="139" tvg-logo="" group-title="News",Euronews
+https://euronews-euronews-world-1.roku.wurl.com/manifest/b34060fcaf527710b244a3e16504edd0.m3u8
+
+#EXTINF:-1 tvg-chno="140" tvg-logo="" group-title="International",France 24
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=hls
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64%3B%20rv%3A81.0)%20Gecko%2F20100101%20Firefox%2F81.0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+https://livecdn.fptplay.net/world/france24_hls.smil/playlist.m3u8
+#EXTINF:-1 tvg-chno="141" tvg-logo="" group-title="International",TV5 Monde Asie
+https://tv5asieen-i.akamaihd.net/hls/live/631617/tv5asieen/index.m3u8
+#EXTINF:-1 tvg-chno="146" tvg-logo="" group-title="International",Zee World
+https://y5w8j4a9.ssl.hwcdn.net/world/tracks-v1a1/index.m3u8
+
+#EXTINF:-1 tvg-chno="152" tvg-logo="" group-title="Religious",TBN Asia
+http://210.210.155.35/qwr9ew/s/s39/02.m3u8
+
+#EXTINF:-1 tvg-chno="154" tvg-logo="" group-title="Religious",Hillsong Channel
+http://api.new.livestream.com/accounts/27460990/events/8266909/live.m3u8
+
+#EXTINF:0,SMNI
+#EXTINF:0,Pilipinas HD BeamTv
+https://d3cbe0gidjd4k2.cloudfront.net/channel_5/channel5/playlist.m3u8
+#EXTINF:0,INC TV
+https://churchrus2-lh.akamaihd.net/i/coctesting_1@57550/master.m3u8
+#EXTINF:0,Life TV PH
+https://d3cbe0gidjd4k2.cloudfront.net/channel_6/channel6/playlist.m3u8
+
+#EXTINF:-1 tvg-chno="160" tvg-logo="https://tvshop.ph/static/images/logo@2x.d16d123219f1.png" group-title="FTA",TVshop
+https://d3cbe0gidjd4k2.cloudfront.net/channel_1/smil:channel_1.smil/chunklist_w358131628_b300000_sleng.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0
+
+#EXTINF:-1 tvg-chno="211" tvg-logo="" group-title="Sports",Fox Sports News
+https://austchannel-live.akamaized.net/hls/live/2002736/austchannel-sport/master.m3u8
+#EXTINF:-1 tvg-chno="212" tvg-logo="" group-title="Sports",Outdoor Channel
+https://outdoorchannel-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-chno="213" tvg-logo="" group-title="Sports",Motorvision
+https://dai2-xumo.fubo.tv/amagi_hls_data_xumo1212A-motorvisiontv/CDN/master.m3u8
+#EXTINF:-1 tvg-chno="216" tvg-logo="" group-title="Sports",Tennis Channel HD
+https://tennischannel-intl-samsung-uk.amagi.tv/playlist720_p.m3u8
+#EXTINF:-1 tvg-chno="217" tvg-logo="" group-title="Sports",Edge Sports HD
+https://edgesports-stirr.amagi.tv/playlist1080p.m3u8
+#EXTINF:-1 tvg-chno="218" tvg-logo="" group-title="Sports",Stadium HD
+https://stadiumlivein-i.akamaihd.net/hls/live/522512/mux_4/master_3000k.m3u8
+
+#EXTINF:-1 tvg-chno="230" tvg-logo="" group-title="News",CNN International HD
+https://cnn-cnninternational-1-gb.samsung.wurl.com/manifest/playlist_1280x720_3000k.m3u8
+
+#EXTINF:-1 tvg-chno="232" tvg-logo="" group-title="News",CBSN HD
+https://cbsn-us-cedexis.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master_7.m3u8
+
+https://linkastream.co/headless?url=https://www.youtube.com/c/ABCNews/live
+#EXTINF:-1 tvg-chno="234" tvg-logo="" group-title="News",NBC News Now HD
+http://nbcnews2.akamaized.net/hls/live/723426-b/NBCNewsPlaymaker24x7Linear99a3a827-ua/VIDEO_0_6596000.m3u8
+#EXTINF:-1 tvg-chno="235" tvg-logo="" group-title="News",MSNBC HD
+http://1111296894.rsc.cdn77.org/LS-ATL-54548-10/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-chno="236" tvg-logo="" group-title="News",Fox News HD
+http://1111296894.rsc.cdn77.org/ls-54548-2/tracks-v1a1/mono.m3u8
+
+
+#EXTINF:-1 tvg-chno="252" tvg-logo="" group-title="Foreign",Indonesia Channel
+http://wowzaprod236-i.akamaihd.net/hls/live/1019903/7dd4cf51/playlist.m3u8
+
+
+#EXTINF:-1 group-title="MOVIES",Ang Babaeng Walang Pakiramdam 2021
+http://iephserver.com/pmovie/Ang.Babaeng.Walang.Pakiramdam.mp4
+
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="" tvg-url="" group-title="",The Boss Baby Family Business 2021
+http://qqtv.nl:8080/movie/9513/9513/412569.mp4
+
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="" tvg-url="" group-title="",Raya the last Dragon 2021
+http://qqtv.nl:8080/movie/9513/9513/400486.mp4
+
+
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-country="PH" tvg-language="" tvg-logo="" tvg-url="" group-title="",Wrong Turn 2021
+http://qqtv.nl:8080/movie/9513/9513/399662.mp4
+
+
+#EXTINF:-1 group-title="MOVIES",Annabelle: Creation (2017)
+http://cdnvod.setv.ca/hls/Annabelle.2.Creation.2017.720p.BluRay.H264.AAC-RARBG.mp4/master.m3u8
+#EXTINF:-1 group-title="MOVIES",Godzilla: Planet of the Monsters (2017)*
+https://archive.org/download/GodzillaMonsterPlanet/Godzilla%20Monster%20Planet.mp4
+#EXTINF:-1 group-title="MOVIES",Wish Upon (2017)
+http://cdnvod.setv.ca/hls/Wish.Upon.2017.UNRATED.BDRip.x264-DRONES.mp4/master.m3u8
+#EXTINF:-1 group-title="MOVIES",Wonder Woman (2017)
+http://deadlyblogger.com/NewRelease/wonderwoman.mp4
+#EXTINF:-1 group-title="MOVIES",Almost Christmas (2016)
+https://archive.org/download/AlmostChristmas20161080pRemux/Almost%20Christmas%20(2016)%201080p%20Remux.mp4
+#EXTINF:-1 group-title="MOVIES",Colossal (2016)
+https://ia601501.us.archive.org/22/items/LaMaravillasDeLaVida201702/LaMaravillasDeLaVida2017_02.mp4
+#EXTINF:-1 group-title="MOVIES",Nocturnal Animals (2016)
+https://archive.org/download/NocturnalAnimals20161080pRemux/Nocturnal%20Animals%20(2016)%201080p%20Remux.mp4
+#EXTINF:-1 group-title="MOVIES",Rogue One: A Star Wars Story (2016)
+http://deadlyblogger.com/NewRelease/rogue1.mp4
+#EXTINF:-1 group-title="MOVIES",Rules Don't Apply (2016)
+https://archive.org/download/RulesDontApply20161080pRemux/Rules%20Dont%20Apply%20(2016)%201080p%20Remux.mp4
+#EXTINF:-1 group-title="MOVIES",X-Men: Apocalypse (2016)
+http://deadlyblogger.com/NewRelease/xmen2016.mp4
+#EXTINF:-1 group-title="MOVIES",Home (2015)
+https://archive.org/download/Home.2015.720p.YIFYTopArchive.IR/Home.2015.720p.YIFY_TopArchive.IR.mp4
+#EXTINF:-1 group-title="MOVIES",The Hateful Eight (2015)
+http://deadlyblogger.com/NewRelease/hateful2015.mp4
+#EXTINF:-1 group-title="MOVIES",The Transporter Refueled (2015)
+https://archive.org/download/TheTransporterRefueled20151080pBluRayX264DTSJYK/The%20Transporter%20Refueled%202015%201080p%20BluRay%20x264%20DTS-JYK.mp4
+#EXTINF:-1 group-title="MOVIES",Guardians of the Galaxy (2014)
+http://deadlyblogger.com/NewRelease/guardians2014.mp4
+#EXTINF:-1 group-title="MOVIES",John Wick (2014)
+http://deadlyblogger.com/NewRelease/johnwick.mp4
+#EXTINF:-1 group-title="MOVIES",A Haunted House 2 (2014)
+http://www.deadlyblogger.com/NewRelease/haunted2.mp4
+#EXTINF:-1 group-title="MOVIES",Buck Wild (2014)
+https://archive.org/download/BuckWild2013720p/Buck.Wild.2013.720p.BluRay.x264.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",Free Fall (2014)
+https://archive.org/download/FreeFall2014720p/Free%20Fall%20(2014)%20720p.mp4
+#EXTINF:-1 group-title="MOVIES",Get on Up (2014)
+http://deadlyblogger.com/NewRelease/getonup.mp4
+#EXTINF:-1 group-title="MOVIES",Madea's Neighbors from Hell (2014)
+http://www.deadlyblogger.com/NewRelease/fromhell2014.mp4
+#EXTINF:-1 group-title="MOVIES",Maleficent (2014)
+http://www.deadlyblogger.com/NewRelease/maleficent.mp4
+#EXTINF:-1 group-title="MOVIES",Mr. Peabody & Sherman (2014)
+http://www.deadlyblogger.com/NewRelease/sherman2014.mp4
+#EXTINF:-1 group-title="MOVIES",Need for Speed (2014)
+http://www.deadlyblogger.com/NewRelease/needforspeed.mp4
+#EXTINF:-1 group-title="MOVIES",Non-Stop (2014)
+http://www.deadlyblogger.com/NewRelease/nonstop2014.mp4
+#EXTINF:-1 group-title="MOVIES",Paranormal Activity: The Marked Ones (2014)
+http://www.deadlyblogger.com/NewRelease/markedones.mp4
+#EXTINF:-1 group-title="MOVIES",Pompeii (2014)
+http://www.deadlyblogger.com/NewRelease/pompeii2014.mp4
+#EXTINF:-1 group-title="MOVIES",Ride Along (2014)
+http://www.deadlyblogger.com/NewRelease/ridealong2014.mp4
+#EXTINF:-1 group-title="MOVIES",Rio 2 (2014)
+http://www.deadlyblogger.com/NewRelease/rio2.mp4
+#EXTINF:-1 group-title="MOVIES",School Dance (2014)
+http://www.deadlyblogger.com/NewRelease/schooldance.mp4
+#EXTINF:-1 group-title="MOVIES",Taken 3 (2014)
+http://deadlyblogger.com/NewRelease/taken3.mp4
+#EXTINF:-1 group-title="MOVIES",The Amazing Spider-Man 2 (2014)
+http://www.deadlyblogger.com/NewRelease/amazin2.mp4
+#EXTINF:-1 group-title="MOVIES",The Lego Movie (2014)
+http://www.deadlyblogger.com/NewRelease/legomovie2014.mp4
+#EXTINF:-1 group-title="MOVIES",The Pirate Fairy (2014)
+http://www.deadlyblogger.com/NewRelease/tinker2014.mp4
+#EXTINF:-1 group-title="MOVIES",The Single Moms Club (2014)
+http://www.deadlyblogger.com/NewRelease/singlemom.mp4
+#EXTINF:-1 group-title="MOVIES",Veronica Mars (2014)
+http://www.deadlyblogger.com/NewRelease/veronicamars.mp4
+#EXTINF:-1 group-title="MOVIES",We'll Never Have Paris (2014)
+https://archive.org/download/WellNeverHaveParis2014720p/We%27ll%20Never%20Have%20Paris%20(2014)%20720p%20WEB-DL%20(UpFilm).mp4
+#EXTINF:-1 group-title="MOVIES",12 Years a Slave (2013)
+http://www.deadlyblogger.com/NewRelease/12slave.mp4
+#EXTINF:-1 group-title="MOVIES",47 Ronin (2013)
+http://www.deadlyblogger.com/NewRelease/47ronin.mp4
+#EXTINF:-1 group-title="MOVIES",Afflicted (2013)
+http://www.deadlyblogger.com/NewRelease/afflicted2013.mp4
+#EXTINF:-1 group-title="MOVIES",After Earth (2013)
+http://www.deadlyblogger.com/NewRelease/after.mp4
+#EXTINF:-1 group-title="MOVIES",American Hustle (2013)
+http://www.deadlyblogger.com/NewRelease/hustle2013.mp4
+#EXTINF:-1 group-title="MOVIES",Anchorman 2: The Legend Continues (2013)
+http://www.deadlyblogger.com/NewRelease/anchorman2.mp4
+#EXTINF:-1 group-title="MOVIES",Bad Grandpa (2013)
+http://www.deadlyblogger.com/NewRelease/badgrandpa2013.mp4
+#EXTINF:-1 group-title="MOVIES",Battle of the Year (2013)
+http://www.deadlyblogger.com/NewRelease/battleyear2013.mp4
+#EXTINF:-1 group-title="MOVIES",Carrie (2013)
+http://www.deadlyblogger.com/NewRelease/carrie2013.mp4
+#EXTINF:-1 group-title="MOVIES",Carrie (2013)*
+https://archive.org/download/Kickay.blogspot.com_Carrie.2013.HD.1080p_201401/%5Bkickay.blogspot.com%5D%20Carrie%202013%20HD%201080p.mp4
+#EXTINF:-1 group-title="MOVIES",Delivery Man (2013)
+http://www.deadlyblogger.com/NewRelease/deliveryman.mp4
+#EXTINF:-1 group-title="MOVIES",Empire State (2013)
+http://www.deadlyblogger.com/NewRelease/empirestate.mp4
+#EXTINF:-1 group-title="MOVIES",Epic (2013)
+http://www.deadlyblogger.com/NewRelease/epic1.mp4
+#EXTINF:-1 group-title="MOVIES",Escape Plan (2013)
+http://www.deadlyblogger.com/NewRelease/escapeplan2013.mp4
+#EXTINF:-1 group-title="MOVIES",Free Birds (2013)
+http://www.deadlyblogger.com/NewRelease/freebirds2013.mp4
+#EXTINF:-1 group-title="MOVIES",Frozen (2013)
+http://www.deadlyblogger.com/NewRelease/disneyfrozen.mp4
+#EXTINF:-1 group-title="MOVIES",Furious 6 (2013)
+http://www.deadlyblogger.com/NewRelease/fast6.mp4
+#EXTINF:-1 group-title="MOVIES",Grown Ups 2 (2013)
+http://www.deadlyblogger.com/NewRelease/grown2.mp4
+#EXTINF:-1 group-title="MOVIES",Grudge Match (2013)
+http://www.deadlyblogger.com/NewRelease/grudgematch.mp4
+#EXTINF:-1 group-title="MOVIES",Identity Thief (2013)
+http://www.deadlyblogger.com/NewRelease/identitythief.mp4
+#EXTINF:-1 group-title="MOVIES",Insidious - Chapter 2 (2013)
+http://www.deadlyblogger.com/NewRelease/insidious2.mp4
+#EXTINF:-1 group-title="MOVIES",Iron Man 3 (2013)
+http://www.deadlyblogger.com/NewRelease/ironman3.mp4
+#EXTINF:-1 group-title="MOVIES",Kevin Hart: Let Me Explain (2013)
+http://www.deadlyblogger.com/NewRelease/kevin.mp4
+#EXTINF:-1 group-title="MOVIES",Kick-Ass 2 (2013)
+http://www.deadlyblogger.com/NewRelease/kickass2.mp4
+#EXTINF:-1 group-title="MOVIES",Killing Season (2013)
+http://www.deadlyblogger.com/NewRelease/killings.mp4
+#EXTINF:-1 group-title="MOVIES",Last Vegas (2013)
+http://www.deadlyblogger.com/NewRelease/lastvegas2013.mp4
+#EXTINF:-1 group-title="MOVIES",Lego Star Wars: The Yoda Chronicles (2013)
+http://www.deadlyblogger.com/NewRelease/legoyoda1.mp4
+#EXTINF:-1 group-title="MOVIES",Man of Steel (2013)*
+http://www.deadlyblogger.com/NewRelease/steel.mp4
+#EXTINF:-1 group-title="MOVIES",Man of Tai Chi (2013)
+http://www.deadlyblogger.com/NewRelease/tai.mp4
+#EXTINF:-1 group-title="MOVIES",Monsters University (2013)
+http://www.deadlyblogger.com/NewRelease/monsters2.mp4
+#EXTINF:-1 group-title="MOVIES",Now You See Me (2013)
+http://www.deadlyblogger.com/NewRelease/nowyouseeme.mp4
+#EXTINF:-1 group-title="MOVIES",Olympus Has Fallen (2013)
+http://www.deadlyblogger.com/NewRelease/fallen1.mp4
+#EXTINF:-1 group-title="MOVIES",Prisoners (2013)
+http://www.deadlyblogger.com/NewRelease/prisoners.mp4
+#EXTINF:-1 group-title="MOVIES",Pup (2013)
+https://archive.org/download/TorrentPopular.comPup20131080p1080p/Pup.2013.1080p.BluRay.x264.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",Repentance (2013)
+http://www.deadlyblogger.com/NewRelease/repentance.mp4
+#EXTINF:-1 group-title="MOVIES",Runner Runner (2013)
+http://www.deadlyblogger.com/NewRelease/runnerrunner.mp4
+#EXTINF:-1 group-title="MOVIES",Saving Mr. Banks (2013)
+http://www.deadlyblogger.com/NewRelease/savingbanks.mp4
+#EXTINF:-1 group-title="MOVIES",Star Trek: Into Darkness (2013)
+http://deadlyblogger.com/NewRelease/darkness.mp4
+#EXTINF:-1 group-title="MOVIES",The Bling Ring (2013)
+http://www.deadlyblogger.com/NewRelease/blingring.mp4
+#EXTINF:-1 group-title="MOVIES",The Call (2013)
+http://www.deadlyblogger.com/NewRelease/thecall.mp4
+#EXTINF:-1 group-title="MOVIES",The Conjuring (2013)
+http://www.deadlyblogger.com/NewRelease/conjuring.mp4
+#EXTINF:-1 group-title="MOVIES",The Grandmaster (2013)
+http://www.deadlyblogger.com/NewRelease/grandmaster.mp4
+#EXTINF:-1 group-title="MOVIES",The Family (2013)
+http://www.deadlyblogger.com/NewRelease/thefamily2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Hangover Part III (2013)
+http://www.deadlyblogger.com/NewRelease/hangover3.mp4
+#EXTINF:-1 group-title="MOVIES",The Heat (2013)
+http://www.deadlyblogger.com/NewRelease/theheat.mp4
+#EXTINF:-1 group-title="MOVIES",The Hobbit: The Desolation of Smaug (2013)
+http://www.deadlyblogger.com/NewRelease/smaug2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Hunger Games: Catching Fire (2013)
+http://www.deadlyblogger.com/NewRelease/hungergames2.mp4
+#EXTINF:-1 group-title="MOVIES",The Internship (2013)
+http://www.deadlyblogger.com/NewRelease/internship2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Jungle Book: Return 2 the Jungle (2013)
+http://www.deadlyblogger.com/NewRelease/junglebook2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Mortal Instruments: City of Bones (2013)
+http://www.deadlyblogger.com/NewRelease/themort1.mp4
+#EXTINF:-1 group-title="MOVIES",The Starving Games (2013)
+http://www.deadlyblogger.com/NewRelease/starving2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Smurfs 2 (2013)
+http://www.deadlyblogger.com/NewRelease/smurfs2.mp4
+#EXTINF:-1 group-title="MOVIES",The Wolf of Wall Street (2013)
+http://www.deadlyblogger.com/NewRelease/thewolf2013.mp4
+#EXTINF:-1 group-title="MOVIES",The Wolverine (2013)*
+http://www.deadlyblogger.com/NewRelease/thewolverine.mp4
+#EXTINF:-1 group-title="MOVIES",This Is the End (2013)
+http://www.deadlyblogger.com/NewRelease/theend.mp4
+#EXTINF:-1 group-title="MOVIES",Toy Story of Terror (2013)
+http://www.deadlyblogger.com/NewRelease/storyterror.mp4
+#EXTINF:-1 group-title="MOVIES",Turbo (2013)
+http://www.deadlyblogger.com/NewRelease/turbo.mp4
+#EXTINF:-1 group-title="MOVIES",We're the Millers (2013)
+http://www.deadlyblogger.com/NewRelease/millers.mp4
+#EXTINF:-1 group-title="MOVIES",World War Z (2013)
+http://www.deadlyblogger.com/NewRelease/world.mp4
+#EXTINF:-1 group-title="MOVIES",Flight (2012)
+http://www.deadlyblogger.com/NewRelease/flight1.mp4
+#EXTINF:-1 group-title="MOVIES",Men in Black 3 (2012)
+http://www.deadlyblogger.com/NewRelease/mnb3.mp4
+#EXTINF:-1 group-title="MOVIES",Pitch Perfect (2012)
+http://www.deadlyblogger.com/NewRelease/pitchperfect.mp4
+#EXTINF:-1 group-title="MOVIES",Project X (2012)
+http://www.deadlyblogger.com/NewRelease/projectx.mp4
+#EXTINF:-1 group-title="MOVIES",Prometheus (2012)
+http://www.deadlyblogger.com/NewRelease/prometheus.mp4
+#EXTINF:-1 group-title="MOVIES",Safe House (2012)
+http://www.deadlyblogger.com/NewRelease/safehouse.mp4
+#EXTINF:-1 group-title="MOVIES",Spring Breakers (2012)
+http://www.deadlyblogger.com/NewRelease/springbreakers.mp4
+#EXTINF:-1 group-title="MOVIES",The Bourne Legacy (2012)
+http://www.deadlyblogger.com/NewRelease/bourne4.mp4
+#EXTINF:-1 group-title="MOVIES",The Hobbit: An Unexpected Journey (2012)
+http://www.deadlyblogger.com/NewRelease/hobbit1.mp4
+#EXTINF:-1 group-title="MOVIES",The Hunger Games (2012)
+http://www.deadlyblogger.com/NewRelease/hungergame1.mp4
+#EXTINF:-1 group-title="MOVIES",This Is 40 (2012)
+http://www.deadlyblogger.com/NewRelease/thisis40.mp4
+#EXTINF:-1 group-title="MOVIES",Think Like a Man (2012)
+http://www.deadlyblogger.com/NewRelease/thinklike1.mp4
+#EXTINF:-1 group-title="MOVIES",Woggie (2012)
+https://archive.org/download/Woggie-CompleteMovie/ooooooooooooo1.mp4
+#EXTINF:-1 group-title="MOVIES",Wrong Turn 5: Bloodlines (2012)
+http://www.deadlyblogger.com/NewRelease/wrongturn5.mp4
+#EXTINF:-1 group-title="MOVIES",Fast Five (2011)*
+http://www.deadlyblogger.com/NewRelease/fast5.mp4
+#EXTINF:-1 group-title="MOVIES",King of Paper Chasin' (2011)
+http://www.deadlyblogger.com/NewRelease/kingpaper.mp4
+#EXTINF:-1 group-title="MOVIES",Rise of the Planet of the Apes (2011)
+http://www.deadlyblogger.com/NewRelease/apes7.mp4
+#EXTINF:-1 group-title="MOVIES",The Girl with the Dragon Tattoo (2011)
+http://www.deadlyblogger.com/NewRelease/dragontattoo.mp4
+#EXTINF:-1 group-title="MOVIES",The Grey (2011)
+http://www.deadlyblogger.com/NewRelease/grey.mp4
+#EXTINF:-1 group-title="MOVIES",The Hangover Part II (2011)
+http://www.deadlyblogger.com/NewRelease/hangover2.mp4
+#EXTINF:-1 group-title="MOVIES",The Hit List (2011)
+http://www.deadlyblogger.com/NewRelease/hitlist.mp4
+#EXTINF:-1 group-title="MOVIES",The Kick (2011)
+http://www.deadlyblogger.com/NewRelease/thekick.mp4
+#EXTINF:-1 group-title="MOVIES",Transformers: Dark of the Moon (2011)
+http://www.deadlyblogger.com/NewRelease/transformers3.mp4
+#EXTINF:-1 group-title="MOVIES",Wrong Turn 4 - Bloody Beginnings (2011)
+http://www.deadlyblogger.com/NewRelease/wrongturn4.mp4
+#EXTINF:-1 group-title="MOVIES",X: First Class (2011)
+http://www.deadlyblogger.com/NewRelease/xmen4.mp4
+#EXTINF:-1 group-title="MOVIES",Everything Must Go (2010)
+http://www.deadlyblogger.com/NewRelease/mustgo.mp4
+#EXTINF:-1 group-title="MOVIES",Grown Ups (2010)
+http://www.deadlyblogger.com/NewRelease/grown1.mp4
+#EXTINF:-1 group-title="MOVIES",Hot Tub Time Machine (2010)
+http://www.deadlyblogger.com/NewRelease/hottub2010.mp4
+#EXTINF:-1 group-title="MOVIES",Insidious (2010)
+http://www.deadlyblogger.com/NewRelease/insidious1.mp4
+#EXTINF:-1 group-title="MOVIES",Iron Man 2 (2010)
+http://www.deadlyblogger.com/NewRelease/ironman2.mp4
+#EXTINF:-1 group-title="MOVIES",Jackass 3D (2010)
+http://www.deadlyblogger.com/NewRelease/jackass3d.mp4
+#EXTINF:-1 group-title="MOVIES",Saw 3D - The Final Chapter (2010)
+http://www.deadlyblogger.com/NewRelease/saw7.mp4
+#EXTINF:-1 group-title="MOVIES",Tangled (2010)
+http://www.deadlyblogger.com/NewRelease/tangled2010.mp4
+#EXTINF:-1 group-title="MOVIES",The Other Guys (2010)
+http://www.deadlyblogger.com/NewRelease/otherguys.mp4
+#EXTINF:-1 group-title="MOVIES",Unstoppable (2010)
+http://www.deadlyblogger.com/NewRelease/unstoppable.mp4
+#EXTINF:-1 group-title="MOVIES",A Christmas Carol (2009)
+http://www.deadlyblogger.com/NewRelease/acc2009.mp4
+#EXTINF:-1 group-title="MOVIES",Chiaroscuro Baby (2009)
+https://archive.org/download/ChiaroscuroBaby/ChiaroscuroBaby-1280x720_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Fast & Furious (2009)*
+http://www.deadlyblogger.com/NewRelease/fast4.mp4
+#EXTINF:-1 group-title="MOVIES",Home (2009)
+https://archive.org/download/Home2009/Home2009_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Land of the Lost (2009)
+http://www.deadlyblogger.com/NewRelease/landlost.mp4
+#EXTINF:-1 group-title="MOVIES",Law Abiding Citizen (2009)
+http://www.deadlyblogger.com/NewRelease/lawcitizen.mp4
+#EXTINF:-1 group-title="MOVIES",Madea Goes to Jail (2009)
+http://www.deadlyblogger.com/NewRelease/madea1.mp4
+#EXTINF:-1 group-title="MOVIES",Orphan (2009)
+http://www.deadlyblogger.com/NewRelease/orphan2009.mp4
+#EXTINF:-1 group-title="MOVIES",Saw VI (2009)
+http://www.deadlyblogger.com/NewRelease/saw6.mp4
+#EXTINF:-1 group-title="MOVIES",The Chinese Room (2009)
+https://archive.org/download/TheChineseRoom/thechineseroom.mp4
+#EXTINF:-1 group-title="MOVIES",The Hangover (2009)
+http://www.deadlyblogger.com/NewRelease/hangover1.mp4
+#EXTINF:-1 group-title="MOVIES",The Taking of Pelham 123 (2009)
+http://www.deadlyblogger.com/NewRelease/pelham123.mp4
+#EXTINF:-1 group-title="MOVIES",Transformers: Revenge of the Fallen (2009)
+http://www.deadlyblogger.com/NewRelease/transformers2.mp4
+#EXTINF:-1 group-title="MOVIES",Wrong Turn 3 - Left for Dead (2009)
+http://www.deadlyblogger.com/NewRelease/wrongturn3.mp4
+#EXTINF:-1 group-title="MOVIES",X-Men Origins: Wolverine (2009)
+http://www.deadlyblogger.com/NewRelease/origin.mp4
+#EXTINF:-1 group-title="MOVIES",Big Buck Bunny (2008)
+https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Iron Man (2008)
+http://www.deadlyblogger.com/NewRelease/ironman1.mp4
+#EXTINF:-1 group-title="MOVIES",Meet the Browns (2008)
+http://www.deadlyblogger.com/NewRelease/browns1.mp4
+#EXTINF:-1 group-title="MOVIES",Saw V (2008)
+http://www.deadlyblogger.com/NewRelease/saw5.mp4
+#EXTINF:-1 group-title="MOVIES",Semi-Pro (2008)
+http://www.deadlyblogger.com/NewRelease/semipro.mp4
+#EXTINF:-1 group-title="MOVIES",Seven Pounds (2008)
+http://www.deadlyblogger.com/NewRelease/sevenp.mp4
+#EXTINF:-1 group-title="MOVIES",Sita Sings the Blues (2008)
+https://archive.org/download/Sita_Sings_the_Blues_1080p_dirac_vorbis.ogg/Sita_Sings_the_Blues_1080p_dirac_vorbis.mp4
+#EXTINF:-1 group-title="MOVIES",Sobaka (2008)
+https://archive.org/download/Sobaka/sobaka.mp4
+#EXTINF:-1 group-title="MOVIES",Step Brothers (2008)
+http://www.deadlyblogger.com/NewRelease/stepbro.mp4
+#EXTINF:-1 group-title="MOVIES",The House Bunny (2008)
+http://www.deadlyblogger.com/NewRelease/housebunny2014.mp4
+#EXTINF:-1 group-title="MOVIES",American Gangster (2007)
+http://www.deadlyblogger.com/NewRelease/agangster.mp4
+#EXTINF:-1 group-title="MOVIES",Blades of Glory (2007)
+http://www.deadlyblogger.com/NewRelease/glory.mp4
+#EXTINF:-1 group-title="MOVIES",Hot Fuzz (2007)
+http://www.deadlyblogger.com/NewRelease/hotfuzz.mp4
+#EXTINF:-1 group-title="MOVIES",I Am Legend (2007)
+http://www.deadlyblogger.com/NewRelease/iaml.mp4
+#EXTINF:-1 group-title="MOVIES",Insecurity (2007)
+https://archive.org/download/insecurity/Insecurity_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Ratatouille (2007)
+http://www.deadlyblogger.com/NewRelease/ratatouille.mp4
+#EXTINF:-1 group-title="MOVIES",Saw IV (2007)
+http://www.deadlyblogger.com/NewRelease/saw4.mp4
+#EXTINF:-1 group-title="MOVIES",Steal This Film 2 (2007)
+https://archive.org/download/StealThisFilmII/Steal_This_Film_II.720p_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",The Bourne Ultimatum (2007)
+http://www.deadlyblogger.com/NewRelease/bourne3.mp4
+#EXTINF:-1 group-title="MOVIES",Transformers (2007)
+http://www.deadlyblogger.com/NewRelease/transformers1.mp4
+#EXTINF:-1 group-title="MOVIES",Wrong Turn 2: Dead End (2007)
+http://www.deadlyblogger.com/NewRelease/wrongturn2.mp4
+#EXTINF:-1 group-title="MOVIES",Zeitgeist - The Movie (2007)
+https://archive.org/download/zeitgeist_movie/Zeitgeist_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Bah Humduck! - A Looney Tunes Christmas (2006)
+https://archive.org/download/Bugs_Bunny_Collection/Bah%2C%20Humduck%21%20-%20A%20Looney%20Tunes%20Christmas%20(2006)%20-%20[arsenaloyal].mp4
+#EXTINF:-1 group-title="MOVIES",Children of Men (2006)
+https://archive.org/download/ChildrenOfMen20061080pX26510bitJoy/Children%20of%20Men%202006%20(1080p%20x265%2010bit%20Joy).mp4
+#EXTINF:-1 group-title="MOVIES",Deja Vu (2006)
+http://www.deadlyblogger.com/NewRelease/dejavu.mp4
+#EXTINF:-1 group-title="MOVIES",Elephants Dream (2006)
+https://archive.org/download/ElephantsDream/ed_hd_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Inside Man (2006)
+http://www.deadlyblogger.com/NewRelease/insideman.mp4
+#EXTINF:-1 group-title="MOVIES",Killa Season (2006)
+http://www.deadlyblogger.com/NewRelease/killa1.mp4
+#EXTINF:-1 group-title="MOVIES",Madea's Family Reunion (2006)
+http://www.deadlyblogger.com/NewRelease/madea2.mp4
+#EXTINF:-1 group-title="MOVIES",Mickey Saves Santa (2006)
+http://www.deadlyblogger.com/NewRelease/msavessanta.mp4
+#EXTINF:-1 group-title="MOVIES",Saw III (2006)
+http://www.deadlyblogger.com/NewRelease/saw3.mp4
+#EXTINF:-1 group-title="MOVIES",Steal This Film (2006)
+https://archive.org/download/STEAL_THIS_FILM/StealThisFilm.Part1_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Step Up (2006)
+https://archive.org/download/StepUp20061080pX264SciencefunMux/Step%20Up%20%282006%29%201080p%20x264%20%5bSciencefun%20Mux%5d.mp4
+#EXTINF:-1 group-title="MOVIES",Talladega Nights: The Ballad of Ricky Bobby (2006)
+http://www.deadlyblogger.com/NewRelease/talla.mp4
+#EXTINF:-1 group-title="MOVIES",The Fast and the Furious - Tokyo Drift (2006)
+http://www.deadlyblogger.com/NewRelease/fast3.mp4
+#EXTINF:-1 group-title="MOVIES",Wholesale Souls Inc. (2006)
+https://archive.org/download/WholesaleSoulsInc/wholesale-souls-inc_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",X-Men: The Last Stand (2006)
+http://www.deadlyblogger.com/NewRelease/xmen3.mp4
+#EXTINF:-1 group-title="MOVIES",Between Hurricanes (2005)
+https://archive.org/download/BetwHurr/BETWEEN-HURRICANES_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Bewitched (2005)
+http://www.deadlyblogger.com/NewRelease/bewitched.mp4
+#EXTINF:-1 group-title="MOVIES",Dirty (2005)
+http://www.deadlyblogger.com/NewRelease/dirty1.mp4
+#EXTINF:-1 group-title="MOVIES",Four Brothers (2005)
+http://www.deadlyblogger.com/NewRelease/fourb.mp4
+#EXTINF:-1 group-title="MOVIES",Saw II (2005)
+http://www.deadlyblogger.com/NewRelease/saw2.mp4
+#EXTINF:-1 group-title="MOVIES",The Exorcism of Emily Rose (2005)
+https://archive.org/download/The.Exorcism.of.Emily.Rose.UNRATED.2005.1080p.BrRip.x264.BOKUTOX.YIFY/The.Exorcism.of.Emily.Rose.UNRATED.2005.1080p.BrRip.x264.BOKUTOX.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",Anchorman: The Legend of Ron Burgundy (2004)
+http://www.deadlyblogger.com/NewRelease/anchorman.mp4
+#EXTINF:-1 group-title="MOVIES",Blade: Trinity (2004)
+http://www.deadlyblogger.com/NewRelease/blade3.mp4
+#EXTINF:-1 group-title="MOVIES",Dirty Dancing - Havana Nights (2004)
+http://www.deadlyblogger.com/NewRelease/dirtydancing2004.mp4
+#EXTINF:-1 group-title="MOVIES",Godzilla: Final Wars (2004)
+https://archive.org/download/GodzillaFinalWars/Godzilla%20Final%20Wars.mp4
+#EXTINF:-1 group-title="MOVIES",I Robot (2004)
+http://www.deadlyblogger.com/NewRelease/irobot.mp4
+#EXTINF:-1 group-title="MOVIES",Kicking & Screaming (2005)
+http://www.deadlyblogger.com/NewRelease/kicking.mp4
+#EXTINF:-1 group-title="MOVIES",Limbo (2004)
+https://archive.org/download/RandallPullenTheDaysofLimbo/The_Days_Of_LimboDIVX_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Mickey's Twice Upon a Christmas (2004)
+http://www.deadlyblogger.com/NewRelease/mickeytwice.mp4
+#EXTINF:-1 group-title="MOVIES",Napoleon Dynamite (2004)
+http://www.deadlyblogger.com/NewRelease/napolean.mp4
+#EXTINF:-1 group-title="MOVIES",Saw (2004)
+http://www.deadlyblogger.com/NewRelease/saw1.mp4
+#EXTINF:-1 group-title="MOVIES",The Bourne Supremacy (2004)
+http://www.deadlyblogger.com/NewRelease/bourne2.mp4
+#EXTINF:-1 group-title="MOVIES",The Day After Tomorrow (2004)
+http://www.deadlyblogger.com/NewRelease/theday2004.mp4
+#EXTINF:-1 group-title="MOVIES",The Polar Express (2004)
+http://www.deadlyblogger.com/NewRelease/polarexpress2004.mp4
+#EXTINF:-1 group-title="MOVIES",2 Fast 2 Furious (2003)
+http://www.deadlyblogger.com/NewRelease/fast2.mp4
+#EXTINF:-1 group-title="MOVIES",Bad Boys II (2003)
+http://www.deadlyblogger.com/NewRelease/badboys2.mp4
+#EXTINF:-1 group-title="MOVIES",Battle Royale II - Requiem (2003)
+https://archive.org/download/01BattleRoyaleSpecialEdition/02%20-%20Battle%20Royale%20II%20-%20Requiem.mp4
+#EXTINF:-1 group-title="MOVIES",Elf (2003)
+http://www.deadlyblogger.com/NewRelease/elf1.mp4
+#EXTINF:-1 group-title="MOVIES",Finding Nemo (2003)
+http://www.deadlyblogger.com/NewRelease/nemo2003.mp4
+#EXTINF:-1 group-title="MOVIES",Honey (2003)
+https://archive.org/download/StepUp20061080pX264SciencefunMux/Honey%20%282003%29%201080p%20x264%20%5bSciencefun%20Mux%5d.mp4
+#EXTINF:-1 group-title="MOVIES",Looney Tunes Back in Action (2003)
+https://archive.org/download/Bugs_Bunny_Collection/Looney%20Tunes%20Back%20In%20Action%20(2003)%20-%20[arsenaloyal].mp4
+#EXTINF:-1 group-title="MOVIES",Malibu's Most Wanted (2003)
+http://www.deadlyblogger.com/NewRelease/malibu1.mp4
+#EXTINF:-1 group-title="MOVIES",Nobody Needs To Know (2003)
+https://archive.org/download/Nobody_Needs_To_Know/nobody-needs-to-know_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Old School (2003)
+http://www.deadlyblogger.com/NewRelease/oldschool1.mp4
+#EXTINF:-1 group-title="MOVIES",The Lord of the Rings: The Return of the King (2003)
+http://www.deadlyblogger.com/NewRelease/returnking1.mp4
+#EXTINF:-1 group-title="MOVIES",The Matrix Reloaded (2003)
+http://www.deadlyblogger.com/NewRelease/matrix2.mp4
+#EXTINF:-1 group-title="MOVIES",The Matrix Revolutions (2003)
+http://www.deadlyblogger.com/NewRelease/matrix3.mp4
+#EXTINF:-1 group-title="MOVIES",Wrong Turn (2003)
+http://www.deadlyblogger.com/NewRelease/wrongturn1.mp4
+#EXTINF:-1 group-title="MOVIES",X2 (2003)
+http://www.deadlyblogger.com/NewRelease/xmen2.mp4
+#EXTINF:-1 group-title="MOVIES",28 Days Later (2002)
+http://www.deadlyblogger.com/NewRelease/28days.mp4
+#EXTINF:-1 group-title="MOVIES",Blade II (2002)
+http://www.deadlyblogger.com/NewRelease/blade2.mp4
+#EXTINF:-1 group-title="MOVIES",Dragon Ball Z: Fusion - Last Saiyan (2002)
+https://archive.org/download/DragonBallZFusionTheLastSaiyanVHS/Dragon%20Ball%20Z%20Fusion%20The%20Last%20Saiyan%20VHS.mp4
+#EXTINF:-1 group-title="MOVIES",Friday After Next (2002)
+http://www.deadlyblogger.com/NewRelease/friday3.mp4
+#EXTINF:-1 group-title="MOVIES",Godzilla Against Mechagodzilla (2002)
+https://archive.org/download/GodzillaAgainstMechagodzilla_201703/Godzilla%20Against%20Mechagodzilla.mp4
+#EXTINF:-1 group-title="MOVIES",Home Alone 4 (2002)
+http://www.deadlyblogger.com/NewRelease/homealone4.mp4
+#EXTINF:-1 group-title="MOVIES",Men in Black II (2002)
+http://www.deadlyblogger.com/NewRelease/mnb2.mp4
+#EXTINF:-1 group-title="MOVIES",Paid in Full (2002)
+http://www.deadlyblogger.com/NewRelease/paidin.mp4
+#EXTINF:-1 group-title="MOVIES",Shottas (2002)
+http://www.deadlyblogger.com/NewRelease/shottas.mp4
+#EXTINF:-1 group-title="MOVIES",Tarzan & Jane (2002)
+http://www.deadlyblogger.com/NewRelease/tarzanjane.mp4
+#EXTINF:-1 group-title="MOVIES",The Bourne Identity (2002)
+http://www.deadlyblogger.com/NewRelease/bourne1.mp4
+#EXTINF:-1 group-title="MOVIES",The Lord of the Rings: The Two Towers (2002)
+http://www.deadlyblogger.com/NewRelease/twotowers.mp4
+#EXTINF:-1 group-title="MOVIES",Ali (2001)
+http://www.deadlyblogger.com/NewRelease/ali1.mp4
+#EXTINF:-1 group-title="MOVIES",Jay and Silent Bob Strike Back (2001)
+http://www.deadlyblogger.com/NewRelease/strikeback.mp4
+#EXTINF:-1 group-title="MOVIES",Mickey's Magical Christmas: Snowed in at the House of Mouse (2001)
+http://www.deadlyblogger.com/NewRelease/mmagicalchristmas.mp4
+#EXTINF:-1 group-title="MOVIES",Planet of the Apes (2001)
+http://www.deadlyblogger.com/NewRelease/apes6.mp4
+#EXTINF:-1 group-title="MOVIES",Pootie Tang (2001)
+http://www.deadlyblogger.com/NewRelease/pootie.mp4
+#EXTINF:-1 group-title="MOVIES",Return to Cabin by the Lake (2001)
+http://www.deadlyblogger.com/NewRelease/cabin2.mp4
+#EXTINF:-1 group-title="MOVIES",The Animal (2001)
+http://www.deadlyblogger.com/NewRelease/animal.mp4
+#EXTINF:-1 group-title="MOVIES",The Fast and the Furious (2001)*
+http://www.deadlyblogger.com/NewRelease/fast1.mp4
+#EXTINF:-1 group-title="MOVIES",The Lord of the Rings: The Fellowship of the Ring (2001)
+http://www.deadlyblogger.com/NewRelease/fellowship1.mp4
+#EXTINF:-1 group-title="MOVIES",Training Day (2001)
+http://www.deadlyblogger.com/NewRelease/training.mp4
+#EXTINF:-1 group-title="MOVIES",Baller Blockin' (2000)
+http://www.deadlyblogger.com/NewRelease/blockin.mp4
+#EXTINF:-1 group-title="MOVIES",Battle Royale (2000) [EN-Subs]
+https://archive.org/download/01BattleRoyaleSpecialEdition/01%20-%20Battle%20Royale%20-%20Special%20Edition.mp4
+#EXTINF:-1 group-title="MOVIES",Cabin by the Lake (2000)
+http://www.deadlyblogger.com/NewRelease/cabin1.mp4
+#EXTINF:-1 group-title="MOVIES",How the Grinch Stole Christmas (2000)
+http://www.deadlyblogger.com/NewRelease/grinch2000.mp4
+#EXTINF:-1 group-title="MOVIES",Men of Honor (2000)
+https://archive.org/download/MenOfHonor20001080pX264ItaEnSciencefunMux/Men%20of%20Honor%20%282000%29%201080p%20x264%20ita%20en%20%5bSciencefun%20Mux%5d.mp4
+#EXTINF:-1 group-title="MOVIES",Next Friday (2000)
+http://www.deadlyblogger.com/NewRelease/friday2.mp4
+#EXTINF:-1 group-title="MOVIES",Tweety's High Flying Adventure (2000)
+https://archive.org/download/Bugs_Bunny_Collection/Tweety%27s%20High%20Flying%20Adventure%20(2000)%20-%20[arsenaloyal].mp4
+#EXTINF:-1 group-title="MOVIES",X-Men (2000)
+http://www.deadlyblogger.com/NewRelease/xmen1.mp4
+#EXTINF:-1 group-title="MOVIES",Austin Powers: The Spy Who Shagged Me (1999)
+http://www.deadlyblogger.com/NewRelease/austin2.mp4
+#EXTINF:-1 group-title="MOVIES",Children of the Corn 666: Isaac's Return (1999)
+http://www.deadlyblogger.com/NewRelease/corn6.mp4
+#EXTINF:-1 group-title="MOVIES",Dogma (1999)
+http://www.deadlyblogger.com/NewRelease/dogma1999.mp4
+#EXTINF:-1 group-title="MOVIES",In Too Deep (1999)
+http://www.deadlyblogger.com/NewRelease/deep1999.mp4
+#EXTINF:-1 group-title="MOVIES",Jawbreaker (1999)
+http://www.deadlyblogger.com/NewRelease/jawbreaker.mp4
+#EXTINF:-1 group-title="MOVIES",Pokemon: The Movie 2000 (1999)
+https://archive.org/download/PokemonMovie2000WGN10222006/Pokemon%20the%20Movie%202000%20WGN%2010.22.06.mp4
+#EXTINF:-1 group-title="MOVIES",The Devil's Feast (1999)
+https://archive.org/download/The_Devils_Feast/the_devils_feast_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",The Bone Collector (1999)
+http://www.deadlyblogger.com/NewRelease/thebone1.mp4
+#EXTINF:-1 group-title="MOVIES",The Boondock Saints (1999)
+http://www.deadlyblogger.com/NewRelease/saints1999.mp4
+#EXTINF:-1 group-title="MOVIES",The Matrix (1999)
+http://www.deadlyblogger.com/NewRelease/matrix1.mp4
+#EXTINF:-1 group-title="MOVIES",Wild Wild West (1999)
+http://www.deadlyblogger.com/NewRelease/wildwest.mp4
+#EXTINF:-1 group-title="MOVIES",3 Ninjas: High Noon at Mega Mountain (1998)
+http://www.deadlyblogger.com/NewRelease/3ninja4.mp4
+#EXTINF:-1 group-title="MOVIES",A Night at the Roxbury (1998)
+http://www.deadlyblogger.com/NewRelease/roxbury.mp4
+#EXTINF:-1 group-title="MOVIES",Belly (1998)
+http://www.deadlyblogger.com/NewRelease/belly1998.mp4
+#EXTINF:-1 group-title="MOVIES",Blade (1998)
+http://www.deadlyblogger.com/NewRelease/blade1.mp4
+#EXTINF:-1 group-title="MOVIES",Fallen (1998)
+http://www.deadlyblogger.com/NewRelease/fallen2.mp4
+#EXTINF:-1 group-title="MOVIES",The Siege (1998)
+http://www.deadlyblogger.com/NewRelease/siege1.mp4
+#EXTINF:-1 group-title="MOVIES",The Wedding Singer (1998)
+http://www.deadlyblogger.com/NewRelease/wedding1998.mp4
+#EXTINF:-1 group-title="MOVIES",Austin Powers: International Man of Mystery (1997)
+http://www.deadlyblogger.com/NewRelease/austin1.mp4
+#EXTINF:-1 group-title="MOVIES",Flubber (1997)
+http://www.deadlyblogger.com/NewRelease/flubber.mp4
+#EXTINF:-1 group-title="MOVIES",Gattaca (1997)
+https://archive.org/download/Gattaca/Gattaca.1997.1080p.BrRip.x264.bitloks.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",Home Alone 3 (1997)
+http://www.deadlyblogger.com/NewRelease/homealone3.mp4
+#EXTINF:-1 group-title="MOVIES",Men in Black (1997)
+http://www.deadlyblogger.com/NewRelease/mnb1.mp4
+#EXTINF:-1 group-title="MOVIES",Rebirth of Mothra II (1997)
+https://archive.org/download/RebirthOfMothraII/Rebirth%20Of%20Mothra%20II.mp4
+#EXTINF:-1 group-title="MOVIES",Scream 2 (1997)
+https://archive.org/download/Scream21997.720p.BrRip.x264.YIFY/Scream%202%201997.720p.BrRip.x264.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",The Fifth Element (1997)
+https://archive.org/download/TheFifthElement_201405/The%20Fifth%20Element.mp4
+#EXTINF:-1 group-title="MOVIES",Children of the Corn: The Gathering (1996)
+http://www.deadlyblogger.com/NewRelease/corn4.mp4
+#EXTINF:-1 group-title="MOVIES",Don't Be a Menace to South Central While Drinking Your Juice in the Hood (1996)
+http://www.deadlyblogger.com/NewRelease/menace.mp4
+#EXTINF:-1 group-title="MOVIES",D3: The Mighty Ducks (1996)
+http://www.deadlyblogger.com/NewRelease/mighty3.mp4
+#EXTINF:-1 group-title="MOVIES",Independence Day (1996)
+http://www.deadlyblogger.com/NewRelease/indep.mp4
+#EXTINF:-1 group-title="MOVIES",Jack (1996)
+http://www.deadlyblogger.com/NewRelease/jack1996.mp4
+#EXTINF:-1 group-title="MOVIES",Jingle All the Way (1996)
+http://www.deadlyblogger.com/NewRelease/jinglealltheway.mp4
+#EXTINF:-1 group-title="MOVIES",Rebirth of Mothra (1996)
+https://archive.org/download/RebirthOfMothra/Rebirth%20Of%20Mothra.mp4
+#EXTINF:-1 group-title="MOVIES",Space Jam (1996)
+https://archive.org/download/Bugs_Bunny_Collection/Space%20Jam%20(Bg%20Audio)%20(1996)%20-%20[arsenaloyal].mp4
+#EXTINF:-1 group-title="MOVIES",3 Ninjas Knuckle Up (1995)
+http://www.deadlyblogger.com/NewRelease/3ninja3.mp4
+#EXTINF:-1 group-title="MOVIES",Bad Boys (1995)
+http://www.deadlyblogger.com/NewRelease/badboys1.mp4
+#EXTINF:-1 group-title="MOVIES",Children of the Corn III: Urban Harvest (1995)
+http://www.deadlyblogger.com/NewRelease/corn3.mp4
+#EXTINF:-1 group-title="MOVIES",Congo (1995)
+http://www.deadlyblogger.com/NewRelease/congo1995.mp4
+#EXTINF:-1 group-title="MOVIES",Crimson Tide (1995)
+http://www.deadlyblogger.com/NewRelease/crimson.mp4
+#EXTINF:-1 group-title="MOVIES",Dangerous Minds (1995)
+http://www.deadlyblogger.com/NewRelease/minds.mp4
+#EXTINF:-1 group-title="MOVIES",Dead Presidents (1995)
+http://www.deadlyblogger.com/NewRelease/deadp.mp4
+#EXTINF:-1 group-title="MOVIES",Friday (1995)
+http://www.deadlyblogger.com/NewRelease/friday1.mp4
+#EXTINF:-1 group-title="MOVIES",Gamera: Guardian of the Universe (1995)
+https://archive.org/download/GameraTheGuardianOfTheUniverse/Gamera%20-%20The%20Guardian%20Of%20The%20Universe.mp4
+#EXTINF:-1 group-title="MOVIES",Jumanji (1995)
+http://www.deadlyblogger.com/NewRelease/Jumanji1.mp4
+#EXTINF:-1 group-title="MOVIES",Jumanji (1995)*
+https://archive.org/download/Jumanji.1995.720p.BrRip.x264.YIFY/Jumanji.1995.720p.BrRip.x264.YIFY.mp4
+#EXTINF:-1 group-title="MOVIES",New Jersey Drive (1995)
+http://www.deadlyblogger.com/NewRelease/jerseydrive95.mp4
+#EXTINF:-1 group-title="MOVIES",Theodore Rex (1995)
+https://archive.org/download/Theodore_Rex_1995_Full_Movie/Theodore_Rex_1995_Full_Movie-Uns80N3aF34.mp4
+#EXTINF:-1 group-title="MOVIES",3 Ninjas Kick Back (1994)
+http://www.deadlyblogger.com/NewRelease/3ninja2.mp4
+#EXTINF:-1 group-title="MOVIES",D2: The Mighty Ducks (1994)
+http://www.deadlyblogger.com/NewRelease/mighty2.mp4
+#EXTINF:-1 group-title="MOVIES",New Nightmare (1994)
+http://www.deadlyblogger.com/NewRelease/elm7.mp4
+#EXTINF:-1 group-title="MOVIES",The Lion King (1994)
+http://www.deadlyblogger.com/NewRelease/lionking.mp4
+#EXTINF:-1 group-title="MOVIES",Blood In Blood Out (1993)
+http://www.deadlyblogger.com/NewRelease/blood.mp4
+#EXTINF:-1 group-title="MOVIES",Hocus Pocus (1993)
+http://www.deadlyblogger.com/NewRelease/hocuspocus.mp4
+#EXTINF:-1 group-title="MOVIES",Menace II Society (1993)
+http://www.deadlyblogger.com/NewRelease/menace2.mp4
+#EXTINF:-1 group-title="MOVIES",Mrs. Doubtfire (1993)
+http://www.deadlyblogger.com/NewRelease/doubtfire.mp4
+#EXTINF:-1 group-title="MOVIES",Only the Strong (1993)
+http://www.deadlyblogger.com/NewRelease/onlys.mp4
+#EXTINF:-1 group-title="MOVIES",Teenage Mutant Ninja Turtles III (1993)
+http://www.deadlyblogger.com/NewRelease/tmnt3.mp4
+#EXTINF:-1 group-title="MOVIES",The Nightmare Before Christmas (1993)
+http://www.deadlyblogger.com/NewRelease/nightmarebefore.mp4
+#EXTINF:-1 group-title="MOVIES",The Secret Garden (1993)
+http://www.deadlyblogger.com/NewRelease/garden1993.mp4
+#EXTINF:-1 group-title="MOVIES",3 Ninjas (1992)
+http://www.deadlyblogger.com/NewRelease/3ninja1.mp4
+#EXTINF:-1 group-title="MOVIES",Class Act (1992)
+http://www.deadlyblogger.com/NewRelease/classact.mp4
+#EXTINF:-1 group-title="MOVIES",Children of the Corn II: The Final Sacrifice (1992)
+http://www.deadlyblogger.com/NewRelease/corn2.mp4
+#EXTINF:-1 group-title="MOVIES",Godzilla and Mothra: The Battle for Earth (1992)
+https://archive.org/download/GodzillaAndMothraTheBattleForEarth/Godzilla%20And%20Mothra%20The%20Battle%20For%20Earth.mp4
+#EXTINF:-1 group-title="MOVIES",Home Alone 2: Lost in New York (1992)
+http://www.deadlyblogger.com/NewRelease/homealone2.mp4
+#EXTINF:-1 group-title="MOVIES",Juice (1992)
+http://www.deadlyblogger.com/NewRelease/juice.mp4
+#EXTINF:-1 group-title="MOVIES",Pet Sematary II (1992)
+http://www.deadlyblogger.com/NewRelease/sematary2.mp4
+#EXTINF:-1 group-title="MOVIES",Romper Stomper (1992)
+http://www.deadlyblogger.com/NewRelease/romper.mp4
+#EXTINF:-1 group-title="MOVIES",South Central (1992)
+http://www.deadlyblogger.com/NewRelease/southcentral.mp4
+#EXTINF:-1 group-title="MOVIES",The Mighty Ducks (1992)
+http://www.deadlyblogger.com/NewRelease/mighty1.mp4
+#EXTINF:-1 group-title="MOVIES",The Muppet Christmas Carol (1992)
+http://www.deadlyblogger.com/NewRelease/muppetcarol.mp4
+#EXTINF:-1 group-title="MOVIES",Boyz n the Hood (1991)
+http://www.deadlyblogger.com/NewRelease/thehood.mp4
+#EXTINF:-1 group-title="MOVIES",Child's Play 3 (1991)
+http://www.deadlyblogger.com/NewRelease/childsplay3.mp4
+#EXTINF:-1 group-title="MOVIES",Don't Tell Mom the Babysitter's Dead (1991)
+http://www.deadlyblogger.com/NewRelease/babysitter1991.mp4
+#EXTINF:-1 group-title="MOVIES",Dying Young (1991)
+https://archive.org/download/StepUp20061080pX264SciencefunMux/Scelta%20D.Amore%20-%20Dying%20Young%20%281991%29%201080p%20x264%20%5bSciencefun%20Mux%5d.mp4
+#EXTINF:-1 group-title="MOVIES",Freddy's Dead: The Final Nightmare (1991)
+http://www.deadlyblogger.com/NewRelease/elm6.mp4
+#EXTINF:-1 group-title="MOVIES",Hook (1991)
+http://www.deadlyblogger.com/NewRelease/hook1991.mp4
+#EXTINF:-1 group-title="MOVIES",New Jack City (1991)
+http://www.deadlyblogger.com/NewRelease/newjack.mp4
+#EXTINF:-1 group-title="MOVIES",Teenage Mutant Ninja Turtles II: The Secret of the Ooze (1991)
+http://www.deadlyblogger.com/NewRelease/tmnt2.mp4
+#EXTINF:-1 group-title="MOVIES",Child's Play 2 (1990)
+http://www.deadlyblogger.com/NewRelease/childsplay2.mp4
+#EXTINF:-1 group-title="MOVIES",DuckTales the Movie: Treasure of the Lost Lamp (1990)
+http://www.deadlyblogger.com/NewRelease/ducktales1990.mp4
+#EXTINF:-1 group-title="MOVIES",Home Alone (1990)
+http://www.deadlyblogger.com/NewRelease/homealone1.mp4
+#EXTINF:-1 group-title="MOVIES",Teenage Mutant Ninja Turtles (1990)
+http://www.deadlyblogger.com/NewRelease/tmnt1.mp4
+#EXTINF:-1 group-title="MOVIES",The Godfather: Part III (1990)
+http://www.deadlyblogger.com/NewRelease/godfather3.mp4
+#EXTINF:-1 group-title="MOVIES",Troll 2 (1990)
+http://www.deadlyblogger.com/NewRelease/troll2.mp4
+#EXTINF:-1 group-title="MOVIES",A Nightmare on Elm Street 5 - The Dream Child (1989)
+http://www.deadlyblogger.com/NewRelease/elm5.mp4
+#EXTINF:-1 group-title="MOVIES",Francesco (1989)
+https://archive.org/download/Francesco1989_466/Francesco-1989-Clip_512kb.mp4
+#EXTINF:-1 group-title="MOVIES",Pet Sematary (1989)
+http://www.deadlyblogger.com/NewRelease/sematary1.mp4
+#EXTINF:-1 group-title="MOVIES",The Little Mermaid (1989)
+http://www.deadlyblogger.com/NewRelease/mermaid1.mp4
+#EXTINF:-1 group-title="MOVIES",A Nightmare on Elm Street 4 - The Dream Master (1988)
+http://www.deadlyblogger.com/NewRelease/elm4.mp4
+#EXTINF:-1 group-title="MOVIES",Child's Play (1988)
+http://www.deadlyblogger.com/NewRelease/childsplay1.mp4
