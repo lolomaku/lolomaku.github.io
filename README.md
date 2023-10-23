@@ -14,4 +14,4 @@ Lolomaku is an accomplished artist with a diverse range of skills and mediums. H
 Lolomaku draws inspiration from a wide range of sources, including nature, music, and the human form. His work has been featured in galleries and exhibitions around the world, and he has received numerous awards and accolades for his contributions to the art world.
 
 Contact Us
-If you have any questions or would like to commission a custom piece from Lolomaku, please fill out the contact form on our website or email us at markpajao@outlook.com. We look forward to hearing from you!
+If you have any questions or would like to commission a custom piece from Lolomaku, please fill out the contact form on our website or email us at lolomaku@outlook.com. We look forward to hearing from you!
