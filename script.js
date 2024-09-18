@@ -36,6 +36,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardId = urlParams.get('cardId');
             if (cardId) {
                 openModalById(cardId);
+
+                // Fetch the CSV again to update meta tags
+                fetch(csvUrl)
+                    .then(response => response.text())
+                    .then(data => {
+                        const parsedData = Papa.parse(data, { header: true }).data;
+                        const card = parsedData.find(row => row.ID === cardId);
+                        if (card) {
+                            const imageUrl = card.Image;
+                            document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+                            document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+                        }
+                    });
             }
         }
     });
