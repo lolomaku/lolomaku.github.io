@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lolomaku">
+    <meta name="twitter:title" content="lolomaku - Printable Sticker Designs">
+    <meta name="twitter:description" content="Discover unique printable sticker designs by lolomaku. Browse and download your favorite stickers today!">
+    <meta name="twitter:image" content="">
+
+    <!-- Facebook Open Graph meta tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lolomaku.art">
+    <meta property="og:title" content="lolomaku - Printable Sticker Designs">
+    <meta property="og:description" content="Discover unique printable sticker designs by lolomaku. Browse and download your favorite stickers today!">
+    <meta property="og:image" content="">
+    <meta property="og:image:alt" content="lolomaku sticker design preview">
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardId = urlParams.get('cardId');
+        if (cardId) {
+            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQBWcMSBwsdi9knXxIv8Lx5jQihq-9aZM4yl6vBSvDyVELBYvUj6U5XBPX1TqJN_bNNqtb1bVmI8x1l/pub?gid=0&single=true&output=csv')
+                .then(response => response.text())
+                .then(data => {
+                    const parsedData = Papa.parse(data, { header: true }).data;
+                    const card = parsedData.find(row => row.ID === cardId);
+                    if (card) {
+                        const imageUrl = card.Image;
+                        document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+                        document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+                    }
+                });
+        }
+    });
+    </script>
     <link href="style.css" rel="stylesheet">
     <link href="override.css" rel="stylesheet">
     <title>lolomaku</title>
