@@ -1,37 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-	<title>Mark Pajao - Freelance Graphic and Web Design Services</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-	<style>
-		body {
-			margin: 0 auto;
-			font-family: 'Roboto Condensed', sans-serif;
-		}
-		div {
-			width: 100%;
-		}
-		img {
-			margin: 0 auto;
-		    display: block;
-		}
-		p {
-			    width: 60%;
-		    margin: 0 auto;
-		    font-size: 40px;
-		}
-
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+    <link href="style.css" rel="stylesheet">
+    <link href="override.css" rel="stylesheet">
+    <title>lolomaku</title>
+    <script src="papaparse.min.js"></script>
 </head>
-<body>
-	<div><img src="logo.jpg" alt=""></div>
-	<!-- <div class="socials">
-		<a href=""><img src="socials/fb.png" alt=""></a>
-		<a href=""><img src="socials/ig.png" alt=""></a>
-		<a href=""><img src="socials/tw.png" alt=""></a>
-		<a href=""><img src="socials/da.png" alt=""></a>
-	</div> -->
+<body class="bg-gray-100 dark:bg-black text-gray-900 dark:text-gray-100">
+    <div class="container mx-auto p-6 pt-0">
+        <!-- <div id="cycling-background" class="h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center relative">
+            <div class="absolute inset-0"></div>
+            <h1 class="relative text-5xl font-bold text-gray-700 z-10">This site is under construction</h1><br>
+            <div class="relative z-10 space-x-6">
+                <a href="#" class="bg-green-900 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-800 transition duration-300">Commission Me</a>
+                <a href="#sticker-design" class="bg-blue-900 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-800 transition duration-300">Sticker Designs</a>
+            </div>
+        </div> -->
+        <!-- Scrolling Text -->
+        <div class="scroll-text-wrapper overflow-hidden whitespace-nowrap py-4 relative">
+            <div class="scroll-text inline-block animate-scroll text-150px font-bold text-gray-800">
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+            </div>
+        </div>
+        <!-- Scrolling Text -->
+        <div class="scroll-text-wrapper overflow-hidden whitespace-nowrap py-4 relative z-0 -mt-80" id="sticker-design">
+            <div class="scroll-text inline-block animate-scroll-and-color text-150px font-bold text-gray-700">
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+                PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
+            </div>
+        </div>
+
+        <div class="sticky top-0 bg-white dark:bg-black z-50 pt-6 pb-6">
+            <!-- Search Bar -->
+            <div class="mb-6 flex space-x-4">
+                <input type="text" id="search-input" placeholder="What sticker design are you looking for today?" 
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500">
+                <button onclick="filterCards()" 
+                    class="bg-blue-600 dark:bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-900 dark:hover:bg-blue-700">Search</button>
+            </div>
+            <!-- Suggested Tags Section -->
+            <div id="suggested-tags" class="mb-6 flex flex-wrap gap-2">           
+                <!-- Suggested tags buttons will be dynamically generated here -->
+            </div>
+        </div>
+
+        <!-- Card Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="card-container">
+            <!-- Cards will be dynamically generated here -->
+        </div>
+    </div>
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50 p-4 lg::p-0 overflow-auto sm:h-auto">
+
+        <div class="modal-background bg-gray-900 rounded-lg shadow-lg max-w-4xl w-full h-full sm:h-auto p-9 relative flex flex-col md:flex-row">
+
+            <div id="gcash-qr-container" class="w-full md:w-1/2 pr-4 mb-4 md:mb-0 hidden">
+                <img id="gcash-qr-image" src="" alt="GCash QR Code" class="w-full object-contain rounded-lg">
+                <p class="text-white text-center mt-4">Scan this QR code with GCash to make a payment</p>
+                <button id="download-gcash-qr" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4">Download GCash QR</button>
+                <button id="proceed-gcash" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4 flex items-center">
+                    Proceed
+                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="maya-qr-container" class="w-full md:w-1/2 pr-4 mb-4 md:mb-0 hidden">
+                <img id="maya-qr-image" src="" alt="Maya QR Code" class="w-full object-contain rounded-lg">
+                <p class="text-white text-center mt-4">Scan this QR code with Maya to make a payment</p>
+                <button id="download-maya-qr" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4">Download Maya QR</button>
+                <button id="proceed-maya" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4 flex items-center">
+                    Proceed
+                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="w-full md:w-1/2 pr-4 mb-4 md:mb-0">
+
+                <img id="modal-image" src="" alt="Card Image" class="w-full object-contain rounded-lg">
+
+                <!-- Removed fixed height and added object-contain to ensure the image scales properly -->
+
+
+                <div id="image-previews" class="flex mt-4 space-x-2">
+
+                    <!-- Tiny image previews will be dynamically added here -->
+
+
+                </div>
+
+
+            </div>
+
+            <div class="w-full md:w-1/2 pl-4">
+
+
+                <button id="modal-close" class="absolute top-0 right-0 w-14 h-4 bg-gray-800 text-gray-600 rounded-tr-lg rounded-bl-lg flex items-center text-xl font-bold justify-center hover:bg-red-900 hover:text-white focus:outline-none">
+                </button>
+
+                <label for="modal-title" class="text-gray-500 mb-2 block font-bold bg-gray-800">TITLE</label>
+                <h3 id="modal-title" class="text-lg font-semibold text-white mb-5"></h3>
+
+
+                <label for="modal-description" class="text-gray-500 mb-2 block font-bold bg-gray-800">WHAT'S IN THE BOX</label>
+                <p id="modal-description" class="text-gray-400 mb-5"></p>
+
+                <label for="modal-paymentoptions" class="text-gray-500 block font-bold bg-gray-800 mb-4">GET THIS VIA</label>
+                <div class="flex sm:space-x-2 space-x-0 ">
+                    <button id="gcash-button" class="bg-blue-700 text-gray-300 px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <!-- GCASH SVG Path -->
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                        </svg>
+                        GCASH
+                    </button>
+                    <button id="maya-button" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <!-- PAYMAYA SVG Path -->
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                        </svg>
+                        MAYA
+                    </button>
+                    <button id="modal-share-button" class="bg-yellow-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-yellow-900 items-center hidden">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <!-- BUYMEACOFFEE SVG Path -->
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                        </svg>
+                        BUYMEACOFFEE
+                    </button>
+                    <button id="buymeacoffee-button" class="bg-yellow-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-yellow-900 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <!-- BUYMEACOFFEE SVG Path -->
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                        </svg>
+                        BUYMEACOFFEE
+                    </button>
+                </div>
+                <div class="mt-4">
+                    <label for="modal-share" class="text-gray-500 block font-bold bg-gray-800 mb-4">SHARE THIS ON</label>
+                    <div class="flex flex-wrap space-x-2 space-y-2 md:space-y-0">
+                        <button onclick="shareOnX()" class="bg-black text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-gray-800 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            Twitter / X
+                        </button>
+                        <button onclick="shareOnFacebook()" class="bg-blue-600 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-700 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/></svg>
+                            Facebook
+                        </button>
+                        <button onclick="copyShareLink()" class="bg-gray-600 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-gray-700 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M21 11.5a1.5 1.5 0 0 0-1.5-1.5h-5.5v-5.5a1.5 1.5 0 0 0-3 0v5.5h-5.5a1.5 1.5 0 0 0 0 3h5.5v5.5a1.5 1.5 0 0 0 3 0v-5.5h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+                            Copy Link
+                        </button>
+                    </div>
+                </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>

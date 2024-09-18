@@ -1,0 +1,18 @@
+body {
+    overflow-x: hidden; /* Always show horizontal scrollbar */
+    overflow-y: scroll; /* Hide vertical scrollbar if not needed */
+}
+
+.out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}   
