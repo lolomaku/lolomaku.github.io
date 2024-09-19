@@ -35,20 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const cardId = urlParams.get('cardId');
             if (cardId) {
-                openModalById(cardId);
-
-                // Fetch the CSV again to update meta tags
-                fetch(csvUrl)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parsedData = Papa.parse(data, { header: true }).data;
-                        const card = parsedData.find(row => row.ID === cardId);
-                        if (card) {
-                            const imageUrl = card.Image;
-                            document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
-                            document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
-                        }
-                    });
+                openModalById(cardId);    
             }
         }
     });
@@ -103,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    flickerNotice();
+
     // Add event listener to the Clear All button
     document.getElementById('clear-tags-button').addEventListener('click', clearAllTags);
 });
@@ -130,7 +119,14 @@ function displayCards(data) {
     // Generate cards and collect tags
     data.forEach(row => {
         const card = document.createElement('div');
-        card.className = 'card bg-white p-2 dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer hover:bg-blue-900';
+        const isFree = row.Price.toLowerCase() === 'free' || row.Price.toLowerCase() === 'pay any amount';
+        card.className = `card p-2 rounded-lg shadow-lg cursor-pointer flex flex-col relative group transition-colors duration-300 ${isFree ? 'bg-cyan-900 hover:bg-blue-800' : 'bg-gray-800 hover:bg-blue-900'}`;
+        if (isFree) {
+            card.style.animation = 'pulseBackground 4s ease-in-out infinite';
+            card.style.setProperty('--hover-color', '#1e40af'); // Set hover color for free cards
+        } else {
+            card.style.setProperty('--hover-color', '#1e3a8a'); // Set hover color for non-free cards
+        }
         card.setAttribute('data-image', row.Image);
         card.setAttribute('data-title', row.Title);
         card.setAttribute('data-artist', row.Artist);
@@ -141,18 +137,33 @@ function displayCards(data) {
         card.setAttribute('data-downloads', row.Downloads);
         card.setAttribute('data-id', row.ID);
         card.setAttribute('data-reference-image', row.Reference);
-        card.setAttribute('data-gcash', row.Gcash); // Add Gcash QR code link
-        card.setAttribute('data-maya', row.Maya); // Add Maya QR code link
-        card.setAttribute('data-buymeacoffee', row.BuyMeACoffee); // Add BuyMeACoffee link
+        card.setAttribute('data-gcash', row.Gcash);
+        card.setAttribute('data-maya', row.Maya);
+        card.setAttribute('data-buymeacoffee', row.BuyMeACoffee);
+        card.setAttribute('data-price', row.Price);
 
         const hiddenLoveDisplay = row.Downloads < 2 ? 'none' : 'inline';
 
         card.innerHTML = `
-            <img src="${row.Image}" alt="${row.Title}" class="w-full h-48 object-cover rounded-t-lg">
-            <h3 class="text-lg font-semibold mt-2 px-2">${row.Title}</h3>
-            <p class="mt-0 text-gray-400 px-2">made by <span class="font-bold text-gray-300">${row.Artist}</span> last <span class="font-bold text-gray-300">${row.Date}</span></p>
+            <img src="${row.Image}" alt="${row.Title}" class="w-full object-cover rounded-t-lg">
+            <div class="absolute top-4 right-2 flex items-center">
+                <div class="px-3 py-3 transition-colors duration-300 ${isFree ? 'bg-cyan-900 group-hover:bg-blue-800' : 'bg-gray-800 group-hover:bg-blue-900'}" style="${isFree ? 'animation: pulseBackground 4s ease-in-out infinite;' : ''}">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                        <p class="text-lg font-bold ${isFree ? 'text-white' : 'text-gray-300'}">${isNaN(row.Price) ? row.Price.toUpperCase() : '₱' + row.Price}</p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-4xl font-semibold mt-2 px-2 cedarville-cursive-regular">${row.Title.toLowerCase()}</h3>
+            <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300">${row.Date}</span></p>
             <p class="mt-0 text-gray-400 px-2 pb-2"><span style="display: ${hiddenLoveDisplay}";>loved by <span class="font-bold text-red-300">${row.Downloads}</span> people</span></p>
         `;
+
+
+        // made by <span class="font-bold text-gray-300">${row.Artist}</span>
+
 
         cardsContainer.appendChild(card);
 
@@ -279,6 +290,7 @@ function updateSelectedImage(selectedImg) {
 function filterCards() {
     const tags = Array.from(selectedTags);
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const searchTerms = searchTerm.split(',').map(term => term.trim()); // Split by comma and trim spaces
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(function(card) {
@@ -289,7 +301,14 @@ function filterCards() {
         const cardArtist = card.getAttribute('data-artist').toLowerCase(); // Get the card Artist
 
         const matchesTags = tags.length === 0 || tags.every(tag => cardTags.includes(tag.toLowerCase()));
-        const matchesSearch = searchTerm === '' || cardTags.some(tag => tag.includes(searchTerm)) || cardTitle.includes(searchTerm) || cardDescription.includes(searchTerm) || cardId.includes(searchTerm) || cardArtist.includes(searchTerm); // Include Artist in search
+        const matchesSearch = searchTerms.every(term => 
+            term === '' || 
+            cardTags.some(tag => tag.includes(term)) || 
+            cardTitle.includes(term) || 
+            cardDescription.includes(term) || 
+            cardId.includes(term) || 
+            cardArtist.includes(term)
+        ); // Include Artist in search
 
         card.style.display = matchesTags && matchesSearch ? 'block' : 'none';
     });
@@ -300,12 +319,15 @@ function filterCards() {
 // Function to update tag button colors based on search term and tag selection
 function updateTagButtonColors() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const searchTerms = searchTerm.split(',').map(term => term.trim());
 
     document.querySelectorAll('.tag-button').forEach(button => {
         const tag = button.textContent.toLowerCase();
         const isSelected = selectedTags.has(tag);
 
-        if (searchTerm === '' || tag.includes(searchTerm)) {
+        const matchesSearch = searchTerms.some(term => tag.includes(term));
+
+        if (matchesSearch) {
             button.classList.add('bg-blue-900', 'text-white');
             button.classList.remove('bg-gray-700', 'text-gray-300');
         } else {
@@ -317,7 +339,7 @@ function updateTagButtonColors() {
         if (isSelected) {
             button.classList.add('bg-blue-900', 'text-white');
             button.classList.remove('bg-gray-700', 'text-gray-300');
-        } else if (!searchTerm) {
+        } else if (!searchTerms.includes(tag)) {
             button.classList.remove('bg-blue-900', 'text-white');
             button.classList.add('bg-gray-700', 'text-gray-300');
         }
@@ -327,12 +349,22 @@ function updateTagButtonColors() {
 // Function to handle tag selection and update UI
 function toggleTag(tag) {
     tag = tag.toLowerCase();
+    const searchInput = document.getElementById('search-input');
+    const currentSearch = searchInput.value.toLowerCase().split(',').map(term => term.trim());
+
     if (selectedTags.has(tag)) {
         selectedTags.delete(tag);
+        // Remove tag from search input
+        searchInput.value = currentSearch.filter(term => term !== tag).join(', ');
     } else {
         selectedTags.add(tag);
+        // Add tag to search input
+        if (!currentSearch.includes(tag)) {
+            currentSearch.push(tag);
+            searchInput.value = currentSearch.join(', ');
+        }
     }
-    filterCards();
+    filterCards(); // Update colors for all tag buttons
 }
 
 // Function to clear all selected tags and reset UI
@@ -496,5 +528,16 @@ function downloadImage(imageUrl, filename) {
     document.body.removeChild(link);
 }
 
-
+function flickerNotice() {
+    const notice = document.getElementById('flickering-notice');
+    const flickerInterval = Math.random() * 800 + 300; // Random interval between 500ms and 1500ms
+    const randomOpacity = Math.random().toFixed(2); // Random opacity between 0 and 1
+    if (notice.style.display === 'none') {
+        notice.style.display = 'block';
+        notice.style.opacity = randomOpacity;
+    } else {
+        notice.style.display = 'none';
+    }
+    setTimeout(flickerNotice, flickerInterval);
+}
 
