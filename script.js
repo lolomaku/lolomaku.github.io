@@ -157,7 +157,7 @@ function displayCards(data) {
     data.forEach(row => {
         const card = document.createElement('div');
         const isFree = row.Price.toLowerCase() === 'free' || row.Price.toLowerCase() === 'pay any amount';
-        card.className = `card p-2 rounded-lg shadow-lg cursor-pointer flex flex-col relative group transition-colors duration-300 ${isFree ? 'bg-cyan-900 hover:bg-blue-800' : 'bg-gray-800 hover:bg-blue-900'}`;
+        card.className = `card p-2 rounded-lg shadow-lg cursor-pointer flex flex-col relative group transition-colors duration-300 ${isFree ? 'bg-cyan-900 hover:bg-blue-800' : 'bg-gray-800 hover:bg-blue-900'} dark:${isFree ? 'bg-cyan-800 hover:bg-blue-700' : 'bg-gray-700 hover:bg-blue-800'}`;
         if (isFree) {
             card.style.animation = 'pulseBackground 4s ease-in-out infinite';
             card.style.setProperty('--hover-color', '#1e40af'); // Set hover color for free cards
@@ -185,17 +185,17 @@ function displayCards(data) {
         card.innerHTML = `
             <img src="${row.Image}" alt="${row.Title}" class="w-full object-cover rounded-t-lg">
             <div class="absolute top-4 right-2 flex items-center">
-                <div class="priceTag px-3 py-3 transition-colors duration-300 ${isFree ? 'bg-cyan-900 group-hover:bg-blue-800' : 'bg-gray-800 group-hover:bg-blue-900'}" style="${isFree ? 'animation: pulseBackground 4s ease-in-out infinite;' : ''}">
+                <div class="priceTag px-3 py-3 transition-colors duration-300 ${isFree ? 'bg-cyan-900 group-hover:bg-blue-800' : 'bg-gray-800 group-hover:bg-blue-900'} dark:${isFree ? 'bg-cyan-800 group-hover:bg-blue-700' : 'bg-gray-700 group-hover:bg-blue-800'}" style="${isFree ? 'animation: pulseBackground 4s ease-in-out infinite;' : ''}">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                         </svg>
-                        <p class="text-lg font-bold ${isFree ? 'text-white' : 'text-gray-300'}">${isNaN(row.Price) ? row.Price.toUpperCase() : '₱' + row.Price}</p>
+                        <p class="text-lg font-bold ${isFree ? 'text-white' : 'text-gray-300'} dark:${isFree ? 'text-white' : 'text-gray-200'}">${isNaN(row.Price) ? row.Price.toUpperCase() : '₱' + row.Price}</p>
                     </div>
                 </div>
             </div>
             <h3 class="text-4xl font-semibold mt-2 px-2 cedarville-cursive-regular">${row.Title.toLowerCase()}</h3>
-            <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300">${row.Date}</span></p>
+            <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300 dark:text-gray-200">${row.Date}</span></p>
             <p class="mt-0 text-gray-400 px-2 pb-2"><span style="display: ${hiddenLoveDisplay}";>loved by <span class="font-bold text-red-300">${row.Downloads}</span> people</span></p>
         `;
 
@@ -215,7 +215,7 @@ function displayCards(data) {
     clearTagsButton.id = 'clear-tags-button';
     clearTagsButton.type = 'button'; // Prevent form submission
     clearTagsButton.textContent = 'Clear All';
-    clearTagsButton.className = 'bg-red-900 text-white px-6 py-2 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500';
+    clearTagsButton.className = 'bg-red-900 text-white px-6 py-2 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-800 dark:hover:bg-red-600';
     clearTagsButton.addEventListener('click', function() {
         clearAllTags();
     });
@@ -226,7 +226,7 @@ function displayCards(data) {
     newestOldestButton.id = 'newest-oldest-button';
     newestOldestButton.type = 'button'; // Prevent form submission
     newestOldestButton.textContent = 'Sort by Date';
-    newestOldestButton.className = 'bg-yellow-800 text-white px-6 py-2 rounded-full hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:bg-yellow-700';
+    newestOldestButton.className = 'bg-yellow-800 text-white px-6 py-2 rounded-full hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:bg-yellow-700 dark:bg-yellow-700 dark:hover:bg-yellow-600';
     newestOldestButton.addEventListener('click', function() {
         toggleNewestOldest();
     });
@@ -237,7 +237,7 @@ function displayCards(data) {
     popularityButton.id = 'popularity-button';
     popularityButton.type = 'button';
     popularityButton.textContent = 'Sort by Popularity';
-    popularityButton.className = 'bg-green-800 text-white px-6 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500';
+    popularityButton.className = 'bg-green-800 text-white px-6 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-700 dark:hover:bg-green-600';
     popularityButton.addEventListener('click', function() {
         togglePopularitySort();
     });
@@ -600,4 +600,3 @@ function flickerNotice() {
     }
     setTimeout(flickerNotice, flickerInterval);
 }
-
