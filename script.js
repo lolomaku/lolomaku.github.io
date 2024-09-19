@@ -90,11 +90,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.getElementById('gdrive-button').addEventListener('click', function() {
+        const gdriveLink = this.getAttribute('data-gdrive');
+        if (gdriveLink) {
+            window.open(gdriveLink, '_blank');
+        } else {
+            alert('No Google Drive link available for this sticker.');
+        }
+    });
+
+    // Add event listener to update button visibility when modal opens
+    document.addEventListener('click', function(event) {
+        if (event.target.closest('.card')) {
+            const card = event.target.closest('.card');
+            const price = card.getAttribute('data-price');
+            updateButtonVisibility(price);
+        }
+    });
+
     flickerNotice();
 
     // Add event listener to the Clear All button
     document.getElementById('clear-tags-button').addEventListener('click', clearAllTags);
 });
+
+function updateButtonVisibility(price) {
+    const mayaButton = document.getElementById('maya-button');
+    const gcashButton = document.getElementById('gcash-button');
+    const buymeacoffeeButton = document.getElementById('buymeacoffee-button');
+    const gdriveButton = document.getElementById('gdrive-button');
+
+    if (price.toLowerCase() === 'free') {
+        mayaButton.classList.add('hidden');
+        gcashButton.classList.add('hidden');
+        buymeacoffeeButton.classList.add('hidden');
+        gdriveButton.classList.remove('hidden');
+    } else {
+        mayaButton.classList.remove('hidden');
+        gcashButton.classList.remove('hidden');
+        buymeacoffeeButton.classList.remove('hidden');
+        gdriveButton.classList.add('hidden');
+    }
+}
 
 // Function to display cards with optional sorting
 function displayCards(data) {
@@ -141,6 +178,7 @@ function displayCards(data) {
         card.setAttribute('data-maya', row.Maya);
         card.setAttribute('data-buymeacoffee', row.BuyMeACoffee);
         card.setAttribute('data-price', row.Price);
+        card.setAttribute('data-gdrive', row.GDrive);
 
         const hiddenLoveDisplay = row.Downloads < 2 ? 'none' : 'inline';
 
@@ -222,6 +260,8 @@ function displayCards(data) {
             document.getElementById('modal-image').src = this.getAttribute('data-image');
             document.getElementById('modal-title').textContent = this.getAttribute('data-title');
             document.getElementById('modal-description').textContent = this.getAttribute('data-description');
+            const price = this.getAttribute('data-price');
+            document.getElementById('modal-price').textContent = isNaN(price) ? price : `₱${price}`;
             document.getElementById('modal').classList.remove('hidden');
 
             // Set the share button's data-id attribute
@@ -235,6 +275,10 @@ function displayCards(data) {
             // Set the BuyMeACoffee link
             const buyMeACoffeeButton = document.getElementById('buymeacoffee-button');
             buyMeACoffeeButton.setAttribute('data-buymeacoffee', this.getAttribute('data-buymeacoffee'));
+
+            // Set the Google Drive link
+            const gdriveButton = document.getElementById('gdrive-button');
+            gdriveButton.setAttribute('data-gdrive', this.getAttribute('data-gdrive'));
 
             // Add tiny image previews
             const imagePreviewsContainer = document.getElementById('image-previews');
@@ -478,14 +522,22 @@ function toggleGcashQr() {
     const gcashQrContainer = document.getElementById('gcash-qr-container');
     const mayaQrContainer = document.getElementById('maya-qr-container');
     const modalImageParent = document.getElementById('modal-image').parentElement;
+    const gcashButton = document.getElementById('gcash-button');
+    const mayaButton = document.getElementById('maya-button');
 
     if (gcashQrContainer.classList.contains('hidden')) {
         gcashQrContainer.classList.remove('hidden');
         mayaQrContainer.classList.add('hidden');
         modalImageParent.classList.add('hidden');
+        gcashButton.classList.remove('bg-blue-700');
+        gcashButton.classList.add('bg-blue-900');
+        mayaButton.classList.remove('bg-green-900');
+        mayaButton.classList.add('bg-green-700');
     } else {
         gcashQrContainer.classList.add('hidden');
         modalImageParent.classList.remove('hidden');
+        gcashButton.classList.remove('bg-blue-900');
+        gcashButton.classList.add('bg-blue-700');
     }
 }
 
@@ -494,14 +546,22 @@ function toggleMayaQr() {
     const mayaQrContainer = document.getElementById('maya-qr-container');
     const gcashQrContainer = document.getElementById('gcash-qr-container');
     const modalImageParent = document.getElementById('modal-image').parentElement;
+    const mayaButton = document.getElementById('maya-button');
+    const gcashButton = document.getElementById('gcash-button');
 
     if (mayaQrContainer.classList.contains('hidden')) {
         mayaQrContainer.classList.remove('hidden');
         gcashQrContainer.classList.add('hidden');
         modalImageParent.classList.add('hidden');
+        mayaButton.classList.remove('bg-green-700');
+        mayaButton.classList.add('bg-green-900');
+        gcashButton.classList.remove('bg-blue-900');
+        gcashButton.classList.add('bg-blue-700');
     } else {
         mayaQrContainer.classList.add('hidden');
         modalImageParent.classList.remove('hidden');
+        mayaButton.classList.remove('bg-green-900');
+        mayaButton.classList.add('bg-green-700');
     }
 }
 

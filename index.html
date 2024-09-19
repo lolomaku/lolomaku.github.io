@@ -66,7 +66,7 @@
         </div>
         <div id="flickering-notice" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-20">
             <span class="inline-block bg-gray-900 text-gray-400 text-sm font-bold px-4 py-2 hidden sm:flex">
-                WEBSITE IS UNDER DEVELOPMENT AND MIGHT BREAK WITHOUT NOTICE 
+                WEBSITE IS UNDER DEVELOPMENT
             </span>
         </div>
         <div class="fixed bottom-4 right-4 flex flex-col space-y-2 z-50 ">
@@ -126,24 +126,59 @@
 
             <div id="gcash-qr-container" class="w-full md:w-1/2 pr-0 sm:pr-4 mb-4 md:mb-0 hidden">
                 <img id="gcash-qr-image" src="" alt="GCash QR Code" class="w-full object-contain rounded-lg">
-                <p class="text-white text-center mt-4">Scan this QR code with GCash to make a payment</p>
-                <button id="download-gcash-qr" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4">Download GCash QR</button>
-                <button id="proceed-gcash" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4 flex items-center">
-                    Proceed
-                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
-                    </svg>
+
+                
+                <div class="flex items-center mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm-20 200h80v-400H380v80h80v320Z"/></svg>
+                    <span class="text-white text-left ml-2">Scan this QR code with GCash or</span> 
+                </div>
+                <button id="download-gcash-qr" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="ml-2">Download GCash QR</span>
+                </button>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h240v-80H440v-80h80q33 0 56.5-23.5T600-520v-80q0-33-23.5-56.5T520-680H360v80h160v80h-80q-33 0-56.5 23.5T360-440v160Z"/></svg>
+                    <span class="text-white text-left ml-2">Complete the Payment</span>
+                </div>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-60q0-26-17-43t-43-17q26 0 43-17t17-43v-60q0-33-23.5-56.5T520-680H360v80h160v80h-80v80h80v80H360v80Z"/></svg>
+                    <span class="text-white text-left ml-2">Download or Screenshot the Reference Number</span>
+                </div>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm40 200h80v-400h-80v160h-80v-160h-80v240h160v160Z"/></svg>
+                    <span class="text-white text-left ml-2">Last Step</span>
+                </div>
+                <button id="proceed-gcash" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4 flex items-center justify-center">
+                    <span class="mr-2">Proceed to Form</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
                 </button>
             </div>
             <div id="maya-qr-container" class="w-full md:w-1/2 pr-0 sm:pr-4 mb-4 md:mb-0 hidden">
                 <img id="maya-qr-image" src="" alt="Maya QR Code" class="w-full object-contain rounded-lg">
-                <p class="text-white text-center mt-4">Scan this QR code with Maya to make a payment</p>
-                <button id="download-maya-qr" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4">Download Maya QR</button>
-                <button id="proceed-maya" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4 flex items-center">
-                    Proceed
-                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
-                    </svg>
+
+                <div class="flex items-center mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm-20 200h80v-400H380v80h80v320Z"/></svg>
+                    <span class="text-white text-left ml-2">Scan this QR code with Maya or</span> 
+                </div>
+                <button id="download-maya-qr" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="ml-2">Download Maya QR</span>
+                </button>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h240v-80H440v-80h80q33 0 56.5-23.5T600-520v-80q0-33-23.5-56.5T520-680H360v80h160v80h-80q-33 0-56.5 23.5T360-440v160Z"/></svg>
+                    <span class="text-white text-left ml-2">Complete the Payment</span>
+                </div>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-60q0-26-17-43t-43-17q26 0 43-17t17-43v-60q0-33-23.5-56.5T520-680H360v80h160v80h-80v80h80v80H360v80Z"/></svg>
+                    <span class="text-white text-left ml-2">Download or Screenshot the Reference Number</span>
+                </div>
+                <div class="flex items-left mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm40 200h80v-400h-80v160h-80v-160h-80v240h160v160Z"/></svg>
+                    <span class="text-white text-left ml-2">Last Step</span>
+                </div>
+                <button id="proceed-maya" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4 flex items-center justify-center">
+                    <span class="mr-2">Proceed to Form</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
                 </button>
             </div>
 
@@ -174,8 +209,11 @@
                 <h3 id="modal-title" class="text-lg font-semibold text-white mb-5"></h3>
 
 
-                <label for="modal-description" class="text-gray-500 mb-2 block font-bold bg-gray-800">WHAT'S IN THE BOX</label>
+                <label for="modal-description" class="text-gray-500 mb-2 block font-bold bg-gray-800">WHAT'S INCLUDED</label>
                 <p id="modal-description" class="text-gray-400 mb-5"></p>
+                
+                <label for="modal-price" class="text-gray-500 mb-2 block font-bold bg-gray-800">PRICE</label>
+                <p id="modal-price" class="text-white text-xl font-bold mb-5"></p>
 
                 <label for="modal-paymentoptions" class="text-gray-500 block font-bold bg-gray-800 mb-4">GET THIS VIA</label>
                 <div class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
@@ -206,6 +244,12 @@
                             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
                         </svg>
                         BUYMEACOFFEE
+                    </button>
+                    <button id="gdrive-button" class="bg-purple-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-purple-900 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                        </svg>
+                        GDRIVE
                     </button>
                 </div>
                 <div class="mt-4">
