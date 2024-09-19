@@ -127,3 +127,6 @@ body {
 .card:hover {
     background-color: var(--hover-color) !important;
 }
+.group:hover .group-hover\:bg-blue-800 {
+    background-color: #1e40af !important;
+}
