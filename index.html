@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
-
-   <!-- Twitter Card meta tags -->
+    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@lolomaku">
     <meta name="twitter:title" content="lolomaku - Printable Sticker Designs">
@@ -24,32 +21,15 @@
     <meta property="og:image:alt" content="lolomaku sticker design preview">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const cardId = urlParams.get('cardId');
-        if (cardId) {
-            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQBWcMSBwsdi9knXxIv8Lx5jQihq-9aZM4yl6vBSvDyVELBYvUj6U5XBPX1TqJN_bNNqtb1bVmI8x1l/pub?gid=0&single=true&output=csv')
-                .then(response => response.text())
-                .then(data => {
-                    const parsedData = Papa.parse(data, { header: true }).data;
-                    const card = parsedData.find(row => row.ID === cardId);
-                    if (card) {
-                        const imageUrl = card.Image;
-                        document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
-                        document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
-                    }
-                });
-        }
-    });
-    </script>
+    
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
     <link href="style.css" rel="stylesheet">
     <link href="override.css" rel="stylesheet">
     <title>lolomaku</title>
     <script src="papaparse.min.js"></script>
 </head>
-<body class="bg-gray-100 dark:bg-black text-gray-900 dark:text-gray-100">
+<body class="bg-gray-100 dark:bg-black text-gray-900 dark:text-gray-100 poppins-regular">
     <div class="container mx-auto p-6 pt-0">
         <!-- <div id="cycling-background" class="h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center relative">
             <div class="absolute inset-0"></div>
@@ -61,18 +41,19 @@
         </div> -->
         <!-- Scrolling Text -->
         <div class="scroll-text-wrapper overflow-hidden whitespace-nowrap py-4 relative">
-            <div class="scroll-text inline-block animate-scroll text-150px font-bold text-gray-800">
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
-                LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART LOLOMAKU.ART
+            <div class="scroll-text inline-block animate-scroll text-150px font-bold text-gray-800 poppins-bold">
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
+                LOLOMAKU.ART LOLOMAKU.DEV LOLOMAKU.LIT
             </div>
         </div>
         <!-- Scrolling Text -->
         <div class="scroll-text-wrapper overflow-hidden whitespace-nowrap py-4 relative z-0 -mt-80" id="sticker-design">
-            <div class="scroll-text inline-block animate-scroll-and-color text-150px font-bold text-gray-700">
+            <div class="scroll-text inline-block animate-scroll-and-color text-150px font-bold text-gray-700 poppins-bold">
                 PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
                 PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
                 PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
@@ -83,17 +64,52 @@
                 PRINTABLE STICKER DESIGNS PRINTABLE STICKER DESIGNS
             </div>
         </div>
+        <div id="flickering-notice" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-50">
+            <span class="inline-block bg-gray-900 text-gray-400 text-sm font-bold px-4 py-2 hidden sm:flex">
+                WEBSITE IS UNDER DEVELOPMENT AND MIGHT BREAK WITHOUT NOTICE 
+            </span>
+        </div>
+        <div class="fixed bottom-4 right-4 flex flex-col space-y-2 z-50 ">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener noreferrer" class="bg-blue-900 p-2 rounded-full hover:bg-blue-700 transition duration-300">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener noreferrer" class="bg-blue-900 p-2 rounded-full hover:bg-blue-700 transition duration-300">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <!-- X (formerly Twitter) -->
+            <a href="https://x.com/lolomaku" target="_blank" rel="noopener noreferrer" class="bg-blue-900 p-2 rounded-full hover:bg-blue-700 transition duration-300">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener noreferrer" class="bg-blue-900 p-2 rounded-full hover:bg-blue-700 transition duration-300">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+            </a>
+        </div>
 
-        <div class="sticky top-0 bg-white dark:bg-black z-50 pt-6 pb-6">
+        <div class="sticky top-0 bg-white dark:bg-black z-50 pt-6 pb-2">
             <!-- Search Bar -->
             <div class="mb-6 flex space-x-4">
                 <input type="text" id="search-input" placeholder="What sticker design are you looking for today?" 
                     class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500">
                 <button onclick="filterCards()" 
-                    class="bg-blue-600 dark:bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-900 dark:hover:bg-blue-700">Search</button>
+                    class="bg-blue-600 dark:bg-blue-800 text-white p-2 rounded-full hover:bg-blue-900 dark:hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
             </div>
             <!-- Suggested Tags Section -->
-            <div id="suggested-tags" class="mb-6 flex flex-wrap gap-2">           
+            <div id="suggested-tags" class="mb-2 flex flex-wrap gap-2 hidden sm:flex">           
                 <!-- Suggested tags buttons will be dynamically generated here -->
             </div>
         </div>
@@ -104,11 +120,11 @@
         </div>
     </div>
 
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50 p-4 lg::p-0 overflow-auto sm:h-auto">
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50 p-0 sm:p-4 lg:p-0 overflow-auto sm:h-auto">
 
-        <div class="modal-background bg-gray-900 rounded-lg shadow-lg max-w-4xl w-full h-full sm:h-auto p-9 relative flex flex-col md:flex-row">
+        <div class="modal-background bg-gray-900 rounded-lg shadow-lg max-w-4xl w-full h-full sm:h-auto p-4 sm:p-9 relative flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
 
-            <div id="gcash-qr-container" class="w-full md:w-1/2 pr-4 mb-4 md:mb-0 hidden">
+            <div id="gcash-qr-container" class="w-full md:w-1/2 pr-0 sm:pr-4 mb-4 md:mb-0 hidden">
                 <img id="gcash-qr-image" src="" alt="GCash QR Code" class="w-full object-contain rounded-lg">
                 <p class="text-white text-center mt-4">Scan this QR code with GCash to make a payment</p>
                 <button id="download-gcash-qr" class="bg-blue-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 mt-4">Download GCash QR</button>
@@ -119,7 +135,7 @@
                     </svg>
                 </button>
             </div>
-            <div id="maya-qr-container" class="w-full md:w-1/2 pr-4 mb-4 md:mb-0 hidden">
+            <div id="maya-qr-container" class="w-full md:w-1/2 pr-0 sm:pr-4 mb-4 md:mb-0 hidden">
                 <img id="maya-qr-image" src="" alt="Maya QR Code" class="w-full object-contain rounded-lg">
                 <p class="text-white text-center mt-4">Scan this QR code with Maya to make a payment</p>
                 <button id="download-maya-qr" class="bg-green-700 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-green-900 mt-4">Download Maya QR</button>
@@ -131,7 +147,7 @@
                 </button>
             </div>
 
-            <div class="w-full md:w-1/2 pr-4 mb-4 md:mb-0">
+            <div class="w-full md:w-1/2 pr-0 sm:pr-4 mb-4 md:mb-0">
 
                 <img id="modal-image" src="" alt="Card Image" class="w-full object-contain rounded-lg">
 
@@ -148,10 +164,10 @@
 
             </div>
 
-            <div class="w-full md:w-1/2 pl-4">
+            <div class="w-full md:w-1/2 pl-0 sm:pl-4 md:mb-0">
 
 
-                <button id="modal-close" class="absolute top-0 right-0 w-14 h-4 bg-gray-800 text-gray-600 rounded-tr-lg rounded-bl-lg flex items-center text-xl font-bold justify-center hover:bg-red-900 hover:text-white focus:outline-none">
+                <button id="modal-close" class="absolute top-0 right-0 w-14 h-6 sm:h-4 bg-red-900 sm:bg-gray-800 text-gray-600 rounded-tr-lg rounded-bl-lg flex items-center text-xl font-bold justify-center hover:bg-red-900 hover:text-white focus:outline-none">
                 </button>
 
                 <label for="modal-title" class="text-gray-500 mb-2 block font-bold bg-gray-800">TITLE</label>
@@ -162,7 +178,7 @@
                 <p id="modal-description" class="text-gray-400 mb-5"></p>
 
                 <label for="modal-paymentoptions" class="text-gray-500 block font-bold bg-gray-800 mb-4">GET THIS VIA</label>
-                <div class="flex sm:space-x-2 space-x-0 ">
+                <div class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
                     <button id="gcash-button" class="bg-blue-700 text-gray-300 px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-900 flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                             <!-- GCASH SVG Path -->
@@ -194,14 +210,12 @@
                 </div>
                 <div class="mt-4">
                     <label for="modal-share" class="text-gray-500 block font-bold bg-gray-800 mb-4">SHARE THIS ON</label>
-                    <div class="flex flex-wrap space-x-2 space-y-2 md:space-y-0">
-                        <button onclick="shareOnX()" class="bg-black text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-gray-800 flex items-center">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                            Twitter / X
+                    <div class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
+                        <button onclick="shareOnX()" class="bg-sky-500 text-white w-10 h-10 font-bold text-sm rounded-full hover:bg-sky-800 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </button>
-                        <button onclick="shareOnFacebook()" class="bg-blue-600 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-blue-700 flex items-center">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/></svg>
-                            Facebook
+                        <button onclick="shareOnFacebook()" class="bg-blue-600 text-white w-10 h-10 font-bold text-sm rounded-full hover:bg-blue-900 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.733 0 1.325-.591 1.325-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"/></svg>
                         </button>
                         <button onclick="copyShareLink()" class="bg-gray-600 text-white px-4 py-2 font-bold text-sm rounded-full hover:bg-gray-700 flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M21 11.5a1.5 1.5 0 0 0-1.5-1.5h-5.5v-5.5a1.5 1.5 0 0 0-3 0v5.5h-5.5a1.5 1.5 0 0 0 0 3h5.5v5.5a1.5 1.5 0 0 0 3 0v-5.5h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
