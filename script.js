@@ -197,7 +197,7 @@ function setCardAttributes(card, row) {
 
 function generateCardInnerHTML(row, isFree) {
     return `
-        <img src="${row.Image}" alt="${row.Title}" class="w-full object-cover rounded-t-lg">
+        <img src="${row.Image}" alt="${row.Title}" class="object-cover rounded-t-lg h-[300px] w-[300px]">
         <div class="absolute top-4 right-2 flex items-center">
             <div class="priceTag px-3 py-3 transition-colors duration-300 ${isFree ? 'bg-cyan-900 group-hover:bg-blue-800' : 'bg-gray-800 group-hover:bg-blue-900'} dark:${isFree ? 'bg-cyan-800 group-hover:bg-blue-700' : 'bg-gray-700 group-hover:bg-blue-800'}" style="${isFree ? 'animation: pulseBackground 4s ease-in-out infinite;' : ''}">
                 <div class="flex items-center">
