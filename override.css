@@ -5,12 +5,6 @@ body {
     overflow-y: scroll; /* Hide vertical scrollbar if not needed */
 }
 
-.cedarville-cursive-regular {
-    font-family: "Cedarville Cursive", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
 .poppins-thin {
     font-family: "Poppins", sans-serif;
     font-weight: 100;
