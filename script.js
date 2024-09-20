@@ -346,13 +346,15 @@ function filterCards() {
         const cardDescription = card.getAttribute('data-description').toLowerCase();
         const cardId = card.getAttribute('data-id').toLowerCase();
         const cardArtist = card.getAttribute('data-artist').toLowerCase();
+        const cardPrice = card.getAttribute('data-price').toLowerCase();
 
         const matchesTags = tags.length === 0 || tags.every(tag => 
             cardTags.some(cardTag => cardTag.includes(tag.toLowerCase())) ||
             cardTitle.includes(tag.toLowerCase()) ||
             cardDescription.includes(tag.toLowerCase()) ||
             cardId.includes(tag.toLowerCase()) ||
-            cardArtist.includes(tag.toLowerCase())
+            cardArtist.includes(tag.toLowerCase()) ||
+            cardPrice.includes(tag.toLowerCase())
         );
         const matchesSearch = searchTerms.every(term => 
             term === '' || 
@@ -360,7 +362,8 @@ function filterCards() {
             cardTitle.includes(term.toLowerCase()) || 
             cardDescription.includes(term.toLowerCase()) || 
             cardId.includes(term.toLowerCase()) || 
-            cardArtist.includes(term.toLowerCase())
+            cardArtist.includes(term.toLowerCase()) ||
+            cardPrice.includes(term.toLowerCase())
         );
         card.style.display = matchesTags && matchesSearch ? 'block' : 'none';
     });
