@@ -208,7 +208,7 @@ function generateCardInnerHTML(row, isFree) {
                 </div>
             </div>
         </div>
-        <h3 class="text-4xl font-semibold mt-2 px-2 cedarville-cursive-regular">${row.Title.toLowerCase()}</h3>
+        <h3 class="text-4xl font-semibold mt-2 px-2">${row.Title.toLowerCase()}</h3>
         <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300 dark:text-gray-200">${row.Date}</span></p>
         <p class="mt-0 text-gray-400 px-2 pb-2">tags: <span class="font-bold text-blue-300">${row.Tags}</span></p>
     `;
