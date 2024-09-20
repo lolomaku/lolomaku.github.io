@@ -337,7 +337,7 @@ function updateSelectedImage(selectedImg) {
 function filterCards() {
     const tags = Array.from(selectedTags);
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const searchTerms = searchTerm.split(',').map(term => term.trim()).filter(term => term !== '');
+    const searchTerms = searchTerm.split(/[\s,]+/).map(term => term.trim()).filter(term => term !== '');
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
