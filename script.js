@@ -65,6 +65,7 @@ function handleSearchInputKeydown(event) {
     if (event.key === 'Enter') {
         createTagFromInput();
     }
+    filterCards();
 }
 
 function handleSearchInputKeyup(event) {
@@ -209,8 +210,8 @@ function generateCardInnerHTML(row, isFree) {
             </div>
         </div>
         <h3 class="text-4xl font-semibold mt-2 px-2">${row.Title.toLowerCase()}</h3>
-        <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300 dark:text-gray-200">${row.Date}</span></p>
-        <p class="mt-0 text-gray-400 px-2 pb-2">tags: <span class="font-bold text-blue-300">${row.Tags}</span></p>
+        <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300 dark:text-gray-300">${row.Date}</span></p>
+        <p class="mt-0 text-gray-400 px-2 pb-2">ID: <span class="font-bold text-gray-300 dark:text-gray-300">${row.ID.toUpperCase()}</span></p>
     `;
 }
 
@@ -259,6 +260,7 @@ function addCardClickEventListeners() {
 function showModal(card) {
     document.getElementById('modal-image').src = card.getAttribute('data-image');
     document.getElementById('modal-title').textContent = card.getAttribute('data-title');
+    document.getElementById('modal-id').textContent = card.getAttribute('data-id').toUpperCase();
     document.getElementById('modal-description').textContent = card.getAttribute('data-description');
     const price = card.getAttribute('data-price');
     document.getElementById('modal-price').textContent = isNaN(price) ? price : `₱${price}`;
@@ -335,7 +337,7 @@ function updateSelectedImage(selectedImg) {
 function filterCards() {
     const tags = Array.from(selectedTags);
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const searchTerms = searchTerm.split(',').map(term => term.trim());
+    const searchTerms = searchTerm.split(',').map(term => term.trim()).filter(term => term !== '');
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -345,16 +347,21 @@ function filterCards() {
         const cardId = card.getAttribute('data-id').toLowerCase();
         const cardArtist = card.getAttribute('data-artist').toLowerCase();
 
-        const matchesTags = tags.length === 0 || tags.every(tag => cardTags.includes(tag.toLowerCase()));
+        const matchesTags = tags.length === 0 || tags.every(tag => 
+            cardTags.some(cardTag => cardTag.includes(tag.toLowerCase())) ||
+            cardTitle.includes(tag.toLowerCase()) ||
+            cardDescription.includes(tag.toLowerCase()) ||
+            cardId.includes(tag.toLowerCase()) ||
+            cardArtist.includes(tag.toLowerCase())
+        );
         const matchesSearch = searchTerms.every(term => 
             term === '' || 
-            cardTags.some(tag => tag.includes(term)) || 
-            cardTitle.includes(term) || 
-            cardDescription.includes(term) || 
-            cardId.includes(term) || 
-            cardArtist.includes(term)
+            cardTags.some(tag => tag.includes(term.toLowerCase())) || 
+            cardTitle.includes(term.toLowerCase()) || 
+            cardDescription.includes(term.toLowerCase()) || 
+            cardId.includes(term.toLowerCase()) || 
+            cardArtist.includes(term.toLowerCase())
         );
-
         card.style.display = matchesTags && matchesSearch ? 'block' : 'none';
     });
 

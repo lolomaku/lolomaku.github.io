@@ -209,10 +209,30 @@
 
                 <label for="modal-title" class="text-gray-500 dark:text-gray-500 mb-2 block font-bold bg-gray-800 dark:bg-gray-800">TITLE</label>
                 <h3 id="modal-title" class="text-lg font-semibold text-white dark:text-white mb-5"></h3>
+               
 
+                <label for="modal-id" class="text-gray-500 dark:text-gray-500 mb-2 block font-bold bg-gray-800 dark:bg-gray-800">ID</label>
+                <div class="inline-flex items-center mb-5">
+                    <h3 id="modal-id" class="text-lg font-semibold text-white dark:text-white"></h3>
+                    <button id="copy-id-button" class="bg-blue-700 dark:bg-blue-700 text-white dark:text-white p-2 font-bold text-xs rounded-full hover:bg-blue-900 dark:hover:bg-blue-900 flex items-center ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                    </button>
+                </div>
+                <script>
+                    document.getElementById('copy-id-button').addEventListener('click', function() {
+                        const id = document.getElementById('modal-id').textContent;
+                        navigator.clipboard.writeText(id).then(function() {
+                            alert('ID copied to clipboard');
+                        }, function(err) {
+                            console.error('Could not copy text: ', err);
+                        });
+                    });
+                </script>
+                
 
                 <label for="modal-description" class="text-gray-500 dark:text-gray-500 mb-2 block font-bold bg-gray-800 dark:bg-gray-800">WHAT'S INCLUDED</label>
                 <p id="modal-description" class="text-gray-400 dark:text-gray-400 mb-5"></p>
+                
                 
                 <label for="modal-price" class="text-gray-500 dark:text-gray-500 mb-2 block font-bold bg-gray-800 dark:bg-gray-800">PRICE</label>
                 <p id="modal-price" class="text-white dark:text-white text-xl font-bold mb-5"></p>
