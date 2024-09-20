@@ -243,7 +243,7 @@ function createSortButton(id, text, bgColor, hvColor, onClick, svgContent) {
     button.id = id;
     button.type = 'button';
     button.className = `${bgColor} text-white px-6 py-2 rounded-full sm:rounded-full rounded-full sm:hover:${hvColor} focus:outline-none focus:ring-2 focus:${hvColor} dark:${bgColor} dark:hover:${hvColor} flex items-center sm:flex`;
-    button.innerHTML = svgContent + `<span class="hidden sm:inline-block">${text}</span>`;
+    button.innerHTML = `<span class="inline sm:hidden">${svgContent}</span><span class="hidden sm:inline-block">${text}</span>`;
     button.addEventListener('click', onClick);
     return button;
 }
