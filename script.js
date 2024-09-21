@@ -546,6 +546,13 @@ function downloadImage(imageUrl, filename) {
     document.body.removeChild(link);
 }
 
+function proceedToForm(paymentMethod) {
+    const cardId = document.getElementById('modal-share-button').getAttribute('data-id').toUpperCase();
+    const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSceOCVJ3DaZ1tnzecv_0rkVJlK85qrcDULjzz5Fx-EoHqbODQ/viewform?usp=pp_url&entry.1343575495=${cardId}&entry.1470546329=${paymentMethod.toUpperCase()}`;
+    window.open(formUrl, '_blank');
+}
+
+
 function flickerNotice() {
     const notice = document.getElementById('flickering-notice');
     const flickerInterval = Math.random() * 800 + 300; // Random interval between 500ms and 1500ms
