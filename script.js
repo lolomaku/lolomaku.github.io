@@ -62,17 +62,20 @@ function setupEventListeners() {
 }
 
 function handleSearchInputKeydown(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.key === ' ') {
         createTagFromInput();
     }
     filterCards();
 }
 
 function handleSearchInputKeyup(event) {
-    if (event.key === ',') {
+    if (event.key === ',' || event.key === ' ') {
         createTagFromInput();
     }
 }
+
+
+
 
 function handleModalClick(event) {
     const modal = document.getElementById('modal');
@@ -209,10 +212,11 @@ function generateCardInnerHTML(row, isFree) {
                 </div>
             </div>
         </div>
-        <h3 class="text-4xl font-semibold mt-2 px-2">${row.Title.toLowerCase()}</h3>
-        <p class="mt-0 text-gray-400 px-2"> added last <span class="font-bold text-gray-300 dark:text-gray-300">${row.Date}</span></p>
-        <p class="mt-0 text-gray-400 px-2 pb-2">ID: <span class="font-bold text-gray-300 dark:text-gray-300">${row.ID.toUpperCase()}</span></p>
+        <h3 class="text-4xl font-semibold mt-2 px-2 lora-medium">${row.Title.toLowerCase()}</h3>
+        <p class="mt-0 text-gray-400 px-2 text-sm"> added last <span class="font-bold text-gray-300 dark:text-gray-300">${row.Date}</span></p>
+        <p class="mt-0 text-gray-400 px-2 pb-2 text-sm">ID: <span class="font-bold text-red-300 dark:text-red-300">${row.ID.toUpperCase()}</span></p>
     `;
+
 }
 
 function createSuggestedTagButtons(allTags, container) {
@@ -337,7 +341,7 @@ function updateSelectedImage(selectedImg) {
 function filterCards() {
     const tags = Array.from(selectedTags);
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const searchTerms = searchTerm.split(/[\s,]+/).map(term => term.trim()).filter(term => term !== '');
+    const searchTerms = searchTerm.split(/[\s,]+/).filter(term => term !== '');
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -560,7 +564,7 @@ function createTagFromInput() {
     const inputVal = searchInput.value.trim();
     const noCommaVal = inputVal.replace(/,/g, "");
 
-    if ((inputVal.slice(-1) === "," || event.key === 'Enter') && noCommaVal.length > 0) {
+    if ((inputVal.slice(-1) === "," || event.key === 'Enter' || event.key === ' ') && noCommaVal.length > 0) {
         if (!selectedTags.has(noCommaVal.toLowerCase())) {
             const newTag = compileTag(noCommaVal);
             document.getElementById('suggested-tags').appendChild(newTag);
@@ -623,16 +627,35 @@ function toggleSuggestedTags() {
     }
 }
 
-const placeholders = ["Search...", "Find stickers...", "Look for designs...", "Explore...", "Discover..."];
+let placeholders = [];
 let currentIndex = 0;
 
 function changePlaceholder() {
     const searchInput = document.getElementById('search-input');
-    searchInput.placeholder = placeholders[currentIndex];
-    currentIndex = (currentIndex + 1) % placeholders.length;
+    if (placeholders.length > 0) {
+        if (window.innerWidth > 640) { 
+            searchInput.placeholder = `Search using tags, ID, or artist name: ( ${placeholders[currentIndex]} )`;
+        } else {
+            searchInput.placeholder = `${placeholders[currentIndex]}`;
+        }
+        currentIndex = (currentIndex + 1) % placeholders.length;
+
+    }
+
 }
 
-setInterval(changePlaceholder, 3000);
+function fetchPlaceholdersFromCSV() {
+    Papa.parse(csvUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            placeholders = results.data.slice(0, 5).map(row => `${row.Tags.toLowerCase()}, ${row.ID.toUpperCase()}`);
+            setInterval(changePlaceholder, 2000);
+        }
+    });
+}
+
+fetchPlaceholdersFromCSV();
 
 document.getElementById('modal-close').addEventListener('click', function() {
     closeModal();

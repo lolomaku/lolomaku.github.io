@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
+
+.lora-medium {
+    font-family: "Lora", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
 
 body {
     overflow-x: hidden; /* Always show horizontal scrollbar */
