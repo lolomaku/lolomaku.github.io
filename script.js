@@ -641,7 +641,7 @@ function changePlaceholder() {
     const searchInput = document.getElementById('search-input');
     if (placeholders.length > 0) {
         if (window.innerWidth > 640) { 
-            searchInput.placeholder = `Search using tags, ID, or artist name: ( ${placeholders[currentIndex]} )`;
+            searchInput.placeholder = `Search using tags or ID: ( ${placeholders[currentIndex]} )`;
         } else {
             searchInput.placeholder = `${placeholders[currentIndex]}`;
         }
