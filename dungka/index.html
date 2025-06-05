@@ -1,0 +1,39 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Tumabi Ka D'yan!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body oncontextmenu="return false;">
+
+ <!-- Title Screen -->
+<div id="titleScreen" class="screen active">
+  <img src="assets/title/1.png" alt="Game Title" />
+  <input id="usernameInput" placeholder="ENTER YOUR X USERNAME" />
+  <button id="startBtn">START GAME</button>
+</div>
+
+  <!-- Game Screen -->
+  <div id="gameScreen" class="screen">
+    <div id="countdown"></div>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 30s</div>
+  </div>
+  
+ <!-- Game Over Screen -->
+<div id="gameOverScreen" class="screen">
+  <div id="finalScore">Final Score: 0</div>
+  <button id="restartBtn">Restart</button>
+  <button id="returnToTitleBtn">Back to Title</button>
+</div>
+
+  <!-- Music -->
+  <audio id="music-prestart" src="assets/music/1.mp3" loop></audio>
+  <audio id="music-ingame" src="assets/music/2.mp3" loop></audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
