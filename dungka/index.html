@@ -11,10 +11,12 @@
 
  <!-- Title Screen -->
 <div id="titleScreen" class="screen active">
-  <img src="assets/title/1.png" alt="Game Title" />
-  <input id="usernameInput" placeholder="ENTER YOUR X USERNAME" />
-  <button id="startBtn">START GAME</button>
+  <img id="titleImage" src="assets/title/1.png" alt="Game Title" />
+  <input class="neon-input" id="usernameInput" placeholder="ENTER YOUR X USERNAME" />
+  <button class="neon-btn" id="startBtn">START GAME</button>
 </div>
+
+<div id="power-overlay" style="display: none;"></div>
 
   <!-- Game Screen -->
   <div id="gameScreen" class="screen">
@@ -26,8 +28,8 @@
  <!-- Game Over Screen -->
 <div id="gameOverScreen" class="screen">
   <div id="finalScore">Final Score: 0</div>
-  <button id="restartBtn">Restart</button>
-  <button id="returnToTitleBtn">Back to Title</button>
+  <button class="neon-btn" id="restartBtn">Restart</button>
+  <button class="neon-btn" id="returnToTitleBtn">Back to Title</button>
 </div>
 
   <!-- Music -->

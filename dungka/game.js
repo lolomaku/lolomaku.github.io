@@ -7,10 +7,63 @@ const enemyTypes = [
   { label: "Gratitude", value: -1 },
 ];
 
+const powers = [
+  {
+    name: "timerpause",
+    folder: "assets/timerpause",
+    effect: () => {
+      // Flash visual
+      showPowerOverlay('rgba(0, 255, 255, 0.25)'); // Cyan for freeze
+  
+      // Mute all game sounds
+      muteAll();
+  
+      // Pause countdown
+      clearInterval(countdownTimer);
+  
+      const audio = new Audio("assets/timerpause/sound.mp3");
+      document.body.appendChild(audio);
+      audio.play();
+  
+      audio.addEventListener("ended", () => {
+        audio.remove();
+        unmuteAll(); // Resume game sounds
+        spawnPower();
+        countdownTimer = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = `Time: ${timeLeft}s`;
+          if (timeLeft <= 0) endGame();
+        }, 1000);
+      });
+    }
+  },
+  // {
+  //   name: "killcrabs",
+  //   folder: "assets/killcrabs",
+  //   effect: () => {
+  //     showPowerOverlay();
+  
+  //     document.querySelectorAll(".enemy").forEach(e => {
+  //       if (e.src.includes("crab")) e.remove();
+  //     });
+  
+  //     const audio = new Audio("assets/killcrabs/sound.mp3");
+  //     document.body.appendChild(audio);
+  //     audio.play();
+  //     audio.addEventListener("ended", () => audio.remove());
+  //   }
+  // }
+];
+
+
 let username = "";
 let score = 0;
 let timeLeft = 30;
 let countdownTimer;
+
+let lastPowerTime = 0;
+const powerCooldown = 5000; // 5 seconds
+
 
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
@@ -33,6 +86,7 @@ window.addEventListener("load", () => {
   musicPrestart.play().catch(() => {
     console.warn("🔇 Autoplay blocked. Will start on click.");
   });
+  pulseTitle();
 });
 
 startBtn.addEventListener("click", handleStartBtn);
@@ -82,6 +136,7 @@ function handleStartBtn() {
 
 function startGame() {
   spawnMultipleEnemies();
+  // spawnPower();
 
   countdownTimer = setInterval(() => {
     timeLeft--;
@@ -103,6 +158,75 @@ function spawnMultipleEnemies() {
   }
 }
 
+let powerActive = false;
+
+function spawnPower() {
+  const now = Date.now();
+  if (powerActive || timeLeft <= 0 || now - lastPowerTime < powerCooldown) return;
+
+  powerActive = true;
+  lastPowerTime = now;
+
+  const power = powers[Math.floor(Math.random() * powers.length)];
+  const powerImg = document.createElement("img");
+
+  let frame1 = `${power.folder}/1.png`;
+  let frame2 = `${power.folder}/2.png`;
+  let currentFrame = 0;
+
+  powerImg.src = frame1;
+  powerImg.classList.add("power");
+  powerImg.alt = power.name;
+  powerImg.title = power.name;
+
+  const size = 80;
+  const x = Math.random() * (window.innerWidth - size);
+  const y = Math.random() * (window.innerHeight - size);
+  Object.assign(powerImg.style, {
+    left: `${x}px`,
+    top: `${y}px`,
+    width: `${size}px`,
+    position: "absolute",
+    cursor: "pointer",
+    zIndex: "15",
+    objectFit: "contain",
+    userSelect: "none",
+    pointerEvents: "auto",
+  });
+
+  const animInterval = setInterval(() => {
+    currentFrame = (currentFrame + 1) % 2;
+    powerImg.src = currentFrame === 0 ? frame1 : frame2;
+  }, 300);
+
+  function removePower() {
+    clearInterval(animInterval);
+    powerImg.remove();
+    powerActive = false;
+  }
+
+  function handleClick() {
+    power.effect();
+    removePower();
+  }
+
+  powerImg.addEventListener("click", handleClick);
+  powerImg.addEventListener("touchstart", handleClick);
+
+  document.body.appendChild(powerImg);
+
+  // Power appears for 1s and disappears if not clicked
+  setTimeout(() => {
+    if (document.body.contains(powerImg)) {
+      removePower();
+      // Allow next appearance after cooldown delay
+      setTimeout(spawnPower, powerCooldown);
+    }
+  }, 1000);
+}
+
+
+
 function createEnemy(enemyData) {
   const isNegative = enemyData.value > 0;
   const enemy = document.createElement("img");
@@ -117,7 +241,7 @@ function createEnemy(enemyData) {
     const randIndex = Math.floor(Math.random() * 5) + 1;
     frame1 = `assets/sb${randIndex}/1.png`;
     frame2 = `assets/sb${randIndex}/2.png`;
-    // soundPath = `assets/sb${randIndex}/click.mp3`;
+    soundPath = `assets/sb${randIndex}/click.mp3`;
   }
 
   const sound = soundPath ? new Audio(soundPath) : null;
@@ -218,6 +342,40 @@ function endGame() {
   sendScoreToSheet(score);
 }
 
+ const titleImg = document.getElementById("titleImage");
+  const frames = ["assets/title/1.png", "assets/title/2.png"];
+  let frameIndex = 0;
+
+  function pulseTitle() {
+    // Switch to the next frame
+    frameIndex = (frameIndex + 1) % frames.length;
+    titleImg.src = frames[frameIndex];
+
+    setTimeout(pulseTitle, 1000); // Change every 400ms (adjust if needed)
+  }
+
+function muteAll() {
+  document.querySelectorAll("audio").forEach(audio => {
+    audio.muted = true;
+  });
+}
+
+function unmuteAll() {
+  document.querySelectorAll("audio").forEach(audio => {
+    audio.muted = false;
+  });
+}
+
+function showPowerOverlay(color = 'rgba(255, 255, 0, 0.25)') {
+  const overlay = document.getElementById("power-overlay");
+  overlay.style.background = color;
+  overlay.style.display = "block";
+  overlay.style.animation = "flash 0.3s ease-out forwards";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 300);
+}
 
 function clearAllEnemies() {
   document.querySelectorAll(".enemy").forEach(e => e.remove());
