@@ -132,7 +132,7 @@ let timeLeft = 30;          // Game duration (seconds)
 let countdownTimer;         // Game timer reference
 let powerActive = false;    // Power-up availability flag
 let lastPowerTime = 0;      // Last power-up spawn time
-const powerCooldown = 5000; // Cooldown between power-ups (ms)
+const powerCooldown = Math.random() * 2000 + 2000; // Cooldown between power-ups (ms) // Cooldown between power-ups (ms)
 let gameActive = false;     // Game running state
 let activePowerAudios = []; // Active power audio elements
 let isGentoActive = false;
