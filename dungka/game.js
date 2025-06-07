@@ -26,7 +26,8 @@ const powers = [
     effect: function() {
       // Store reference to power object
       const power = this;
-      
+      isTimerPauseActive = true; // Set the flag
+
       // Visual feedback for freeze effect
       showPowerOverlay('rgba(0, 255, 255, 0.25)');
       
@@ -35,6 +36,9 @@ const powers = [
       
       // Pause game timer
       clearInterval(countdownTimer);
+
+      // Slow down enemy spawn rate
+    powerSpawnRate = 2000; // 3 seconds between spawns
       
       // Select weighted random sound
       const selectedSound = getWeightedRandomSound(power.sounds);
@@ -55,10 +59,14 @@ const powers = [
         const index = activePowerAudios.indexOf(audio);
         if (index > -1) activePowerAudios.splice(index, 1);
         
+        // Restore normal spawn rate
+      powerSpawnRate = 1000;
+      isTimerPauseActive = false;
+
         // Restart game timer
         countdownTimer = setInterval(() => {
           timeLeft--;
-          timerDisplay.textContent = `Time: ${timeLeft}s`;
+          timerDisplay.textContent = `${timeLeft}s`;
           if (timeLeft <= 0) endGame();
         }, 1000);
         powerSpawningStarted = false;
@@ -120,6 +128,84 @@ const powers = [
         spawnPower();
       });
     }
+  },
+  {
+    name: "bazinga",
+    folder: "assets/bazinga",
+    effect: function() {
+      // Visual feedback for electricity effect
+      showPowerOverlay('rgba(0, 100, 255, 0.5)');
+      
+      // Play activation sound
+      const audio = new Audio(`${this.folder}/activation.mp3`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
+      
+      // Collect all negative enemies
+      const negativeEnemies = document.querySelectorAll('.enemy[data-negative="true"]');
+      
+      // Destroy each negative enemy with electricity effect
+      negativeEnemies.forEach((enemy, index) => {
+        setTimeout(() => {
+          // Get enemy position
+          const rect = enemy.getBoundingClientRect();
+          const x = rect.left + rect.width/2;
+          const y = rect.top + rect.height/2;
+          
+          // Create electricity effect
+          createElectricityEffect(x, y);
+          
+          // Add score for this enemy
+          const value = parseInt(enemy.dataset.value);
+          handleEnemyClick(value);
+          
+          // Remove enemy
+          if (enemy.parentNode) {
+            clearInterval(parseInt(enemy.dataset.intervalId));
+            enemy.remove();
+          }
+        }, index * 150); // Staggered destruction
+      });
+      
+      // Clean up after destruction sequence
+      setTimeout(() => {
+        audio.remove();
+        const index = activePowerAudios.indexOf(audio);
+        if (index > -1) activePowerAudios.splice(index, 1);
+        powerSpawningStarted = false;
+        spawnPower();
+      }, negativeEnemies.length * 150 + 500);
+    }
+  },
+  {
+    name: "mana",
+    folder: "assets/mana",
+    effect: function () {
+      showPowerOverlay('rgba(0, 255, 100, 0.25)');
+      powerActive = true;
+  
+      // Add random seconds
+      const addedTime = Math.floor(Math.random() * 11) + 5; // 5–15 seconds
+      timeLeft += addedTime;
+      timerDisplay.textContent = `${timeLeft}s`;
+  
+      // Add glow animation
+      timerDisplay.classList.add("timer-glow");
+      setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
+  
+      // Pick a random sound
+      const audio = new Audio(`assets/mana/sound.mp3`);
+      document.body.appendChild(audio);
+      audio.play();
+  
+      audio.addEventListener("ended", () => {
+        audio.remove();
+        powerActive = false;
+        powerSpawningStarted = false;
+        spawnPower(); // continue power cycle
+      });
+    }
   }
 ];
 
@@ -137,6 +223,8 @@ let gameActive = false;     // Game running state
 let activePowerAudios = []; // Active power audio elements
 let isGentoActive = false;
 let powerSpawningStarted = false;
+let isTimerPauseActive = false;
+let powerSpawnRate = 1000; // Normal spawn rate (1s)
 
 // DOM element references
 const scoreDisplay = document.getElementById("score");
@@ -191,7 +279,6 @@ function showScreen(screenId) {
 /* === GAME FLOW CONTROL === */
 /* ======================== */
 function handleStartBtn() {
-  // Validate username
   const name = usernameInput.value.trim();
   if (!name) {
     alert("Please enter your name.");
@@ -199,32 +286,34 @@ function handleStartBtn() {
   }
 
   username = name;
-  showScreen("gameScreen");
 
-  // Handle audio transition
+  // Switch to countdown screen
+  showScreen("countdownScreen");
+
+  // Stop title music and play game music
   musicPrestart.pause();
   musicPrestart.currentTime = 0;
   musicIngame.play();
 
-  // Reset game state
+  // Reset score, time, and game state
   score = 0;
-  timeLeft = 30;
+  timeLeft = 60;
   gameActive = true;
   updateScore(0);
-  timerDisplay.textContent = "Time: 30s";
+  timerDisplay.textContent = "60s";
 
-  // Start countdown sequence
+  // Countdown logic
+  const countdownText = document.getElementById("countdownText");
   let count = 3;
-  countdownEl.style.display = "block";
-  countdownEl.textContent = count;
+  countdownText.textContent = count;
 
   const countdownInterval = setInterval(() => {
     count--;
     if (count > 0) {
-      countdownEl.textContent = count;
+      countdownText.textContent = count;
     } else {
       clearInterval(countdownInterval);
-      countdownEl.style.display = "none";
+      showScreen("gameScreen");
       startGame();
     }
   }, 1000);
@@ -241,7 +330,7 @@ function startGame() {
   // Start main game timer
   countdownTimer = setInterval(() => {
     timeLeft--;
-    timerDisplay.textContent = `Time: ${timeLeft}s`;
+    timerDisplay.textContent = `${timeLeft}s`;
     if (timeLeft <= 0) endGame();
   }, 1000);
 }
@@ -250,6 +339,10 @@ function endGame() {
   // Set game inactive
   gameActive = false;
   isGentoActive = false;
+  isTimerPauseActive = false; // Add this line
+  // Add explicit power spawn reset
+  powerSpawningStarted = false;
+  powerActive = false;
   
   // Clean up game state
   clearInterval(countdownTimer);
@@ -332,7 +425,7 @@ function spawnMultipleEnemies() {
 
   // Schedule next spawn if game still active
   if (gameActive && timeLeft > 0) {
-    setTimeout(spawnMultipleEnemies, 1000);
+    setTimeout(spawnMultipleEnemies, powerSpawnRate);
   }
 }
 
@@ -366,6 +459,13 @@ function createEnemy(enemyData) {
   enemy.alt = enemyData.label;
   enemy.title = enemyData.label;
 
+  // Add to createEnemy function (inside the createEnemy function)
+  // Mark negative enemies with data attribute
+  enemy.dataset.negative = (enemyData.value > 0).toString();
+  enemy.dataset.value = enemyData.value; // Store value for scoring
+
+
+
   // Position randomly
   const size = 120;
   const x = Math.random() * (window.innerWidth - size);
@@ -390,6 +490,9 @@ function createEnemy(enemyData) {
     enemy.src = currentFrame === 0 ? frame1 : frame2;
   }, 300);
 
+    // Store animation interval ID for cleanup
+    enemy.dataset.intervalId = animationInterval;
+
   function removeEnemy() {
     if (enemy.parentNode) {
       clearInterval(animationInterval);
@@ -400,7 +503,13 @@ function createEnemy(enemyData) {
   // Click handler
   function handleClick() {
     // Use temporary value if available
-    const value = enemyData.tempValue || enemyData.value;
+    let value = enemyData.tempValue || enemyData.value;
+
+    // Apply timerpause bonus to negative emotions
+  if (isTimerPauseActive && value > 0) {
+    value = 2; // +2 instead of +1
+  }
+
     handleEnemyClick(value);
     
     if (sound) {
@@ -430,17 +539,25 @@ function spawnPower() {
     powerSpawningStarted = true;
     
     // Set initial delay before first power spawns
+    const initialDelay = Math.random() * 2000 + 1000;
     setTimeout(() => {
-      if (gameActive) {
-        spawnPower(); // Actually spawn the power after delay
+      if (gameActive && !powerActive) {
+        spawnPower(); // Retry if conditions met
+      } else {
+        // Schedule another attempt if first fails
+        setTimeout(spawnPower, 500); 
       }
-    }, Math.random() * 2000 + 1000); // Random delay between 3-5 seconds
+    }, initialDelay);
     return;
   }
   
   const now = Date.now();
   // Check if power can be spawned
-  if (powerActive || timeLeft <= 0 || now - lastPowerTime < powerCooldown) return;
+  if (powerActive || timeLeft <= 0 || now - lastPowerTime < powerCooldown) {
+    // Add retry instead of exiting
+    setTimeout(spawnPower, 300); 
+    return;
+  }
 
   powerActive = true;
   lastPowerTime = now;
@@ -552,18 +669,49 @@ let scoreFadeTimeout;
 
 function updateScore(newScore) {
   score = newScore;
-  scoreDisplay.textContent = `Score: ${score}`;
+  scoreDisplay.textContent = `${score}`;
   scoreDisplay.style.opacity = 1;
 
-  // Fade out effect
+  // Preserve any active glow during the bump animation
+  const hadPositiveGlow = scoreDisplay.classList.contains("positive-glow");
+  const hadNegativeGlow = scoreDisplay.classList.contains("negative-glow");
+  
   clearTimeout(scoreFadeTimeout);
   scoreFadeTimeout = setTimeout(() => {
     scoreDisplay.style.opacity = 0.3;
   }, 1000);
+  
+  // Add bump animation
+  scoreDisplay.classList.add("bump");
+  setTimeout(() => {
+    scoreDisplay.classList.remove("bump");
+    
+    // Restore glow classes if they were present
+    if (hadPositiveGlow) scoreDisplay.classList.add("positive-glow");
+    if (hadNegativeGlow) scoreDisplay.classList.add("negative-glow");
+  }, 200);
 }
 
+// Update the handleEnemyClick function
 function handleEnemyClick(value) {
+  // First remove any existing glow classes
+  scoreDisplay.classList.remove("positive-glow", "negative-glow");
+  
+  // Apply new glow based on value
+  if (value < 0) {
+    // Positive emotion (value is negative)
+    scoreDisplay.classList.add("positive-glow");
+  } else {
+    // Negative emotion (value is positive)
+    scoreDisplay.classList.add("negative-glow");
+  }
+  
   updateScore(score + value);
+  
+  // Remove the glow after 200ms
+  setTimeout(() => {
+    scoreDisplay.classList.remove("positive-glow", "negative-glow");
+  }, 200);
 }
 
 function pulseTitle() {
@@ -578,6 +726,24 @@ function pulseTitle() {
   }
   
   animate();
+}
+
+function createElectricityEffect(x, y) {
+  const effect = document.createElement("div");
+  effect.className = "electricity";
+  effect.style.left = `${x}px`;
+  effect.style.top = `${y}px`;
+  document.body.appendChild(effect);
+  
+  // Add lightning animation
+  effect.style.animation = "electricityFlash 0.8s ease-out forwards";
+  
+  // Remove after animation
+  setTimeout(() => {
+    if (effect.parentNode) {
+      effect.parentNode.removeChild(effect);
+    }
+  }, 800);
 }
 
 /* ======================== */
@@ -604,13 +770,24 @@ function showPowerOverlay(color = 'rgba(255, 255, 0, 0.25)') {
   overlay.style.display = "block";
   overlay.style.animation = "flash 0.3s ease-out forwards";
 
+  // Add class for slow spawn animation
+  if (color.includes('255, 255')) {
+    document.body.classList.add("timerpause-active");
+  }
+
   setTimeout(() => {
     overlay.style.display = "none";
+    document.body.classList.remove("timerpause-active");
   }, 300);
 }
 
 function clearAllEnemies() {
-  document.querySelectorAll(".enemy").forEach(e => e.remove());
+  document.querySelectorAll(".enemy").forEach(e => {
+    if (e.dataset.intervalId) {
+      clearInterval(parseInt(e.dataset.intervalId));
+    }
+    e.remove();
+  });
 }
 
 function createClickSplash(x, y) {
