@@ -459,7 +459,7 @@ function spawnPower() {
   powerImg.title = power.name;
 
   // Position randomly
-  const size = 80;
+  const size = 100;
   const x = Math.random() * (window.innerWidth - size);
   const y = Math.random() * (window.innerHeight - size);
   
