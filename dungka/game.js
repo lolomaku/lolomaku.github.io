@@ -1,70 +1,142 @@
+/* ======================== */
+/* === GAME CONFIGURATION === */
+/* ======================== */
+
+// Enemy types with their score impact
 const enemyTypes = [
-  { label: "Anger", value: 1 },
-  { label: "Sadness", value: 1 },
-  { label: "Anxiety", value: 1 },
-  { label: "Joy", value: -1 },
-  { label: "Hope", value: -1 },
-  { label: "Gratitude", value: -1 },
+  { label: "Anger", value: 1 },      // Negative emotions (add to score)
+  { label: "Sadness", value: 1 },    // Negative emotions
+  { label: "Anxiety", value: 1 },    // Negative emotions
+  { label: "Joy", value: -1 },       // Positive emotions (subtract from score)
+  { label: "Hope", value: -1 },      // Positive emotions
+  { label: "Gratitude", value: -1 }, // Positive emotions
 ];
 
+
+// Available power-ups in the game
 const powers = [
   {
     name: "timerpause",
     folder: "assets/timerpause",
-    effect: () => {
-      // Flash visual
-      showPowerOverlay('rgba(0, 255, 255, 0.25)'); // Cyan for freeze
-  
+    sounds: [
+      { file: "sound1.mp3", weight: 2 },   // 10% chance (1/10)
+      { file: "sound2.mp3", weight: 3 },   // 30% chance (3/10)
+      { file: "sound3.mp3", weight: 5 },   // 60% chance (6/10)
+    ],
+    effect: function() {
+      // Store reference to power object
+      const power = this;
+      
+      // Visual feedback for freeze effect
+      showPowerOverlay('rgba(0, 255, 255, 0.25)');
+      
       // Mute all game sounds
       muteAll();
-  
-      // Pause countdown
+      
+      // Pause game timer
       clearInterval(countdownTimer);
-  
-      const audio = new Audio("assets/timerpause/sound.mp3");
+      
+      // Select weighted random sound
+      const selectedSound = getWeightedRandomSound(power.sounds);
+      const audio = new Audio(`${power.folder}/${selectedSound.file}`);
       document.body.appendChild(audio);
+      
+      // Track audio element
+      activePowerAudios.push(audio);
       audio.play();
-  
+      
+      // Handle sound completion
       audio.addEventListener("ended", () => {
+        if (!gameActive) return; // Stop if game ended
+        
         audio.remove();
-        unmuteAll(); // Resume game sounds
-        spawnPower();
+        unmuteAll();
+        // Remove from active audios
+        const index = activePowerAudios.indexOf(audio);
+        if (index > -1) activePowerAudios.splice(index, 1);
+        
+        // Restart game timer
         countdownTimer = setInterval(() => {
           timeLeft--;
           timerDisplay.textContent = `Time: ${timeLeft}s`;
           if (timeLeft <= 0) endGame();
         }, 1000);
+
+        spawnPower();
       });
     }
   },
-  // {
-  //   name: "killcrabs",
-  //   folder: "assets/killcrabs",
-  //   effect: () => {
-  //     showPowerOverlay();
-  
-  //     document.querySelectorAll(".enemy").forEach(e => {
-  //       if (e.src.includes("crab")) e.remove();
-  //     });
-  
-  //     const audio = new Audio("assets/killcrabs/sound.mp3");
-  //     document.body.appendChild(audio);
-  //     audio.play();
-  //     audio.addEventListener("ended", () => audio.remove());
-  //   }
-  // }
+  {
+    name: "gento",
+    folder: "assets/gento",
+    effect: () => {
+      // Visual effect
+      showPowerOverlay('rgba(255, 215, 0, 0.25)');
+      isGentoActive = true; // Set the flag
+      // Mute all game sounds
+      muteAll();
+      
+      // Play sound
+      const audio = new Audio("assets/gento/sound.mp3");
+      document.body.appendChild(audio);
+      
+      // Track audio element
+      activePowerAudios.push(audio);
+      audio.play();
+      
+      // Store original enemy data for restoration
+      const originalEnemyTypes = [...enemyTypes];
+      
+      // Modify negative enemies during power-up duration
+      enemyTypes.forEach(type => {
+        if (type.value > 0) { // Negative emotions
+          type.tempValue = 5; // Set temporary score value
+          type.tempFrames = {
+            frame1: "assets/gento/1.png",
+            frame2: "assets/gento/2.png"
+          };
+        }
+      });
+      
+      // Handle sound completion
+      audio.addEventListener("ended", () => {
+        if (!gameActive) return; // Stop if game ended
+        
+        audio.remove();
+        unmuteAll();
+        // Remove from active audios
+        const index = activePowerAudios.indexOf(audio);
+        if (index > -1) activePowerAudios.splice(index, 1);
+        
+        // Restore original enemy data
+        enemyTypes.forEach((type, index) => {
+          if (type.value > 0) {
+            delete type.tempValue;
+            delete type.tempFrames;
+          }
+        });
+        isGentoActive = false; // Clear the flag when effect ends
+        spawnPower();
+      });
+    }
+  }
 ];
 
+/* ======================== */
+/* === GAME STATE & REFERENCES === */
+/* ======================== */
+let username = "";          // Player name
+let score = 0;              // Current score
+let timeLeft = 30;          // Game duration (seconds)
+let countdownTimer;         // Game timer reference
+let powerActive = false;    // Power-up availability flag
+let lastPowerTime = 0;      // Last power-up spawn time
+const powerCooldown = 5000; // Cooldown between power-ups (ms)
+let gameActive = false;     // Game running state
+let activePowerAudios = []; // Active power audio elements
+let isGentoActive = false;
 
-let username = "";
-let score = 0;
-let timeLeft = 30;
-let countdownTimer;
-
-let lastPowerTime = 0;
-const powerCooldown = 5000; // 5 seconds
-
-
+// DOM element references
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
 const startBtn = document.getElementById("startBtn");
@@ -77,28 +149,47 @@ const returnToTitleBtn = document.getElementById("returnToTitleBtn");
 const usernameInput = document.getElementById("usernameInput");
 const countdownEl = document.getElementById("countdown");
 
+// Audio elements
 const musicPrestart = document.getElementById("music-prestart");
 const musicIngame = document.getElementById("music-ingame");
 
+/* ======================== */
+/* === INITIAL SETUP === */
+/* ======================== */
 window.addEventListener("load", () => {
+  // Initialize audio settings
   musicPrestart.volume = 0.5;
   musicIngame.volume = 0.5;
+  
+  // Attempt autoplay with fallback
   musicPrestart.play().catch(() => {
     console.warn("🔇 Autoplay blocked. Will start on click.");
   });
+  
+  // Start title animation
   pulseTitle();
 });
 
+// Start button handler
 startBtn.addEventListener("click", handleStartBtn);
 
+/* ======================== */
+/* === SCREEN MANAGEMENT === */
+/* ======================== */
 function showScreen(screenId) {
+  // Hide all screens
   document.querySelectorAll('.screen').forEach(screen => {
     screen.classList.remove('active');
   });
+  // Show requested screen
   document.getElementById(screenId).classList.add('active');
 }
 
+/* ======================== */
+/* === GAME FLOW CONTROL === */
+/* ======================== */
 function handleStartBtn() {
+  // Validate username
   const name = usernameInput.value.trim();
   if (!name) {
     alert("Please enter your name.");
@@ -108,15 +199,19 @@ function handleStartBtn() {
   username = name;
   showScreen("gameScreen");
 
+  // Handle audio transition
   musicPrestart.pause();
   musicPrestart.currentTime = 0;
   musicIngame.play();
 
+  // Reset game state
   score = 0;
   timeLeft = 30;
+  gameActive = true;
   updateScore(0);
   timerDisplay.textContent = "Time: 30s";
 
+  // Start countdown sequence
   let count = 3;
   countdownEl.style.display = "block";
   countdownEl.textContent = count;
@@ -133,11 +228,12 @@ function handleStartBtn() {
   }, 1000);
 }
 
-
 function startGame() {
+  // Initialize game elements
   spawnMultipleEnemies();
-  // spawnPower();
+  spawnPower();
 
+  // Start main game timer
   countdownTimer = setInterval(() => {
     timeLeft--;
     timerDisplay.textContent = `Time: ${timeLeft}s`;
@@ -145,184 +241,25 @@ function startGame() {
   }, 1000);
 }
 
-function spawnMultipleEnemies() {
-  const numEnemies = Math.floor(Math.random() * 4) + 2;
-
-  for (let i = 0; i < numEnemies; i++) {
-    const enemyData = enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-    createEnemy(enemyData);
-  }
-
-  if (timeLeft > 0) {
-    setTimeout(spawnMultipleEnemies, 1000);
-  }
-}
-
-let powerActive = false;
-
-function spawnPower() {
-  const now = Date.now();
-  if (powerActive || timeLeft <= 0 || now - lastPowerTime < powerCooldown) return;
-
-  powerActive = true;
-  lastPowerTime = now;
-
-  const power = powers[Math.floor(Math.random() * powers.length)];
-  const powerImg = document.createElement("img");
-
-  let frame1 = `${power.folder}/1.png`;
-  let frame2 = `${power.folder}/2.png`;
-  let currentFrame = 0;
-
-  powerImg.src = frame1;
-  powerImg.classList.add("power");
-  powerImg.alt = power.name;
-  powerImg.title = power.name;
-
-  const size = 80;
-  const x = Math.random() * (window.innerWidth - size);
-  const y = Math.random() * (window.innerHeight - size);
-  Object.assign(powerImg.style, {
-    left: `${x}px`,
-    top: `${y}px`,
-    width: `${size}px`,
-    position: "absolute",
-    cursor: "pointer",
-    zIndex: "15",
-    objectFit: "contain",
-    userSelect: "none",
-    pointerEvents: "auto",
-  });
-
-  const animInterval = setInterval(() => {
-    currentFrame = (currentFrame + 1) % 2;
-    powerImg.src = currentFrame === 0 ? frame1 : frame2;
-  }, 300);
-
-  function removePower() {
-    clearInterval(animInterval);
-    powerImg.remove();
-    powerActive = false;
-  }
-
-  function handleClick() {
-    power.effect();
-    removePower();
-  }
-
-  powerImg.addEventListener("click", handleClick);
-  powerImg.addEventListener("touchstart", handleClick);
-
-  document.body.appendChild(powerImg);
-
-  // Power appears for 1s and disappears if not clicked
-  setTimeout(() => {
-    if (document.body.contains(powerImg)) {
-      removePower();
-      // Allow next appearance after cooldown delay
-      setTimeout(spawnPower, powerCooldown);
-    }
-  }, 1000);
-}
-
-
-
-function createEnemy(enemyData) {
-  const isNegative = enemyData.value > 0;
-  const enemy = document.createElement("img");
-  enemy.classList.add("enemy");
-
-  let frame1, frame2, soundPath;
-  if (isNegative) {
-    frame1 = "assets/crab/1.png";
-    frame2 = "assets/crab/2.png";
-    soundPath = "assets/crab/click.mp3";
-  } else {
-    const randIndex = Math.floor(Math.random() * 5) + 1;
-    frame1 = `assets/sb${randIndex}/1.png`;
-    frame2 = `assets/sb${randIndex}/2.png`;
-    soundPath = `assets/sb${randIndex}/click.mp3`;
-  }
-
-  const sound = soundPath ? new Audio(soundPath) : null;
-
-  enemy.src = frame1;
-  enemy.alt = enemyData.label;
-  enemy.title = enemyData.label;
-
-  const size = 120;
-  const x = Math.random() * (window.innerWidth - size);
-  const y = Math.random() * (window.innerHeight - size);
-  Object.assign(enemy.style, {
-    left: `${x}px`,
-    top: `${y}px`,
-    width: "120px",
-    position: "absolute",
-    pointerEvents: "auto",
-    cursor: "pointer",
-    zIndex: "10",
-    objectFit: "contain",
-    userSelect: "none"
-  });
-
-  let currentFrame = 0;
-  const animationInterval = setInterval(() => {
-    currentFrame = (currentFrame + 1) % 2;
-    enemy.src = currentFrame === 0 ? frame1 : frame2;
-  }, 300);
-
-  function removeEnemy() {
-    if (enemy.parentNode) {
-      clearInterval(animationInterval);
-      enemy.remove();
-    }
-  }
-
-  function handleClick() {
-    handleEnemyClick(enemyData.value);
-    if (sound) {
-      sound.currentTime = 0;
-      sound.play();
-    }
-    createClickSplash(enemy.style.left, enemy.style.top);
-    removeEnemy();
-  }
-
-  enemy.addEventListener("click", handleClick);
-  enemy.addEventListener("touchstart", handleClick);
-  document.body.appendChild(enemy);
-
-  if (!isNegative) {
-    const timeout = Math.random() * 2000 + 4000;
-    setTimeout(removeEnemy, timeout);
-  }
-}
-
-let scoreFadeTimeout;
-function updateScore(newScore) {
-  score = newScore;
-  scoreDisplay.textContent = `Score: ${score}`;
-  scoreDisplay.style.opacity = 1;
-
-  clearTimeout(scoreFadeTimeout);
-  scoreFadeTimeout = setTimeout(() => {
-    scoreDisplay.style.opacity = 0.3;
-  }, 1000);
-}
-
-function handleEnemyClick(value) {
-  updateScore(score + value);
-}
-
 function endGame() {
+  // Set game inactive
+  gameActive = false;
+  isGentoActive = false;
+  
+  // Clean up game state
   clearInterval(countdownTimer);
   clearAllEnemies();
+  clearPowerEffects();
 
+  // Handle audio
   musicIngame.pause();
   musicIngame.currentTime = 0;
   musicPrestart.play();
 
+  // Show game over screen
   showScreen("gameOverScreen");
+  
+  // Generate random game over message
   const gameOverMessages = [
     `I'm ${username}, and my score is ${score}!`,
     `${username} scored ${score} points!`,
@@ -336,24 +273,281 @@ function endGame() {
     `${username} showed no mercy and scored ${score}!`
   ];
   
-  const randomMsg = gameOverMessages[Math.floor(Math.random() * gameOverMessages.length)];
-  finalScoreDisplay.textContent = randomMsg;
+  finalScoreDisplay.textContent = gameOverMessages[Math.floor(Math.random() * gameOverMessages.length)];
 
+  // Submit score
   sendScoreToSheet(score);
 }
 
- const titleImg = document.getElementById("titleImage");
+/* ======================== */
+/* === POWER EFFECT CLEANUP === */
+/* ======================== */
+function clearPowerEffects() {
+  // Stop all power audio
+  activePowerAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+    if (audio.parentNode) {
+      audio.parentNode.removeChild(audio);
+    }
+  });
+  activePowerAudios = [];
+  
+  // Hide power overlay
+  document.getElementById("power-overlay").style.display = "none";
+  
+  // Unmute all sounds
+  unmuteAll();
+  
+  // Revert enemy types
+  enemyTypes.forEach(type => {
+    if (type.tempValue) delete type.tempValue;
+    if (type.tempFrames) delete type.tempFrames;
+  });
+}
+
+/* ======================== */
+/* === GAME ELEMENT CREATION === */
+/* ======================== */
+function spawnMultipleEnemies() {
+  // Stop if game ended
+  if (!gameActive) return;
+  
+  // Create 2-5 enemies
+  const numEnemies = Math.floor(Math.random() * 4) + 2;
+  
+  for (let i = 0; i < numEnemies; i++) {
+    const enemyData = enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
+    createEnemy(enemyData);
+  }
+
+  // Schedule next spawn if game still active
+  if (gameActive && timeLeft > 0) {
+    setTimeout(spawnMultipleEnemies, 1000);
+  }
+}
+
+function createEnemy(enemyData) {
+  const isNegative = enemyData.value > 0; // Negative emotion flag
+  const enemy = document.createElement("img");
+  enemy.classList.add("enemy");
+
+  // Use temporary frames if available
+  let frame1, frame2, soundPath;
+  if (isNegative && enemyData.tempFrames) {
+    frame1 = enemyData.tempFrames.frame1;
+    frame2 = enemyData.tempFrames.frame2;
+    soundPath = "assets/gento/click.mp3"; // Optional: custom sound
+  } else if (isNegative) {
+    frame1 = "assets/crab/1.png";
+    frame2 = "assets/crab/2.png";
+    soundPath = "assets/crab/click.mp3";
+  } else {
+    const randIndex = Math.floor(Math.random() * 5) + 1;
+    frame1 = `assets/sb${randIndex}/1.png`;
+    frame2 = `assets/sb${randIndex}/2.png`;
+    soundPath = `assets/sb${randIndex}/click.mp3`;
+  }
+
+  // Create audio object
+  const sound = soundPath ? new Audio(soundPath) : null;
+
+  // Set initial frame
+  enemy.src = frame1;
+  enemy.alt = enemyData.label;
+  enemy.title = enemyData.label;
+
+  // Position randomly
+  const size = 120;
+  const x = Math.random() * (window.innerWidth - size);
+  const y = Math.random() * (window.innerHeight - size);
+  
+  Object.assign(enemy.style, {
+    left: `${x}px`,
+    top: `${y}px`,
+    width: `${size}px`,
+    position: "absolute",
+    pointerEvents: "auto",
+    cursor: "pointer",
+    zIndex: "10",
+    objectFit: "contain",
+    userSelect: "none"
+  });
+
+  // Animation handling
+  let currentFrame = 0;
+  const animationInterval = setInterval(() => {
+    currentFrame = (currentFrame + 1) % 2;
+    enemy.src = currentFrame === 0 ? frame1 : frame2;
+  }, 300);
+
+  function removeEnemy() {
+    if (enemy.parentNode) {
+      clearInterval(animationInterval);
+      enemy.remove();
+    }
+  }
+
+  // Click handler
+  function handleClick() {
+    // Use temporary value if available
+    const value = enemyData.tempValue || enemyData.value;
+    handleEnemyClick(value);
+    
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+    createClickSplash(enemy.style.left, enemy.style.top);
+    removeEnemy();
+  }
+
+  // Register events
+  enemy.addEventListener("click", handleClick);
+  enemy.addEventListener("touchstart", handleClick);
+  document.body.appendChild(enemy);
+
+  // Auto-remove positive emotions after delay
+  if (!isNegative) {
+    setTimeout(removeEnemy, Math.random() * 2000 + 4000);
+  }
+}
+
+function spawnPower() {
+  // Stop if game ended
+  if (!gameActive) return;
+  
+  const now = Date.now();
+  // Check if power can be spawned
+  if (powerActive || timeLeft <= 0 || now - lastPowerTime < powerCooldown) return;
+
+  powerActive = true;
+  lastPowerTime = now;
+
+  const power = powers[Math.floor(Math.random() * powers.length)];
+  const powerImg = document.createElement("img");
+
+  // Set animation frames
+  const frame1 = `${power.folder}/power1.png`;
+  const frame2 = `${power.folder}/power2.png`;
+  let currentFrame = 0;
+
+  powerImg.src = frame1;
+  powerImg.classList.add("power");
+  powerImg.alt = power.name;
+  powerImg.title = power.name;
+
+  // Position randomly
+  const size = 80;
+  const x = Math.random() * (window.innerWidth - size);
+  const y = Math.random() * (window.innerHeight - size);
+  
+  Object.assign(powerImg.style, {
+    left: `${x}px`,
+    top: `${y}px`,
+    width: `${size}px`,
+    position: "absolute",
+    cursor: "pointer",
+    zIndex: "15",
+    objectFit: "contain",
+    userSelect: "none",
+    pointerEvents: "auto",
+  });
+
+  // Animation handling
+  const animInterval = setInterval(() => {
+    currentFrame = (currentFrame + 1) % 2;
+    powerImg.src = currentFrame === 0 ? frame1 : frame2;
+  }, 300);
+
+  function removePower() {
+    clearInterval(animInterval);
+    powerImg.remove();
+    powerActive = false;
+  }
+
+  // Click handler
+  function handleClick() {
+    power.effect();
+    removePower();
+  }
+
+  // Register events
+  powerImg.addEventListener("click", handleClick);
+  powerImg.addEventListener("touchstart", handleClick);
+  document.body.appendChild(powerImg);
+
+  // Auto-remove after timeout
+  setTimeout(() => {
+    if (!gameActive) return; // Stop if game ended
+    
+    if (document.body.contains(powerImg)) {
+      removePower();
+      // Schedule next power-up after cooldown
+      setTimeout(spawnPower, powerCooldown);
+    }
+  }, 1000);
+}
+
+// Helper function for weighted random selection
+function getWeightedRandomSound(sounds) {
+  // Calculate total weight
+  const totalWeight = sounds.reduce((sum, sound) => sum + sound.weight, 0);
+  
+  // Generate random number in range
+  const random = Math.random() * totalWeight;
+  
+  // Find the selected sound based on weight
+  let currentWeight = 0;
+  for (const sound of sounds) {
+    currentWeight += sound.weight;
+    if (random <= currentWeight) {
+      return sound;
+    }
+  }
+  
+  // Fallback to last sound
+  return sounds[sounds.length - 1];
+}
+
+/* ======================== */
+/* === UI/UX FUNCTIONS === */
+/* ======================== */
+let scoreFadeTimeout;
+
+function updateScore(newScore) {
+  score = newScore;
+  scoreDisplay.textContent = `Score: ${score}`;
+  scoreDisplay.style.opacity = 1;
+
+  // Fade out effect
+  clearTimeout(scoreFadeTimeout);
+  scoreFadeTimeout = setTimeout(() => {
+    scoreDisplay.style.opacity = 0.3;
+  }, 1000);
+}
+
+function handleEnemyClick(value) {
+  updateScore(score + value);
+}
+
+function pulseTitle() {
+  const titleImg = document.getElementById("titleImage");
   const frames = ["assets/title/1.png", "assets/title/2.png"];
   let frameIndex = 0;
 
-  function pulseTitle() {
-    // Switch to the next frame
+  function animate() {
     frameIndex = (frameIndex + 1) % frames.length;
     titleImg.src = frames[frameIndex];
-
-    setTimeout(pulseTitle, 1000); // Change every 400ms (adjust if needed)
+    setTimeout(animate, 1000);
   }
+  
+  animate();
+}
 
+/* ======================== */
+/* === AUDIO MANAGEMENT === */
+/* ======================== */
 function muteAll() {
   document.querySelectorAll("audio").forEach(audio => {
     audio.muted = true;
@@ -366,6 +560,9 @@ function unmuteAll() {
   });
 }
 
+/* ======================== */
+/* === VISUAL EFFECTS === */
+/* ======================== */
 function showPowerOverlay(color = 'rgba(255, 255, 0, 0.25)') {
   const overlay = document.getElementById("power-overlay");
   overlay.style.background = color;
@@ -384,12 +581,34 @@ function clearAllEnemies() {
 function createClickSplash(x, y) {
   const splash = document.createElement("div");
   splash.classList.add("splash");
+  
+  // Golden splash for gento power
+  if (isGentoActive) {
+    splash.style.background = "radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,165,0,0.4) 70%, transparent 100%)";
+    splash.style.boxShadow = "0 0 20px 10px gold";
+  } 
+  // Normal splash
+  else {
+    splash.style.background = "rgba(255, 255, 255, 0.6)";
+  }
+
   splash.style.left = x;
   splash.style.top = y;
   document.body.appendChild(splash);
-  setTimeout(() => splash.remove(), 600);
+  
+  // Add animation class
+  splash.style.animation = "splashScale 0.6s ease-out forwards";
+  
+  setTimeout(() => {
+    if (splash.parentNode) {
+      splash.parentNode.removeChild(splash);
+    }
+  }, 600);
 }
 
+/* ======================== */
+/* === SCORE SUBMISSION === */
+/* ======================== */
 function sendScoreToSheet(score) {
   fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
     method: "POST",
@@ -401,7 +620,9 @@ function sendScoreToSheet(score) {
     .catch(err => console.error("❌ Failed to send score", err));
 }
 
-// Game over buttons
+/* ======================== */
+/* === GAME OVER HANDLERS === */
+/* ======================== */
 restartBtn.addEventListener("click", () => {
   showScreen("gameScreen");
   handleStartBtn();
@@ -411,8 +632,13 @@ returnToTitleBtn.addEventListener("click", () => {
   showScreen("titleScreen"); 
 });
 
-// Extra security and UI behavior
+/* ======================== */
+/* === SECURITY MEASURES === */
+/* ======================== */
+// Disable context menu
 document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Block devtools shortcuts
 window.addEventListener('keydown', e => {
   if (
     e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=') ||
@@ -423,20 +649,23 @@ window.addEventListener('keydown', e => {
     e.preventDefault();
   }
 });
+
+// Prevent zooming
 window.addEventListener('wheel', e => {
   if (e.ctrlKey) e.preventDefault();
 }, { passive: false });
 
+// Block touch gestures
 document.addEventListener('gesturestart', e => e.preventDefault());
 document.addEventListener('gesturechange', e => e.preventDefault());
 document.addEventListener('gestureend', e => e.preventDefault());
+
+// Disable image dragging
 document.querySelectorAll('img').forEach(img => {
   img.addEventListener('dragstart', e => e.preventDefault());
 });
-document.addEventListener('dragstart', e => {
-  if (e.target.tagName === 'IMG') e.preventDefault();
-});
 
+// Devtools detection
 let devtoolsOpen = false;
 setInterval(() => {
   const widthThreshold = window.outerWidth - window.innerWidth > 160;
