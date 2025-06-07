@@ -61,7 +61,7 @@ const powers = [
           timerDisplay.textContent = `Time: ${timeLeft}s`;
           if (timeLeft <= 0) endGame();
         }, 1000);
-
+        powerSpawningStarted = false;
         spawnPower();
       });
     }
@@ -116,6 +116,7 @@ const powers = [
           }
         });
         isGentoActive = false; // Clear the flag when effect ends
+        powerSpawningStarted = false;
         spawnPower();
       });
     }
@@ -135,6 +136,7 @@ const powerCooldown = 5000; // Cooldown between power-ups (ms)
 let gameActive = false;     // Game running state
 let activePowerAudios = []; // Active power audio elements
 let isGentoActive = false;
+let powerSpawningStarted = false;
 
 // DOM element references
 const scoreDisplay = document.getElementById("score");
@@ -229,6 +231,9 @@ function handleStartBtn() {
 }
 
 function startGame() {
+  // Reset power spawning flag
+  powerSpawningStarted = false;
+
   // Initialize game elements
   spawnMultipleEnemies();
   spawnPower();
@@ -420,6 +425,18 @@ function createEnemy(enemyData) {
 function spawnPower() {
   // Stop if game ended
   if (!gameActive) return;
+
+  if (!powerSpawningStarted) {
+    powerSpawningStarted = true;
+    
+    // Set initial delay before first power spawns
+    setTimeout(() => {
+      if (gameActive) {
+        spawnPower(); // Actually spawn the power after delay
+      }
+    }, Math.random() * 2000 + 1000); // Random delay between 3-5 seconds
+    return;
+  }
   
   const now = Date.now();
   // Check if power can be spawned
