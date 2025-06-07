@@ -249,6 +249,7 @@ function endGame() {
   // Clean up game state
   clearInterval(countdownTimer);
   clearAllEnemies();
+  clearAllPowerUps(); // Add this line
   clearPowerEffects();
 
   // Handle audio
@@ -304,6 +305,9 @@ function clearPowerEffects() {
     if (type.tempValue) delete type.tempValue;
     if (type.tempFrames) delete type.tempFrames;
   });
+
+    // Ensure powerActive is reset
+    powerActive = false;
 }
 
 /* ======================== */
@@ -459,6 +463,9 @@ function spawnPower() {
     currentFrame = (currentFrame + 1) % 2;
     powerImg.src = currentFrame === 0 ? frame1 : frame2;
   }, 300);
+  
+  // Store interval ID on element for cleanup
+  powerImg.dataset.intervalId = animInterval;
 
   function removePower() {
     clearInterval(animInterval);
@@ -487,6 +494,17 @@ function spawnPower() {
       setTimeout(spawnPower, powerCooldown);
     }
   }, 1000);
+}
+
+function clearAllPowerUps() {
+  document.querySelectorAll(".power").forEach(power => {
+    // Clear animation interval
+    const intervalId = power.dataset.intervalId;
+    if (intervalId) clearInterval(Number(intervalId));
+    
+    // Remove element from DOM
+    power.remove();
+  });
 }
 
 // Helper function for weighted random selection
