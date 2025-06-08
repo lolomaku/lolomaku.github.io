@@ -476,7 +476,7 @@ function getGameOverMessage(score, username) {
     `“Oops ${username}, ${score} lang? Parang ikaw yung natawagan ng ‘DUN KAYO’ ah 😅”`,
     `“SB19 tried their best… pero crabs got through. ${username} scored ${score} only.”`,
     `“Crabs: 1. ${username}: ${score}. Better luck next round!”`,
-    `“${username} nag-zoning IRL. ${score} points. Zone NOT secured 😅”`,
+    `“${username} nag-zoning IRL. ${score} points. The Zone NOT secured 😅”`,
   ];
 
   const negativeScoreMessages = [
