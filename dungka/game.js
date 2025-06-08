@@ -440,21 +440,21 @@ resetGameState();
 
 function getGameOverMessage(score, username) {
 
- const ultimateScoreMessages = [
+  const ultimateScoreMessages = [
     `“🔊 BREAKING NEWS: ${username} just obliterated ${score} crabs. SB19 is shookt. 😳”`,
     `“🎤 ‘Zone cleared, crowd hyped!’ ${username} got ${score} and saved the whole tour!”`,
     `“🛡️ THE ZONE GUARDIAN HAS RISEN. ${username} scored ${score} and crabs are extinct.”`,
     `“🔥 ${username} just performed the real GENTO. ${score} points ng pure destruction.”`,
     `“🚨 SB19 Management is now hiring ${username} as official crab bouncer. ${score} points!”`,
     `“📣 ‘Dun kayooo!’ – you, every second. ${username} scored ${score} in full anti-crab glory.”`,
-    `“SB19 canceled crab invasion forever because ${username} cleared the Zone with ${score}.”`,
+    `“SB19 canceled crab invasion forever because ${username} cleared the zone with ${score}.”`,
     `“🦀💥 ${username} just WMIAN’d the universe. Score: ${score}. Crabs are filing complaints.”`,
     `“🏆 Achievement unlocked: ‘Certified Anti-Crab Legend’. ${username} scored ${score}!”`,
   ];
 
   const highScoreMessages = [
     `“Grabe ka ${username}! You scored ${score}, parang ikaw na ang 6th member ng SB19 anti-crab squad!”`,
-    `“Legend ka, ${username}! ${score} crabs down! The Zone is safe (for now).”`,
+    `“Legend ka, ${username}! ${score} crabs down! The zone is safe (for now).”`,
     `“Zone cleared! ${username} scored ${score} and saved SB19’s rehearsal!”`,
     `“BOOM! ${username} with ${score} points, crabs ran for their lives!”`,
     `“Josh said ‘DUN KAYO!’ and so did ${username}, with a whopping ${score} score!”`,
@@ -468,12 +468,13 @@ function getGameOverMessage(score, username) {
     `“With ${score} points, ${username} just made SB19 proud! G ka na for world tour?”`,
     `“The Zone defended like a champ! ${username} racked up ${score} anti-crab points!”`,
     `“Naka-hyper mode ka ba, ${username}? ${score} points! Pak na pak!”`,
-    `“Walang crab-crab kay ${username}. ${score} points na agad! 😤”`
+    `“Walang crab-crab kay ${username}. ${score} points na agad! 😤”`,
     `“SB19 sa inyo: ‘SALAMAT PO ${username}!’ Dahil sa ${score} points mo.”`,
     `“Hindi ka lang naglaro, ${username} — nag-perform ka rin! ${score} points!”`,
     `“Yung crab, biglang nawala. ${username} came in with ${score} flex!”`,
-    `“The Zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
+    `“The zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
     `“Kung may concert security, ikaw ang frontline. ${score} points, ${username}!”`,
+    `“No one zones like ${username}. ${score} is proof you’re built different.”`,
   ];
 
   const midScoreMessages = [
@@ -488,7 +489,7 @@ function getGameOverMessage(score, username) {
     `“Oops ${username}, ${score} lang? Parang ikaw yung natawagan ng ‘DUN KAYO’ ah 😅”`,
     `“SB19 tried their best… pero crabs got through. ${username} scored ${score} only.”`,
     `“Crabs: 1. ${username}: ${score}. Better luck next round!”`,
-    `“${username} nag-zoning IRL. ${score} points. The Zone NOT secured 😅”`,
+    `“${username} nag-zoning IRL. ${score} points. Zone NOT secured 😅”`,
   ];
 
   const negativeScoreMessages = [
