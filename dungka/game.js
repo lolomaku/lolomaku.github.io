@@ -16,9 +16,60 @@ const enemyTypes = [
 // Available power-ups in the game
 const powers = [
   {
+    name: "wmian",
+    folder: "assets/wmian",
+    rarity: 2,
+    effect: function () {
+      showPowerOverlay('rgba(255, 200, 0, 0.5)');  // More visible overlay
+      isWmianActive = true;
+      powerActive = true;
+      document.body.classList.add("wmian-mode");
+  
+      // Modify enemy types
+      enemyTypes.forEach(type => {
+        if (type.value > 0) type.tempValue = 2; // Regular crab = +2
+        if (type.value < 0) type.tempValue = 0; // Disable penalty
+      });
+  
+      // Start music
+      const audio = new Audio("assets/wmian/sound.mp3");
+      document.body.appendChild(audio);
+      audio.play();
+  
+      // Spawn 5 big crabs over time
+      let bigCrabCount = 0;
+      const bigCrabSpawner = setInterval(() => {
+        if (bigCrabCount >= 5 || !isWmianActive) {
+          clearInterval(bigCrabSpawner);
+          return;
+        }
+        spawnBigWmianCrab();
+        bigCrabCount++;
+      }, 1500);
+  
+      audio.addEventListener("ended", () => {
+        // Cleanup if game ended during power-up
+        if (!gameActive) return;
+        
+        audio.remove();
+        isWmianActive = false;
+        powerActive = false;
+        document.body.classList.remove("wmian-mode");
+  
+        // Revert enemy types
+        enemyTypes.forEach(t => {
+          delete t.tempValue;
+        });
+        
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
+  {
     name: "timerpause",
     folder: "assets/timerpause",
-    rarity: 19, // common
+    rarity: 13, // common
     sounds: [
       { file: "sound1.mp3", weight: 2 },   // 10% chance (1/10)
       { file: "sound2.mp3", weight: 3 },   // 30% chance (3/10)
@@ -87,7 +138,7 @@ const powers = [
   {
     name: "gento",
     folder: "assets/gento",
-    rarity: 19, // common
+    rarity: 13, // common
     effect: () => {
       // Visual effect
       // showPowerOverlay('rgba(255, 215, 0, 0.25)');
@@ -143,7 +194,7 @@ const powers = [
   {
     name: "bazinga",
     folder: "assets/bazinga",
-    rarity: 30, // common
+    rarity: 24, // common
     effect: function() {
       // Visual feedback for electricity effect
       showPowerOverlay('rgba(0, 100, 255, 0.5)');
@@ -193,7 +244,7 @@ const powers = [
   {
     name: "mana",
     folder: "assets/mana",
-    rarity: 30, // common
+    rarity: 24, // common
     effect: function () {
       showPowerOverlay('rgba(0, 255, 100, 0.25)');
       powerActive = true;
@@ -221,57 +272,34 @@ const powers = [
     }
   },
   {
-    name: "wmian",
-    folder: "assets/wmian",
-    rarity: 2,
-    effect: function () {
-      showPowerOverlay('rgba(255, 200, 0, 0.5)');  // More visible overlay
-      isWmianActive = true;
+    name: "crimzone",
+    folder: "assets/crimzone",
+    rarity: 24, // Adjust as desired
+    effect: () => {
+      showPowerOverlay('rgba(255, 0, 0, 0.2)'); // red-tinted overlay
       powerActive = true;
-      document.body.classList.add("wmian-mode");
-  
-      // Modify enemy types
-      enemyTypes.forEach(type => {
-        if (type.value > 0) type.tempValue = 2; // Regular crab = +2
-        if (type.value < 0) type.tempValue = 0; // Disable penalty
-      });
-  
-      // Start music
-      const audio = new Audio("assets/wmian/sound.mp3");
+
+      const audio = new Audio("assets/crimzone/sound.mp3");
       document.body.appendChild(audio);
       audio.play();
   
-      // Spawn 5 big crabs over time
-      let bigCrabCount = 0;
-      const bigCrabSpawner = setInterval(() => {
-        if (bigCrabCount >= 5 || !isWmianActive) {
-          clearInterval(bigCrabSpawner);
-          return;
-        }
-        spawnBigWmianCrab();
-        bigCrabCount++;
-      }, 1500);
+      // Spawn 10 random negative emotion enemies
+      for (let i = 0; i < 10; i++) {
+        const negativeTypes = enemyTypes.filter(e => e.value > 0);
+        const enemyData = {
+          ...negativeTypes[Math.floor(Math.random() * negativeTypes.length)],
+        };
+        createEnemy(enemyData);
+      }
   
       audio.addEventListener("ended", () => {
-        // Cleanup if game ended during power-up
-        if (!gameActive) return;
-        
         audio.remove();
-        isWmianActive = false;
-        powerActive = false;
-        document.body.classList.remove("wmian-mode");
-  
-        // Revert enemy types
-        enemyTypes.forEach(t => {
-          delete t.tempValue;
-        });
-        
+      });
+      powerActive = false;
         powerSpawningStarted = false;
         spawnPower();
-      });
     }
   }
-  
 ];
 
 /* ======================== */
@@ -442,24 +470,24 @@ function getGameOverMessage(score, username) {
 
   const ultimateScoreMessages = [
     `“🔊 BREAKING NEWS: ${username} just obliterated ${score} crabs. SB19 is shookt. 😳”`,
-    `“🎤 ‘Zone cleared, crowd hyped!’ ${username} got ${score} and saved the whole tour!”`,
+    `“🎤 ‘The Zone cleared, crowd hyped!’ ${username} got ${score} and saved the whole tour!”`,
     `“🛡️ THE ZONE GUARDIAN HAS RISEN. ${username} scored ${score} and crabs are extinct.”`,
     `“🔥 ${username} just performed the real GENTO. ${score} points ng pure destruction.”`,
     `“🚨 SB19 Management is now hiring ${username} as official crab bouncer. ${score} points!”`,
     `“📣 ‘Dun kayooo!’ – you, every second. ${username} scored ${score} in full anti-crab glory.”`,
-    `“SB19 canceled crab invasion forever because ${username} cleared the zone with ${score}.”`,
+    `“SB19 canceled crab invasion forever because ${username} cleared The Zone with ${score}.”`,
     `“🦀💥 ${username} just WMIAN’d the universe. Score: ${score}. Crabs are filing complaints.”`,
     `“🏆 Achievement unlocked: ‘Certified Anti-Crab Legend’. ${username} scored ${score}!”`,
   ];
 
   const highScoreMessages = [
     `“Grabe ka ${username}! You scored ${score}, parang ikaw na ang 6th member ng SB19 anti-crab squad!”`,
-    `“Legend ka, ${username}! ${score} crabs down! The zone is safe (for now).”`,
-    `“Zone cleared! ${username} scored ${score} and saved SB19’s rehearsal!”`,
+    `“Legend ka, ${username}! ${score} crabs down! The Zone is safe (for now).”`,
+    `“The Zone cleared! ${username} scored ${score} and saved SB19’s rehearsal!”`,
     `“BOOM! ${username} with ${score} points, crabs ran for their lives!”`,
     `“Josh said ‘DUN KAYO!’ and so did ${username}, with a whopping ${score} score!”`,
     `“Ken is impressed. ${username}, with ${score} points? Pak!”`,
-    `“Justin: ‘Zone secured thanks to ${username} with ${score} hits!’”`,
+    `“Justin: ‘The Zone secured thanks to ${username} with ${score} hits!’”`,
     `“Pablo is proud. ${username} dropped ${score} points to protect the stage.”`,
     `“Stell: ‘Uy ${username}, salamat ah! ${score} points ka? MVP ka talaga!’”`,
     `“Shet ${username}, ${score}?? Hindi ka na gamer — performer ka na!”`,
@@ -472,14 +500,13 @@ function getGameOverMessage(score, username) {
     `“SB19 sa inyo: ‘SALAMAT PO ${username}!’ Dahil sa ${score} points mo.”`,
     `“Hindi ka lang naglaro, ${username} — nag-perform ka rin! ${score} points!”`,
     `“Yung crab, biglang nawala. ${username} came in with ${score} flex!”`,
-    `“The zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
+    `“The Zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
     `“Kung may concert security, ikaw ang frontline. ${score} points, ${username}!”`,
-    `“No one zones like ${username}. ${score} is proof you’re built different.”`,
   ];
 
   const midScoreMessages = [
     `“Nice try, ${username}! Pero may ilang crab pa rin na tumambling sa stage. Score: ${score}.”`,
-    `“Ayos lang ${username}, ${score} crabs down. Pero may sneak pa sa gilid!”`,
+    `“Ayos lang ${username}, ${score} crabs down.`,
     `“Not bad, ${username}! ${score} points sa crab clean-up mission.”`,
     `“Okay yung galaw mo, ${username}. ${score} points achieved. Next game ulit!”`,
     `“SB19: ‘Good effort, ${username}!’ You scored ${score}. Practice makes perfect!”`,
@@ -489,7 +516,7 @@ function getGameOverMessage(score, username) {
     `“Oops ${username}, ${score} lang? Parang ikaw yung natawagan ng ‘DUN KAYO’ ah 😅”`,
     `“SB19 tried their best… pero crabs got through. ${username} scored ${score} only.”`,
     `“Crabs: 1. ${username}: ${score}. Better luck next round!”`,
-    `“${username} nag-zoning IRL. ${score} points. Zone NOT secured 😅”`,
+    `“${username} nag-zoning IRL. ${score} points. The Zone NOT secured 😅”`,
   ];
 
   const negativeScoreMessages = [
