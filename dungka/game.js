@@ -452,7 +452,7 @@ function getGameOverMessage(score, username) {
     `“🏆 Achievement unlocked: ‘Certified Anti-Crab Legend’. ${username} scored ${score}!”`,
   ];
 
-  const highScoreMessages = [
+   const highScoreMessages = [
     `“Grabe ka ${username}! You scored ${score}, parang ikaw na ang 6th member ng SB19 anti-crab squad!”`,
     `“Legend ka, ${username}! ${score} crabs down! The zone is safe (for now).”`,
     `“Zone cleared! ${username} scored ${score} and saved SB19’s rehearsal!”`,
@@ -462,6 +462,18 @@ function getGameOverMessage(score, username) {
     `“Justin: ‘Zone secured thanks to ${username} with ${score} hits!’”`,
     `“Pablo is proud. ${username} dropped ${score} points to protect the stage.”`,
     `“Stell: ‘Uy ${username}, salamat ah! ${score} points ka? MVP ka talaga!’”`,
+    `“Shet ${username}, ${score}?? Hindi ka na gamer — performer ka na!”`,
+    `“Ay grabe... ${username} went full GENTO mode! ${score} points!”`,
+    `“Crabs left the chat. ${username} cleared ${score} worth of bad vibes!”`,
+    `“With ${score} points, ${username} just made SB19 proud! G ka na for world tour?”`,
+    `“The Zone defended like a champ! ${username} racked up ${score} anti-crab points!”`,
+    `“Naka-hyper mode ka ba, ${username}? ${score} points! Pak na pak!”`,
+    `“Walang crab-crab kay ${username}. ${score} points na agad! 😤”`
+    `“SB19 sa inyo: ‘SALAMAT PO ${username}!’ Dahil sa ${score} points mo.”`,
+    `“Hindi ka lang naglaro, ${username} — nag-perform ka rin! ${score} points!”`,
+    `“Yung crab, biglang nawala. ${username} came in with ${score} flex!”`,
+    `“The Zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
+    `“Kung may concert security, ikaw ang frontline. ${score} points, ${username}!”`,
   ];
 
   const midScoreMessages = [
