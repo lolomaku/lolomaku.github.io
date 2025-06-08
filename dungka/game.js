@@ -615,19 +615,22 @@ function spawnPower() {
   // Stop if game ended
   if (!gameActive) return;
 
+  // Declare initialDelay here so it's accessible throughout the function
+  const initialDelay = Math.random() * 2000 + 1000; 
+
   if (!powerSpawningStarted) {
     powerSpawningStarted = true;
     
     // Set initial delay before first power spawns
-    const initialDelay = Math.random() * 2000 + 1000;
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       if (gameActive && !powerActive) {
-        spawnPower(); // Retry if conditions met
+        spawnPower();
       } else {
-        // Schedule another attempt if first fails
         setTimeout(spawnPower, 500); 
       }
     }, initialDelay);
+    
+    activeTimeouts.push(timeoutId);
     return;
   }
   
@@ -1039,6 +1042,13 @@ function createClickSplash(x, y) {
   }, 600);
 }
 
+let devtoolsOpen = false;
+setInterval(() => {
+  const widthThreshold = window.outerWidth - window.innerWidth > 160;
+  const heightThreshold = window.outerHeight - window.innerHeight > 160;
+  devtoolsOpen = widthThreshold || heightThreshold;
+}, 1000);
+
 /* ======================== */
 /* === SCORE SUBMISSION === */
 /* ======================== */
@@ -1046,7 +1056,7 @@ function sendScoreToSheet(score) {
   fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `score=${score}&username=${encodeURIComponent(username)}`
+    body: `score=${score}&username=${encodeURIComponent(username)}&devtools=${devtoolsOpen ? 'yes' : 'no'}`
   })
     .then(res => res.text())
     .then(msg => console.log("✅ Score recorded:", msg))
@@ -1108,9 +1118,3 @@ document.querySelectorAll('img').forEach(img => {
 });
 
 // Devtools detection
-let devtoolsOpen = false;
-setInterval(() => {
-  const widthThreshold = window.outerWidth - window.innerWidth > 160;
-  const heightThreshold = window.outerHeight - window.innerHeight > 160;
-  devtoolsOpen = widthThreshold || heightThreshold;
-}, 1000);
