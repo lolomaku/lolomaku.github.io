@@ -18,6 +18,7 @@ const powers = [
   {
     name: "timerpause",
     folder: "assets/timerpause",
+    rarity: 19, // common
     sounds: [
       { file: "sound1.mp3", weight: 2 },   // 10% chance (1/10)
       { file: "sound2.mp3", weight: 3 },   // 30% chance (3/10)
@@ -29,8 +30,14 @@ const powers = [
       isTimerPauseActive = true; // Set the flag
 
       // Visual feedback for freeze effect
-      showPowerOverlay('rgba(0, 255, 255, 0.25)');
-      
+      // showPowerOverlay('rgba(0, 255, 255, 0.25)');
+      document.body.classList.add("timerpause-active");
+      document.querySelectorAll(".enemy").forEach(e => {
+        if (e.src.includes("crab")) {
+          e.classList.add("crab-colored");
+        }
+      });
+    
       // Mute all game sounds
       muteAll();
       
@@ -69,6 +76,9 @@ const powers = [
           timerDisplay.textContent = `${timeLeft}s`;
           if (timeLeft <= 0) endGame();
         }, 1000);
+
+        document.body.classList.remove("timerpause-active");
+        document.querySelectorAll(".crab-colored").forEach(e => e.classList.remove("crab-colored"));
         powerSpawningStarted = false;
         spawnPower();
       });
@@ -77,9 +87,10 @@ const powers = [
   {
     name: "gento",
     folder: "assets/gento",
+    rarity: 19, // common
     effect: () => {
       // Visual effect
-      showPowerOverlay('rgba(255, 215, 0, 0.25)');
+      // showPowerOverlay('rgba(255, 215, 0, 0.25)');
       isGentoActive = true; // Set the flag
       // Mute all game sounds
       muteAll();
@@ -98,7 +109,7 @@ const powers = [
       // Modify negative enemies during power-up duration
       enemyTypes.forEach(type => {
         if (type.value > 0) { // Negative emotions
-          type.tempValue = 5; // Set temporary score value
+          type.tempValue = 3; // Set temporary score value
           type.tempFrames = {
             frame1: "assets/gento/1.png",
             frame2: "assets/gento/2.png"
@@ -132,6 +143,7 @@ const powers = [
   {
     name: "bazinga",
     folder: "assets/bazinga",
+    rarity: 30, // common
     effect: function() {
       // Visual feedback for electricity effect
       showPowerOverlay('rgba(0, 100, 255, 0.5)');
@@ -181,6 +193,7 @@ const powers = [
   {
     name: "mana",
     folder: "assets/mana",
+    rarity: 30, // common
     effect: function () {
       showPowerOverlay('rgba(0, 255, 100, 0.25)');
       powerActive = true;
@@ -206,7 +219,59 @@ const powers = [
         spawnPower(); // continue power cycle
       });
     }
+  },
+  {
+    name: "wmian",
+    folder: "assets/wmian",
+    rarity: 2,
+    effect: function () {
+      showPowerOverlay('rgba(255, 200, 0, 0.5)');  // More visible overlay
+      isWmianActive = true;
+      powerActive = true;
+      document.body.classList.add("wmian-mode");
+  
+      // Modify enemy types
+      enemyTypes.forEach(type => {
+        if (type.value > 0) type.tempValue = 2; // Regular crab = +2
+        if (type.value < 0) type.tempValue = 0; // Disable penalty
+      });
+  
+      // Start music
+      const audio = new Audio("assets/wmian/sound.mp3");
+      document.body.appendChild(audio);
+      audio.play();
+  
+      // Spawn 5 big crabs over time
+      let bigCrabCount = 0;
+      const bigCrabSpawner = setInterval(() => {
+        if (bigCrabCount >= 5 || !isWmianActive) {
+          clearInterval(bigCrabSpawner);
+          return;
+        }
+        spawnBigWmianCrab();
+        bigCrabCount++;
+      }, 1500);
+  
+      audio.addEventListener("ended", () => {
+        // Cleanup if game ended during power-up
+        if (!gameActive) return;
+        
+        audio.remove();
+        isWmianActive = false;
+        powerActive = false;
+        document.body.classList.remove("wmian-mode");
+  
+        // Revert enemy types
+        enemyTypes.forEach(t => {
+          delete t.tempValue;
+        });
+        
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
   }
+  
 ];
 
 /* ======================== */
@@ -225,7 +290,7 @@ let isGentoActive = false;
 let powerSpawningStarted = false;
 let isTimerPauseActive = false;
 let powerSpawnRate = 1000; // Normal spawn rate (1s)
-
+let isWmianActive = false;
 // DOM element references
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
@@ -340,6 +405,7 @@ function endGame() {
   gameActive = false;
   isGentoActive = false;
   isTimerPauseActive = false; // Add this line
+  isWmianActive = false;
   // Add explicit power spawn reset
   powerSpawningStarted = false;
   powerActive = false;
@@ -382,6 +448,8 @@ function endGame() {
 /* === POWER EFFECT CLEANUP === */
 /* ======================== */
 function clearPowerEffects() {
+
+  isWmianActive = false;
   // Stop all power audio
   activePowerAudios.forEach(audio => {
     audio.pause();
@@ -434,6 +502,14 @@ function createEnemy(enemyData) {
   const enemy = document.createElement("img");
   enemy.classList.add("enemy");
 
+  if (isTimerPauseActive && isNegative) {
+    enemy.classList.add("crab-colored");
+  }
+
+  if (enemyData.label === "PARTY CRAB") {
+    enemy.classList.add("big-crab");
+  }
+
   // Use temporary frames if available
   let frame1, frame2, soundPath;
   if (isNegative && enemyData.tempFrames) {
@@ -451,6 +527,9 @@ function createEnemy(enemyData) {
     soundPath = `assets/sb${randIndex}/click.mp3`;
   }
 
+  if (enemyData.label === "PARTY CRAB") {
+    soundPath = "assets/wmian/click.mp3";
+  }
   // Create audio object
   const sound = soundPath ? new Audio(soundPath) : null;
 
@@ -464,13 +543,10 @@ function createEnemy(enemyData) {
   enemy.dataset.negative = (enemyData.value > 0).toString();
   enemy.dataset.value = enemyData.value; // Store value for scoring
 
-
-
   // Position randomly
-  const size = 120;
-  const x = Math.random() * (window.innerWidth - size);
-  const y = Math.random() * (window.innerHeight - size);
-  
+  const size = 100;
+  const x = enemyData.spawnOverridePosition?.x || Math.random() * (window.innerWidth - size);
+  const y = enemyData.spawnOverridePosition?.y || Math.random() * (window.innerHeight - size);
   Object.assign(enemy.style, {
     left: `${x}px`,
     top: `${y}px`,
@@ -482,6 +558,7 @@ function createEnemy(enemyData) {
     objectFit: "contain",
     userSelect: "none"
   });
+
 
   // Animation handling
   let currentFrame = 0;
@@ -562,7 +639,8 @@ function spawnPower() {
   powerActive = true;
   lastPowerTime = now;
 
-  const power = powers[Math.floor(Math.random() * powers.length)];
+  // const power = powers[Math.floor(Math.random() * powers.length)];
+  const power = chooseWeightedPower();
   const powerImg = document.createElement("img");
 
   // Set animation frames
@@ -629,6 +707,84 @@ function spawnPower() {
     }
   }, 1000);
 }
+
+function chooseWeightedPower() {
+  const totalWeight = powers.reduce((sum, p) => sum + p.rarity, 0);
+  const rand = Math.random() * totalWeight;
+  let acc = 0;
+  for (let power of powers) {
+    acc += power.rarity;
+    if (rand < acc) return power;
+  }
+  return powers[0]; // fallback
+}
+
+function spawnBigWmianCrab() {
+  const big = document.createElement("img");
+  big.src = "assets/wmian/1.png";
+  big.classList.add("enemy", "big-crab");
+  
+  const size = 160;
+  // Calculate a spawn zone near center with padding
+  const padding = 200; // prevent edge clipping
+  const x = Math.random() * (window.innerWidth - size - padding * 2) + padding;
+  const y = Math.random() * (window.innerHeight - size - padding * 2) + padding;
+  const centerX = x + size/2;
+  const centerY = y + size/2;
+
+  Object.assign(big.style, {
+    left: `${x}px`,
+    top: `${y}px`,
+    width: `${size}px`,
+    position: "absolute",
+    pointerEvents: "auto",
+    cursor: "pointer",
+    zIndex: "20",
+    objectFit: "contain",
+    userSelect: "none"
+  });
+
+  let currentFrame = 0;
+  const anim = setInterval(() => {
+    currentFrame = (currentFrame + 1) % 2;
+    big.src = `assets/wmian/${currentFrame + 1}.png`;
+  }, 300);
+
+  big.addEventListener("click", () => {
+    clearInterval(anim);
+    big.remove();
+    const clickSound = new Audio("assets/wmian/click.mp3");
+    clickSound.play();
+    score += 20;
+    updateScore(score);
+    scoreDisplay.classList.add("green-glow");
+    setTimeout(() => scoreDisplay.classList.remove("green-glow"), 200);
+
+    // Create explosion at center of big crab
+    createExplosionEffect(centerX, centerY);
+
+    // Spawn 5 regular crabs around explosion
+    for (let i = 0; i < 5; i++) {
+      const angle = (i / 5) * Math.PI * 2;
+      const distance = 100;
+      const offsetX = centerX + Math.cos(angle) * distance - 60;
+      const offsetY = centerY + Math.sin(angle) * distance - 60;
+      
+      createEnemy({
+        label: "PARTY CRAB",
+        value: 5,
+        tempFrames: {
+          frame1: "assets/wmian/1.png",
+          frame2: "assets/wmian/2.png"
+        },
+        spawnOverridePosition: { x: offsetX, y: offsetY }
+      });
+    }
+  });
+
+  document.body.appendChild(big);
+}
+
 
 function clearAllPowerUps() {
   document.querySelectorAll(".power").forEach(power => {
@@ -783,12 +939,31 @@ function showPowerOverlay(color = 'rgba(255, 255, 0, 0.25)') {
 
 function clearAllEnemies() {
   document.querySelectorAll(".enemy").forEach(e => {
+    // Add null check before clearing interval
     if (e.dataset.intervalId) {
       clearInterval(parseInt(e.dataset.intervalId));
     }
     e.remove();
   });
 }
+
+function createExplosionEffect(x, y) {
+  const explosion = document.createElement("div");
+  explosion.className = "explosion";
+  explosion.style.left = `${x}px`;
+  explosion.style.top = `${y}px`;
+  document.body.appendChild(explosion);
+  
+  // Add explosion animation
+  explosion.style.animation = "explosionScale 0.8s ease-out forwards";
+  
+  setTimeout(() => {
+    if (explosion.parentNode) {
+      explosion.parentNode.removeChild(explosion);
+    }
+  }, 800);
+}
+
 
 function createClickSplash(x, y) {
   const splash = document.createElement("div");
