@@ -286,6 +286,8 @@ let lastPowerTime = 0;      // Last power-up spawn time
 const powerCooldown = Math.random() * 2000 + 2000; // Cooldown between power-ups (ms)
 let gameActive = false;     // Game running state
 let activePowerAudios = []; // Active power audio elements
+let activeTimeouts = [];
+let activeIntervals = [];
 let isGentoActive = false;
 let powerSpawningStarted = false;
 let isTimerPauseActive = false;
@@ -415,7 +417,9 @@ function endGame() {
   clearAllEnemies();
   clearAllPowerUps(); // Add this line
   clearPowerEffects();
-
+// Add comprehensive cleanup
+clearAllTimers();
+resetGameState();
   // Handle audio
   musicIngame.pause();
   musicIngame.currentTime = 0;
@@ -429,12 +433,10 @@ function endGame() {
     `I'm ${username}, and my score is ${score}!`,
     `${username} scored ${score} points!`,
     `Whoa! ${username} just dropped a score of ${score}!`,
-    `${username} fought bravely and earned ${score} points before falling.`,
     `Not bad, ${username}! You scored ${score}. Wanna go again?`,
     `${username}: A legend with ${score} points to their name.`,
     `${username}, you brought so much joy! Score: ${score}`,
     `${username}, thanks for playing! You scored ${score} – great job!`,
-    `${username}, you survived... barely. Final score: ${score}.`,
     `${username} showed no mercy and scored ${score}!`
   ];
   
@@ -493,7 +495,8 @@ function spawnMultipleEnemies() {
 
   // Schedule next spawn if game still active
   if (gameActive && timeLeft > 0) {
-    setTimeout(spawnMultipleEnemies, powerSpawnRate);
+    const timeoutId = setTimeout(spawnMultipleEnemies, powerSpawnRate);
+    activeTimeouts.push(timeoutId);
   }
 }
 
@@ -706,6 +709,14 @@ function spawnPower() {
       setTimeout(spawnPower, powerCooldown);
     }
   }, 1000);
+
+  // Initial delay timeout
+  const initialDelayId = setTimeout(() => { /* ... */ }, initialDelay);
+  activeTimeouts.push(initialDelayId);
+  
+  // Auto-removal timeout
+  const removalTimeoutId = setTimeout(() => { /* ... */ }, 1000);
+  activeTimeouts.push(removalTimeoutId);
 }
 
 function chooseWeightedPower() {
@@ -795,6 +806,32 @@ function clearAllPowerUps() {
     // Remove element from DOM
     power.remove();
   });
+}
+
+function clearAllTimers() {
+  // Clear all tracked timeouts and intervals
+  activeTimeouts.forEach(timeout => clearTimeout(timeout));
+  activeIntervals.forEach(interval => clearInterval(interval));
+  activeTimeouts = [];
+  activeIntervals = [];
+  
+  // Clear main game timers
+  clearInterval(countdownTimer);
+}
+
+function resetGameState() {
+  // Reset all game state variables
+  isGentoActive = false;
+  isTimerPauseActive = false;
+  isWmianActive = false;
+  powerActive = false;
+  powerSpawningStarted = false;
+  powerSpawnRate = 1000;
+  
+  // Clear any remaining DOM elements
+  clearAllEnemies();
+  clearAllPowerUps();
+  clearPowerEffects();
 }
 
 // Helper function for weighted random selection
@@ -939,11 +976,20 @@ function showPowerOverlay(color = 'rgba(255, 255, 0, 0.25)') {
 
 function clearAllEnemies() {
   document.querySelectorAll(".enemy").forEach(e => {
-    // Add null check before clearing interval
     if (e.dataset.intervalId) {
       clearInterval(parseInt(e.dataset.intervalId));
     }
     e.remove();
+  });
+  
+  // Also clear any pending enemy spawn timeouts
+  activeTimeouts = activeTimeouts.filter(id => {
+    try {
+      clearTimeout(id);
+      return false;
+    } catch {
+      return true;
+    }
   });
 }
 
@@ -1011,7 +1057,16 @@ function sendScoreToSheet(score) {
 /* === GAME OVER HANDLERS === */
 /* ======================== */
 restartBtn.addEventListener("click", () => {
+  // Add comprehensive reset before restarting
+  endGame();  // Properly clean up current game
   showScreen("gameScreen");
+  
+  // Reset game state variables
+  score = 0;
+  timeLeft = 60;
+  gameActive = true;
+  
+  // Start new game
   handleStartBtn();
 });
 
