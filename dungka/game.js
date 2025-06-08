@@ -428,23 +428,75 @@ resetGameState();
 
   // Show game over screen
   showScreen("gameOverScreen");
+
+  // const randomMsg = gameOverMessages[Math.floor(Math.random() * gameOverMessages.length)];
+  // finalScoreDisplay.textContent = randomMsg;
   
-  // Generate random game over message
-  const gameOverMessages = [
-    `I'm ${username}, and my score is ${score}!`,
-    `${username} scored ${score} points!`,
-    `Whoa! ${username} just dropped a score of ${score}!`,
-    `Not bad, ${username}! You scored ${score}. Wanna go again?`,
-    `${username}: A legend with ${score} points to their name.`,
-    `${username}, you brought so much joy! Score: ${score}`,
-    `${username}, thanks for playing! You scored ${score} – great job!`,
-    `${username} showed no mercy and scored ${score}!`
-  ];
-  
-  finalScoreDisplay.textContent = gameOverMessages[Math.floor(Math.random() * gameOverMessages.length)];
+  finalScoreDisplay.textContent = getGameOverMessage(score, username);
 
   // Submit score
   sendScoreToSheet(score);
+}
+
+function getGameOverMessage(score, username) {
+
+  const ultimateScoreMessages = [
+    `“🔊 BREAKING NEWS: ${username} just obliterated ${score} crabs. SB19 is shookt. 😳”`,
+    `“🎤 ‘Zone cleared, crowd hyped!’ ${username} got ${score} and saved the whole tour!”`,
+    `“🛡️ THE ZONE GUARDIAN HAS RISEN. ${username} scored ${score} and crabs are extinct.”`,
+    `“🔥 ${username} just performed the real GENTO. ${score} points ng pure destruction.”`,
+    `“🚨 SB19 Management is now hiring ${username} as official crab bouncer. ${score} points!”`,
+    `“📣 ‘Dun kayooo!’ – you, every second. ${username} scored ${score} in full anti-crab glory.”`,
+    `“SB19 canceled crab invasion forever because ${username} cleared the zone with ${score}.”`,
+    `“🦀💥 ${username} just WMIAN’d the universe. Score: ${score}. Crabs are filing complaints.”`,
+    `“🏆 Achievement unlocked: ‘Certified Anti-Crab Legend’. ${username} scored ${score}!”`,
+  ];
+
+  const highScoreMessages = [
+    `“Grabe ka ${username}! You scored ${score}, parang ikaw na ang 6th member ng SB19 anti-crab squad!”`,
+    `“Legend ka, ${username}! ${score} crabs down! The zone is safe (for now).”`,
+    `“Zone cleared! ${username} scored ${score} and saved SB19’s rehearsal!”`,
+    `“BOOM! ${username} with ${score} points, crabs ran for their lives!”`,
+    `“Josh said ‘DUN KAYO!’ and so did ${username}, with a whopping ${score} score!”`,
+    `“Ken is impressed. ${username}, with ${score} points? Pak!”`,
+    `“Justin: ‘Zone secured thanks to ${username} with ${score} hits!’”`,
+    `“Pablo is proud. ${username} dropped ${score} points to protect the stage.”`,
+    `“Stell: ‘Uy ${username}, salamat ah! ${score} points ka? MVP ka talaga!’”`,
+  ];
+
+  const midScoreMessages = [
+    `“Nice try, ${username}! Pero may ilang crab pa rin na tumambling sa stage. Score: ${score}.”`,
+    `“Ayos lang ${username}, ${score} crabs down. Pero may sneak pa sa gilid!”`,
+    `“Not bad, ${username}! ${score} points sa crab clean-up mission.”`,
+    `“Okay yung galaw mo, ${username}. ${score} points achieved. Next game ulit!”`,
+    `“SB19: ‘Good effort, ${username}!’ You scored ${score}. Practice makes perfect!”`,
+  ];
+
+  const lowScoreMessages = [
+    `“Oops ${username}, ${score} lang? Parang ikaw yung natawagan ng ‘DUN KAYO’ ah 😅”`,
+    `“SB19 tried their best… pero crabs got through. ${username} scored ${score} only.”`,
+    `“Crabs: 1. ${username}: ${score}. Better luck next round!”`,
+    `“${username} nag-zoning IRL. ${score} points. Zone NOT secured 😅”`,
+  ];
+
+  const negativeScoreMessages = [
+    `“Ay! ${username}, SB19 ‘yung kinlick mo 😭 -${Math.abs(score)}? Foul ka dun!”`,
+    `“Nooo ${username}! You clicked our boyfriends 😭 Score: ${score}... not good.”`,
+    `“${username} accidentally sabotaged SB19’s stage with a score of ${score} 😅”`,
+    `“SB19 are friends, not food 😭 ${username} got ${score} for friendly fire!”`,
+  ];
+
+   if (score < 0) {
+    return negativeScoreMessages[Math.floor(Math.random() * negativeScoreMessages.length)];
+  } else if (score >= 900) {
+    return ultimateScoreMessages[Math.floor(Math.random() * ultimateScoreMessages.length)];
+  } else if (score >= 300) {
+    return highScoreMessages[Math.floor(Math.random() * highScoreMessages.length)];
+  } else if (score >= 100) {
+    return midScoreMessages[Math.floor(Math.random() * midScoreMessages.length)];
+  } else {
+    return lowScoreMessages[Math.floor(Math.random() * lowScoreMessages.length)];
+  }
 }
 
 /* ======================== */
