@@ -293,6 +293,7 @@ let powerSpawningStarted = false;
 let isTimerPauseActive = false;
 let powerSpawnRate = 1000; // Normal spawn rate (1s)
 let isWmianActive = false;
+
 // DOM element references
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
@@ -830,6 +831,7 @@ function resetGameState() {
   powerActive = false;
   powerSpawningStarted = false;
   powerSpawnRate = 1000;
+  devtoolsOpen = false;
   
   // Clear any remaining DOM elements
   clearAllEnemies();
@@ -1042,17 +1044,36 @@ function createClickSplash(x, y) {
   }, 600);
 }
 
-let devtoolsOpen = false;
-setInterval(() => {
-  const widthThreshold = window.outerWidth - window.innerWidth > 160;
-  const heightThreshold = window.outerHeight - window.innerHeight > 160;
-  devtoolsOpen = widthThreshold || heightThreshold;
-}, 1000);
+const devtoolsCheck = () => {
+  try {
+    const threshold = 100; // Lower threshold for mobile
+    devtoolsOpen = (
+      Math.abs(window.outerWidth - window.innerWidth) > threshold ||
+      Math.abs(window.outerHeight - window.innerHeight) > threshold ||
+      window.Firebug?.firebugEnabled // Undocked detection
+    );
+  } catch {}
+};
+
+// Run check every 500ms + BEFORE SCORE SUBMISSION
+setInterval(devtoolsCheck, 500);
 
 /* ======================== */
 /* === SCORE SUBMISSION === */
 /* ======================== */
 function sendScoreToSheet(score) {
+  const devtoolsNow = (() => {
+    try {
+      const threshold = 160;
+      return (
+        Math.abs(window.outerWidth - window.innerWidth) > threshold ||
+        Math.abs(window.outerHeight - window.innerHeight) > threshold
+      );
+    } catch {
+      return false;
+    }
+  })();
+
   fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },

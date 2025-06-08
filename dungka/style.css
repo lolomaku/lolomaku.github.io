@@ -519,3 +519,42 @@ body.timerpause-active img {
   filter: hue-rotate(var(--hue-rotate, 180deg)) saturate(1.8);
   transition: filter 0.3s;
 }
+
+
+.arcade-message {
+  /* font-family: 'Press Start 2P', 'Orbitron', 'Arial Black', sans-serif; */
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 24px 0;
+  padding: 10px;
+  /* Neon red glow, matching the crab claws and GAME OVER */
+  text-shadow:
+    0 0 4px #ff2a2a,
+    0 0 8px #ff2a2a,
+    0 0 12px #ff2a2a,
+    0 0 20px #d10000,
+    0 2px 4px #000;
+  /* Optional: subtle animation for glowing effect */
+  animation: arcade-glow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes arcade-glow {
+  from {
+    text-shadow:
+      0 0 4px #ff2a2a,
+      0 0 8px #ff2a2a,
+      0 0 12px #ff2a2a,
+      0 0 20px #d10000,
+      0 2px 4px #000;
+  }
+  to {
+    text-shadow:
+      0 0 8px #fff,
+      0 0 16px #ff2a2a,
+      0 0 24px #ff2a2a,
+      0 0 36px #ff2a2a,
+      0 2px 8px #000;
+  }
+}
