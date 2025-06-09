@@ -322,7 +322,8 @@ let isTimerPauseActive = false;
 let powerSpawnRate = 1000; // Normal spawn rate (1s)
 let isWmianActive = false;
 let scoreSubmitted = false; // Add this flag to track submission status
-
+let lastScoreSubmissionTime = 0;
+const SUBMISSION_COOLDOWN = 60000; // 60 seconds in ms
 
 // DOM element references
 const scoreDisplay = document.getElementById("score");
@@ -399,6 +400,7 @@ function handleStartBtn() {
   gameActive = true;
   updateScore(0);
   timerDisplay.textContent = "60s";
+  scoreSubmitted = false;
 
   // Countdown logic
   const countdownText = document.getElementById("countdownText");
@@ -434,8 +436,8 @@ function startGame() {
 }
 
 function endGame() {
-  // Set game inactive
-  gameActive = false;
+  // Submit score only if game was active
+ 
 
   if (!scoreSubmitted) {
     sendScoreToSheet(score);
@@ -471,7 +473,11 @@ resetGameState();
   finalScoreDisplay.textContent = getGameOverMessage(score, username);
 
   // Submit score
-  sendScoreToSheet(score);
+  if (gameActive) {
+    sendScoreToSheet(score);
+  }
+  // Set game inactive
+  gameActive = false;
 }
 
 function getGameOverMessage(score, username) {
@@ -1174,18 +1180,24 @@ function sendScoreToSheet(score) {
     }
   })();
 
+  const now = Date.now();
+
 // Set submission flag immediately
 if (scoreSubmitted) return;
+
+// Enforce 60-second cooldown
+if (now - lastScoreSubmissionTime < SUBMISSION_COOLDOWN) {
+  const secondsLeft = Math.ceil((SUBMISSION_COOLDOWN - (now - lastScoreSubmissionTime)) / 1000);
+  return;
+}
 scoreSubmitted = true;
+lastScoreSubmissionTime = now;
 
   fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `score=${score}&username=${encodeURIComponent(username)}&devtools=${devtoolsOpen ? 'yes' : 'no'}`
   })
-    .then(res => res.text())
-    .then(msg => console.log("✅ Score recorded:", msg))
-    .catch(err => console.error("❌ Failed to send score", err));
 }
 
 /* ======================== */
