@@ -321,6 +321,8 @@ let powerSpawningStarted = false;
 let isTimerPauseActive = false;
 let powerSpawnRate = 1000; // Normal spawn rate (1s)
 let isWmianActive = false;
+let scoreSubmitted = false; // Add this flag to track submission status
+
 
 // DOM element references
 const scoreDisplay = document.getElementById("score");
@@ -434,6 +436,12 @@ function startGame() {
 function endGame() {
   // Set game inactive
   gameActive = false;
+
+  if (!scoreSubmitted) {
+    sendScoreToSheet(score);
+    scoreSubmitted = true;
+  }
+
   isGentoActive = false;
   isTimerPauseActive = false; // Add this line
   isWmianActive = false;
@@ -1166,6 +1174,10 @@ function sendScoreToSheet(score) {
     }
   })();
 
+// Set submission flag immediately
+if (scoreSubmitted) return;
+scoreSubmitted = true;
+
   fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -1180,6 +1192,8 @@ function sendScoreToSheet(score) {
 /* === GAME OVER HANDLERS === */
 /* ======================== */
 restartBtn.addEventListener("click", () => {
+  // Reset submission flag for new game
+  scoreSubmitted = false;
   // Add comprehensive reset before restarting
   endGame();  // Properly clean up current game
   showScreen("gameScreen");
