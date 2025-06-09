@@ -1193,7 +1193,7 @@ if (now - lastScoreSubmissionTime < SUBMISSION_COOLDOWN) {
 scoreSubmitted = true;
 lastScoreSubmissionTime = now;
 
-  fetch("https://script.google.com/macros/s/AKfycbxFr8KtI3WSCraxaE13UUGVlO6oip487adB4EWu4P70OMbE_vWFSlOjwE1e8UN81zUIqg/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzFQ-oiadxbXE5DSSyjjqQ-QnsKADWX2SUOkFEQwxO0xq0g4hTBTxJfVI3u9orK0TXKpA/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `score=${score}&username=${encodeURIComponent(username)}&devtools=${devtoolsOpen ? 'yes' : 'no'}`
