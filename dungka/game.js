@@ -1327,7 +1327,7 @@ function loadLeaderboard() {
       currentScoreRow.innerHTML = `
         <td>${userRank}</td>
         <td><strong>${username}</strong></td>
-        <td>${score}</td>
+        <td>${userHighScore}</td>
       `;
       leaderboardBody.appendChild(currentScoreRow);
       
@@ -1336,8 +1336,8 @@ function loadLeaderboard() {
       highScoreRow.classList.add('current-user');
       highScoreRow.innerHTML = `
         <td></td>
-        <td><strong>Your High Score</strong></td>
-        <td>${userHighScore}</td>
+        <td><strong>Current Score</strong></td>
+        <td>${score}</td>
       `;
       leaderboardBody.appendChild(highScoreRow);
     })

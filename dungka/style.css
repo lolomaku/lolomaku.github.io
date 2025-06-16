@@ -686,6 +686,7 @@ body.timerpause-active img {
   color: #aaf !important;
   font-weight: bold;
   border: 1px solid #55f;
+  font-size: 1em;
 }
 
 .current-user:hover td {
