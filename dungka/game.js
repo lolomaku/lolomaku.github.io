@@ -240,7 +240,6 @@ const powers = [
     });
   }
 },
-  // Update mana power effect
 {
   name: "mana",
   folder: "assets/mana",
@@ -274,8 +273,6 @@ const powers = [
     });
   }
 },
-
-// Update crimzone power effect
 {
   name: "crimzone",
   folder: "assets/crimzone",
@@ -1208,7 +1205,7 @@ if (now - lastScoreSubmissionTime < SUBMISSION_COOLDOWN) {
 scoreSubmitted = true;
 lastScoreSubmissionTime = now;
 
-  fetch("https://script.google.com/macros/s/AKfycbzFQ-oiadxbXE5DSSyjjqQ-QnsKADWX2SUOkFEQwxO0xq0g4hTBTxJfVI3u9orK0TXKpA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwWhP0Lg2xeZNnvmrGEO6fkWF-XyDIjts0t7NRHWrtCIhBvXFuxGos4TYIEWcOJNDnt/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `score=${score}&username=${encodeURIComponent(username)}&devtools=${devtoolsOpen ? 'yes' : 'no'}`
@@ -1289,49 +1286,63 @@ backFromLeaderboardBtn.addEventListener("click", () => {
 
 function loadLeaderboard() {
   const leaderboardBody = document.getElementById('leaderboardBody');
+  const requestedUsername = username;
+  
   leaderboardBody.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
-
-
-  fetch("https://script.google.com/macros/s/AKfycbzFQ-oiadxbXE5DSSyjjqQ-QnsKADWX2SUOkFEQwxO0xq0g4hTBTxJfVI3u9orK0TXKpA/exec")
+  
+  fetch(`https://script.google.com/macros/s/AKfycbwWhP0Lg2xeZNnvmrGEO6fkWF-XyDIjts0t7NRHWrtCIhBvXFuxGos4TYIEWcOJNDnt/exec?username=${encodeURIComponent(requestedUsername)}`)
     .then(res => res.json())
     .then(data => {
-      // Handle both formats: { scores: [...] } or just [...]
-      const list = Array.isArray(data) ? data : data.scores;
-
-      if (!list || !Array.isArray(list)) {
-        throw new Error("Leaderboard data is missing or not in array format.");
-      }
-
-      const sorted = list
-        .filter(entry => entry.username && !isNaN(entry.score))
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 20);
-
-
-leaderboardBody.innerHTML = sorted.map((entry, i) => {
-  let rowClass = "";
-
-  if (i === 0) {
-    rowClass = "first-place";
-  } else if (i === 1) {
-    rowClass = "second-place";
-  } else if (i === 2) {
-    rowClass = "third-place";
-  }
-
-  return `
-    <tr class="${rowClass}">
-      <td>${i + 1}</td>
-      <td><strong>${entry.username}</strong></td>
-      <td>${entry.score}</td>
-    </tr>
-  `;
-}).join("");
-
+      const top5 = data.top5 || [];
+      const userHighScore = data.userHighScore || 0;
+      const userRank = data.userRank || "N/A";
+      
+      // Clear loading message
+      leaderboardBody.innerHTML = '';
+      
+      // Display top 5 players
+      top5.forEach((entry, i) => {
+        const row = document.createElement('tr');
+        
+        if (i === 0) row.classList.add('first-place');
+        else if (i === 1) row.classList.add('second-place');
+        else if (i === 2) row.classList.add('third-place');
+        
+        row.innerHTML = `
+          <td>${entry.rank}</td>
+          <td><strong>${entry.username}</strong></td>
+          <td>${entry.score}</td>
+        `;
+        leaderboardBody.appendChild(row);
+      });
+      
+      // Add separator
+      const separator = document.createElement('tr');
+      separator.innerHTML = '<td colspan="3" style="height: 20px; background: transparent; border-bottom: 1px dashed #444;"></td>';
+      leaderboardBody.appendChild(separator);
+      
+      // Add current user's rank and current score
+      const currentScoreRow = document.createElement('tr');
+      currentScoreRow.classList.add('current-user');
+      currentScoreRow.innerHTML = `
+        <td>${userRank}</td>
+        <td><strong>${username}</strong></td>
+        <td>${score}</td>
+      `;
+      leaderboardBody.appendChild(currentScoreRow);
+      
+      // Add current user's high score
+      const highScoreRow = document.createElement('tr');
+      highScoreRow.classList.add('current-user');
+      highScoreRow.innerHTML = `
+        <td></td>
+        <td><strong>Your High Score</strong></td>
+        <td>${userHighScore}</td>
+      `;
+      leaderboardBody.appendChild(highScoreRow);
     })
     .catch(err => {
       leaderboardBody.innerHTML = '<tr><td colspan="3">Error loading leaderboard</td></tr>';
       console.error("Leaderboard error:", err);
     });
 }
-
