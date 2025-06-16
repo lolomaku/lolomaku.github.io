@@ -191,115 +191,124 @@ const powers = [
       });
     }
   },
-  {
-    name: "bazinga",
-    folder: "assets/bazinga",
-    rarity: 24, // common
-    effect: function() {
-      // Visual feedback for electricity effect
-      showPowerOverlay('rgba(0, 100, 255, 0.5)');
+  // Update the bazinga power effect
+{
+  name: "bazinga",
+  folder: "assets/bazinga",
+  rarity: 24, // common
+  effect: function() {
+    // Visual feedback for electricity effect
+    showPowerOverlay('rgba(0, 100, 255, 0.5)');
+    
+    // Play activation sound
+    const audio = new Audio(`${this.folder}/activation.mp3`);
+    document.body.appendChild(audio);
+    activePowerAudios.push(audio);
+    audio.play();
+    
+    // Collect all negative enemies
+    const negativeEnemies = document.querySelectorAll('.enemy[data-negative="true"]');
+    
+    // Destroy all negative enemies simultaneously
+    negativeEnemies.forEach((enemy) => {
+      // Get enemy position
+      const rect = enemy.getBoundingClientRect();
+      const x = rect.left + rect.width/2;
+      const y = rect.top + rect.height/2;
       
-      // Play activation sound
-      const audio = new Audio(`${this.folder}/activation.mp3`);
-      document.body.appendChild(audio);
-      activePowerAudios.push(audio);
-      audio.play();
+      // Create electricity effect
+      createElectricityEffect(x, y);
       
-      // Collect all negative enemies
-      const negativeEnemies = document.querySelectorAll('.enemy[data-negative="true"]');
+      // Add score for this enemy
+      const value = parseInt(enemy.dataset.value);
+      handleEnemyClick(value);
       
-      // Destroy each negative enemy with electricity effect
-      negativeEnemies.forEach((enemy, index) => {
-        setTimeout(() => {
-          // Get enemy position
-          const rect = enemy.getBoundingClientRect();
-          const x = rect.left + rect.width/2;
-          const y = rect.top + rect.height/2;
-          
-          // Create electricity effect
-          createElectricityEffect(x, y);
-          
-          // Add score for this enemy
-          const value = parseInt(enemy.dataset.value);
-          handleEnemyClick(value);
-          
-          // Remove enemy
-          if (enemy.parentNode) {
-            clearInterval(parseInt(enemy.dataset.intervalId));
-            enemy.remove();
-          }
-        }, index * 150); // Staggered destruction
-      });
-      
-      // Clean up after destruction sequence
-      setTimeout(() => {
-        audio.remove();
-        const index = activePowerAudios.indexOf(audio);
-        if (index > -1) activePowerAudios.splice(index, 1);
-        powerSpawningStarted = false;
-        spawnPower();
-      }, negativeEnemies.length * 150 + 500);
-    }
-  },
-  {
-    name: "mana",
-    folder: "assets/mana",
-    rarity: 24, // common
-    effect: function () {
-      showPowerOverlay('rgba(0, 255, 100, 0.25)');
-      powerActive = true;
-  
-      // Add random seconds
-      const addedTime = Math.floor(Math.random() * 11) + 5; // 5–15 seconds
-      timeLeft += addedTime;
-      timerDisplay.textContent = `${timeLeft}s`;
-  
-      // Add glow animation
-      timerDisplay.classList.add("timer-glow");
-      setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
-  
-      // Pick a random sound
-      const audio = new Audio(`assets/mana/sound.mp3`);
-      document.body.appendChild(audio);
-      audio.play();
-  
-      audio.addEventListener("ended", () => {
-        audio.remove();
-        powerActive = false;
-        powerSpawningStarted = false;
-        spawnPower(); // continue power cycle
-      });
-    }
-  },
-  {
-    name: "crimzone",
-    folder: "assets/crimzone",
-    rarity: 24, // Adjust as desired
-    effect: () => {
-      showPowerOverlay('rgba(255, 0, 0, 0.2)'); // red-tinted overlay
-      powerActive = true;
-
-      const audio = new Audio("assets/crimzone/sound.mp3");
-      document.body.appendChild(audio);
-      audio.play();
-  
-      // Spawn 10 random negative emotion enemies
-      for (let i = 0; i < 10; i++) {
-        const negativeTypes = enemyTypes.filter(e => e.value > 0);
-        const enemyData = {
-          ...negativeTypes[Math.floor(Math.random() * negativeTypes.length)],
-        };
-        createEnemy(enemyData);
+      // Remove enemy
+      if (enemy.parentNode) {
+        clearInterval(parseInt(enemy.dataset.intervalId));
+        enemy.remove();
       }
-  
-      audio.addEventListener("ended", () => {
-        audio.remove();
-      });
-      powerActive = false;
-        powerSpawningStarted = false;
-        spawnPower();
-    }
+    });
+    
+    // Let the audio play completely before cleaning up
+    audio.addEventListener("ended", () => {
+      audio.remove();
+      const index = activePowerAudios.indexOf(audio);
+      if (index > -1) activePowerAudios.splice(index, 1);
+      powerSpawningStarted = false;
+      spawnPower();
+    });
   }
+},
+  // Update mana power effect
+{
+  name: "mana",
+  folder: "assets/mana",
+  rarity: 24, // common
+  effect: function () {
+    showPowerOverlay('rgba(0, 255, 100, 0.25)');
+    powerActive = true;
+
+    // Add random seconds
+    const addedTime = Math.floor(Math.random() * 11) + 5; // 5–15 seconds
+    timeLeft += addedTime;
+    timerDisplay.textContent = `${timeLeft}s`;
+
+    // Add glow animation
+    timerDisplay.classList.add("timer-glow");
+    setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
+
+    // Play sound and let it finish completely
+    const audio = new Audio(`assets/mana/sound.mp3`);
+    document.body.appendChild(audio);
+    activePowerAudios.push(audio);
+    audio.play();
+    
+    audio.addEventListener("ended", () => {
+      audio.remove();
+      const index = activePowerAudios.indexOf(audio);
+      if (index > -1) activePowerAudios.splice(index, 1);
+      powerActive = false;
+      powerSpawningStarted = false;
+      spawnPower();
+    });
+  }
+},
+
+// Update crimzone power effect
+{
+  name: "crimzone",
+  folder: "assets/crimzone",
+  rarity: 24, // Adjust as desired
+  effect: () => {
+    showPowerOverlay('rgba(255, 0, 0, 0.2)'); // red-tinted overlay
+    powerActive = true;
+
+    const audio = new Audio("assets/crimzone/sound.mp3");
+    document.body.appendChild(audio);
+    activePowerAudios.push(audio); // Track audio
+    audio.play();
+
+    // Spawn 10 random negative emotion enemies
+    for (let i = 0; i < 10; i++) {
+      const negativeTypes = enemyTypes.filter(e => e.value > 0);
+      const enemyData = {
+        ...negativeTypes[Math.floor(Math.random() * negativeTypes.length)],
+      };
+      createEnemy(enemyData);
+    }
+
+    // Let audio finish before cleaning up
+    audio.addEventListener("ended", () => {
+      audio.remove();
+      const index = activePowerAudios.indexOf(audio);
+      if (index > -1) activePowerAudios.splice(index, 1);
+      powerActive = false;
+      powerSpawningStarted = false;
+      spawnPower();
+    });
+  }
+}
 ];
 
 /* ======================== */
@@ -379,10 +388,16 @@ function showScreen(screenId) {
 /* ======================== */
 function handleStartBtn() {
   const name = usernameInput.value.trim();
-  if (!name) {
-    alert("Please enter your name.");
-    return;
-  }
+
+if (!name) {
+  alert("Please enter your username.");
+  return;
+}
+
+if (name.length < 4 || name.length > 15) {
+  alert("Username must be between 4 and 15 characters.");
+  return;
+}
 
   username = name;
 
@@ -1257,3 +1272,66 @@ document.querySelectorAll('img').forEach(img => {
 });
 
 // Devtools detection
+
+const leaderboardScreen = document.getElementById("leaderboardScreen");
+const viewLeaderboardBtn = document.getElementById("viewLeaderboardBtn");
+const backFromLeaderboardBtn = document.getElementById("backFromLeaderboardBtn");
+const leaderboardList = document.getElementById("leaderboardList");
+
+viewLeaderboardBtn.addEventListener("click", () => {
+  showScreen("leaderboardScreen");
+  loadLeaderboard();
+});
+
+backFromLeaderboardBtn.addEventListener("click", () => {
+  showScreen("gameOverScreen");
+});
+
+function loadLeaderboard() {
+  const leaderboardBody = document.getElementById('leaderboardBody');
+  leaderboardBody.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
+
+
+  fetch("https://script.google.com/macros/s/AKfycbzFQ-oiadxbXE5DSSyjjqQ-QnsKADWX2SUOkFEQwxO0xq0g4hTBTxJfVI3u9orK0TXKpA/exec")
+    .then(res => res.json())
+    .then(data => {
+      // Handle both formats: { scores: [...] } or just [...]
+      const list = Array.isArray(data) ? data : data.scores;
+
+      if (!list || !Array.isArray(list)) {
+        throw new Error("Leaderboard data is missing or not in array format.");
+      }
+
+      const sorted = list
+        .filter(entry => entry.username && !isNaN(entry.score))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 20);
+
+
+leaderboardBody.innerHTML = sorted.map((entry, i) => {
+  let rowClass = "";
+
+  if (i === 0) {
+    rowClass = "first-place";
+  } else if (i === 1) {
+    rowClass = "second-place";
+  } else if (i === 2) {
+    rowClass = "third-place";
+  }
+
+  return `
+    <tr class="${rowClass}">
+      <td>${i + 1}</td>
+      <td><strong>${entry.username}</strong></td>
+      <td>${entry.score}</td>
+    </tr>
+  `;
+}).join("");
+
+    })
+    .catch(err => {
+      leaderboardBody.innerHTML = '<tr><td colspan="3">Error loading leaderboard</td></tr>';
+      console.error("Leaderboard error:", err);
+    });
+}
+
