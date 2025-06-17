@@ -396,7 +396,7 @@ if (name.length < 4 || name.length > 15) {
   return;
 }
 
-  username = name;
+  username = name.toLowerCase().trim();
 
   // Switch to countdown screen
   showScreen("countdownScreen");
@@ -408,7 +408,7 @@ if (name.length < 4 || name.length > 15) {
 
   // Reset score, time, and game state
   score = 0;
-  timeLeft = 60;
+  timeLeft = 10;
   gameActive = true;
   updateScore(0);
   timerDisplay.textContent = "60s";
@@ -1288,14 +1288,15 @@ function loadLeaderboard() {
   const leaderboardBody = document.getElementById('leaderboardBody');
   const requestedUsername = username;
   
-  leaderboardBody.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
+  // In loadLeaderboard()
+  leaderboardBody.innerHTML = '<tr><td colspan="3"><div class="loading-spinner"></div></td></tr>';
   
-  fetch(`https://script.google.com/macros/s/AKfycbwWhP0Lg2xeZNnvmrGEO6fkWF-XyDIjts0t7NRHWrtCIhBvXFuxGos4TYIEWcOJNDnt/exec?username=${encodeURIComponent(requestedUsername)}`)
+  fetch(`https://script.google.com/macros/s/AKfycbwWhP0Lg2xeZNnvmrGEO6fkWF-XyDIjts0t7NRHWrtCIhBvXFuxGos4TYIEWcOJNDnt/exec?username=${encodeURIComponent(requestedUsername.toLowerCase())}`)
     .then(res => res.json())
     .then(data => {
       const top5 = data.top5 || [];
       const userHighScore = data.userHighScore || 0;
-      const userRank = data.userRank || "N/A";
+      let userRank = data.userRank || "Unranked";
       
       // Clear loading message
       leaderboardBody.innerHTML = '';
