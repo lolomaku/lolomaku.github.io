@@ -408,7 +408,7 @@ if (name.length < 4 || name.length > 15) {
 
   // Reset score, time, and game state
   score = 0;
-  timeLeft = 10;
+  timeLeft = 60;
   gameActive = true;
   updateScore(0);
   timerDisplay.textContent = "60s";
