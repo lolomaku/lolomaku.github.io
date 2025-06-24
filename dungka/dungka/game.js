@@ -253,7 +253,7 @@ const powers = [
         crab.dataset.intervalId = animInterval;
         
         // Movement: straight down at constant speed
-        const speed = 8;
+        const speed = 7;
         let currentY = -size;
         let frameCount = 0;
 
@@ -265,7 +265,7 @@ const powers = [
         
           // Add red trail
           frameCount++;
-          if (frameCount % 3 === 0) {
+          if (frameCount % 7 === 0) {
             const rect = crab.getBoundingClientRect();
             const xTrail = rect.left + rect.width / 5;
             const yTrail = rect.top + rect.height / 5;
@@ -294,7 +294,7 @@ const powers = [
       };
       
       // Spawn crabs continuously during audio
-      const spawnInterval = setInterval(spawnCrimzoneCrab, 100);
+      const spawnInterval = setInterval(spawnCrimzoneCrab, 400);
       activeIntervals.push(spawnInterval);
       
       audio.addEventListener("ended", () => {
@@ -463,7 +463,8 @@ function showScreen(screenId) {
 
 function handleStartBtn() {
   const name = usernameInput.value.trim();
-  if (!name || name.length < 4 || name.length > 15) alert("Enter a valid name. Must be between 4 to 15 characters."); return;
+  if (!name || name.length < 4 || name.length > 15) {
+    alert("Username must be 4 to 15 characters."); return;}
   username = name.toLowerCase();
   showScreen("countdownScreen");
   musicPrestart.pause();
