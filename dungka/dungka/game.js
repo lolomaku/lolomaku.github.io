@@ -294,7 +294,7 @@ const powers = [
       };
       
       // Spawn crabs continuously during audio
-      const spawnInterval = setInterval(spawnCrimzoneCrab, 150);
+      const spawnInterval = setInterval(spawnCrimzoneCrab, 100);
       activeIntervals.push(spawnInterval);
       
       audio.addEventListener("ended", () => {
@@ -463,7 +463,7 @@ function showScreen(screenId) {
 
 function handleStartBtn() {
   const name = usernameInput.value.trim();
-  if (!name || name.length < 4 || name.length > 15) return;
+  if (!name || name.length < 4 || name.length > 15) alert("Enter a valid name. Must be between 4 to 15 characters."); return;
   username = name.toLowerCase();
   showScreen("countdownScreen");
   musicPrestart.pause();
@@ -766,14 +766,18 @@ function spawnPower() {
   }, 1000);
 }
 
+const powerWeights = powers.map(p => p.rarity);
+const totalWeight = powerWeights.reduce((a, b) => a + b, 0);
+
 function chooseWeightedPower() {
-  const totalWeight = powers.reduce((sum, p) => sum + p.rarity, 0);
   const rand = Math.random() * totalWeight;
   let acc = 0;
-  for (let power of powers) {
-    acc += power.rarity;
-    if (rand < acc) return power;
+  
+  for (let i = 0; i < powers.length; i++) {
+    acc += powerWeights[i];
+    if (rand < acc) return powers[i];
   }
+  
   return powers[0];
 }
 
