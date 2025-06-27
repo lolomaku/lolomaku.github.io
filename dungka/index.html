@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 </head>
 <body oncontextmenu="return false;">
 
- <!-- Title Screen -->
+
 <div id="titleScreen" class="screen active">
   <img id="titleImage" src="assets/title/1.png" alt="Game Title" />
   <input class="neon-input" id="usernameInput" placeholder="ENTER YOUR X USERNAME" />
@@ -18,18 +17,17 @@
 
 <div id="power-overlay" style="display: none;"></div>
 
-<!-- Countdown Screen -->
+
 <div id="countdownScreen" class="screen">
   <div id="countdownText">3</div>
 </div>
 
-  <!-- Game Screen -->
   <div id="gameScreen" class="screen">
+    
     <div id="score">0</div>
     <div id="timer">60s</div>
   </div>
   
- <!-- Game Over Screen -->
 <div id="gameOverScreen" class="screen">
   <img id="titleImage" src="assets/gameover/1.png" alt="Game Title" />
   <div id="finalScore" class="arcade-message">Final Score: 0</div>
@@ -38,7 +36,6 @@
   <button class="neon-btn" id="returnToTitleBtn">Back to Title</button>
 </div>
 
-<!-- Leaderboard Screen -->
 <div id="leaderboardScreen" class="screen">
   <h2 class="leaderboard-title">🏆 LEADERBOARD</h2>
   <div id="leaderboardList" class="arcade-message" style="max-height: 60vh; overflow-y: auto;">
@@ -51,7 +48,6 @@
         </tr>
       </thead>
       <tbody id="leaderboardBody">
-        <!-- Rows will be injected here -->
       </tbody>
     </table>
   </div>
@@ -59,7 +55,6 @@
 </div>
 
 
-  <!-- Music -->
   <audio id="music-prestart" src="assets/music/1.mp3" loop></audio>
   <audio id="music-ingame" src="assets/music/2.mp3" loop></audio>
 
