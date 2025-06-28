@@ -618,8 +618,7 @@ const powers = [
       ball.style.pointerEvents = "none";
       ball.style.userSelect = "none";
   
-      // Diagonal movement with equal velocity components
-      const speed = 5;
+      const speed = isMobile ? 3 : 6;
       let vx, vy;
       
       // Always start from a corner with diagonal movement
@@ -1128,6 +1127,7 @@ const usernameInput = document.getElementById("usernameInput");
 const countdownEl = document.getElementById("countdown");
 const musicPrestart = document.getElementById("music-prestart");
 const musicIngame = document.getElementById("music-ingame");
+const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 const powerUsageLog = {
   shown: {},
