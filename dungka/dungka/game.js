@@ -8,197 +8,283 @@ const enemyTypes = [
 ];
 
 const powers = [
-  // {
-  //   name: "wmian",
-  //   folder: "assets/wmian",
-  //   rarity: 2,
-  //   effect: function () {
-  //     showPowerOverlay('rgba(255, 200, 0, 0.5)');
-  //     isWmianActive = true;
-  //     powerActive = true;
-  //     document.body.classList.add("wmian-mode");
+  {
+    name: "wmian",
+    folder: "assets/wmian",
+    rarity: 3,
+    effect: () => {
+      wmianModeActive = true;
+      muteAll();
+
+      powerUsageLog.activated["wmiayn"] = (powerUsageLog.activated["wmiayn"] || 0) + 1;
   
-  //     enemyTypes.forEach(type => {
-  //       if (type.value > 0) type.tempValue = 2;
-  //       if (type.value < 0) type.tempValue = 0;
-  //     });
+      const audio = new Audio("assets/wmian/sound.mp3");
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
   
-  //     const audio = new Audio("assets/wmian/sound.mp3");
-  //     document.body.appendChild(audio);
-  //     audio.play();
+      const allWmianCrabs = []; // Track all spawned crabs (big + small)
   
-  //     let bigCrabCount = 0;
-  //     const bigCrabSpawner = setInterval(() => {
-  //       if (bigCrabCount >= 5 || !isWmianActive) {
-  //         clearInterval(bigCrabSpawner);
-  //         return;
-  //       }
-  //       spawnBigWmianCrab();
-  //       bigCrabCount++;
-  //     }, 1500);
+      const bigCrabCount = Math.floor(Math.random() * 4) + 3; // 3 to 6 big crabs
+      let bigCrabsSpawned = 0;
   
-  //     audio.addEventListener("ended", () => {
-  //       if (!gameActive) return;
-  //       cleanupAudio(audio);
-  //       isWmianActive = false;
-  //       powerActive = false;
-  //       document.body.classList.remove("wmian-mode");
-  //       enemyTypes.forEach(t => delete t.tempValue);
-  //       powerSpawningStarted = false;
-  //       spawnPower();
-  //     });
-  //   }
-  // },
-  // {
-  //   name: "timerpause",
-  //   folder: "assets/timerpause",
-  //   rarity: 13,
-  //   sounds: [
-  //     { file: "sound1.mp3", weight: 2 },
-  //     { file: "sound2.mp3", weight: 3 },
-  //     { file: "sound3.mp3", weight: 5 },
-  //   ],
-  //   effect: function() {
-  //     const power = this;
-  //     isTimerPauseActive = true;
-  //     document.body.classList.add("timerpause-active");
-  //     document.querySelectorAll(".enemy").forEach(e => {
-  //       if (e.src.includes("crab")) e.classList.add("crab-colored");
-  //     });
+      function spawnNextBigCrab() {
+        if (bigCrabsSpawned >= bigCrabCount) return;
+  
+        const bigCrab = spawnBigWmianCrab(allWmianCrabs);
+        allWmianCrabs.push(bigCrab);
+  
+        bigCrabsSpawned++;
+        setTimeout(spawnNextBigCrab, 800); // Delay between each big crab (800ms, adjust if needed)
+      }
+  
+      spawnNextBigCrab();
+  
+      audio.addEventListener("ended", () => {
+        if (!gameActive) return;
+  
+        cleanupAudio(audio);
+        unmuteAll();
+        wmianModeActive = false;
+  
+        // Remove all wmian crabs (big and small)
+        allWmianCrabs.forEach(crab => {
+          if (crab.dataset.wmianFrameInterval) clearInterval(parseInt(crab.dataset.wmianFrameInterval));
+          if (crab.dataset.wmianMoveInterval) clearInterval(parseInt(crab.dataset.wmianMoveInterval));
+          removeElement(crab);
+        });
+  
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },  
+  {
+    name: "timerpause",
+    folder: "assets/timerpause",
+    rarity: 40,
+    sounds: [
+      { file: "sound1.mp3", weight: 2 },
+      { file: "sound2.mp3", weight: 3 },
+      { file: "sound3.mp3", weight: 5 },
+    ],
+    effect: function() {
+      const power = this;
+      isTimerPauseActive = true;
+      document.body.classList.add("timerpause-active");
+      document.querySelectorAll(".enemy").forEach(e => {
+        if (e.src.includes("crab")) e.classList.add("crab-colored");
+      });
     
-  //     muteAll();
-  //     clearInterval(countdownTimer);
-  //     powerSpawnRate = 2000;
+      muteAll();
+
+      powerUsageLog.activated["time"] = (powerUsageLog.activated["time"] || 0) + 1;
+      clearInterval(countdownTimer);
+      powerSpawnRate = 1500;
       
-  //     const selectedSound = getWeightedRandomSound(power.sounds);
-  //     const audio = new Audio(`${power.folder}/${selectedSound.file}`);
-  //     document.body.appendChild(audio);
-  //     activePowerAudios.push(audio);
-  //     audio.play();
+      const selectedSound = getWeightedRandomSound(power.sounds);
+      const audio = new Audio(`${power.folder}/${selectedSound.file}`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
       
-  //     audio.addEventListener("ended", () => {
-  //       if (!gameActive) return;
-  //       cleanupAudio(audio);
-  //       unmuteAll();
-  //       powerSpawnRate = 1000;
-  //       isTimerPauseActive = false;
-  //       startGameTimer();
-  //       document.body.classList.remove("timerpause-active");
-  //       document.querySelectorAll(".crab-colored").forEach(e => e.classList.remove("crab-colored"));
-  //       powerSpawningStarted = false;
-  //       spawnPower();
-  //     });
-  //   }
-  // },
-  // {
-  //   name: "gento",
-  //   folder: "assets/gento",
-  //   rarity: 13,
-  //   effect: () => {
-  //     isGentoActive = true;
-  //     muteAll();
-  //     const audio = new Audio("assets/gento/sound.mp3");
-  //     document.body.appendChild(audio);
-  //     activePowerAudios.push(audio);
-  //     audio.play();
+      audio.addEventListener("ended", () => {
+        if (!gameActive) return;
+        cleanupAudio(audio);
+        unmuteAll();
+        powerSpawnRate = 1000;
+        isTimerPauseActive = false;
+        startGameTimer();
+        document.body.classList.remove("timerpause-active");
+        document.querySelectorAll(".crab-colored").forEach(e => e.classList.remove("crab-colored"));
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
+  {
+    name: "gento",
+    folder: "assets/gento",
+    rarity: 40,
+    effect: () => {
+      isGentoActive = true;
+      muteAll();
+      powerUsageLog.activated["gento"] = (powerUsageLog.activated["gento"] || 0) + 1;
+      powerSpawnRate = 700;
+
+      const audio = new Audio("assets/gento/sound.mp3");
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
+
+      // Transform all existing negative crabs into Gento
+      document.querySelectorAll('.enemy[data-negative="true"]').forEach(crab => {
+        // Clear their current animation interval
+        if (crab.dataset.intervalId) {
+          clearInterval(parseInt(crab.dataset.intervalId));
+          delete crab.dataset.intervalId;
+        }
+
+        // Save original frames and sound
+        if (!crab.dataset.originalFrames) {
+          const frame1 = crab.src;
+          const frame2 = crab.src.includes("1.png") ? crab.src.replace("1.png", "2.png") : crab.src.replace("2.png", "1.png");
+          crab.dataset.originalFrames = JSON.stringify({ frame1, frame2 });
+        }
+        if (!crab.dataset.originalSound) {
+          crab.dataset.originalSound = "assets/crab/click.mp3";
+        }
+
+        // Start Gento animation
+        let currentFrame = 0;
+        const gentoInterval = setInterval(() => {
+          currentFrame = (currentFrame + 1) % 2;
+          crab.src = `assets/gento/${currentFrame + 1}.png`;
+        }, 300);
+        crab.dataset.gentoInterval = gentoInterval;
+        crab.dataset.gentoTransformed = "true";
+      });
+
+      audio.addEventListener("ended", () => {
+        if (!gameActive) return;
+
+        cleanupAudio(audio);
+        unmuteAll();
+        isGentoActive = false;
+        powerSpawnRate = 1000;
+
+        // Revert all Gento crabs back to normal crab form
+        document.querySelectorAll('.enemy[data-gento-transformed="true"]').forEach(crab => {
+          // Stop Gento interval
+          if (crab.dataset.gentoInterval) {
+            clearInterval(parseInt(crab.dataset.gentoInterval));
+            delete crab.dataset.gentoInterval;
+          }
+
+          // Restore original frames
+          if (crab.dataset.originalFrames) {
+            const originalFrames = JSON.parse(crab.dataset.originalFrames);
+            let currentFrame = 0;
+            const originalInterval = setInterval(() => {
+              currentFrame = (currentFrame + 1) % 2;
+              crab.src = currentFrame === 0 ? originalFrames.frame1 : originalFrames.frame2;
+            }, 300);
+            crab.dataset.intervalId = originalInterval;
+            delete crab.dataset.originalFrames;
+          }
+
+          // Remove original sound marker (optional cleanup)
+          if (crab.dataset.originalSound) {
+            delete crab.dataset.originalSound;
+          }
+
+          // Clean up Gento marker
+          delete crab.dataset.gentoTransformed;
+        });
+
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
+  {
+    name: "bazinga",
+    folder: "assets/bazinga",
+    rarity: 60,
+    effect: function() {
+      showPowerOverlay('rgba(0, 100, 255, 0.5)');
+
+      powerUsageLog.activated["bazinga"] = (powerUsageLog.activated["bazinga"] || 0) + 1;
+      const audio = new Audio(`${this.folder}/activation.mp3`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
       
-  //     const originalEnemyTypes = [...enemyTypes];
-  //     enemyTypes.forEach(type => {
-  //       if (type.value > 0) {
-  //         type.tempValue = 3;
-  //         type.tempFrames = {
-  //           frame1: "assets/gento/1.png",
-  //           frame2: "assets/gento/2.png"
-  //         };
-  //       }
-  //     });
+      const negativeEnemies = document.querySelectorAll('.enemy[data-negative="true"]');
+      let wyatReward = 0;
       
-  //     audio.addEventListener("ended", () => {
-  //       if (!gameActive) return;
-  //       cleanupAudio(audio);
-  //       unmuteAll();
-  //       enemyTypes.forEach((type, index) => {
-  //         if (type.value > 0) {
-  //           delete type.tempValue;
-  //           delete type.tempFrames;
-  //         }
-  //       });
-  //       isGentoActive = false;
-  //       powerSpawningStarted = false;
-  //       spawnPower();
-  //     });
-  //   }
-  // },
-  // {
-  //   name: "bazinga",
-  //   folder: "assets/bazinga",
-  //   rarity: 24,
-  //   effect: function() {
-  //     showPowerOverlay('rgba(0, 100, 255, 0.5)');
-  //     const audio = new Audio(`${this.folder}/activation.mp3`);
-  //     document.body.appendChild(audio);
-  //     activePowerAudios.push(audio);
-  //     audio.play();
+      negativeEnemies.forEach((enemy) => {
+        const rect = enemy.getBoundingClientRect();
+        const x = rect.left + rect.width/2;
+        const y = rect.top + rect.height/2;
+        createElectricityEffect(x, y);
+        
+        // Handle WYAT crab separately
+        if (enemy.classList.contains("wyat-crab")) {
+          // Double the rewinded score
+          wyatReward = parseInt(enemy.dataset.rewinded || "0") * 3;
+        } else {
+          // Regular negative enemy
+          const value = parseInt(enemy.dataset.value);
+          handleEnemyClick(value * 2);
+        }
+        
+        removeElement(enemy);
+      });
       
-  //     const negativeEnemies = document.querySelectorAll('.enemy[data-negative="true"]');
-  //     negativeEnemies.forEach((enemy) => {
-  //       const rect = enemy.getBoundingClientRect();
-  //       const x = rect.left + rect.width/2;
-  //       const y = rect.top + rect.height/2;
-  //       createElectricityEffect(x, y);
-  //       const value = parseInt(enemy.dataset.value);
-  //       handleEnemyClick(value);
-  //       removeElement(enemy);
-  //     });
+      // Apply WYAT reward after clearing all enemies
+      if (wyatReward > 0) {
+        updateScore(score + wyatReward);
+      }
       
-  //     audio.addEventListener("ended", () => {
-  //       cleanupAudio(audio);
-  //       powerSpawningStarted = false;
-  //       spawnPower();
-  //     });
-  //   }
-  // },
-  // {
-  //   name: "mana",
-  //   folder: "assets/mana",
-  //   rarity: 24,
-  //   effect: function () {
-  //     showPowerOverlay('rgba(0, 255, 100, 0.25)');
-  //     powerActive = true;
-  //     const addedTime = Math.floor(Math.random() * 11) + 5;
-  //     timeLeft += addedTime;
-  //     timerDisplay.textContent = `${timeLeft}s`;
-  //     timerDisplay.classList.add("timer-glow");
-  //     setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
-  //     const audio = new Audio(`assets/mana/sound.mp3`);
-  //     document.body.appendChild(audio);
-  //     activePowerAudios.push(audio);
-  //     audio.play();
+      audio.addEventListener("ended", () => {
+        cleanupAudio(audio);
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
+  {
+    name: "mana",
+    folder: "assets/mana",
+    rarity: 30,
+    effect: function () {
+      showPowerOverlay('rgba(0, 255, 100, 0.25)');
+      powerUsageLog.activated["mana"] = (powerUsageLog.activated["mana"] || 0) + 1;
+      powerActive = true;
+      const addedTime = Math.floor(Math.random() * 11) + 5;
+      timeLeft += addedTime;
+      timerDisplay.textContent = `${timeLeft}s`;
+      timerDisplay.classList.add("timer-glow");
+      setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
+      const audio = new Audio(`assets/mana/sound.mp3`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
       
-  //     audio.addEventListener("ended", () => {
-  //       cleanupAudio(audio);
-  //       powerActive = false;
-  //       powerSpawningStarted = false;
-  //       spawnPower();
-  //     });
-  //   }
-  // },
+      audio.addEventListener("ended", () => {
+        cleanupAudio(audio);
+        powerActive = false;
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
   {
     name: "crimzone",
     folder: "assets/crimzone",
-    rarity: 24,
+    rarity: 25,
     effect: () => {
       showPowerOverlay('rgba(255, 0, 0, 0.2)');
       powerActive = true;
       isCrimzoneActive = true;
       muteAll();
+      powerUsageLog.activated["crimzone"] = (powerUsageLog.activated["crimzone"] || 0) + 1;
       activeTimeouts.forEach(timeout => clearTimeout(timeout));
       activeTimeouts = [];
       powerSpawnRate = 17000;
 
+      timerInterval = 2000;
+      startGameTimer();
+
       let totalClearedScore = 0;
       document.querySelectorAll(".enemy").forEach(enemy => {
-        const value = parseInt(enemy.dataset.value || 1);
+        let value = parseInt(enemy.dataset.value || 1);
+        if (enemy.classList.contains("wyat-crab")) {
+          const rewinded = parseInt(enemy.dataset.rewinded || "0");
+          console.log(rewinded);
+          value = rewinded * 3;
+        }
         totalClearedScore += value;
         const rect = enemy.getBoundingClientRect();
         const x = rect.left + rect.width/2;
@@ -221,7 +307,7 @@ const powers = [
         const crab = document.createElement("img");
         crab.classList.add("enemy", "crimzone-crab");
         crab.dataset.negative = "true";
-        crab.dataset.value = "4";
+        crab.dataset.value = "5";
         
         // Crab frames
         const frame1 = "assets/crab/1.png";
@@ -280,8 +366,6 @@ const powers = [
           }
         };
         
-        
-        
         // Click handler
         crab.addEventListener("click", () => {
           handleEnemyClick(4);
@@ -304,44 +388,58 @@ const powers = [
         unmuteAll();
         powerSpawnRate = 1000;
         isCrimzoneActive = false;
+        timerInterval = 1000;
+        startGameTimer();
         powerActive = false;
         cleanupAudio(audio);
         powerSpawningStarted = false;
-        spawnPower();
         spawnMultipleEnemies();
+        spawnPower();
       });
     }
   },
   {
     name: "sfts",
     folder: "assets/sfts",
-    rarity: 18,
-    effect: function() {
+    rarity: 25,
+    effect: function () {
       isSftsActive = true;
       powerActive = true;
       muteAll();
+      powerUsageLog.activated["sfts"] = (powerUsageLog.activated["sfts"] || 0) + 1;
       activeTimeouts.forEach(timeout => clearTimeout(timeout));
       activeTimeouts = [];
       powerSpawnRate = 17000;
-      
+  
+      timerInterval = 2000;
+      startGameTimer();
+  
       let totalClearedScore = 0;
       document.querySelectorAll(".enemy").forEach(enemy => {
-        const value = parseInt(enemy.dataset.value || 1);
+        let value = parseInt(enemy.dataset.value || 1);
+        if (enemy.classList.contains("wyat-crab")) {
+          const rewinded = parseInt(enemy.dataset.rewinded || "0");
+          console.log(rewinded);
+          value = rewinded * 3;
+        }
         totalClearedScore += value;
         const rect = enemy.getBoundingClientRect();
-        const x = rect.left + rect.width/2;
-        const y = rect.top + rect.height/2;
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
         createElectricityEffect(x, y);
         removeElement(enemy);
       });
       updateScore(score + totalClearedScore);
+  
       const audio = new Audio(`${this.folder}/sound.mp3`);
       document.body.appendChild(audio);
       activePowerAudios.push(audio);
       audio.play();
+  
       const sftsCrabs = [];
-      const spawnCrab = () => {
-        if (!gameActive || !isSftsActive) return;
+      let spawnCrabNext = true;
+  
+      function spawnSftsCrab() {
         const crab = document.createElement("img");
         crab.classList.add("sfts-crab");
         crab.src = `${this.folder}/1.png`;
@@ -353,11 +451,11 @@ const powers = [
           pointerEvents: "auto",
           cursor: "pointer"
         });
-        const startX = Math.random() * (window.innerWidth + 200) - 100; 
-        const startY = -100;
+        const startX = Math.random() * (window.innerWidth + 200) - 100;
         const endX = Math.random() * window.innerWidth;
         crab.style.left = `${startX}px`;
         crab.style.top = "-100px";
+  
         let frame1 = `${this.folder}/1.png`;
         let frame2 = `${this.folder}/2.png`;
         let currentFrame = 0;
@@ -366,9 +464,11 @@ const powers = [
           crab.src = currentFrame === 0 ? frame1 : frame2;
         }, 200);
         crab.dataset.frameInterval = frameInterval;
+  
         const startTime = Date.now();
         const duration = 3000;
-        let frameCount = 0; 
+        let frameCount = 0;
+  
         const animate = () => {
           if (!crab.parentNode || !isSftsActive) return;
           const elapsed = Date.now() - startTime;
@@ -384,30 +484,611 @@ const powers = [
           if (progress < 1) requestAnimationFrame(animate);
           else removeElement(crab);
         };
+  
         crab.addEventListener("click", () => {
           handleEnemyClick(5);
           removeElement(crab);
         });
+  
         document.body.appendChild(crab);
         sftsCrabs.push(crab);
         requestAnimationFrame(animate);
-      };
-      sftsSpawnInterval = setInterval(spawnCrab, 600);
+      }
+  
+      function spawnSftsPositive() {
+        const sbIndex = Math.floor(Math.random() * 5) + 1;
+        const enemy = document.createElement("img");
+        enemy.classList.add("sfts-positive", "enemy");
+        enemy.src = `assets/sb${sbIndex}/1.png`;
+        Object.assign(enemy.style, {
+          position: "fixed",
+          zIndex: "50",
+          width: "100px",
+          height: "100px",
+          pointerEvents: "auto",
+          cursor: "pointer"
+        });
+  
+        const startX = Math.random() * (window.innerWidth + 200) - 100;
+        const endX = Math.random() * window.innerWidth;
+        enemy.style.left = `${startX}px`;
+        enemy.style.top = "-100px";
+  
+        let frame1 = `assets/sb${sbIndex}/1.png`;
+        let frame2 = `assets/sb${sbIndex}/2.png`;
+        let currentFrame = 0;
+        const frameInterval = setInterval(() => {
+          currentFrame = (currentFrame + 1) % 2;
+          enemy.src = currentFrame === 0 ? frame1 : frame2;
+        }, 300);
+        enemy.dataset.frameInterval = frameInterval;
+  
+        enemy.dataset.value = "-3";
+        enemy.dataset.negative = "false";
+  
+        const startTime = Date.now();
+        const duration = 3000;
+        let frameCount = 0;
+  
+        const animate = () => {
+          if (!enemy.parentNode || !isSftsActive) return;
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const x = startX + (endX - startX) * progress;
+          const y = -100 + (window.innerHeight + 200) * progress;
+          const rotation = progress * 360;
+          enemy.style.left = `${x}px`;
+          enemy.style.top = `${y}px`;
+          enemy.style.transform = `rotate(${rotation}deg)`;
+          if (frameCount % 3 === 0) createTrailParticle(x, y);
+          frameCount++;
+          if (progress < 1) requestAnimationFrame(animate);
+          else removeElement(enemy);
+        };
+  
+        enemy.addEventListener("click", () => {
+          handleEnemyClick(-3);
+          const voice = new Audio(`assets/sb${sbIndex}/click.mp3`);
+          voice.play();
+          removeElement(enemy);
+        });
+  
+        document.body.appendChild(enemy);
+        sftsCrabs.push(enemy);
+        requestAnimationFrame(animate);
+      }
+  
+      // Main SFTS interval – alternating spawn
+      sftsSpawnInterval = setInterval(() => {
+        if (!gameActive || !isSftsActive) return;
+      
+        const roll = Math.random(); // 0 to 1
+        if (roll < 0.8) {
+          spawnSftsCrab.call(this);   // 70% chance
+        } else {
+          spawnSftsPositive();        // 30% chance
+        }
+      }, 600);
+  
       audio.addEventListener("ended", () => {
         if (!gameActive) return;
         clearInterval(sftsSpawnInterval);
         document.querySelectorAll(".sfts-crab").forEach(removeElement);
+        document.querySelectorAll(".sfts-positive").forEach(removeElement);
         powerSpawnRate = 1000;
         isSftsActive = false;
         powerActive = false;
+        timerInterval = 1000;
+        startGameTimer();
         unmuteAll();
         cleanupAudio(audio);
+        powerSpawningStarted = false;
+        spawnPower();
+         spawnMultipleEnemies();
+      });
+    }
+  },
+  {
+    name: "8tonball",
+    folder: "assets/8tonball",
+    rarity: 20,
+    effect: function () {
+
+      eightTonActive = true;
+      ballCanBounce = true;
+
+      let ballActive = true;
+      let frame = 1;
+      let frameCount = 5;
+      const folder = this.folder;
+
+      timerInterval = 2000;
+      startGameTimer();
+  
+      powerActive = true;
+      muteAll();
+      powerUsageLog.activated["8tonball"] = (powerUsageLog.activated["8tonball"] || 0) + 1;
+  
+      const ball = document.createElement("img");
+      ball.src = `${folder}/1.png`;
+      ball.style.position = "fixed";
+      ball.style.width = "120px";
+      ball.style.height = "120px";
+      ball.style.zIndex = "40";
+      ball.style.pointerEvents = "none";
+      ball.style.userSelect = "none";
+  
+      // Diagonal movement with equal velocity components
+      const speed = 6;
+      let vx, vy;
+      
+      // Always start from a corner with diagonal movement
+      const corner = Math.floor(Math.random() * 4);
+      let x, y;
+      switch (corner) {
+        case 0: // Top-left
+          x = -120;
+          y = -120;
+          vx = speed;
+          vy = speed;
+          break;
+        case 1: // Top-right
+          x = window.innerWidth + 120;
+          y = -120;
+          vx = -speed;
+          vy = speed;
+          break;
+        case 2: // Bottom-right
+          x = window.innerWidth + 120;
+          y = window.innerHeight + 120;
+          vx = -speed;
+          vy = -speed;
+          break;
+        case 3: // Bottom-left
+          x = -120;
+          y = window.innerHeight + 120;
+          vx = speed;
+          vy = -speed;
+          break;
+      }
+
+      const initialAngle = Math.atan2(vy, vx) * (180 / Math.PI) + 65;
+      ball.style.transform = `rotate(${initialAngle}deg)`;
+  
+      document.body.appendChild(ball);
+  
+      // Frame animation
+      const frameInterval = setInterval(() => {
+        frame = (frame % frameCount) + 1;
+        ball.src = `${folder}/${frame}.png`;
+      }, 100);
+
+      ball.dataset.intervalId = frameInterval;
+  
+      // Ball movement with diagonal trajectory
+      function moveBall() {
+        if (!ball.parentNode) return;
+  
+        x += vx;
+        y += vy;
+  
+        // Boundary collision with position correction
+        if (ballCanBounce) {
+          if (x < 0) {
+            x = 0;
+            vx = Math.abs(vx);
+          } else if (x > window.innerWidth - 120) {
+            x = window.innerWidth - 120;
+            vx = -Math.abs(vx);
+          }
+        
+          if (y < 0) {
+            y = 0;
+            vy = Math.abs(vy);
+          } else if (y > window.innerHeight - 120) {
+            y = window.innerHeight - 120;
+            vy = -Math.abs(vy);
+          }
+        }
+  
+        ball.style.left = `${x}px`;
+        ball.style.top = `${y}px`;
+
+        const angle = Math.atan2(vy, vx) * (180 / Math.PI) + 65;
+        ball.style.transform = `rotate(${angle}deg)`;
+  
+        // Collision detection
+        document.querySelectorAll(".enemy").forEach(enemy => {
+          const rect1 = ball.getBoundingClientRect();
+          const rect2 = enemy.getBoundingClientRect();
+          
+          // Simple rectangle collision
+          const collision = !(
+            rect1.right < rect2.left || 
+            rect1.left > rect2.right || 
+            rect1.bottom < rect2.top || 
+            rect1.top > rect2.bottom
+          );
+          
+          if (collision && !enemy.dataset.hitBy8ton) {
+            enemy.dataset.hitBy8ton = "true";
+            
+            // Get enemy center for splash effect
+            const centerX = rect2.left + rect2.width / 2;
+            const centerY = rect2.top + rect2.height / 2;
+            createClickSplash(`${centerX}px`, `${centerY}px`);
+            
+            let value;
+    
+            // Handle WYAT crab specially
+            if (enemy.classList.contains("wyat-crab")) {
+              // Double the rewinded score
+              const rewinded = parseInt(enemy.dataset.rewinded || "0");
+              value = rewinded * 3;
+            } 
+            // Regular negative enemy
+            else if (enemy.dataset.negative === "true") {
+              value = 2;
+            } 
+            // Positive SB19 target
+            else {
+              value = -8;
+            }
+            updateScore(score + value);
+            
+            // Remove enemy
+            removeElement(enemy);
+          }
+        });
+  
+        if (
+          x < -200 || x > window.innerWidth + 200 ||
+          y < -200 || y > window.innerHeight + 200
+        ) {
+          clearInterval(frameInterval);
+          if (ball.parentNode) ball.remove();
+          return;
+        }
+
+        requestAnimationFrame(moveBall);
+      }
+  
+      requestAnimationFrame(moveBall);
+  
+      // Override clicks for SB19 during power
+      document.querySelectorAll(".enemy").forEach(enemy => {
+        if (enemy.dataset.negative === "false") {
+          enemy.dataset.originalClick = enemy.onclick;
+          enemy.onclick = () => {
+            handleEnemyClick(8);
+            const indexMatch = enemy.src.match(/sb(\d)/);
+            if (indexMatch) {
+              const sbIndex = indexMatch[1];
+              const voice = new Audio(`assets/sb${sbIndex}/click.mp3`);
+              voice.play();
+            }
+            removeElement(enemy);
+          };
+        }
+      });
+  
+      // Audio play
+      const audio = new Audio(`${folder}/sound.mp3`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
+  
+      // Remove ball after audio ends
+      audio.addEventListener("ended", () => {
+        // Restore normal SB19 click behavior
+        document.querySelectorAll(".enemy").forEach(enemy => {
+          if (enemy.dataset.negative === "false" && enemy.dataset.originalClick) {
+            enemy.onclick = enemy.dataset.originalClick;
+          }
+        });
+  
+        eightTonActive = false;
+        ballCanBounce = false;
+        ballActive = false;
+        powerSpawnRate = 1000;
+        powerActive = false;
+        
+        timerInterval = 1000;
+        startGameTimer();
+        unmuteAll();
+        cleanupAudio(audio);
+        powerSpawningStarted = false;
+        spawnPower();
+      });
+    }
+  },
+  {
+    name: "wyat",
+    folder: "assets/wyat",
+    rarity: 15,
+    effect: function () {
+      wyatActive = true;
+      let rewindedScore = 0;
+      const folder = this.folder;
+      const maxPops = 10;
+      let popCount = 0;
+      let popInterval;
+      let autoEndTimeout;
+
+      powerUsageLog.activated["wyat"] = (powerUsageLog.activated["wyat"] || 0) + 1;
+
+      const WYATAudio = new Audio(`${folder}/sound.mp3`);
+      WYATAudio.play();
+  
+      const wyatCrab = document.createElement("img");
+      wyatCrab.classList.add("enemy", "wyat-crab");
+      wyatCrab.dataset.negative = "true";
+      wyatCrab.dataset.value = "0";
+      wyatCrab.dataset.rewinded = "0"; // Initialize rewinded score
+      wyatCrab.style.position = "fixed";
+      wyatCrab.style.width = "150px";
+      wyatCrab.style.height = "150px";
+      wyatCrab.style.zIndex = "20";
+      wyatCrab.style.pointerEvents = "auto";
+      wyatCrab.style.userSelect = "none";
+      wyatCrab.src = `${folder}/1.png`;
+      wyatCrab.style.display = "none";
+  
+      let currentFrame = 0;
+      const animInterval = setInterval(() => {
+        currentFrame = (currentFrame + 1) % 2;
+        wyatCrab.src = `${folder}/${currentFrame + 1}.png`;
+      }, 300);
+      wyatCrab.dataset.animInterval = animInterval;
+  
+      document.body.appendChild(wyatCrab);
+  
+      function popIn() {
+        if (popCount >= maxPops) {
+          clearInterval(popInterval);
+          return;
+        }
+  
+        // Random position
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        wyatCrab.style.left = `${x}px`;
+        wyatCrab.style.top = `${y}px`;
+        wyatCrab.style.display = "block";
+  
+
+        const inAudio = new Audio(`${folder}/popin.mp3`);
+        inAudio.play();
+  
+        setTimeout(() => {
+          if (!wyatCrab.parentNode || !wyatActive) return;
+  
+          wyatCrab.style.display = "none";
+  
+          rewindedScore += 10;
+          updateScore(score - 10);
+          wyatCrab.dataset.rewinded = rewindedScore; 
+  
+          timeLeft += 3;
+          timerDisplay.textContent = `${timeLeft}s`;
+          timerDisplay.classList.add("timer-glow");
+          setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
+  
+          const outAudio = new Audio(`${folder}/popout.mp3`);
+          outAudio.play();
+  
+          popCount++;
+        }, 550);
+      }
+
+      popInterval = setInterval(popIn, 1500);
+      popIn(); 
+  
+
+      wyatCrab.addEventListener("click", () => {
+        if (!wyatCrab.parentNode) return;
+
+        const clickAudio = new Audio(`${folder}/click.mp3`);
+        clickAudio.play();
+  
+        let wyatrewind = rewindedScore * 3;
+        updateScore(score + wyatrewind);
+  
+        const rect = wyatCrab.getBoundingClientRect();
+        const centerX = rect.left + rect.width/2 - 60;
+        const centerY = rect.top + rect.height/2 - 60;
+        
+        createWYATSplash(centerX, centerY);
+  
+        removeElement(wyatCrab);
+        clearInterval(popInterval);
+        clearTimeout(autoEndTimeout);
+        wyatActive = false;
+        powerSpawningStarted = false;
+      });
+  
+      autoEndTimeout = setTimeout(() => {
+        if (wyatCrab.parentNode) {
+          removeElement(wyatCrab);
+        }
+        clearInterval(popInterval);
+        wyatActive = false;
+        powerSpawningStarted = false;
+      }, 8000);
+      spawnPower();
+    }
+  },
+  {
+    name: "what",
+    folder: "assets/what",
+    rarity: 20,
+    effect: function () {
+      muteAll();
+      powerUsageLog.activated["what"] = (powerUsageLog.activated["what"] || 0) + 1;
+      const folder = this.folder;
+      whatActive = true;
+      activeTimeouts.forEach(timeout => clearTimeout(timeout));
+      activeTimeouts = [];
+      powerSpawnRate = 17000;
+  
+      timerInterval = 2000;
+      startGameTimer();
+      let totalClearedScore = 0;
+  
+      // Clear existing enemies
+      document.querySelectorAll(".enemy").forEach(enemy => {
+        let value = parseInt(enemy.dataset.value || 1);
+        if (enemy.classList.contains("wyat-crab")) {
+          const rewinded = parseInt(enemy.dataset.rewinded || "0");
+          value = rewinded * 3;
+        }
+        totalClearedScore += value;
+        const rect = enemy.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        createWhatHeartSplash(x, y);
+        removeElement(enemy);
+      });
+      updateScore(score + totalClearedScore);
+  
+      const audio = new Audio(`${folder}/sound.mp3`);
+      document.body.appendChild(audio);
+      activePowerAudios.push(audio);
+      audio.play();
+  
+      const allWhatCrabs = [];
+      const whatCrabFolders = ["assets/gento", "assets/sfts", "assets/crab"];
+  
+      function spawnWhatCrab() {
+        // Pick a random folder for this crab
+        const crabFolder = whatCrabFolders[Math.floor(Math.random() * whatCrabFolders.length)];
+  
+        const crab = document.createElement("img");
+        crab.classList.add("enemy", "what-crab");
+        crab.src = `${crabFolder}/1.png`;
+        crab.dataset.negative = "true";
+        crab.dataset.value = "4";
+  
+        const size = 100;
+        const startX = Math.random() * (window.innerWidth - size);
+        const startY = window.innerHeight + size;
+  
+        crab.style.position = "absolute";
+        crab.style.left = `${startX}px`;
+        crab.style.top = `${startY}px`;
+        crab.style.width = `${size}px`;
+        crab.style.height = `${size}px`;
+        crab.style.zIndex = "20";
+        crab.style.transformOrigin = "center";
+  
+        document.body.appendChild(crab);
+        allWhatCrabs.push(crab);
+  
+        // Frame animation (using selected folder)
+        let currentFrame = 0;
+        const animInterval = setInterval(() => {
+          currentFrame = (currentFrame + 1) % 2;
+          crab.src = `${crabFolder}/${currentFrame + 1}.png`;
+        }, 300);
+        crab.dataset.animInterval = animInterval;
+  
+        // Rotation physics
+        let rotation = 0;
+        let angularVelocity = (Math.random() - 0.5) * 0.3;
+        let angularAcceleration = 0;
+  
+        // Cannon physics params
+        const targetY = window.innerHeight * (Math.random() * 0.2);
+        const ascentTime = 800 + Math.random() * 400;
+        const descentTime = 1200 + Math.random() * 600;
+        const startTime = Date.now();
+        let lastFrameTime = startTime;
+  
+        function updateCrab() {
+          if (!crab.parentNode || !whatActive) return;
+  
+          const now = Date.now();
+          const elapsed = now - startTime;
+          const deltaTime = now - lastFrameTime;
+          lastFrameTime = now;
+  
+          let newY = startY;
+  
+          // Rising phase
+          if (elapsed < ascentTime) {
+            const progress = Math.min(1, elapsed / ascentTime);
+            const easedProgress = 1 - Math.pow(1 - progress, 2);
+            newY = startY - (startY - targetY) * easedProgress;
+            angularAcceleration = (Math.random() - 0.5) * 0.0005;
+          }
+          // Falling phase
+          else if (elapsed < ascentTime + descentTime) {
+            const progress = Math.min(1, (elapsed - ascentTime) / descentTime);
+            const easedProgress = Math.pow(progress, 2);
+            newY = targetY + (window.innerHeight + size - targetY) * easedProgress;
+            angularAcceleration = 0.001;
+          }
+          // Off screen after fall
+          else {
+            clearInterval(animInterval);
+            removeElement(crab);
+            return;
+          }
+  
+          // Apply rotation physics
+          angularVelocity += angularAcceleration * deltaTime;
+          rotation += angularVelocity * deltaTime;
+  
+          // Update crab position and rotation
+          crab.style.top = `${newY}px`;
+          crab.style.transform = `rotate(${rotation}deg)`;
+  
+          requestAnimationFrame(updateCrab);
+        }
+  
+        lastFrameTime = Date.now();
+        requestAnimationFrame(updateCrab);
+  
+        // Click handler
+        crab.addEventListener("click", () => {
+          handleEnemyClick(4);
+          createWhatHeartSplash(
+            parseInt(crab.style.left) + size / 2,
+            parseInt(crab.style.top) + size / 2
+          );
+          clearInterval(animInterval);
+          removeElement(crab);
+        });
+      }
+  
+      // Spawn crabs repeatedly
+      const spawnInterval = setInterval(() => {
+        if (!whatActive) return;
+        spawnWhatCrab();
+      }, 500);
+  
+      // End power when audio ends
+      audio.addEventListener("ended", () => {
+        powerSpawnRate = 1000;
+        whatActive = false;
+        clearInterval(spawnInterval);
+        timerInterval = 1000;
+        startGameTimer();
+  
+        allWhatCrabs.forEach(crab => {
+          if (crab.dataset.animInterval) clearInterval(parseInt(crab.dataset.animInterval));
+          removeElement(crab);
+        });
+  
+        cleanupAudio(audio);
+        unmuteAll();
         powerSpawningStarted = false;
         spawnPower();
         spawnMultipleEnemies();
       });
     }
   }
+  
 ];
 
 let username = "";
@@ -429,9 +1110,14 @@ let isWmianActive = false;
 let isSftsActive = false;
 let sftsSpawnInterval = null;
 let isCrimzoneActive = false;
+let eightTonActive = false;
+let wyatActive = false;
+let whatActive = false;
+let ballCanBounce = true;
 let scoreSubmitted = false;
 let lastScoreSubmissionTime = 0;
 const SUBMISSION_COOLDOWN = 60000;
+let timerInterval = 1000;
 
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
@@ -446,6 +1132,11 @@ const usernameInput = document.getElementById("usernameInput");
 const countdownEl = document.getElementById("countdown");
 const musicPrestart = document.getElementById("music-prestart");
 const musicIngame = document.getElementById("music-ingame");
+
+const powerUsageLog = {
+  shown: {},
+  activated: {}
+};
 
 window.addEventListener("load", () => {
   musicPrestart.volume = 0.5;
@@ -495,23 +1186,31 @@ function startGame() {
   spawnMultipleEnemies();
   spawnPower();
   startGameTimer();
+  powerUsageLog.shown = {};
+  powerUsageLog.activated = {};
 }
 
 function startGameTimer() {
+  clearInterval(countdownTimer);
+  if (!gameActive || timeLeft <= 0) return;
+  
   countdownTimer = setInterval(() => {
     timeLeft--;
     timerDisplay.textContent = `${timeLeft}s`;
     if (timeLeft <= 0) endGame();
-  }, 1000);
+  }, timerInterval);
 }
 
 function endGame() {
   if (!scoreSubmitted) sendScoreToSheet(score);
   isGentoActive = false;
+  eightTonActive = false;
+  ballCanBounce = false;
   isTimerPauseActive = false;
   isWmianActive = false;
   isSftsActive = false;
   isCrimzoneActive = false;
+  whatActive = false;
   powerSpawningStarted = false;
   powerActive = false;
   clearInterval(countdownTimer);
@@ -520,7 +1219,14 @@ function endGame() {
   clearPowerEffects();
   clearAllTimers();
   resetGameState();
+
+  powerUsageLog.shown = {};
+  powerUsageLog.activated = {};
+
+
+  document.querySelectorAll('img[src*="8tonball"]').forEach(removeElement);
   document.querySelectorAll(".sfts-crab").forEach(removeElement);
+  document.querySelectorAll(".crimzone-crab").forEach(removeElement);
   if (sftsSpawnInterval) clearInterval(sftsSpawnInterval);
   musicIngame.volume = 0.3;
   setTimeout(() => {
@@ -560,7 +1266,7 @@ function getGameOverMessage(score, username) {
     `“Justin: ‘The Zone secured thanks to ${username} with ${score} hits!’”`,
     `“Pablo is proud. ${username} dropped ${score} points to protect the stage.”`,
     `“Stell: ‘Uy ${username}, salamat ah! ${score} points ka? MVP ka talaga!’”`,
-    `“Shet ${username}, ${score}?? Hindi ka na gamer — performer ka na!”`,
+    `“Shet ${username}, ${score}?? Hindi ka na gamer, performer ka na!”`,
     `“Ay grabe... ${username} went full GENTO mode! ${score} points!”`,
     `“Crabs left the chat. ${username} cleared ${score} worth of bad vibes!”`,
     `“With ${score} points, ${username} just made SB19 proud! G ka na for world tour?”`,
@@ -568,7 +1274,7 @@ function getGameOverMessage(score, username) {
     `“Naka-hyper mode ka ba, ${username}? ${score} points! Pak na pak!”`,
     `“Walang crab-crab kay ${username}. ${score} points na agad! 😤”`,
     `“SB19 sa inyo: ‘SALAMAT PO ${username}!’ Dahil sa ${score} points mo.”`,
-    `“Hindi ka lang naglaro, ${username} — nag-perform ka rin! ${score} points!”`,
+    `“Hindi ka lang naglaro, ${username}, nag-perform ka rin! ${score} points!”`,
     `“Yung crab, biglang nawala. ${username} came in with ${score} flex!”`,
     `“The Zone is safe… for now. ${username} scored ${score} and we’re impressed.”`,
     `“Kung may concert security, ikaw ang frontline. ${score} points, ${username}!”`,
@@ -588,7 +1294,7 @@ function getGameOverMessage(score, username) {
   ];
   const negativeScoreMessages = [
     `“Ay! ${username}, SB19 ‘yung kinlick mo 😭 -${Math.abs(score)}? Foul ka dun!”`,
-    `“Nooo ${username}! You clicked our boyfriends 😭 Score: ${score}... not good.”`,
+    `“Nooo ${username}! You clicked our PPOP Kings 😭 Score: ${score}... not good.”`,
     `“${username} accidentally sabotaged SB19’s stage with a score of ${score} 😅”`,
     `“SB19 are friends, not food 😭 ${username} got ${score} for friendly fire!”`,
   ];
@@ -602,8 +1308,11 @@ function getGameOverMessage(score, username) {
 function clearPowerEffects() {
   isWmianActive = false;
   isGentoActive = false;
+  eightTonActive = false;
+  ballCanBounce = false;
   isSftsActive = false;
   isCrimzoneActive = false;
+  whatActive = false;
   activePowerAudios.forEach(audio => {
     audio.pause();
     audio.currentTime = 0;
@@ -632,37 +1341,96 @@ function spawnMultipleEnemies() {
   }
 }
 
+function addEnemyClickHandlers(enemy, value, isNegative) {
+  const clickHandler = () => {
+    let finalValue = value;
+
+    // Adjust value based on active powers
+    if (isGentoActive && finalValue > 0) finalValue = 3;
+    if (isTimerPauseActive && finalValue > 0) finalValue = 3;
+    if (eightTonActive && finalValue < 0) finalValue = 8;
+
+    handleEnemyClick(finalValue);
+
+    // Decide sound at click time
+    let clickSoundPath;
+
+    if (isGentoActive && isNegative) {
+      clickSoundPath = "assets/gento/click.mp3";
+    } else if (enemy.dataset.originalSound) {
+      clickSoundPath = enemy.dataset.originalSound;
+    } else if (isNegative) {
+      clickSoundPath = "assets/crab/click.mp3";
+    } else {
+      const indexMatch = enemy.src.match(/sb(\d)/);
+      if (indexMatch) {
+        clickSoundPath = `assets/sb${indexMatch[1]}/click.mp3`;
+      }
+    }
+
+    if (clickSoundPath) {
+      const clickSound = new Audio(clickSoundPath);
+      clickSound.play();
+    }
+
+    createClickSplash(enemy.style.left, enemy.style.top);
+    removeElement(enemy);
+  };
+
+  enemy.addEventListener("pointerdown", clickHandler);
+  enemy.addEventListener("mousedown", clickHandler);
+  enemy.addEventListener("touchstart", clickHandler);
+}
+
 function createEnemy(enemyData) {
   const isNegative = enemyData.value > 0;
   const enemy = document.createElement("img");
   enemy.classList.add("enemy");
+
   if (isTimerPauseActive && isNegative) enemy.classList.add("crab-colored");
   if (enemyData.label === "PARTY CRAB") enemy.classList.add("big-crab");
+
   let frame1, frame2, soundPath;
-  if (isNegative && enemyData.tempFrames) {
-    frame1 = enemyData.tempFrames.frame1;
-    frame2 = enemyData.tempFrames.frame2;
+
+  if (isGentoActive && isNegative) {
+    // Gento mode spawn
+    frame1 = "assets/gento/1.png";
+    frame2 = "assets/gento/2.png";
     soundPath = "assets/gento/click.mp3";
+
+    enemy.dataset.gentoTransformed = "true";
+    enemy.dataset.originalFrames = JSON.stringify({
+      frame1: "assets/crab/1.png",
+      frame2: "assets/crab/2.png"
+    });
+    enemy.dataset.originalSound = "assets/crab/click.mp3";
   } else if (isNegative) {
+    // Regular crab
     frame1 = "assets/crab/1.png";
     frame2 = "assets/crab/2.png";
     soundPath = "assets/crab/click.mp3";
   } else {
+    // Positive SB19 targets
     const randIndex = Math.floor(Math.random() * 5) + 1;
     frame1 = `assets/sb${randIndex}/1.png`;
     frame2 = `assets/sb${randIndex}/2.png`;
     soundPath = `assets/sb${randIndex}/click.mp3`;
   }
-  if (enemyData.label === "PARTY CRAB") soundPath = "assets/wmian/click.mp3";
-  const sound = soundPath ? new Audio(soundPath) : null;
+
+  if (enemyData.label === "PARTY CRAB") {
+    soundPath = "assets/wmian/click.mp3";
+  }
+
   enemy.src = frame1;
   enemy.alt = enemyData.label;
   enemy.title = enemyData.label;
   enemy.dataset.negative = (enemyData.value > 0).toString();
   enemy.dataset.value = enemyData.value;
+
   const size = 100;
   const x = enemyData.spawnOverridePosition?.x || Math.random() * (window.innerWidth - size);
   const y = enemyData.spawnOverridePosition?.y || Math.random() * (window.innerHeight - size);
+
   Object.assign(enemy.style, {
     left: `${x}px`,
     top: `${y}px`,
@@ -674,31 +1442,73 @@ function createEnemy(enemyData) {
     objectFit: "contain",
     userSelect: "none"
   });
+
   let currentFrame = 0;
-  const animationInterval = setInterval(() => {
-    currentFrame = (currentFrame + 1) % 2;
-    enemy.src = currentFrame === 0 ? frame1 : frame2;
-  }, 300);
-  enemy.dataset.intervalId = animationInterval;
-  function removeEnemy() {
-    removeElement(enemy);
+
+  if (isGentoActive && isNegative) {
+    // Run Gento animation for new Gento crabs
+    const gentoInterval = setInterval(() => {
+      currentFrame = (currentFrame + 1) % 2;
+      enemy.src = `assets/gento/${currentFrame + 1}.png`;
+    }, 300);
+    enemy.dataset.gentoInterval = gentoInterval;
+  } else {
+    // Normal animation
+    const animationInterval = setInterval(() => {
+      currentFrame = (currentFrame + 1) % 2;
+      enemy.src = currentFrame === 0 ? frame1 : frame2;
+    }, 300);
+    enemy.dataset.intervalId = animationInterval;
   }
-  function handleClick() {
-    let value = enemyData.tempValue || enemyData.value;
-    if (isTimerPauseActive && value > 0) value = 2;
-    handleEnemyClick(value);
-    if (sound) {
-      sound.currentTime = 0;
-      sound.play();
+
+  let value = enemyData.tempValue || enemyData.value;
+
+  if (isGentoActive && value > 0) value = 3;
+  if (isTimerPauseActive && value > 0) value = 3;
+  if (eightTonActive && value < 0) value = 8;
+  
+  // Choose correct sound
+  let clickSoundPath;
+  
+  if (isGentoActive && isNegative) {
+    clickSoundPath = "assets/gento/click.mp3";
+  } else if (enemy.dataset.originalSound) {
+    clickSoundPath = enemy.dataset.originalSound;
+  } else if (isNegative) {
+    clickSoundPath = "assets/crab/click.mp3";
+  } else {
+    const indexMatch = enemy.src.match(/sb(\d)/);
+    if (indexMatch) {
+      clickSoundPath = `assets/sb${indexMatch[1]}/click.mp3`;
     }
-    createClickSplash(enemy.style.left, enemy.style.top);
-    removeEnemy();
   }
-  enemy.addEventListener("click", handleClick);
-  enemy.addEventListener("touchstart", handleClick);
+  
+  addEnemyClickHandlers(enemy, value, isNegative);
+
   document.body.appendChild(enemy);
-  if (!isNegative) setTimeout(removeEnemy, Math.random() * 2000 + 4000);
+  if (!isNegative) {
+    setTimeout(() => {
+      if (document.body.contains(enemy)) {
+        removeElement(enemy);
+      }
+    }, 4000);
+  }
+  
 }
+
+function showPowerInstruction(text, color = "white") {
+  const instruction = document.getElementById("power-instruction");
+  instruction.textContent = text;
+  instruction.style.color = color;
+  instruction.classList.remove("hidden", "flash-animation");
+  void instruction.offsetWidth;
+  instruction.classList.add("flash-animation");
+
+  setTimeout(() => {
+    instruction.classList.add("hidden");
+  }, 1000);
+}
+
 
 function spawnPower() {
   if (!gameActive) return;
@@ -720,6 +1530,7 @@ function spawnPower() {
   powerActive = true;
   lastPowerTime = now;
   const power = chooseWeightedPower();
+  powerUsageLog.shown[power.name] = (powerUsageLog.shown[power.name] || 0) + 1;
   const powerImg = document.createElement("img");
   const frame1 = `${power.folder}/power1.png`;
   const frame2 = `${power.folder}/power2.png`;
@@ -782,59 +1593,99 @@ function chooseWeightedPower() {
   return powers[0];
 }
 
-function spawnBigWmianCrab() {
-  const big = document.createElement("img");
-  big.src = "assets/wmian/1.png";
-  big.classList.add("enemy", "big-crab");
-  const size = 160;
-  const padding = 200;
-  const x = Math.random() * (window.innerWidth - size - padding * 2) + padding;
-  const y = Math.random() * (window.innerHeight - size - padding * 2) + padding;
-  const centerX = x + size/2;
-  const centerY = y + size/2;
-  Object.assign(big.style, {
-    left: `${x}px`,
-    top: `${y}px`,
-    width: `${size}px`,
-    position: "absolute",
-    pointerEvents: "auto",
-    cursor: "pointer",
-    zIndex: "20",
-    objectFit: "contain",
-    userSelect: "none"
-  });
+function spawnBigWmianCrab(allWmianCrabs) {
+  const crab = document.createElement("img");
+  crab.classList.add("enemy", "big-crab");
+  crab.src = "assets/wmian/1.png";
+  crab.dataset.wmianCrab = "true";
+
+  const size = 150;
+  let x = Math.random() * (window.innerWidth - size);
+  let y = Math.random() * (window.innerHeight - size);
+  crab.style.position = "absolute";
+  crab.style.left = `${x}px`;
+  crab.style.top = `${y}px`;
+  crab.style.width = `${size}px`;
+  crab.style.height = `${size}px`;
+  crab.style.zIndex = "20";
+
   let currentFrame = 0;
-  const anim = setInterval(() => {
+  const frameInterval = setInterval(() => {
     currentFrame = (currentFrame + 1) % 2;
-    big.src = `assets/wmian/${currentFrame + 1}.png`;
+    crab.src = `assets/wmian/${currentFrame + 1}.png`;
   }, 300);
-  big.addEventListener("click", () => {
-    removeElement(big);
+  crab.dataset.wmianFrameInterval = frameInterval;
+
+  const moveInterval = setInterval(() => {
+    x = Math.random() * (window.innerWidth - size);
+    y = Math.random() * (window.innerHeight - size);
+    crab.style.left = `${x}px`;
+    crab.style.top = `${y}px`;
+  }, 1000);
+  crab.dataset.wmianMoveInterval = moveInterval;
+
+  // On big crab click → spawn 5 small elusive crabs
+  crab.addEventListener("click", () => {
     const clickSound = new Audio("assets/wmian/click.mp3");
     clickSound.play();
-    score += 20;
-    updateScore(score);
-    scoreDisplay.classList.add("green-glow");
-    setTimeout(() => scoreDisplay.classList.remove("green-glow"), 200);
-    createExplosionEffect(centerX, centerY);
+
+    handleEnemyClick(10); 
+
     for (let i = 0; i < 5; i++) {
-      const angle = (i / 5) * Math.PI * 2;
-      const distance = 100;
-      const offsetX = centerX + Math.cos(angle) * distance - 60;
-      const offsetY = centerY + Math.sin(angle) * distance - 60;
-      createEnemy({
-        label: "PARTY CRAB",
-        value: 5,
-        tempFrames: {
-          frame1: "assets/wmian/1.png",
-          frame2: "assets/wmian/2.png"
-        },
-        spawnOverridePosition: { x: offsetX, y: offsetY }
+      const smallCrab = document.createElement("img");
+      smallCrab.classList.add("enemy", "big-crab"); // Reuse same class for visual effect, or create a separate "small-crab" class if you want
+      smallCrab.src = "assets/wmian/1.png";
+      smallCrab.dataset.wmianCrab = "true";
+
+      const smallSize = 100;
+      let sx = Math.random() * (window.innerWidth - smallSize);
+      let sy = Math.random() * (window.innerHeight - smallSize);
+      smallCrab.style.position = "absolute";
+      smallCrab.style.left = `${sx}px`;
+      smallCrab.style.top = `${sy}px`;
+      smallCrab.style.width = `${smallSize}px`;
+      smallCrab.style.height = `${smallSize}px`;
+      smallCrab.style.zIndex = "20";
+
+      let smallFrame = 0;
+      const smallFrameInterval = setInterval(() => {
+        smallFrame = (smallFrame + 1) % 2;
+        smallCrab.src = `assets/wmian/${smallFrame + 1}.png`;
+      }, 300);
+      smallCrab.dataset.wmianFrameInterval = smallFrameInterval;
+
+      const smallMoveInterval = setInterval(() => {
+        sx = Math.random() * (window.innerWidth - smallSize);
+        sy = Math.random() * (window.innerHeight - smallSize);
+        smallCrab.style.left = `${sx}px`;
+        smallCrab.style.top = `${sy}px`;
+      }, 1000);
+      smallCrab.dataset.wmianMoveInterval = smallMoveInterval;
+
+      smallCrab.addEventListener("click", () => {
+        const smallClickSound = new Audio("assets/wmian/click.mp3");
+        smallClickSound.play();
+        handleEnemyClick(3); // Optional: +1 point for small crabs
+        clearInterval(smallFrameInterval);
+        clearInterval(smallMoveInterval);
+        removeElement(smallCrab);
       });
+
+      document.body.appendChild(smallCrab);
+      allWmianCrabs.push(smallCrab);
     }
+
+    // After spawning small crabs, remove big crab
+    clearInterval(frameInterval);
+    clearInterval(moveInterval);
+    removeElement(crab);
   });
-  document.body.appendChild(big);
+
+  document.body.appendChild(crab);
+  return crab;
 }
+
+
 
 function clearAllPowerUps() {
   document.querySelectorAll(".power").forEach(removeElement);
@@ -850,13 +1701,19 @@ function clearAllTimers() {
 
 function resetGameState() {
   isGentoActive = false;
+  eightTonActive = false;
+  ballCanBounce = false;
   isTimerPauseActive = false;
   isWmianActive = false;
   isSftsActive = false;
   isCrimzoneActive = false;
+  whatActive = false;
   powerActive = false;
   powerSpawningStarted = false;
   powerSpawnRate = 1000;
+  timerInterval = 1000;
+  powerUsageLog.shown = {};
+  powerUsageLog.activated = {};
   if (sftsSpawnInterval) {
     clearInterval(sftsSpawnInterval);
     sftsSpawnInterval = null;
@@ -935,6 +1792,16 @@ function createRedEffect(x, y) {
   setTimeout(() => removeElement(effect), 800);
 }
 
+function createWhatHeartSplash(x, y) {
+  const splash = document.createElement("div");
+  splash.classList.add("what-heart-splash");
+  splash.style.left = typeof x === "number" ? `${x}px` : x;
+  splash.style.top = typeof y === "number" ? `${y}px` : y;
+  document.body.appendChild(splash);
+
+  setTimeout(() => splash.remove(), 600);
+}
+
 function muteAll() {
   document.querySelectorAll("audio").forEach(audio => audio.muted = true);
 }
@@ -996,16 +1863,69 @@ function createCrimsonTrail(x, y) {
 function createClickSplash(x, y) {
   const splash = document.createElement("div");
   splash.classList.add("splash");
+
   if (isGentoActive) {
     splash.style.background = "radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,165,0,0.4) 70%, transparent 100%)";
     splash.style.boxShadow = "0 0 20px 10px gold";
-  } else splash.style.background = "rgba(255, 255, 255, 0.6)";
+  } else if (eightTonActive) {
+    splash.style.background = "radial-gradient(circle, rgba(0, 255, 200, 1) 0%, rgba(0, 180, 255, 0.7) 70%, transparent 100%)";
+    splash.style.boxShadow = "0 0 20px 10px rgba(0, 255, 200, 1)";
+  } else {
+    splash.style.background = "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(200,200,200,0.4) 70%, transparent 100%)";
+    splash.style.boxShadow = "0 0 10px rgba(255,255,255,0.6)";
+  }
+
   splash.style.left = x;
   splash.style.top = y;
   document.body.appendChild(splash);
   splash.style.animation = "splashScale 0.6s ease-out forwards";
   setTimeout(() => removeElement(splash), 600);
 }
+
+function createWYATSplash(x, y) {
+  const splash = document.createElement("div");
+  splash.classList.add("splash");
+
+  // Retro neon gradient with pixelated edges
+  splash.style.background = `
+    radial-gradient(circle, 
+      rgba(0, 255, 255, 0.8) 0%, 
+      rgba(0, 128, 255, 0.4) 60%, 
+      transparent 100%)
+  `;
+  
+  // Neon glow with multiple shadows for that CRT glow effect
+  splash.style.boxShadow = `
+    0 0 8px #0ff, 
+    0 0 20px #0ff, 
+    0 0 30px #0ff, 
+    0 0 40px #00f
+  `;
+
+  // Pixelated edges using CSS filter
+  splash.style.filter = "contrast(150%) saturate(120%)";
+
+  // Positioning (make sure to add 'px' units)
+  splash.style.position = "absolute";
+  splash.style.left = x + "px";
+  splash.style.top = y + "px";
+  splash.style.width = "150px";
+  splash.style.height = "150px";
+  splash.style.borderRadius = "8px";
+
+  // Add a pixelated border to mimic retro graphics
+  splash.style.border = "2px solid #0ff";
+
+  // Append to body
+  document.body.appendChild(splash);
+
+  // Apply animation for rewind effect
+  splash.style.animation = "retroRewind 0.6s ease-out forwards";
+
+  // Remove element after animation
+  setTimeout(() => splash.remove(), 600);
+}
+
 
 const devtoolsCheck = () => {
   try {
@@ -1027,19 +1947,33 @@ function sendScoreToSheet(score) {
         Math.abs(window.outerWidth - window.innerWidth) > threshold ||
         Math.abs(window.outerHeight - window.innerHeight) > threshold
       );
-    } catch { return false; }
+    } catch {
+      return false;
+    }
   })();
+
   const now = Date.now();
   if (scoreSubmitted) return;
   if (now - lastScoreSubmissionTime < SUBMISSION_COOLDOWN) return;
   scoreSubmitted = true;
   lastScoreSubmissionTime = now;
+
+  const payload = new URLSearchParams();
+  payload.append("score", score);
+  payload.append("username", username);
+  payload.append("devtools", devtoolsNow ? "yes" : "no");
+
+  // ✅ NEW: Include power usage logs
+  payload.append("powers_shown", JSON.stringify(powerUsageLog.shown));
+  payload.append("powers_activated", JSON.stringify(powerUsageLog.activated));
+
   fetch("https://script.google.com/macros/s/AKfycbwWhP0Lg2xeZNnvmrGEO6fkWF-XyDIjts0t7NRHWrtCIhBvXFuxGos4TYIEWcOJNDnt/exec", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `score=${score}&username=${encodeURIComponent(username)}&devtools=${devtoolsOpen ? 'yes' : 'no'}`
+    body: payload.toString()
   });
 }
+
 
 restartBtn.addEventListener("click", () => {
   scoreSubmitted = false;
@@ -1047,6 +1981,10 @@ restartBtn.addEventListener("click", () => {
   isTimerPauseActive = false;
   isWmianActive = false;
   isSftsActive = false;
+  eightTonActive = false;
+  isCrimzoneActive = false;
+  whatActive = false;
+  ballCanBounce = false;
   powerSpawningStarted = false;
   powerActive = false;
   clearInterval(countdownTimer);
@@ -1055,7 +1993,10 @@ restartBtn.addEventListener("click", () => {
   clearPowerEffects();
   clearAllTimers();
   resetGameState();
+  powerUsageLog.shown = {};
+  powerUsageLog.activated = {};
   document.querySelectorAll(".sfts-crab").forEach(removeElement);
+  document.querySelectorAll(".crimzone-crab").forEach(removeElement);
   if (sftsSpawnInterval) clearInterval(sftsSpawnInterval);
   showScreen("gameScreen");
   score = 0;
