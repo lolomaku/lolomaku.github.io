@@ -921,6 +921,11 @@ body {
     overflow-y: hidden;
     -webkit-touch-callout: none;
     -webkit-text-size-adjust: none;
+    touch-action: manipulation;
+  }
+
+  html {
+    touch-action: manipulation;
   }
   
   body {
