@@ -659,20 +659,17 @@ const powers = [
         name: "wyat",
         folder: "assets/wyat",
         rarity: 20,
+    
         effect: function () {
             wyatActive = true;
             let rewindedScore = 0;
             const folder = this.folder;
             const maxPops = 6;
             let popCount = 0;
-            let popInterval;
-            let autoEndTimeout;
-
+    
             powerUsageLog.activated.wyat = (powerUsageLog.activated.wyat || 0) + 1;
-
-            const WYATAudio = new Audio(`${folder}/sound.mp3`);
-            WYATAudio.play();
-
+    
+            // WYAT crab element
             const wyatCrab = document.createElement("img");
             wyatCrab.classList.add("enemy", "wyat-crab");
             wyatCrab.dataset.negative = "true";
@@ -686,91 +683,105 @@ const powers = [
             wyatCrab.style.userSelect = "none";
             wyatCrab.src = `${folder}/1.png`;
             wyatCrab.style.display = "none";
-
+            document.body.appendChild(wyatCrab);
+    
+            // Frame animation
             let currentFrame = 0;
             const animInterval = setInterval(() => {
                 currentFrame = (currentFrame + 1) % 2;
                 wyatCrab.src = `${folder}/${currentFrame + 1}.png`;
             }, 300);
             wyatCrab.dataset.animInterval = animInterval;
-
-            wyatCrab.cleanupWyat = function() {
-                if (!wyatActive) return;
-
-                const clickAudio = new Audio(`${folder}/click.mp3`);
-                clickAudio.play();
-
-                const rect = wyatCrab.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2 - 60;
-                const centerY = rect.top + rect.height / 2 - 60;
-                createWYATSplash(centerX, centerY);
-
+    
+            // Cleanup function (now globally callable)
+            window.forceRemoveWyatQuietly = function() {
+                if (!document.body.contains(wyatCrab)) return;
+    
+                // Stop animation and pop timers
+                clearInterval(animInterval);
                 clearInterval(popInterval);
                 clearTimeout(autoEndTimeout);
+    
                 wyatActive = false;
+                removeElement(wyatCrab);
             };
-
-            document.body.appendChild(wyatCrab);
-
+    
+            // WYAT Pop logic
             function popIn() {
                 if (!wyatActive || !document.body.contains(wyatCrab)) {
                     clearInterval(popInterval);
                     return;
                 }
-
+    
                 if (popCount >= maxPops) {
                     clearInterval(popInterval);
                     return;
                 }
-
+    
                 const x = Math.random() * (window.innerWidth - 100);
                 const y = Math.random() * (window.innerHeight - 100);
                 wyatCrab.style.left = `${x}px`;
                 wyatCrab.style.top = `${y}px`;
                 wyatCrab.style.display = "block";
-
+    
                 const inAudio = new Audio(`${folder}/popin.mp3`);
                 inAudio.play();
-
+    
                 setTimeout(() => {
                     if (!wyatActive || !document.body.contains(wyatCrab)) return;
-
+    
                     wyatCrab.style.display = "none";
+    
                     const popPenalty = Math.floor(Math.random() * 11) + 10;
                     rewindedScore += popPenalty;
-                    updateScore(score - popPenalty);
                     wyatCrab.dataset.rewinded = rewindedScore;
+                    updateScore(score - popPenalty);
+    
                     timeLeft += 3;
                     timerDisplay.textContent = `${timeLeft}s`;
                     timerDisplay.classList.add("timer-glow");
                     setTimeout(() => timerDisplay.classList.remove("timer-glow"), 1000);
-
+    
                     const outAudio = new Audio(`${folder}/popout.mp3`);
                     outAudio.play();
+    
                     popCount++;
                 }, 500);
             }
-
-            popInterval = setInterval(popIn, 1500);
+    
+            const popInterval = setInterval(popIn, 1500);
             popIn();
-
+    
+            // WYAT click handler (Reward)
             wyatCrab.addEventListener("click", () => {
                 if (!document.body.contains(wyatCrab)) return;
-                wyatCrab.cleanupWyat();
-                removeElement(wyatCrab);
+    
+                const clickAudio = new Audio(`${folder}/click.mp3`);
+                clickAudio.play();
+    
+                const rect = wyatCrab.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2 - 60;
+                const centerY = rect.top + rect.height / 2 - 60;
+                createWYATSplash(centerX, centerY);
+    
+                updateScore(score + (rewindedScore * 2));
+    
+                window.forceRemoveWyatQuietly();
                 powerSpawningStarted = false;
             });
-
-            autoEndTimeout = setTimeout(() => {
+    
+            // Auto-end after 8.3 seconds
+            const autoEndTimeout = setTimeout(() => {
                 if (document.body.contains(wyatCrab)) {
-                    forceRemoveWyatQuietly();
+                    window.forceRemoveWyatQuietly();
                 }
                 powerSpawningStarted = false;
             }, 8300);
-
+    
+            powerActive = false;
             spawnPower();
         }
-    },
+    },    
     {
         name: "what",
         folder: "assets/what",
@@ -912,6 +923,7 @@ const powers = [
         name: "quit",
         folder: "assets/quit",
         rarity: 1,
+        oncePerGame: true,
         canSpawn: function () {
             const hasSfts = !!powerUsageLog.activated.sfts;
             const has8ton = !!powerUsageLog.activated["8tonball"];
@@ -1372,7 +1384,21 @@ function showPowerInstruction(text, color = "white") {
 }
 
 function spawnPower() {
-    if (!gameActive) return;
+    if (!gameActive || powerActive) return;
+    
+    const eligiblePowers = powers.filter(power => {
+        const hasShown = !!powerUsageLog.shown[power.name];
+        const passesCanSpawn = !power.canSpawn || power.canSpawn();
+        const isOneTimePower = power.oncePerGame;
+    
+        // For powers marked as oncePerGame, only allow them if not shown yet
+        if (isOneTimePower && hasShown) return false;
+    
+        return passesCanSpawn;
+    });
+
+    if (eligiblePowers.length === 0) return;
+
     const powerSpawnTime = Date.now();
     const timeSinceLastInteraction = powerSpawnTime - lastPowerInteractionTime;
 
@@ -1394,31 +1420,31 @@ function spawnPower() {
         setTimeout(spawnPower, 300);
         return;
     }
-    powerActive = true;
-    lastPowerTime = now;
-    const quitPower = powers.find(p => p.name === "quit" && p.canSpawn && p.canSpawn());
-    let power;
-    if (quitPower) {
-        power = quitPower;
-    } else {
-        const availablePowers = powers.filter(p => p.name !== "wmian" && (!p.canSpawn || p.canSpawn()));
-        if (availablePowers.length === 0) {
-            powerActive = false;
-            setTimeout(spawnPower, powerCooldown);
-            return;
+
+    const totalRarity = eligiblePowers.reduce((sum, power) => sum + power.rarity, 0);
+    let roll = Math.random() * totalRarity;
+    let selectedPower = null;
+
+    for (const power of eligiblePowers) {
+        roll -= power.rarity;
+        if (roll <= 0) {
+            selectedPower = power;
+            break;
         }
-        power = chooseWeightedPower(availablePowers);
     }
 
-    powerUsageLog.shown[power.name] = (powerUsageLog.shown[power.name] || 0) + 1;
+    if (!selectedPower) return; // Safety check
+    powerActive = true;
+    
+    powerUsageLog.shown[selectedPower.name] = (powerUsageLog.shown[selectedPower.name] || 0) + 1;
     const powerImg = document.createElement("img");
-    const frame1 = `${power.folder}/power1.png`;
-    const frame2 = `${power.folder}/power2.png`;
+    const frame1 = `${selectedPower.folder}/power1.png`;
+    const frame2 = `${selectedPower.folder}/power2.png`;
     let currentFrame = 0;
     powerImg.src = frame1;
     powerImg.classList.add("power");
-    powerImg.alt = power.name;
-    powerImg.title = power.name;
+    powerImg.alt = selectedPower.name;
+    powerImg.title = selectedPower.name;
     const size = 100;
     const x = Math.random() * (window.innerWidth - size);
     const y = Math.random() * (window.innerHeight - size);
@@ -1442,7 +1468,7 @@ function spawnPower() {
         const px = rect.left + rect.width / 2;
         const py = rect.top + rect.height / 2;
         createPowerSplash(px, py);
-        power.effect();
+        selectedPower.effect();
         removePower();
     }
     powerImg.addEventListener("click", handleClick);
@@ -1455,19 +1481,6 @@ function spawnPower() {
             setTimeout(spawnPower, powerCooldown);
         }
     }, 1000);
-}
-
-const powerWeights = powers.map((p) => p.rarity);
-const totalWeight = powerWeights.reduce((a, b) => a + b, 0);
-
-function chooseWeightedPower() {
-    const rand = Math.random() * totalWeight;
-    let acc = 0;
-    for (let i = 0; i < powers.length; i++) {
-        acc += powerWeights[i];
-        if (rand < acc) return powers[i];
-    }
-    return powers[0];
 }
 
 function spawnBigWmianCrab(allWmianCrabs) {
@@ -1920,20 +1933,6 @@ function removeElement(element) {
             clearInterval(element.dataset.animInterval);
         }
         element.parentNode.removeChild(element);
-    }
-}
-
-
-function forceRemoveWyatQuietly() {
-    clearInterval(popInterval);
-    clearTimeout(autoEndTimeout);
-    wyatActive = false;
-    if (document.body.contains(wyatCrab)) {
-        if (wyatCrab.dataset.animInterval) {
-            clearInterval(wyatCrab.dataset.animInterval);
-        }
-        wyatCrab.cleanupWyat = null;
-        document.body.removeChild(wyatCrab);
     }
 }
 
