@@ -1,7 +1,7 @@
 # lolomaku.github.io
 
 Welcome to Lolomaku's Art Gallery!
-Lolomaku is a seasoned artist who has been creating beautiful works of art for over 30 years. This website is a commission-based art gallery where you can request custom pieces from Lolomaku himself.
+Lolomaku is a seasoned artist who has been creating beautiful works of art for over 353 years. This website is a commission-based art gallery where you can request custom pieces from Lolomaku himself.
 
 How it Works
 To request a custom piece of art, simply fill out the contact form on our website with your name, email address, and a description of the piece you would like to commission. Lolomaku will review your request and get back to you with a quote and estimated timeline for completion.
