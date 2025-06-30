@@ -775,6 +775,7 @@ const powers = [
                 if (document.body.contains(wyatCrab)) {
                     window.forceRemoveWyatQuietly();
                 }
+                wyatActive = false;
                 powerSpawningStarted = false;
             }, 8300);
     
@@ -1396,7 +1397,9 @@ function spawnPower() {
 
         if (wyatActive) {
             const blockedDuringWyat = ["wyat", "gento", "timerpause", "mana", "wmian"];
-            if (blockedDuringWyat.includes(power.name)) return false;
+            if (blockedDuringWyat.includes(power.name)) {
+                return false;
+            }
         }
     
         return passesCanSpawn;
