@@ -974,7 +974,7 @@ const powers = [
             clearInterval(countdownTimer);
 
             let added = 0;
-            const targetAdd = 25;
+            const targetAdd = 30;
             const intervalTime = 3000 / targetAdd;
             let glowToggle = false;
             const timerInterval = setInterval(() => {
@@ -1421,19 +1421,30 @@ function spawnPower() {
         return;
     }
 
-    const totalRarity = eligiblePowers.reduce((sum, power) => sum + power.rarity, 0);
-    let roll = Math.random() * totalRarity;
+    // === PRIORITY CHECK: Force Spawn Quit if its canSpawn() is met ===
+    const quitPower = powers.find(p => p.name === "quit");
+    const quitReady = quitPower && (!quitPower.oncePerGame || !powerUsageLog.shown["quit"]) && (!quitPower.canSpawn || quitPower.canSpawn());
+
     let selectedPower = null;
 
-    for (const power of eligiblePowers) {
-        roll -= power.rarity;
-        if (roll <= 0) {
-            selectedPower = power;
-            break;
+    if (quitReady) {
+        selectedPower = quitPower;
+    } else {
+        // Otherwise: Weighted random selection
+        const totalRarity = eligiblePowers.reduce((sum, power) => sum + power.rarity, 0);
+        let roll = Math.random() * totalRarity;
+
+        for (const power of eligiblePowers) {
+            roll -= power.rarity;
+            if (roll <= 0) {
+                selectedPower = power;
+                break;
+            }
         }
     }
 
-    if (!selectedPower) return; // Safety check
+    if (!selectedPower) return;
+
     powerActive = true;
     
     powerUsageLog.shown[selectedPower.name] = (powerUsageLog.shown[selectedPower.name] || 0) + 1;
