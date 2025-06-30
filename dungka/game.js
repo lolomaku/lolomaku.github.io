@@ -1393,6 +1393,11 @@ function spawnPower() {
     
         // For powers marked as oncePerGame, only allow them if not shown yet
         if (isOneTimePower && hasShown) return false;
+
+        if (wyatActive) {
+            const blockedDuringWyat = ["wyat", "gento", "timerpause", "mana", "wmian"];
+            if (blockedDuringWyat.includes(power.name)) return false;
+        }
     
         return passesCanSpawn;
     });
