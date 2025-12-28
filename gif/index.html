@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>lolomaku.art | GIF Maker</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- gif.js (encoder) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script> <!-- or use gif.min.js if you prefer -->
+</head>
+<body oncontextmenu="return false;">
+  <main class="wrap">
+    <h1>LOLO MO GIF</h1>
+    <p class="muted">Upload an image and export a 2-frame GIF.</p>
+
+    <section class="card">
+      <label class="label" for="file">Image file</label>
+      <input id="file" type="file" accept="image/*" />
+
+      <div class="actions">
+        <button id="make" disabled>Create GIF</button>
+        <a id="download" class="link" download="output.gif" hidden>Download GIF</a>
+      </div>
+
+      <div class="progress" aria-label="progress">
+        <div id="bar" class="bar"></div>
+      </div>
+
+      <div id="status" class="status muted"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
