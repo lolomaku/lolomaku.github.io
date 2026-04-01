@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>April Fools</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #container {
+      position: absolute;
+      color: yellow;
+      font-weight: 900;
+      text-shadow: 4px 4px 0px red, 8px 8px 0px blue;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #mainText {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    #countdown {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="mainText">"HAPPY APRIL FOOLS"</div>
+    <div id="countdown">Redirecting in 10...</div>
+  </div>
+
+  <script>
+    const messages = [
+      "please play along",
+      "would appreciate it if you could comment something like",
+      "\"this chapter is amazing\"",
+      "\"ganda ng art po\"",
+      "\"ang meaningful ng message ng story\""
+    ];
+
+    let index = 0;
+    let timeLeft = 11;
+
+    const container = document.getElementById("container");
+    const mainText = document.getElementById("mainText");
+    const countdown = document.getElementById("countdown");
+
+    let x = 100;
+    let y = 100;
+    let dx = 3;
+    let dy = 3;
+
+    function moveDVD() {
+      const rect = container.getBoundingClientRect();
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      if (x + rect.width >= width || x <= 0) dx = -dx;
+      if (y + rect.height >= height || y <= 0) dy = -dy;
+
+      x += dx;
+      y += dy;
+
+      container.style.left = x + "px";
+      container.style.top = y + "px";
+
+      requestAnimationFrame(moveDVD);
+    }
+
+    moveDVD();
+
+    setInterval(() => {
+      mainText.textContent = messages[index % messages.length];
+      index++;
+    }, 2000);
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = `Redirecting in ${timeLeft}...`;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = "https://www.youtube.com/watch?v=_aOVVyxrzBQ&list=PLT1wpQBKZs8HtGltZptKcbJ-h28UiT4dc";      }
+    }, 1000);
+  </script>
+</body>
+</html>
