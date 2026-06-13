@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Kids Coloring Book</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+    background:#E0F7FA; /* Light cyan background */
+    overflow:hidden;
+}
+
+/* ==========================
+   GALLERY
+========================== */
+
+#galleryScreen{
+    width:100vw;
+    height:100vh;
+    overflow:auto;
+    padding:30px;
+}
+
+#galleryTitle{
+    font-size:42px;
+    margin-bottom:20px;
+    color: #FF8F00;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+#gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    border: 4px solid #FFCC80;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color: #FF9800;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:contain;
+    background:#ffffff;
+}
+
+.card h3{
+    padding:15px;
+    text-align: center;
+    color: #424242;
+    font-size: 20px;
+}
+
+/* ==========================
+   APP
+========================== */
+
+#app{
+    display:none;
+    width:100vw;
+    height:100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar{
+    width:240px;
+    min-width:240px;
+    background:#FFE0B2; /* Soft orange */
+    border-right:3px solid #FFB74D;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    touch-action:auto;
+    user-select:none;
+}
+
+.sidebar::-webkit-scrollbar{ width:8px; }
+.sidebar::-webkit-scrollbar-track{ background:#FFE0B2; }
+.sidebar::-webkit-scrollbar-thumb{ background:#FF9800; border-radius:4px; }
+
+/* Logo / header strip */
+.sb-logo{
+    background:#FF9800;
+    padding:20px 16px;
+    font-size:24px;
+    font-weight:bold;
+    color:#fff;
+    letter-spacing:1px;
+    text-align: center;
+    border-bottom:2px solid #F57C00;
+    flex-shrink:0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Section label */
+.sb-section{
+    font-size:16px;
+    font-weight:bold;
+    color:#E65100;
+    padding:16px 14px 8px;
+}
+
+/* Tool button row */
+.tool-group{
+    display:flex;
+    flex-direction:column;
+    padding:4px 12px;
+    gap:8px;
+}
+
+.tool-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    background:#FFF3E0;
+    border:2px solid #FFCC80;
+    border-radius:12px;
+    padding:12px 16px;
+    color:#424242;
+    font-size:18px;
+    font-weight: bold;
+    cursor:pointer;
+    text-align:left;
+    transition:all .15s;
+    font-family: inherit;
+}
+
+.tool-btn:hover{
+    background:#FFE0B2;
+    transform: scale(1.02);
+}
+
+.tool-btn.active{
+    background:#F57C00;
+    border-color:#E65100;
+    color:#fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(245, 124, 0, 0.3);
+}
+
+.tool-icon {
+    font-size: 24px;
+}
+
+/* Divider */
+.sb-divider{
+    height:2px;
+    background:#FFCC80;
+    margin:12px;
+    border-radius: 1px;
+}
+
+/* Slider panel */
+.sb-panel{
+    padding:8px 14px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.sb-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:14px;
+    font-weight: bold;
+    color:#E65100;
+}
+
+.sb-row span{
+    color:#D84315;
+    font-variant-numeric:tabular-nums;
+    min-width:40px;
+    text-align:right;
+}
+
+/* Custom range slider */
+input[type=range].sb-slider{
+    -webkit-appearance:none;
+    appearance:none;
+    width:100%;
+    height:12px;
+    border-radius:6px;
+    background:#FFCC80;
+    outline:none;
+    cursor:pointer;
+    margin: 8px 0;
+}
+
+input[type=range].sb-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#F57C00;
+    border:3px solid #fff;
+    cursor:pointer;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+
+/* Brush preview dot */
+#brushDotWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+#brushDot{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#ff0000;
+    border:3px solid #fff;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+    flex-shrink:0;
+}
+
+/* ---- Color wheel area ---- */
+.sb-color{
+    padding:10px 14px 14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+}
+
+#wheelWrap{
+    position:relative;
+    width:180px;
+    height:180px;
+    flex-shrink:0;
+}
+
+#wheelCanvas{
+    position:absolute;
+    top:0; left:0;
+    border-radius:50%;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+#triangleCanvas{
+    position:absolute;
+    top:0; left:0;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+/* Action buttons at bottom */
+.sb-actions{
+    margin-top:auto;
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    border-top:2px solid #FFCC80;
+}
+
+.act-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#FFF3E0;
+    border:2px solid #FFCC80;
+    border-radius:12px;
+    padding:10px 14px;
+    color:#E65100;
+    font-size:16px;
+    font-weight: bold;
+    cursor:pointer;
+    transition:all .15s;
+    text-align:left;
+    font-family: inherit;
+}
+
+.act-btn:hover{ background:#FFE0B2; transform: scale(1.02); }
+.act-btn:active{ transform: scale(0.98); }
+
+.canvasArea{
+    flex:1;
+    overflow:hidden;
+    position:relative;
+    background:#E0F7FA;
+    touch-action: none;
+}
+
+#canvasContainer{
+    position:absolute;
+    transform-origin:top left;
+}
+
+canvas{
+    position:absolute;
+    top:0;
+    left:0;
+    touch-action: none;
+}
+
+#paperCanvas{
+    z-index: 1;
+    background-color: white; /* The white paper background */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+#colorCanvas{
+    z-index: 2;
+}
+
+#lineCanvas{
+    pointer-events:none;
+    z-index: 3;
+}
+
+
+#brushCursor{
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%, -50%);
+    z-index:9999;
+    display:block;
+    box-sizing:border-box;
+    border:2px solid white;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.3);
+}
+
+/* Hide hex input for kids, keep swatch large */
+.hex-row{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    width:100%;
+}
+
+#hexSwatch{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:3px solid #fff;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+    flex-shrink:0;
+}
+
+#hexInput{
+    display: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==================================
+     GALLERY
+=================================== -->
+
+<div id="galleryScreen">
+    <h1 id="galleryTitle">Choose a Picture to Color! 🖍️</h1>
+
+    <!-- shown when a saved session is found in IndexedDB -->
+    <div id="resumeBanner" style="display:none;
+        background:#FFF8E1; border: 4px solid #FFCA28; border-radius:20px; padding:20px;
+        margin-bottom:24px; flex-direction:row; align-items:center; gap:20px;
+        box-shadow:0 6px 16px rgba(0,0,0,0.15);">
+        <img id="resumeThumb" src="" alt="saved work"
+            style="width:120px; height:100px; object-fit:contain;
+                   background:#ffffff; border-radius:12px; border: 2px solid #FFD54F; flex-shrink:0;">
+        <div style="flex:1;">
+            <div style="font-size:24px; font-weight:bold; color: #FF8F00; margin-bottom:4px; font-family: 'Comic Sans MS', sans-serif;">
+                Keep Coloring?
+            </div>
+            <div id="resumeName" style="font-size:16px; color:#666; margin-bottom:16px;"></div>
+            <div style="display:flex; gap:12px;">
+                <button id="resumeYesBtn"
+                    style="padding:12px 24px; background:#4CAF50; color:white; font-weight: bold;
+                           border:none; border-radius:12px; cursor:pointer; font-size:18px; font-family: inherit; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    YES! 🎨
+                </button>
+                <button id="resumeNoBtn"
+                    style="padding:12px 24px; background:#F44336; color:white; font-weight: bold;
+                           border:none; border-radius:12px; cursor:pointer; font-size:18px; font-family: inherit; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    Start Fresh 🗑️
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery"></div>
+</div>
+
+<!-- ==================================
+     COLOR APP
+=================================== -->
+
+<div id="app">
+
+    <div class="sidebar">
+
+        <div class="sb-logo">ColorBook 🎨</div>
+
+        <!-- TOOLS -->
+        <div class="sb-section">My Tools</div>
+        <div class="tool-group">
+
+            <button class="tool-btn active" id="brushBtn">
+                <span class="tool-icon">🖌️</span>
+                Marker
+            </button>
+
+            <button class="tool-btn" id="mixerBtn">
+                <span class="tool-icon">💧</span>
+                Water Paint
+            </button>
+
+            <button class="tool-btn" id="eraserBtn">
+                <span class="tool-icon">🧽</span>
+                Eraser
+            </button>
+
+        </div>
+
+        <div class="sb-divider"></div>
+
+        <!-- BRUSH SETTINGS -->
+        <div class="sb-section">Brush Size</div>
+        <div class="sb-panel">
+            <div id="brushDotWrap">
+                <div id="brushDot"></div>
+            </div>
+            <input type="range" class="sb-slider" id="sizeSlider" min="5" max="150" value="25">
+            
+            <div style="display:none;">
+                <input type="range" class="sb-slider" id="opacitySlider" min="1" max="100" value="100">
+            </div>
+        </div>
+
+        <!-- MIXER SETTINGS (hidden) -->
+        <div id="mixerPanel" style="display:none;">
+            <!-- Hidden complex sliders for kids -->
+            <input type="range" class="sb-slider" id="mixSlider" min="1" max="100" value="50">
+            <input type="range" class="sb-slider" id="wetSlider" min="1" max="100" value="80">
+        </div>
+
+        <div class="sb-divider"></div>
+
+        <!-- COLOR WHEEL -->
+        <div class="sb-section">Pick a Color!</div>
+        <div class="sb-color">
+            <div id="wheelWrap">
+                <canvas id="wheelCanvas" width="180" height="180"></canvas>
+                <canvas id="triangleCanvas" width="180" height="180"></canvas>
+            </div>
+            <div class="hex-row">
+                <div id="hexSwatch"></div>
+                <input type="text" id="hexInput" value="#ff0000">
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="sb-actions">
+            <button class="act-btn" id="undoBtn">
+                <span class="tool-icon">↩️</span> Undo
+            </button>
+            <button class="act-btn" id="redoBtn" style="display: none;">
+                <!-- Hide redo to keep it simple -->
+            </button>
+            <div class="sb-divider" style="margin: 4px;"></div>
+            <button class="act-btn" id="fitBtn">
+                <span class="tool-icon">🔍</span> Center Page
+            </button>
+            <button class="act-btn" id="saveBtn">
+                <span class="tool-icon">💾</span> Save Picture
+            </button>
+            <button class="act-btn" id="backBtn">
+                <span class="tool-icon">🏠</span> Back Home
+            </button>
+        </div>
+
+    </div>
+
+    <div class="canvasArea">
+        <div id="brushCursor"></div>
+        <div id="canvasContainer">
+            <canvas id="paperCanvas"></canvas>
+            <canvas id="colorCanvas"></canvas>
+            <canvas id="lineCanvas"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+//////////////////////////////////////////////////////
+// CONFIG
+//////////////////////////////////////////////////////
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxrqwjAneT9FzGrz8pq7Nim-zf6IJ9bV6Gr1_5v5cvLOeAw_iVap7iF4VUPemJRntqA/exec";
+
+//////////////////////////////////////////////////////
+// ELEMENTS
+//////////////////////////////////////////////////////
+
+const galleryScreen = document.getElementById("galleryScreen");
+const app           = document.getElementById("app");
+const gallery       = document.getElementById("gallery");
+const paperCanvas   = document.getElementById("paperCanvas");
+const colorCanvas   = document.getElementById("colorCanvas");
+const lineCanvas    = document.getElementById("lineCanvas");
+const paperCtx      = paperCanvas.getContext("2d");
+const colorCtx      = colorCanvas.getContext("2d");
+const lineCtx       = lineCanvas.getContext("2d");
+const canvasArea    = document.querySelector(".canvasArea");
+const brushCursor   = document.getElementById("brushCursor");
+
+//////////////////////////////////////////////////////
+// STATE
+//////////////////////////////////////////////////////
+
+let currentTool    = "brush";
+let drawing        = false;
+let undoStack      = [];
+let redoStack      = [];
+let brushColor     = "#ff0000";
+let zoom           = 1;
+let panX           = 0;
+let panY           = 0;
+let imageWidth     = 0;
+let imageHeight    = 0;
+let brushSize      = 25;
+let brushOpacity   = 1;
+let previousPoint  = null;
+let isPanning      = false;
+let panMode        = false;
+let startPanX      = 0;
+let startPanY      = 0;
+let spaceHeld      = false;
+let activePointerId = null;
+
+// Mixer brush state
+let mixRatio  = 0.50; 
+let wetRatio  = 0.80; 
+let mixerColor = null; 
+
+//////////////////////////////////////////////////////
+// CURSOR HELPERS
+//////////////////////////////////////////////////////
+
+function setBrushCursorVisible(v) {
+    brushCursor.style.display = v ? "block" : "none";
+}
+
+function updateBrushCursorSize() {
+    const size = brushSize * zoom;
+    brushCursor.style.width  = size + "px";
+    brushCursor.style.height = size + "px";
+}
+
+//////////////////////////////////////////////////////
+// GALLERY
+//////////////////////////////////////////////////////
+
+async function loadGallery() {
+    try {
+        const res   = await fetch(API_URL);
+        const files = await res.json();
+
+        gallery.innerHTML = "";
+
+        files.forEach(file => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `<img src="${file.thumbnail}"><h3>${file.name}</h3>`;
+            card.onclick = () => loadArtwork(file.data, file.name);
+            gallery.appendChild(card);
+        });
+    } catch(err) {
+        gallery.innerHTML = "<h2 style='text-align:center; color:#E65100;'>Unable to load artworks.</h2>";
+    }
+}
+
+//////////////////////////////////////////////////////
+// PERSISTENCE  (IndexedDB)
+//////////////////////////////////////////////////////
+
+const DB_NAME    = "coloringBook";
+const DB_VERSION = 1;
+const STORE      = "session";
+
+let db = null;
+
+function openDB() {
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = e => {
+            e.target.result.createObjectStore(STORE);
+        };
+        req.onsuccess = e => resolve(e.target.result);
+        req.onerror   = e => reject(e.target.error);
+    });
+}
+
+async function dbPut(key, value) {
+    if (!db) return;
+    return new Promise((resolve, reject) => {
+        const tx  = db.transaction(STORE, "readwrite");
+        const req = tx.objectStore(STORE).put(value, key);
+        req.onsuccess = () => resolve();
+        req.onerror   = e  => reject(e.target.error);
+    });
+}
+
+async function dbGet(key) {
+    if (!db) return null;
+    return new Promise((resolve, reject) => {
+        const tx  = db.transaction(STORE, "readonly");
+        const req = tx.objectStore(STORE).get(key);
+        req.onsuccess = e => resolve(e.target.result ?? null);
+        req.onerror   = e => reject(e.target.error);
+    });
+}
+
+async function dbDelete(key) {
+    if (!db) return;
+    return new Promise((resolve, reject) => {
+        const tx  = db.transaction(STORE, "readwrite");
+        const req = tx.objectStore(STORE).delete(key);
+        req.onsuccess = () => resolve();
+        req.onerror   = e  => reject(e.target.error);
+    });
+}
+
+let autoSaveTimer = null;
+let currentArtworkUrl  = null;
+let currentArtworkName = null;
+
+function scheduleAutoSave() {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(persistSession, 1000);
+}
+
+async function persistSession() {
+    if (!currentArtworkUrl) return;
+
+    const thumbCanvas = document.createElement("canvas");
+    const scale       = Math.min(1, 200 / colorCanvas.width);
+    thumbCanvas.width  = Math.round(colorCanvas.width  * scale);
+    thumbCanvas.height = Math.round(colorCanvas.height * scale);
+    const tCtx = thumbCanvas.getContext("2d");
+    
+    // Draw white background for thumbnail
+    tCtx.fillStyle = "#ffffff";
+    tCtx.fillRect(0, 0, thumbCanvas.width, thumbCanvas.height);
+    
+    tCtx.drawImage(colorCanvas, 0, 0, thumbCanvas.width, thumbCanvas.height);
+    tCtx.drawImage(lineCanvas,  0, 0, thumbCanvas.width, thumbCanvas.height);
+    const thumb = thumbCanvas.toDataURL("image/jpeg", 0.6);
+
+    colorCanvas.toBlob(async blob => {
+        await dbPut("session", {
+            artworkUrl:  currentArtworkUrl,
+            artworkName: currentArtworkName,
+            colorBlob:   blob,
+            thumb
+        });
+    }, "image/png");
+}
+
+async function clearSession() {
+    await dbDelete("session");
+    currentArtworkUrl  = null;
+    currentArtworkName = null;
+}
+
+async function checkResume() {
+    const saved = await dbGet("session");
+    if (!saved) return;
+
+    const banner = document.getElementById("resumeBanner");
+    document.getElementById("resumeThumb").src = saved.thumb;
+    document.getElementById("resumeName").textContent = saved.artworkName || "Untitled Picture";
+    banner.style.display = "flex";
+
+    document.getElementById("resumeYesBtn").onclick = async () => {
+        banner.style.display = "none";
+        await resumeSession(saved);
+    };
+
+    document.getElementById("resumeNoBtn").onclick = async () => {
+        banner.style.display = "none";
+        await clearSession();
+    };
+}
+
+async function resumeSession(saved) {
+    galleryScreen.style.display = "none";
+    app.style.display = "flex";
+
+    const lineImg = new Image();
+    lineImg.crossOrigin = "anonymous";
+    lineImg.src = saved.artworkUrl;
+
+    lineImg.onload = () => {
+        imageWidth  = lineImg.width;
+        imageHeight = lineImg.height;
+
+        // Resize all canvases
+        paperCanvas.width  = imageWidth;
+        paperCanvas.height = imageHeight;
+        colorCanvas.width  = imageWidth;
+        colorCanvas.height = imageHeight;
+        lineCanvas.width   = imageWidth;
+        lineCanvas.height  = imageHeight;
+
+        // Fill paper canvas with white
+        paperCtx.fillStyle = "#ffffff";
+        paperCtx.fillRect(0, 0, imageWidth, imageHeight);
+
+        lineCtx.clearRect(0, 0, imageWidth, imageHeight);
+        lineCtx.drawImage(lineImg, 0, 0);
+
+        currentArtworkUrl  = saved.artworkUrl;
+        currentArtworkName = saved.artworkName;
+
+        const colorUrl  = URL.createObjectURL(saved.colorBlob);
+        const colorImg  = new Image();
+        colorImg.onload = () => {
+            colorCtx.clearRect(0, 0, imageWidth, imageHeight);
+            colorCtx.drawImage(colorImg, 0, 0);
+            URL.revokeObjectURL(colorUrl);
+            fitToScreen();
+            saveInitialState();
+        };
+        colorImg.src = colorUrl;
+    };
+}
+
+openDB()
+    .then(database => {
+        db = database;
+        return checkResume();
+    })
+    .catch(err => console.warn("IndexedDB unavailable:", err));
+
+loadGallery();
+
+
+
+//////////////////////////////////////////////////////
+// LOAD ARTWORK
+//////////////////////////////////////////////////////
+
+function fitToScreen() {
+    const w = canvasArea.clientWidth;
+    const h = canvasArea.clientHeight;
+
+    zoom = Math.min(w / imageWidth, h / imageHeight) * 0.9;
+    panX = (w - imageWidth  * zoom) / 2;
+    panY = (h - imageHeight * zoom) / 2;
+
+    updateViewport();
+}
+
+function updateViewport() {
+    document.getElementById("canvasContainer").style.transform =
+        `translate(${panX}px,${panY}px) scale(${zoom})`;
+    updateBrushCursorSize();
+}
+
+// Auto-fit on resize
+let resizeTimer;
+window.addEventListener("resize", () => {
+    if(app.style.display === "flex") {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(fitToScreen, 200);
+    }
+});
+
+function loadArtwork(url, name = "Untitled") {
+    galleryScreen.style.display = "none";
+    app.style.display = "flex";
+
+    currentArtworkUrl  = url;
+    currentArtworkName = name;
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = url;
+
+    img.onload = () => {
+        imageWidth  = img.width;
+        imageHeight = img.height;
+
+        paperCanvas.width  = imageWidth;
+        paperCanvas.height = imageHeight;
+        colorCanvas.width  = imageWidth;
+        colorCanvas.height = imageHeight;
+        lineCanvas.width   = imageWidth;
+        lineCanvas.height  = imageHeight;
+
+        // Draw white paper base
+        paperCtx.fillStyle = "#ffffff";
+        paperCtx.fillRect(0, 0, imageWidth, imageHeight);
+
+        lineCtx.clearRect(0, 0, imageWidth, imageHeight);
+        lineCtx.drawImage(img, 0, 0);
+
+        fitToScreen();
+        saveInitialState();
+        scheduleAutoSave();
+    };
+}
+
+//////////////////////////////////////////////////////
+// TOOLS
+//////////////////////////////////////////////////////
+
+const toolBtns = document.querySelectorAll(".tool-btn");
+
+function setTool(name) {
+    currentTool = name;
+    toolBtns.forEach(b => b.classList.toggle("active", b.id === name + "Btn"));
+}
+
+document.getElementById("brushBtn").onclick  = () => setTool("brush");
+document.getElementById("mixerBtn").onclick  = () => setTool("mixer");
+document.getElementById("eraserBtn").onclick = () => setTool("eraser");
+document.getElementById("fitBtn").onclick    = fitToScreen;
+
+//////////////////////////////////////////////////////
+// SLIDERS
+//////////////////////////////////////////////////////
+
+function updateBrushDot() {
+    const dot = document.getElementById("brushDot");
+    const px  = Math.max(8, Math.min(50, brushSize * 0.4));
+    dot.style.width      = px + "px";
+    dot.style.height     = px + "px";
+    dot.style.background = brushColor;
+    dot.style.opacity    = brushOpacity;
+}
+
+document.getElementById("sizeSlider").oninput = e => {
+    brushSize = Number(e.target.value);
+    updateBrushCursorSize();
+    updateBrushDot();
+};
+
+updateBrushDot();
+
+//////////////////////////////////////////////////////
+// COLOR WHEEL  (canvas-drawn, cross-browser)
+//////////////////////////////////////////////////////
+
+let cwHue = 0;       // 0-360
+let cwSat = 1.0;     // 0-1
+let cwVal = 0.5;     // 0-1  
+let cwDragging = null; 
+
+const wheelCanvas = document.getElementById("wheelCanvas");
+const triCanvas   = document.getElementById("triangleCanvas");
+const wCtx        = wheelCanvas.getContext("2d");
+const tCtx        = triCanvas.getContext("2d");
+const CW          = 180;
+const CX          = CW / 2;
+const CY          = CW / 2;
+const R_OUTER     = CW / 2 - 2;
+const R_INNER     = R_OUTER - 22;   
+
+// ---- helpers ----
+
+function hsvToRgb(h, s, v) {
+    let r, g, b;
+    const i = Math.floor(h / 60) % 6;
+    const f = h / 60 - Math.floor(h / 60);
+    const p = v * (1 - s);
+    const q = v * (1 - f * s);
+    const t = v * (1 - (1 - f) * s);
+    switch(i) {
+        case 0: r=v; g=t; b=p; break;
+        case 1: r=q; g=v; b=p; break;
+        case 2: r=p; g=v; b=t; break;
+        case 3: r=p; g=q; b=v; break;
+        case 4: r=t; g=p; b=v; break;
+        case 5: r=v; g=p; b=q; break;
+    }
+    return [Math.round(r*255), Math.round(g*255), Math.round(b*255)];
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + [r,g,b].map(x => x.toString(16).padStart(2,"0")).join("");
+}
+
+// ---- draw hue ring ----
+
+function drawRing() {
+    wCtx.clearRect(0, 0, CW, CW);
+
+    const steps = 360;
+    for (let i = 0; i < steps; i++) {
+        const a1 = (i / steps) * Math.PI * 2 - Math.PI / 2;
+        const a2 = ((i + 1.5) / steps) * Math.PI * 2 - Math.PI / 2;
+        const [r, g, b] = hsvToRgb(i, 1, 1);
+        wCtx.beginPath();
+        wCtx.moveTo(CX + Math.cos(a1) * R_INNER, CY + Math.sin(a1) * R_INNER);
+        wCtx.arc(CX, CY, R_OUTER, a1, a2);
+        wCtx.arc(CX, CY, R_INNER, a2, a1, true);
+        wCtx.closePath();
+        wCtx.fillStyle = `rgb(${r},${g},${b})`;
+        wCtx.fill();
+    }
+
+    const hRad = (cwHue / 360) * Math.PI * 2 - Math.PI / 2;
+    const rMid = (R_OUTER + R_INNER) / 2;
+    const dx   = CX + Math.cos(hRad) * rMid;
+    const dy   = CY + Math.sin(hRad) * rMid;
+    wCtx.beginPath();
+    wCtx.arc(dx, dy, 8, 0, Math.PI * 2);
+    wCtx.strokeStyle = "#fff";
+    wCtx.lineWidth   = 3;
+    wCtx.stroke();
+    wCtx.beginPath();
+    wCtx.arc(dx, dy, 6, 0, Math.PI * 2);
+    wCtx.strokeStyle = "#000";
+    wCtx.lineWidth   = 1.5;
+    wCtx.stroke();
+}
+
+function triVertices() {
+    const r = R_INNER - 6;
+    const baseAngle = (cwHue / 360) * Math.PI * 2 - Math.PI / 2;
+    const v0 = [ CX + Math.cos(baseAngle)               * r, CY + Math.sin(baseAngle)               * r ]; 
+    const v1 = [ CX + Math.cos(baseAngle + 2*Math.PI/3) * r, CY + Math.sin(baseAngle + 2*Math.PI/3) * r ]; 
+    const v2 = [ CX + Math.cos(baseAngle - 2*Math.PI/3) * r, CY + Math.sin(baseAngle - 2*Math.PI/3) * r ]; 
+    return [v0, v1, v2];
+}
+
+function drawTriangle() {
+    tCtx.clearRect(0, 0, CW, CW);
+
+    const [v0, v1, v2] = triVertices();
+    const [hr, hg, hb] = hsvToRgb(cwHue, 1, 1);
+
+    tCtx.save();
+    tCtx.beginPath();
+    tCtx.moveTo(v0[0], v0[1]);
+    tCtx.lineTo(v1[0], v1[1]);
+    tCtx.lineTo(v2[0], v2[1]);
+    tCtx.closePath();
+    tCtx.clip();
+
+    tCtx.fillStyle = `rgb(${hr},${hg},${hb})`;
+    tCtx.fillRect(0, 0, CW, CW);
+
+    const whiteGrad = tCtx.createLinearGradient(v2[0], v2[1], (v0[0]+v1[0])/2, (v0[1]+v1[1])/2);
+    whiteGrad.addColorStop(0, "rgba(255,255,255,1)");
+    whiteGrad.addColorStop(1, "rgba(255,255,255,0)");
+    tCtx.fillStyle = whiteGrad;
+    tCtx.fillRect(0, 0, CW, CW);
+
+    const blackGrad = tCtx.createLinearGradient(v1[0], v1[1], (v0[0]+v2[0])/2, (v0[1]+v2[1])/2);
+    blackGrad.addColorStop(0, "rgba(0,0,0,1)");
+    blackGrad.addColorStop(1, "rgba(0,0,0,0)");
+    tCtx.fillStyle = blackGrad;
+    tCtx.fillRect(0, 0, CW, CW);
+
+    tCtx.restore();
+
+    const [px, py] = svToXY(cwSat, cwVal);
+    tCtx.beginPath();
+    tCtx.arc(px, py, 8, 0, Math.PI * 2);
+    tCtx.strokeStyle = "#fff";
+    tCtx.lineWidth   = 3;
+    tCtx.stroke();
+    tCtx.beginPath();
+    tCtx.arc(px, py, 6, 0, Math.PI * 2);
+    tCtx.strokeStyle = "#000";
+    tCtx.lineWidth   = 1.5;
+    tCtx.stroke();
+}
+
+function svToXY(s, v) {
+    const [v0, v1, v2] = triVertices();
+    const w0 = s * v;
+    const w1 = 1 - v;
+    const w2 = (1 - s) * v;
+    return [
+        v0[0]*w0 + v1[0]*w1 + v2[0]*w2,
+        v0[1]*w0 + v1[1]*w1 + v2[1]*w2
+    ];
+}
+
+function xyToSV(px, py) {
+    const [v0, v1, v2] = triVertices();
+    const denom = (v1[1]-v2[1])*(v0[0]-v2[0]) + (v2[0]-v1[0])*(v0[1]-v2[1]);
+    if (Math.abs(denom) < 1e-6) return [cwSat, cwVal];
+    let w0 = ((v1[1]-v2[1])*(px-v2[0]) + (v2[0]-v1[0])*(py-v2[1])) / denom;
+    let w1 = ((v2[1]-v0[1])*(px-v2[0]) + (v0[0]-v2[0])*(py-v2[1])) / denom;
+    let w2 = 1 - w0 - w1;
+    w0 = Math.max(0, w0); w1 = Math.max(0, w1); w2 = Math.max(0, w2);
+    const total = w0 + w1 + w2;
+    const val = Math.min(1, (w0 + w2) / total);
+    const sat = (w0 + w2) < 1e-6 ? 0 : Math.min(1, w0 / (w0 + w2));
+    return [sat, val];
+}
+
+function isInRing(px, py) {
+    const d = Math.hypot(px - CX, py - CY);
+    return d >= R_INNER && d <= R_OUTER;
+}
+
+function isInTriangle(px, py) {
+    const [v0, v1, v2] = triVertices();
+    function sign(ax,ay,bx,by,cx,cy){ return (ax-cx)*(by-cy)-(bx-cx)*(ay-cy); }
+    const d0 = sign(px,py,v0[0],v0[1],v1[0],v1[1]);
+    const d1 = sign(px,py,v1[0],v1[1],v2[0],v2[1]);
+    const d2 = sign(px,py,v2[0],v2[1],v0[0],v0[1]);
+    const hasNeg = (d0<0)||(d1<0)||(d2<0);
+    const hasPos = (d0>0)||(d1>0)||(d2>0);
+    return !(hasNeg && hasPos);
+}
+
+function redrawWheel() {
+    drawRing();
+    drawTriangle();
+}
+
+function applyColor() {
+    const [r,g,b] = hsvToRgb(cwHue, cwSat, cwVal);
+    brushColor = rgbToHex(r, g, b);
+    document.getElementById("hexSwatch").style.background = brushColor;
+    updateBrushDot();
+}
+
+function wheelPointerDown(e) {
+    const rect = wheelCanvas.getBoundingClientRect();
+    const px   = (e.clientX - rect.left) * (CW / rect.width);
+    const py   = (e.clientY - rect.top)  * (CW / rect.height);
+    if (isInRing(px, py))         cwDragging = "ring";
+    else if (isInTriangle(px, py)) cwDragging = "tri";
+    else return;
+    wheelPointerMove(e);
+    triCanvas.setPointerCapture(e.pointerId);
+    e.stopPropagation();
+}
+
+function wheelPointerMove(e) {
+    if (!cwDragging) return;
+    const rect = triCanvas.getBoundingClientRect();
+    const px   = (e.clientX - rect.left) * (CW / rect.width);
+    const py   = (e.clientY - rect.top)  * (CW / rect.height);
+    if (cwDragging === "ring") {
+        cwHue = ((Math.atan2(py - CY, px - CX) + Math.PI / 2) * 180 / Math.PI + 360) % 360;
+    } else {
+        [cwSat, cwVal] = xyToSV(px, py);
+    }
+    redrawWheel();
+    applyColor();
+    e.stopPropagation();
+}
+
+function wheelPointerUp(e) {
+    cwDragging = null;
+    e.stopPropagation();
+}
+
+triCanvas.addEventListener("pointerdown",  wheelPointerDown);
+triCanvas.addEventListener("pointermove",  wheelPointerMove);
+triCanvas.addEventListener("pointerup",    wheelPointerUp);
+triCanvas.addEventListener("pointercancel",wheelPointerUp);
+wheelCanvas.addEventListener("pointerdown", wheelPointerDown);
+
+cwHue = 0; cwSat = 1; cwVal = 1;
+applyColor();
+redrawWheel();
+
+//////////////////////////////////////////////////////
+// ZOOM
+//////////////////////////////////////////////////////
+
+canvasArea.addEventListener("wheel", e => {
+    e.preventDefault();
+    const factor  = e.deltaY > 0 ? 0.9 : 1.1;
+    const beforeX = (e.clientX - panX) / zoom;
+    const beforeY = (e.clientY - panY) / zoom;
+    zoom = Math.max(0.1, Math.min(zoom * factor, 20));
+    panX = e.clientX - beforeX * zoom;
+    panY = e.clientY - beforeY * zoom;
+    updateViewport();
+}, { passive: false });
+
+//////////////////////////////////////////////////////
+// BRUSH STAMPING
+//////////////////////////////////////////////////////
+
+function stampBrush(x, y) {
+    colorCtx.save();
+
+    if (currentTool === "brush") {
+        colorCtx.globalCompositeOperation = "source-over";
+        colorCtx.fillStyle   = brushColor;
+        colorCtx.globalAlpha = brushOpacity;
+    } else {
+        colorCtx.globalCompositeOperation = "destination-out";
+        colorCtx.globalAlpha = 1;
+    }
+
+    colorCtx.beginPath();
+    colorCtx.arc(x, y, brushSize / 2, 0, Math.PI * 2);
+    colorCtx.fill();
+    colorCtx.restore();
+}
+
+function stampBetweenPoints(p1, p2) {
+    const dx       = p2.x - p1.x;
+    const dy       = p2.y - p1.y;
+    const dist     = Math.sqrt(dx*dx + dy*dy);
+    const spacing  = Math.max(1, brushSize * 0.15);
+    const steps    = Math.ceil(dist / spacing);
+
+    for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        stampBrush(p1.x + dx*t, p1.y + dy*t);
+    }
+}
+
+//////////////////////////////////////////////////////
+// MIXER BRUSH
+//////////////////////////////////////////////////////
+
+function hexToRgbArr(hex) {
+    const n = parseInt(hex.replace("#",""), 16);
+    return [(n>>16)&255, (n>>8)&255, n&255];
+}
+
+function sampleCanvasColor(x, y, radius) {
+    const r = Math.ceil(radius);
+    const sx = Math.max(0, Math.round(x - r));
+    const sy = Math.max(0, Math.round(y - r));
+    const sw = Math.min(colorCanvas.width  - sx, r * 2);
+    const sh = Math.min(colorCanvas.height - sy, r * 2);
+
+    if (sw <= 0 || sh <= 0) return null;
+
+    const data = colorCtx.getImageData(sx, sy, sw, sh).data;
+    let rSum = 0, gSum = 0, bSum = 0, aSum = 0, count = 0;
+
+    for (let i = 0; i < data.length; i += 4) {
+        const a = data[i + 3];
+        if (a > 0) {
+            rSum += data[i];
+            gSum += data[i + 1];
+            bSum += data[i + 2];
+            aSum += a;
+            count++;
+        }
+    }
+
+    if (count === 0) return null;
+    return {
+        r: rSum / count,
+        g: gSum / count,
+        b: bSum / count,
+        a: aSum / count / 255
+    };
+}
+
+function blendRgb(a, b, t) {
+    return {
+        r: a.r + (b.r - a.r) * t,
+        g: a.g + (b.g - a.g) * t,
+        b: a.b + (b.b - a.b) * t
+    };
+}
+
+function stampMixer(x, y) {
+    const radius = brushSize / 2;
+    const canvasSample = sampleCanvasColor(x, y, radius);
+    const [br, bg, bb] = hexToRgbArr(brushColor);
+    const brushRgb = { r: br, g: bg, b: bb };
+
+    if (canvasSample && canvasSample.a > 0.01) {
+        const canvasRgb = { r: canvasSample.r, g: canvasSample.g, b: canvasSample.b };
+        if (!mixerColor) mixerColor = { ...brushRgb };
+        mixerColor = blendRgb(mixerColor, canvasRgb, mixRatio);
+    } else {
+        if (!mixerColor) mixerColor = { ...brushRgb };
+        mixerColor = blendRgb(mixerColor, brushRgb, 0.05);
+    }
+
+    colorCtx.save();
+    colorCtx.globalCompositeOperation = "source-over";
+    colorCtx.globalAlpha = wetRatio * brushOpacity;
+    
+    const grad = colorCtx.createRadialGradient(x, y, 0, x, y, radius);
+    grad.addColorStop(0,   `rgba(${Math.round(mixerColor.r)},${Math.round(mixerColor.g)},${Math.round(mixerColor.b)},1)`);
+    grad.addColorStop(0.6, `rgba(${Math.round(mixerColor.r)},${Math.round(mixerColor.g)},${Math.round(mixerColor.b)},0.6)`);
+    grad.addColorStop(1,   `rgba(${Math.round(mixerColor.r)},${Math.round(mixerColor.g)},${Math.round(mixerColor.b)},0)`);
+
+    colorCtx.fillStyle = grad;
+    colorCtx.beginPath();
+    colorCtx.arc(x, y, radius, 0, Math.PI * 2);
+    colorCtx.fill();
+    colorCtx.restore();
+}
+
+function stampMixerBetweenPoints(p1, p2) {
+    const dx      = p2.x - p1.x;
+    const dy      = p2.y - p1.y;
+    const dist    = Math.sqrt(dx*dx + dy*dy);
+    const spacing = Math.max(1, brushSize * 0.10); 
+    const steps   = Math.ceil(dist / spacing);
+
+    for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        stampMixer(p1.x + dx*t, p1.y + dy*t);
+    }
+}
+
+//////////////////////////////////////////////////////
+// COORDINATE HELPER
+//////////////////////////////////////////////////////
+
+function getPos(e) {
+    const rect = canvasArea.getBoundingClientRect();
+    return {
+        x: (e.clientX - rect.left - panX) / zoom,
+        y: (e.clientY - rect.top  - panY) / zoom
+    };
+}
+
+//////////////////////////////////////////////////////
+// POINTER EVENTS
+//////////////////////////////////////////////////////
+
+canvasArea.addEventListener("pointerdown", e => {
+    if (e.button === 1 || spaceHeld) {
+        isPanning = panMode = true;
+        startPanX = e.clientX;
+        startPanY = e.clientY;
+        canvasArea.style.cursor = "grabbing";
+        setBrushCursorVisible(false);
+        e.preventDefault();
+        return;
+    }
+
+    if (e.button !== 0) return;
+
+    drawing         = true;
+    activePointerId = e.pointerId;
+
+    try { canvasArea.setPointerCapture(e.pointerId); } catch(err) {}
+
+    const p = getPos(e);
+    previousPoint = p;
+
+    if (currentTool === "mixer") {
+        mixerColor = null;
+        stampMixer(p.x, p.y);
+    } else {
+        stampBrush(p.x, p.y);
+    }
+});
+
+window.addEventListener("pointermove", e => {
+    
+    // Hide brush cursor on touch devices to improve usability
+    if (e.pointerType === "touch") {
+        setBrushCursorVisible(false);
+    } else {
+        const rect = canvasArea.getBoundingClientRect();
+        const inArea = (
+            e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top  && e.clientY <= rect.bottom
+        );
+        if (inArea || drawing) {
+            setBrushCursorVisible(true);
+            brushCursor.style.left = (e.clientX - rect.left) + "px";
+            brushCursor.style.top  = (e.clientY - rect.top)  + "px";
+        } else {
+            setBrushCursorVisible(false);
+        }
+    }
+
+    if (isPanning) {
+        panX += e.clientX - startPanX;
+        panY += e.clientY - startPanY;
+        startPanX = e.clientX;
+        startPanY = e.clientY;
+        updateViewport();
+        return;
+    }
+
+    if (!drawing || e.pointerId !== activePointerId) return;
+
+    const p = getPos(e);
+
+    if (currentTool === "mixer") {
+        if (previousPoint) {
+            stampMixerBetweenPoints(previousPoint, p);
+        } else {
+            stampMixer(p.x, p.y);
+        }
+    } else {
+        if (previousPoint) {
+            stampBetweenPoints(previousPoint, p);
+        } else {
+            stampBrush(p.x, p.y);
+        }
+    }
+
+    previousPoint = p;
+});
+
+function endDrawing(e) {
+    if (panMode || isPanning) {
+        isPanning = panMode = false;
+        canvasArea.style.cursor = spaceHeld ? "grab" : "";
+        if (e.pointerType !== "touch") setBrushCursorVisible(true);
+        return;
+    }
+
+    if (!drawing) return;
+
+    saveState();
+
+    drawing         = false;
+    previousPoint   = null;
+    activePointerId = null;
+
+    try { canvasArea.releasePointerCapture(e.pointerId); } catch(err) {}
+}
+
+window.addEventListener("pointerup",     endDrawing);
+window.addEventListener("pointercancel", endDrawing);
+
+//////////////////////////////////////////////////////
+// UNDO / REDO
+//////////////////////////////////////////////////////
+
+const MAX_STATES = 10;
+
+function saveInitialState() {
+    undoStack = [ colorCanvas.toDataURL() ];
+    redoStack = [];
+}
+
+function saveState() {
+    if (undoStack.length >= MAX_STATES) undoStack.shift();
+    undoStack.push(colorCanvas.toDataURL());
+    redoStack = []; 
+    scheduleAutoSave();
+}
+
+function restoreState(dataURL) {
+    const img = new Image();
+    img.src = dataURL;
+    img.onload = () => {
+        colorCtx.clearRect(0, 0, colorCanvas.width, colorCanvas.height);
+        colorCtx.drawImage(img, 0, 0);
+    };
+}
+
+document.getElementById("undoBtn").onclick = () => {
+    if (undoStack.length < 2) return;
+    redoStack.push(undoStack.pop());               
+    restoreState(undoStack[undoStack.length - 1]); 
+};
+
+// Redo hidden in UI for kids to keep it simple, but function preserved
+document.getElementById("redoBtn").onclick = () => {
+    if (!redoStack.length) return;
+    const state = redoStack.pop();                 
+    if (undoStack.length >= MAX_STATES) undoStack.shift();
+    undoStack.push(state);                         
+    restoreState(state);
+};
+
+//////////////////////////////////////////////////////
+// SAVE PNG
+//////////////////////////////////////////////////////
+
+document.getElementById("saveBtn").onclick = () => {
+    const exp = document.createElement("canvas");
+    exp.width  = colorCanvas.width;
+    exp.height = colorCanvas.height;
+    const ctx  = exp.getContext("2d");
+    
+    // Draw paper, color, and lines!
+    ctx.drawImage(paperCanvas, 0, 0);
+    ctx.drawImage(colorCanvas, 0, 0);
+    ctx.drawImage(lineCanvas,  0, 0);
+    
+    const a = document.createElement("a");
+    a.download = "my-coloring-masterpiece.png";
+    a.href = exp.toDataURL("image/png");
+    a.click();
+};
+
+//////////////////////////////////////////////////////
+// BACK
+//////////////////////////////////////////////////////
+
+document.getElementById("backBtn").onclick = () => {
+    clearSession();
+    app.style.display = "none";
+    galleryScreen.style.display = "block";
+};
+
+</script>
+</body>
+</html>
