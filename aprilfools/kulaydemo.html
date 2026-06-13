@@ -459,6 +459,113 @@ canvas {
 .btn-primary { background: var(--primary); color: white; }
 .btn-secondary { background: #f1f5f9; color: var(--text-main); }
 
+/* ==========================
+   NAME PROMPT MODAL
+========================== */
+#nameModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#nameModal.hidden {
+    display: none;
+}
+
+.name-card {
+    background: white;
+    border-radius: 28px;
+    padding: 40px 32px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+    animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+
+.name-card .nc-emoji {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.name-card h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.name-card p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+#nameInput {
+    width: 100%;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+    padding: 14px 16px;
+    border: 3px solid #dbeafe;
+    border-radius: 16px;
+    outline: none;
+    color: var(--text-main);
+    background: #f8fafc;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+}
+
+#nameInput:focus {
+    border-color: var(--primary);
+    background: white;
+}
+
+#nameInput::placeholder {
+    color: #cbd5e1;
+    font-weight: 600;
+}
+
+#nameSubmitBtn {
+    margin-top: 20px;
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.15s;
+}
+
+#nameSubmitBtn:hover  { background: var(--primary-hover); }
+#nameSubmitBtn:active { transform: scale(0.97); }
+
+.nc-char-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    text-align: right;
+}
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     #mobileMenuBtn { display: block; }
@@ -489,6 +596,18 @@ canvas {
 </style>
 </head>
 <body>
+
+<!-- NAME PROMPT MODAL (shown only on first visit) -->
+<div id="nameModal" class="hidden">
+    <div class="name-card">
+        <span class="nc-emoji">🎨</span>
+        <h2>Welcome, Artist!</h2>
+        <p>Before we start painting, what's your name?<br>We'll remember it for next time!</p>
+        <input type="text" id="nameInput" maxlength="15" placeholder="Your name…" autocomplete="off" autocorrect="off" spellcheck="false">
+        <div class="nc-char-count"><span id="nameCharCount">0</span> / 15</div>
+        <button id="nameSubmitBtn">🖌️ Let's Paint!</button>
+    </div>
+</div>
 
 <div id="galleryScreen" class="screen active">
     <div class="gallery-header">
@@ -624,6 +743,65 @@ canvas {
 //////////////////////////////////////////////////////
 
 const API_URL = "https://script.google.com/macros/s/AKfycbxrqwjAneT9FzGrz8pq7Nim-zf6IJ9bV6Gr1_5v5cvLOeAw_iVap7iF4VUPemJRntqA/exec";
+
+//////////////////////////////////////////////////////
+// USER NAME (one-time prompt, stored in localStorage)
+//////////////////////////////////////////////////////
+
+const NAME_KEY = "colorbook_username";
+
+let userName = localStorage.getItem(NAME_KEY) || null;
+
+function initNamePrompt() {
+    const modal     = document.getElementById("nameModal");
+    const input     = document.getElementById("nameInput");
+    const submitBtn = document.getElementById("nameSubmitBtn");
+    const charCount = document.getElementById("nameCharCount");
+
+    if (userName) {
+        // Already have a name — skip modal, update greeting immediately
+        updateGalleryGreeting();
+        return;
+    }
+
+    // Show modal
+    modal.classList.remove("hidden");
+
+    input.addEventListener("input", () => {
+        const val = input.value.slice(0, 15);
+        input.value = val;
+        charCount.textContent = val.length;
+    });
+
+    function submitName() {
+        const name = input.value.trim().slice(0, 15);
+        if (!name) {
+            input.style.borderColor = "#f87171";
+            input.focus();
+            setTimeout(() => input.style.borderColor = "", 600);
+            return;
+        }
+        userName = name;
+        localStorage.setItem(NAME_KEY, userName);
+        modal.classList.add("hidden");
+        updateGalleryGreeting();
+    }
+
+    submitBtn.addEventListener("click", submitName);
+    input.addEventListener("keydown", e => { if (e.key === "Enter") submitName(); });
+
+    // Focus input after brief delay (avoids iOS keyboard quirks)
+    setTimeout(() => input.focus(), 100);
+}
+
+function updateGalleryGreeting() {
+    const title = document.getElementById("galleryTitle");
+    if (userName) {
+        title.textContent = `🎨 Hi ${userName}, choose a picture!`;
+    }
+}
+
+
 
 //////////////////////////////////////////////////////
 // ELEMENTS
@@ -1304,19 +1482,127 @@ redrawWheel();
 
 
 //////////////////////////////////////////////////////
-// ZOOM
+// ZOOM  (mouse wheel + trackpad)
 //////////////////////////////////////////////////////
 
 canvasArea.addEventListener("wheel", e => {
     e.preventDefault();
     const factor  = e.deltaY > 0 ? 0.9 : 1.1;
-    const beforeX = (e.clientX - panX) / zoom;
-    const beforeY = (e.clientY - panY) / zoom;
+    const rect    = canvasArea.getBoundingClientRect();
+    const beforeX = (e.clientX - rect.left - panX) / zoom;
+    const beforeY = (e.clientY - rect.top  - panY) / zoom;
     zoom = Math.max(0.1, Math.min(zoom * factor, 20));
-    panX = e.clientX - beforeX * zoom;
-    panY = e.clientY - beforeY * zoom;
+    panX = (e.clientX - rect.left) - beforeX * zoom;
+    panY = (e.clientY - rect.top)  - beforeY * zoom;
     updateViewport();
 }, { passive: false });
+
+//////////////////////////////////////////////////////
+// TOUCH — pinch zoom & two-finger pan
+//////////////////////////////////////////////////////
+
+let touchState = {
+    active: false,
+    startDist: 0,
+    startZoom: 1,
+    startMidX: 0,
+    startMidY: 0,
+    startPanX: 0,
+    startPanY: 0,
+    lastMidX: 0,
+    lastMidY: 0,
+    fingerCount: 0,
+};
+
+function getTouchMid(touches) {
+    const rect = canvasArea.getBoundingClientRect();
+    const t0 = touches[0], t1 = touches[1];
+    return {
+        x: ((t0.clientX + t1.clientX) / 2) - rect.left,
+        y: ((t0.clientY + t1.clientY) / 2) - rect.top,
+    };
+}
+
+function getTouchDist(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+canvasArea.addEventListener("touchstart", e => {
+    if (e.touches.length === 2) {
+        // Cancel any drawing in progress
+        drawing = false;
+        previousPoint = null;
+        activePointerId = null;
+
+        touchState.active    = true;
+        touchState.startDist = getTouchDist(e.touches);
+        touchState.startZoom = zoom;
+
+        const mid = getTouchMid(e.touches);
+        touchState.startMidX = mid.x;
+        touchState.startMidY = mid.y;
+        touchState.lastMidX  = mid.x;
+        touchState.lastMidY  = mid.y;
+        touchState.startPanX = panX;
+        touchState.startPanY = panY;
+
+        e.preventDefault();
+    }
+}, { passive: false });
+
+canvasArea.addEventListener("touchmove", e => {
+    if (e.touches.length === 2 && touchState.active) {
+        e.preventDefault();
+
+        const dist = getTouchDist(e.touches);
+        const mid  = getTouchMid(e.touches);
+
+        // Scale factor relative to gesture start
+        const scaleFactor = dist / touchState.startDist;
+        const newZoom = Math.max(0.1, Math.min(touchState.startZoom * scaleFactor, 20));
+
+        // Pivot around the initial midpoint
+        const pivotX = touchState.startMidX;
+        const pivotY = touchState.startMidY;
+
+        // Point under pivot in canvas-space at gesture start
+        const originX = (pivotX - touchState.startPanX) / touchState.startZoom;
+        const originY = (pivotY - touchState.startPanY) / touchState.startZoom;
+
+        // Pan delta (two-finger drag)
+        const panDeltaX = mid.x - touchState.startMidX;
+        const panDeltaY = mid.y - touchState.startMidY;
+
+        panX = pivotX - originX * newZoom + panDeltaX;
+        panY = pivotY - originY * newZoom + panDeltaY;
+        zoom = newZoom;
+
+        touchState.lastMidX = mid.x;
+        touchState.lastMidY = mid.y;
+
+        updateViewport();
+    }
+}, { passive: false });
+
+canvasArea.addEventListener("touchend", e => {
+    if (touchState.active && e.touches.length < 2) {
+        touchState.active = false;
+        // If one finger remains, don't start drawing immediately
+        // (avoids accidental stroke after pinch)
+        drawing = false;
+        previousPoint = null;
+    }
+}, { passive: false });
+
+canvasArea.addEventListener("touchcancel", e => {
+    touchState.active = false;
+    drawing = false;
+    previousPoint = null;
+}, { passive: false });
+
+
 
 //////////////////////////////////////////////////////
 // BRUSH STAMPING & MIXER
@@ -1427,6 +1713,9 @@ function getPos(e) {
 //////////////////////////////////////////////////////
 
 canvasArea.addEventListener("pointerdown", e => {
+    // Ignore during active 2-finger touch gesture
+    if (touchState.active) return;
+
     if (e.button === 1 || spaceHeld) {
         isPanning = panMode = true;
         startPanX = e.clientX;
@@ -1564,8 +1853,19 @@ document.getElementById("saveBtn").onclick = () => {
     ctx.drawImage(colorCanvas, 0, 0);
     ctx.drawImage(lineCanvas,  0, 0);
     
+    // Build filename: "name x artworkname.png" (strip numbers from artwork name)
+    const artworkClean = (currentArtworkName || "painting")
+        .replace(/\d+/g, "")           // remove numbers
+        .replace(/[_\-]+/g, " ")       // underscores/dashes → space
+        .replace(/\s+/g, " ")          // collapse spaces
+        .trim()
+        .toLowerCase();
+    const userPart = userName ? userName.trim() : "my";
+    const filename = `${userPart} x ${artworkClean}.png`
+        .replace(/[\\/:*?"<>|]/g, ""); // remove invalid path chars
+
     const a = document.createElement("a");
-    a.download = "my-painting.png";
+    a.download = filename;
     a.href = exp.toDataURL("image/png");
     a.click();
 };
@@ -1588,6 +1888,7 @@ openDB()
     .catch(err => console.warn("IndexedDB unavailable:", err));
 
 loadGallery();
+initNamePrompt();
 
 </script>
 </body>
