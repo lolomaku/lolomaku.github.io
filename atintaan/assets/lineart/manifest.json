@@ -1,29 +1,33 @@
 [
+      {
+        "name": "NicePo",
+        "file": "NicePo01.png"
+      },
     {
-        "name": "made by dagan_sining",
+        "name": "dagan_sining",
         "file": "dagan_sining01.png"
       },
       {
-        "name": "made by gr8teal",
+        "name": "gr8teal",
         "file": "gr8teal_01.png"
       },
       {
-        "name": "made by Katspeon",
+        "name": "Katspeon",
         "file": "Katspeon01.png"
       },{
-        "name": "made by Katspeon",
+        "name": "Katspeon",
         "file": "Katspeon02.png"
       },{
-        "name": "made by keuntins",
+        "name": "keuntins",
         "file": "keuntins01.png"
       },{
-        "name": "made by supseerior",
+        "name": "supseerior",
         "file": "supseerior01.png"
       },{
-        "name": "made by Zayiii",
+        "name": "Zayiii",
         "file": "Zayiii01.png"
       },{
-        "name": "made by lolomaku",
+        "name": "lolomaku",
         "file": "lolomaku01.png"
       }
   ]
