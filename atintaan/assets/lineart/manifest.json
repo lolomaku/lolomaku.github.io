@@ -1,41 +1,172 @@
 [
-      {
-        "name": "everydaymaartsy",
-        "file": "everydaymaartsy01.png"
-      },
-      {
-        "name": "NicePo",
-        "file": "NicePo01.png"
-      },
-      {
-        "name": "Rex",
-        "file": "qtiemayo01.png"
-      },
-    {
-        "name": "dagan_sining",
-        "file": "dagan_sining01.png"
-      },
-      {
-        "name": "gr8teal",
-        "file": "gr8teal_01.png"
-      },
-      {
-        "name": "Katspeon",
-        "file": "Katspeon01.png"
-      },{
-        "name": "Katspeon",
-        "file": "Katspeon02.png"
-      },{
-        "name": "keuntins",
-        "file": "keuntins01.png"
-      },{
-        "name": "supseerior",
-        "file": "supseerior01.png"
-      },{
-        "name": "Zayiii",
-        "file": "Zayiii01.png"
-      },{
-        "name": "lolomaku",
-        "file": "lolomaku01.png"
-      }
+  {
+    "file": "everydaymaartsy01.png",
+    "name": "everydaymaartsy",
+    "artist": "everydaymaartsy",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "NicePo01.png",
+    "name": "NicePo",
+    "artist": "NicePo",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "qtiemayo01.png",
+    "name": "Rex",
+    "artist": "qtiemayo",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "dagan_sining01.png",
+    "name": "dagan_sining",
+    "artist": "dagan_sining",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "gr8teal01.png",
+    "name": "gr8teal",
+    "artist": "gr8teal",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "Katspeon01.png",
+    "name": "Katspeon",
+    "artist": "Katspeon",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "Katspeon02.png",
+    "name": "Katspeon",
+    "artist": "Katspeon",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "keuntins01.png",
+    "name": "keuntins",
+    "artist": "keuntins",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "supseerior01.png",
+    "name": "supseerior",
+    "artist": "supseerior",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "Zayiii01.png",
+    "name": "Zayiii",
+    "artist": "Zayiii",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "lolomaku01.png",
+    "name": "lolomaku",
+    "artist": "lolomaku",
+    "subject": "Stell",
+    "tags": [
+      "sb19",
+      "stell",
+      "strawberry",
+      "sunflower"
+    ],
+    "featured": false
+  },
+  {
+    "file": "lolomaku02.png",
+    "name": "lolomaku",
+    "artist": "lolomaku",
+    "subject": "Dahon by Justin",
+    "tags": [
+      "sb19",
+      "justin",
+      "jah",
+      "dahon"
+    ],
+    "featured": true
+  },
+  {
+    "file": "lolomaku03.png",
+    "name": "lolomaku",
+    "artist": "lolomaku",
+    "subject": "Dahon by Justin",
+    "tags": [
+      "sb19",
+      "justin",
+      "jah",
+      "dahon"
+    ],
+    "featured": true
+  }
+
   ]
