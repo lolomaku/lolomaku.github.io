@@ -21,6 +21,7 @@ beginGesture();return}
 if(activePointers.size>2||gesture){return}
 e.preventDefault();drawingPointerId=e.pointerId;toolState.drawing=!0;const p=getPos(e);toolState.lastX=p.x;toolState.lastY=p.y;drawDot(p.x,p.y,e)}
 function onPointerMove(e){if(activePointers.has(e.pointerId)){activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY})}
+if(activePointers.size>=2&&toolState.drawing){toolState.drawing=!1;drawingPointerId=null;return}
 if(e.pointerId===panPointerId){cam.x=panCamStart.x+(e.clientX-panStart.x);cam.y=panCamStart.y+(e.clientY-panStart.y);applyCam();return}
 if(gesture){updateGesture();return}
 trackCursorIndicator(e);if(e.pointerId!==drawingPointerId||!toolState.drawing)return;const p=getPos(e);drawLine(toolState.lastX,toolState.lastY,p.x,p.y,e);toolState.lastX=p.x;toolState.lastY=p.y}
