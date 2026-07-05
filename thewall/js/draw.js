@@ -7,7 +7,7 @@ const MIN_ZOOM=0.5,MAX_ZOOM=6;let cam={x:0,y:0,scale:1};function clamp(v,lo,hi){
 function applyCam(){transformWrap.style.transform=`translate(${cam.x}px, ${cam.y}px) scale(${cam.scale})`}
 function resetView(){cam={x:0,y:0,scale:1};applyCam()}
 document.getElementById('btn-reset-view').addEventListener('click',resetView);function getPos(e){const rect=squareEl.getBoundingClientRect();const localX=e.clientX-rect.left;const localY=e.clientY-rect.top;return{x:(localX-cam.x)/cam.scale,y:(localY-cam.y)/cam.scale}}
-squareEl.addEventListener('wheel',(e)=>{e.preventDefault();const delta=-e.deltaY*0.0015;const newScale=clamp(cam.scale*(1+delta),MIN_ZOOM,MAX_ZOOM);const rect=squareEl.getBoundingClientRect();const localX=e.clientX-rect.left,localY=e.clientY-rect.top;const innerX=(localX-cam.x)/cam.scale,innerY=(localY-cam.y)/cam.scale;cam.scale=newScale;cam.x=localX-innerX*newScale;cam.y=localY-innerY*newScale;applyCam()},{passive:!1});const activePointers=new Map();let drawingPointerId=null;let panPointerId=null;let panStart=null,panCamStart=null;let gesture=null;let suppressUntilEmpty=!1;function twoActivePoints(){const pts=[...activePointers.values()];return pts.length>=2?[pts[0],pts[1]]:null}
+squareEl.addEventListener('wheel',(e)=>{e.preventDefault();const delta=-e.deltaY*0.0015;const newScale=clamp(cam.scale*(1+delta),MIN_ZOOM,MAX_ZOOM);const rect=squareEl.getBoundingClientRect();const localX=e.clientX-rect.left,localY=e.clientY-rect.top;const innerX=(localX-cam.x)/cam.scale,innerY=(localY-cam.y)/cam.scale;cam.scale=newScale;cam.x=localX-innerX*newScale;cam.y=localY-innerY*newScale;applyCam()},{passive:!1});const activePointers=new Map();let drawingPointerId=null;let panPointerId=null;let panStart=null,panCamStart=null;let gesture=null;let suppressUntilEmpty=!1;let pendingDot=null;function twoActivePoints(){const pts=[...activePointers.values()];return pts.length>=2?[pts[0],pts[1]]:null}
 function beginGesture(){const pts=twoActivePoints();if(!pts)return;const rect=squareEl.getBoundingClientRect();const startMid={x:(pts[0].x+pts[1].x)/2-rect.left,y:(pts[0].y+pts[1].y)/2-rect.top};gesture={rect,startDist:Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)||1,startScale:cam.scale,anchor:{x:(startMid.x-cam.x)/cam.scale,y:(startMid.y-cam.y)/cam.scale},}}
 function updateGesture(){const pts=twoActivePoints();if(!gesture||!pts)return;const dist=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)||1;const mid={x:(pts[0].x+pts[1].x)/2-gesture.rect.left,y:(pts[0].y+pts[1].y)/2-gesture.rect.top};const newScale=clamp(gesture.startScale*(dist/gesture.startDist),MIN_ZOOM,MAX_ZOOM);cam.scale=newScale;cam.x=mid.x-gesture.anchor.x*newScale;cam.y=mid.y-gesture.anchor.y*newScale;applyCam()}
 function endGesture(){gesture=null}
@@ -16,17 +16,19 @@ function effectiveWidth(e){const pressure=(e.pointerType==='pen'&&e.pressure>0)?
 function drawDot(x,y,e){const ctx=activeCanvasCtx();ctx.save();ctx.globalCompositeOperation=toolState.tool==='eraser'?'destination-out':'source-over';ctx.fillStyle=toolState.color;const w=effectiveWidth(e);ctx.beginPath();ctx.arc(x,y,w/2,0,Math.PI*2);ctx.fill();ctx.restore()}
 function drawLine(x1,y1,x2,y2,e){const ctx=activeCanvasCtx();ctx.save();ctx.globalCompositeOperation=toolState.tool==='eraser'?'destination-out':'source-over';ctx.strokeStyle=toolState.color;ctx.lineWidth=effectiveWidth(e);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.restore()}
 function onPointerDown(e){squareEl.setPointerCapture(e.pointerId);activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(e.button===1){e.preventDefault();panPointerId=e.pointerId;panStart={x:e.clientX,y:e.clientY};panCamStart={x:cam.x,y:cam.y};squareEl.classList.add('panning');return}
-if(suppressUntilEmpty)return;if(activePointers.size===2){if(drawingPointerId!==null){toolState.drawing=!1;drawingPointerId=null}
+if(suppressUntilEmpty)return;if(activePointers.size===2){if(drawingPointerId!==null){toolState.drawing=!1;drawingPointerId=null;pendingDot=null}
 beginGesture();return}
 if(activePointers.size>2||gesture){return}
-e.preventDefault();drawingPointerId=e.pointerId;toolState.drawing=!0;const p=getPos(e);toolState.lastX=p.x;toolState.lastY=p.y;drawDot(p.x,p.y,e)}
+e.preventDefault();drawingPointerId=e.pointerId;toolState.drawing=!0;const p=getPos(e);toolState.lastX=p.x;toolState.lastY=p.y;pendingDot={x:p.x,y:p.y,e:e}}
 function onPointerMove(e){if(activePointers.has(e.pointerId)){activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY})}
-if(activePointers.size>=2&&toolState.drawing){toolState.drawing=!1;drawingPointerId=null;return}
+if(activePointers.size>=2&&toolState.drawing){toolState.drawing=!1;drawingPointerId=null;pendingDot=null;return}
 if(e.pointerId===panPointerId){cam.x=panCamStart.x+(e.clientX-panStart.x);cam.y=panCamStart.y+(e.clientY-panStart.y);applyCam();return}
 if(gesture){updateGesture();return}
-trackCursorIndicator(e);if(e.pointerId!==drawingPointerId||!toolState.drawing)return;const p=getPos(e);drawLine(toolState.lastX,toolState.lastY,p.x,p.y,e);toolState.lastX=p.x;toolState.lastY=p.y}
+trackCursorIndicator(e);if(e.pointerId!==drawingPointerId||!toolState.drawing)return;const p=getPos(e);if(pendingDot){const dist=Math.hypot(p.x-pendingDot.x,p.y-pendingDot.y);if(dist<5)return;drawDot(pendingDot.x,pendingDot.y,pendingDot.e);pendingDot=null}
+drawLine(toolState.lastX,toolState.lastY,p.x,p.y,e);toolState.lastX=p.x;toolState.lastY=p.y}
 function onPointerUp(e){activePointers.delete(e.pointerId);if(e.pointerId===panPointerId){panPointerId=null;squareEl.classList.remove('panning')}
-if(e.pointerId===drawingPointerId){drawingPointerId=null;toolState.drawing=!1}
+if(e.pointerId===drawingPointerId){if(pendingDot&&activePointers.size===0){drawDot(pendingDot.x,pendingDot.y,pendingDot.e)}
+pendingDot=null;drawingPointerId=null;toolState.drawing=!1}
 if(gesture&&activePointers.size<2){endGesture();if(activePointers.size>0)suppressUntilEmpty=!0}
 if(activePointers.size===0){suppressUntilEmpty=!1}}
 const cursorIndicator=document.getElementById('brush-cursor');let lastCursorX=null,lastCursorY=null;function trackCursorIndicator(e){const p=getPos(e);lastCursorX=p.x;lastCursorY=p.y;refreshCursorIndicator()}
