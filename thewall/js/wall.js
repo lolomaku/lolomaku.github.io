@@ -1,10 +1,294 @@
-(()=>{const e=window.App.CFG,t=window.App.supabase,n=window.App.state,{hashStr:i,escapeHtml:s}=window.App.utils,a=document.getElementById("wall-viewport"),l=document.getElementById("wall-world"),o=document.getElementById("wall-loading"),d=new Map,r=new Map;let c=new Map,p={x:0,y:0,scale:1},m=a.getBoundingClientRect();function g(){l.style.transform=`translate(${p.x}px, ${p.y}px) scale(${p.scale})`;window.App.minimap&&window.App.minimap.setCamera(p,m)}
-function w(e,t,n){p={x:e,y:t,scale:n};l.classList.add("jumping");g();window.setTimeout(()=>l.classList.remove("jumping"),500)}
-window.addEventListener("resize",()=>{m=a.getBoundingClientRect()});let u=!1,E={x:0,y:0},L={x:0,y:0};let activePointers=new Map(),initPinchDist=null,initPinchScale=null,dragDist=0;a.addEventListener("click",e=>{if(dragDist>5){e.stopPropagation();e.preventDefault()}},!0);function h(e,t){const n=d.get(e);n&&(n.classList.add("pulse"),window.setTimeout(()=>n.classList.remove("pulse"),1e3));window.setTimeout(()=>window.App.letter.open(t,!1,c.get(e)||0),500)}
-a.addEventListener("pointerdown",e=>{activePointers.set(e.pointerId,e);dragDist=0;if(activePointers.size===1){u=!0;a.classList.add("grabbing");E={x:e.clientX,y:e.clientY};L={x:p.x,y:p.y}}else if(activePointers.size===2){u=!1;const pts=Array.from(activePointers.values());initPinchDist=Math.hypot(pts[0].clientX-pts[1].clientX,pts[0].clientY-pts[1].clientY);initPinchScale=p.scale}});a.addEventListener("pointermove",e=>{if(!activePointers.has(e.pointerId))return;activePointers.set(e.pointerId,e);if(activePointers.size===1&&u){dragDist=Math.max(dragDist,Math.hypot(e.clientX-E.x,e.clientY-E.y));p.x=L.x+(e.clientX-E.x);p.y=L.y+(e.clientY-E.y);g()}else if(activePointers.size===2&&initPinchDist){const pts=Array.from(activePointers.values());const currDist=Math.hypot(pts[0].clientX-pts[1].clientX,pts[0].clientY-pts[1].clientY);let n=initPinchScale*(currDist/initPinchDist);n=Math.min(2.5,Math.max(.25,n));const cx=(pts[0].clientX+pts[1].clientX)/2,cy=(pts[0].clientY+pts[1].clientY)/2;const i=a.getBoundingClientRect(),s=cx-i.left,l=cy-i.top;const o=(s-i.width/2-p.x)/p.scale,d=(l-i.height/2-p.y)/p.scale;p.scale=n;p.x=s-i.width/2-o*n;p.y=l-i.height/2-d*n;g()}});["pointerup","pointercancel"].forEach(evt=>{window.addEventListener(evt,e=>{if(activePointers.has(e.pointerId)){activePointers.delete(e.pointerId);if(activePointers.size<2)initPinchDist=null;if(activePointers.size===0){u=!1;a.classList.remove("grabbing")}else if(activePointers.size===1){const rem=Array.from(activePointers.values())[0];u=!0;E={x:rem.clientX,y:rem.clientY};L={x:p.x,y:p.y}}}})});a.addEventListener("wheel",e=>{e.preventDefault();const t=.0015*-e.deltaY,n=Math.min(2.5,Math.max(.25,p.scale*(1+t))),i=a.getBoundingClientRect(),s=e.clientX-i.left,l=e.clientY-i.top,o=(s-i.width/2-p.x)/p.scale,d=(l-i.height/2-p.y)/p.scale;p.scale=n;p.x=s-i.width/2-o*n;p.y=l-i.height/2-d*n;g()},{passive:!1});let y=null;function f(t,n){const a=document.createElement("div");a.className="postcard"+(n?" is-pending":"");!n&&t.likes>=e.LIKE_HIGHLIGHT_THRESHOLD&&a.classList.add("is-popular");a.dataset.nickname=t.nickname;const o=t.grid_x*e.CELL_SIZE,p=t.grid_y*e.CELL_SIZE;a.style.left=o-e.CARD_SIZE/2+"px";a.style.top=p-e.CARD_SIZE/2+"px";a.style.width=`${e.CARD_SIZE}px`;a.style.height=`${e.CARD_SIZE}px`;const m=i(t.id)%7-3;a.style.transform=`rotate(${m}deg)`;a.innerHTML=`<div class="pin"></div><img src="${t.image_url}" draggable="false" (dragstart)="false;" class="unselectable" salt="a drawing by ${s(t.nickname)}">`;a.addEventListener("click",()=>window.App.letter.open(t,n,c.get(t.id)||0));l.appendChild(a);d.set(t.id,a);n||r.set(t.id,t)}
-const _=document.getElementById("most-loved-badge"),I=document.getElementById("most-loved-thumb"),x=document.getElementById("most-loved-count");let v=null;function A(){let e=null;if(r.forEach(t=>{t.likes>0&&(!e||t.likes>e.likes)&&(e=t)}),!e)
-return _.hidden=!0,void(v=null);v=e.id;I.src=e.image_url;x.textContent=`${e.likes} ♥`;_.hidden=!1}
-function C(){const t=[{x:0,y:0,center:!0}];return r.forEach(n=>t.push({x:n.grid_x*e.CELL_SIZE,y:n.grid_y*e.CELL_SIZE})),t}
-_.addEventListener("click",()=>{if(!v||!r.has(v))return;const t=r.get(v);w(-t.grid_x*e.CELL_SIZE,-t.grid_y*e.CELL_SIZE,1);h(v,t)});window.App.minimap&&window.App.minimap.init((e,t)=>w(-e,-t,p.scale||1));const S=document.getElementById("milestone-toast");function b(e,t=3200){S.textContent=e;S.hidden=!1;requestAnimationFrame(()=>S.classList.add("show"));window.setTimeout(()=>{S.classList.remove("show");window.setTimeout(()=>{S.hidden=!0},400)},t)}
-const Z=[10,25,50,100,250,500,1e3,2500,5e3,1e4],T="wandering_wall_last_celebrated_milestone";let k=!1;async function R(i){l.innerHTML="";d.clear();r.clear();(function(){const t=document.createElement("div");t.className="center-piece";t.style.left="0px";t.style.top="0px";const n=e.CENTER_IMAGE_SIZE*e.CELL_SIZE-40;t.innerHTML=`\n      <img src="assets/centerimg.png" style="width:${n}px;height:${n}px;object-fit:contain;" alt="birthday illustration of Justin from SB19" draggable="false" (dragstart)="false;" class="unselectable">\n      <span class="center-label">happy birthday, Justin! 🎉</span>\n    `;l.appendChild(t)})();const[{data:s,error:a},p]=await Promise.all([t.from(e.TABLE).select("*"),window.App.storage.getMyVotes()]);if(c=p,o.classList.add("hidden"),a)return void console.error(a);const m=new Set;s.forEach(e=>{m.add(e.id);f(e,!1)});const u=i||(n.myRecord&&!n.myRecord.approved?n.myRecord:null);var E,L;u&&!m.has(u.id)&&f(u,!0);A();window.App.minimap&&window.App.minimap.update(C());(function(e){const t=parseInt(localStorage.getItem(T)||"0",10),n=Z.filter(n=>e>=n&&n>t);if(0===n.length)return;const i=n[n.length-1];localStorage.setItem(T,String(i));window.App.confetti&&window.App.confetti.burst();b(`🎉 ${i} birthday drawings for Justin!`)})(s.length);i?(E=i.grid_x,L=i.grid_y,w(-E*e.CELL_SIZE,-L*e.CELL_SIZE,1)):(g(),function(){if(k)return;k=!0;const t=new URLSearchParams(location.search).get("letter");if(!t)return;const n=r.get(t);n?(w(-n.grid_x*e.CELL_SIZE,-n.grid_y*e.CELL_SIZE,1),window.setTimeout(()=>window.App.letter.open(n,!1,c.get(t)||0),400)):b("That drawing isn't available — it may still be awaiting approval, or was removed.")}())}
-window.App=window.App||{};window.App.wall={loadWall:R,applyVoteResult:function(t,n,i,s,a){0===a?c.delete(t):c.set(t,a);const l=r.get(t);l&&(l.likes=n,l.dislikes=i);const o=d.get(t);o&&(s?o.classList.toggle("is-popular",n>=e.LIKE_HIGHLIGHT_THRESHOLD):(o.remove(),d.delete(t),r.delete(t)));A();window.App.minimap&&window.App.minimap.update(C())}};document.getElementById("btn-refresh-wall").addEventListener("click",()=>R());document.getElementById("btn-random-wall").addEventListener("click",()=>function(){const t=[...r.keys()];if(0===t.length)return void alert("There's nothing to explore yet — be the first to draw something for Justin!");const n=t.length>1?t.filter(e=>e!==y):t,i=n[Math.floor(Math.random()*n.length)];y=i;const s=r.get(i);w(-s.grid_x*e.CELL_SIZE,-s.grid_y*e.CELL_SIZE,1);h(i,s)}());R()})()
+(()=>{
+  const e = window.App.CFG,
+        t = window.App.supabase,
+        n = window.App.state,
+        {hashStr:i, escapeHtml:s} = window.App.utils,
+        a = document.getElementById("wall-viewport"),
+        l = document.getElementById("wall-world"),
+        o = document.getElementById("wall-loading"),
+        d = new Map,
+        r = new Map;
+        
+  let c = new Map,
+      p = {x:0, y:0, scale:1},
+      m = a.getBoundingClientRect();
+
+  function g(){
+    l.style.transform = `translate(${p.x}px, ${p.y}px) scale(${p.scale})`;
+    window.App.minimap && window.App.minimap.setCamera(p,m);
+  }
+
+  function w(e,t,n){
+    p = {x:e, y:t, scale:n};
+    l.classList.add("jumping");
+    g();
+    window.setTimeout(() => l.classList.remove("jumping"), 500);
+  }
+
+  window.addEventListener("resize", () => {
+    m = a.getBoundingClientRect();
+  });
+
+  // --- MOBILE-FRIENDLY PAN & ZOOM LOGIC ---
+  let u = !1, E = {x:0, y:0}, L = {x:0, y:0};
+  let activePointers = new Map(), initPinchDist = null, initPinchScale = null, dragDist = 0;
+  
+  a.addEventListener("click", e => {
+    if(dragDist > 5) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }, !0);
+  
+  function h(e,t){
+    const n = d.get(e);
+    n && (n.classList.add("pulse"), window.setTimeout(() => n.classList.remove("pulse"), 1e3));
+    window.setTimeout(() => window.App.letter.open(t, !1, c.get(e) || 0), 500);
+  }
+  
+  a.addEventListener("pointerdown", e => {
+    activePointers.set(e.pointerId, e);
+    dragDist = 0;
+    if(activePointers.size === 1) {
+      u = !0;
+      a.classList.add("grabbing");
+      E = {x: e.clientX, y: e.clientY};
+      L = {x: p.x, y: p.y};
+    } else if(activePointers.size === 2) {
+      u = !1;
+      const pts = Array.from(activePointers.values());
+      initPinchDist = Math.hypot(pts[0].clientX - pts[1].clientX, pts[0].clientY - pts[1].clientY);
+      initPinchScale = p.scale;
+    }
+  });
+  
+  a.addEventListener("pointermove", e => {
+    if(!activePointers.has(e.pointerId)) return;
+    activePointers.set(e.pointerId, e);
+    if(activePointers.size === 1 && u) {
+      dragDist = Math.max(dragDist, Math.hypot(e.clientX - E.x, e.clientY - E.y));
+      p.x = L.x + (e.clientX - E.x);
+      p.y = L.y + (e.clientY - E.y);
+      g();
+    } else if(activePointers.size === 2 && initPinchDist) {
+      const pts = Array.from(activePointers.values());
+      const currDist = Math.hypot(pts[0].clientX - pts[1].clientX, pts[0].clientY - pts[1].clientY);
+      let n = initPinchScale * (currDist / initPinchDist);
+      n = Math.min(2.5, Math.max(.25, n));
+      const cx = (pts[0].clientX + pts[1].clientX) / 2, 
+            cy = (pts[0].clientY + pts[1].clientY) / 2;
+      const i = a.getBoundingClientRect(), 
+            s = cx - i.left, 
+            l = cy - i.top;
+      const o = (s - i.width / 2 - p.x) / p.scale, 
+            d = (l - i.height / 2 - p.y) / p.scale;
+      p.scale = n;
+      p.x = s - i.width / 2 - o * n;
+      p.y = l - i.height / 2 - d * n;
+      g();
+    }
+  });
+  
+  ["pointerup", "pointercancel"].forEach(evt => {
+    window.addEventListener(evt, e => {
+      if(activePointers.has(e.pointerId)) {
+        activePointers.delete(e.pointerId);
+        if(activePointers.size < 2) initPinchDist = null;
+        if(activePointers.size === 0) {
+          u = !1;
+          a.classList.remove("grabbing");
+        } else if(activePointers.size === 1) {
+          const rem = Array.from(activePointers.values())[0];
+          u = !0;
+          E = {x: rem.clientX, y: rem.clientY};
+          L = {x: p.x, y: p.y};
+        }
+      }
+    });
+  });
+  
+  a.addEventListener("wheel", e => {
+    e.preventDefault();
+    const t = .0015 * -e.deltaY,
+          n = Math.min(2.5, Math.max(.25, p.scale * (1 + t))),
+          i = a.getBoundingClientRect(),
+          s = e.clientX - i.left,
+          l = e.clientY - i.top,
+          o = (s - i.width / 2 - p.x) / p.scale,
+          d = (l - i.height / 2 - p.y) / p.scale;
+    p.scale = n;
+    p.x = s - i.width / 2 - o * n;
+    p.y = l - i.height / 2 - d * n;
+    g();
+  }, {passive: !1});
+  // --- END PAN & ZOOM LOGIC ---
+
+  let y = null;
+
+  function f(t,n){
+    const a = document.createElement("div");
+    a.className = "postcard" + (n ? " is-pending" : "");
+    !n && t.likes >= e.LIKE_HIGHLIGHT_THRESHOLD && a.classList.add("is-popular");
+    a.dataset.nickname = t.nickname;
+    const o = t.grid_x * e.CELL_SIZE, p = t.grid_y * e.CELL_SIZE;
+    a.style.left = o - e.CARD_SIZE / 2 + "px";
+    a.style.top = p - e.CARD_SIZE / 2 + "px";
+    a.style.width = `${e.CARD_SIZE}px`;
+    a.style.height = `${e.CARD_SIZE}px`;
+    const m = i(t.id) % 7 - 3;
+    a.style.transform = `rotate(${m}deg)`;
+    a.innerHTML = `<div class="pin"></div><img src="${t.image_url}" draggable="false" (dragstart)="false;" class="unselectable" salt="a drawing by ${s(t.nickname)}">`;
+    a.addEventListener("click", () => window.App.letter.open(t, n, c.get(t.id) || 0));
+    l.appendChild(a);
+    d.set(t.id, a);
+    n || r.set(t.id, t);
+  }
+
+  const _ = document.getElementById("most-loved-badge"),
+        I = document.getElementById("most-loved-thumb"),
+        x = document.getElementById("most-loved-count");
+  let v = null;
+
+  function A(){
+    let e = null;
+    if(r.forEach(t => { t.likes > 0 && (!e || t.likes > e.likes) && (e = t) }), !e) 
+      return _.hidden = !0, void(v = null);
+    v = e.id;
+    I.src = e.image_url;
+    x.textContent = `${e.likes} ♥`;
+    _.hidden = !1;
+  }
+
+  function C(){
+    const t = [{x:0, y:0, center:!0}];
+    return r.forEach(n => t.push({x: n.grid_x * e.CELL_SIZE, y: n.grid_y * e.CELL_SIZE})), t;
+  }
+
+  _.addEventListener("click", () => {
+    if(!v || !r.has(v)) return;
+    const t = r.get(v);
+    w(-t.grid_x * e.CELL_SIZE, -t.grid_y * e.CELL_SIZE, 1);
+    h(v,t);
+  });
+
+  window.App.minimap && window.App.minimap.init((e,t) => w(-e, -t, p.scale || 1));
+
+  const S = document.getElementById("milestone-toast");
+
+  function b(e, t = 3200){
+    S.textContent = e;
+    S.hidden = !1;
+    requestAnimationFrame(() => S.classList.add("show"));
+    window.setTimeout(() => {
+      S.classList.remove("show");
+      window.setTimeout(() => { S.hidden = !0 }, 400);
+    }, t);
+  }
+
+  const Z = [10, 25, 50, 100, 250, 500, 1e3, 2500, 5e3, 1e4],
+        T = "wandering_wall_last_celebrated_milestone";
+  let k = !1;
+  let centerArt = null;
+
+  async function ensureCenterArt() {
+    if (centerArt) return centerArt;
+    try {
+      const res = await fetch(e.CENTER_ART_MANIFEST);
+      if (!res.ok) throw new Error(`manifest fetch failed: ${res.status}`);
+      const files = await res.json();
+      if (!Array.isArray(files) || files.length === 0) throw new Error("manifest is empty");
+      const chosen = files[Math.floor(Math.random() * files.length)];
+      const nameWithoutExt = chosen.replace(/\.[^./\\]+$/, "");
+      centerArt = { src: `assets/thewallart/${chosen}`, label: `artwork by ${nameWithoutExt}` };
+    } catch (err) {
+      console.warn("Could not load center art manifest, using fallback image:", err);
+      centerArt = { src: "assets/centerimg.png", label: "happy birthday, Justin! 🎉" };
+    }
+    return centerArt;
+  }
+
+  async function R(i){
+    l.innerHTML = "";
+    d.clear();
+    r.clear();
+    
+    const [{data:dataRows, error:a}, p, art] = await Promise.all([
+      t.from(e.TABLE).select("*"), 
+      window.App.storage.getMyVotes(),
+      ensureCenterArt()
+    ]);
+    
+    (function(){
+      const t = document.createElement("div");
+      t.className = "center-piece";
+      t.style.left = "0px";
+      t.style.top = "0px";
+      const n = e.CENTER_IMAGE_SIZE * e.CELL_SIZE - 40;
+      t.innerHTML = `\n      <img src="${art.src}" style="width:${n}px;height:${n}px;object-fit:contain;" alt="${s(art.label)}" draggable="false" (dragstart)="false;" class="unselectable">\n      <span class="center-label">${s(art.label)}</span>\n    `;
+      l.appendChild(t);
+    })();
+    
+    if(c = p, o.classList.add("hidden"), a) return void console.error(a);
+    
+    const m = new Set;
+    dataRows.forEach(e => { m.add(e.id); f(e, !1) });
+    
+    const u = i || (n.myRecord && !n.myRecord.approved ? n.myRecord : null);
+    var E,L;
+    u && !m.has(u.id) && f(u, !0);
+    
+    A();
+    window.App.minimap && window.App.minimap.update(C());
+    
+    (function(e){
+      const t = parseInt(localStorage.getItem(T) || "0", 10),
+            n = Z.filter(n => e >= n && n > t);
+      if(0 === n.length) return;
+      const i = n[n.length - 1];
+      localStorage.setItem(T, String(i));
+      window.App.confetti && window.App.confetti.burst();
+      b(`🎉 ${i} birthday drawings for Justin!`);
+    })(dataRows.length);
+    
+    i ? (E = i.grid_x, L = i.grid_y, w(-E * e.CELL_SIZE, -L * e.CELL_SIZE, 1)) : (g(), function(){
+      if(k) return;
+      k = !0;
+      const t = new URLSearchParams(location.search).get("letter");
+      if(!t) return;
+      const n = r.get(t);
+      n ? (w(-n.grid_x * e.CELL_SIZE, -n.grid_y * e.CELL_SIZE, 1), window.setTimeout(() => window.App.letter.open(n, !1, c.get(t) || 0), 400)) : b("That drawing isn't available — it may still be awaiting approval, or was removed.");
+    }());
+  }
+
+  window.App = window.App || {};
+  window.App.wall = {
+    loadWall: R,
+    applyVoteResult: function(t,n,i,s,a){
+      0 === a ? c.delete(t) : c.set(t, a);
+      const l = r.get(t);
+      l && (l.likes = n, l.dislikes = i);
+      const o = d.get(t);
+      o && (s ? o.classList.toggle("is-popular", n >= e.LIKE_HIGHLIGHT_THRESHOLD) : (o.remove(), d.delete(t), r.delete(t)));
+      A();
+      window.App.minimap && window.App.minimap.update(C());
+    }
+  };
+
+  document.getElementById("btn-refresh-wall").addEventListener("click", () => {
+    centerArt = null;
+    R();
+  });
+
+  document.getElementById("btn-random-wall").addEventListener("click", () => function(){
+    const t = [...r.keys()];
+    if(0 === t.length) return void alert("There's nothing to explore yet — be the first to draw something for Justin!");
+    const n = t.length > 1 ? t.filter(e => e !== y) : t,
+          i = n[Math.floor(Math.random() * n.length)];
+    y = i;
+    const s = r.get(i);
+    w(-s.grid_x * e.CELL_SIZE, -s.grid_y * e.CELL_SIZE, 1);
+    h(i,s);
+  }());
+
+  R();
+})();
