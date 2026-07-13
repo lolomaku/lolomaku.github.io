@@ -1,0 +1,1 @@
+window.App.tabs={init:function(){const t=document.querySelectorAll("#info .tab-btn"),e=document.querySelectorAll("#info .tab-panel");t.forEach(a=>{a.addEventListener("click",()=>{const n=a.dataset.tab;t.forEach(t=>{t.classList.toggle("is-active",t===a),t.setAttribute("aria-selected",t===a?"true":"false")}),e.forEach(t=>{t.hidden=t.dataset.panel!==n})})})}};
