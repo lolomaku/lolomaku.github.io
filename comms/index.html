@@ -1,1 +1,481 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="lolomaku art, games, web apps and printable sticker designs. Made with love."><link rel="canonical" href="https://lolomaku.art/"><meta property="og:type" content="website"><meta property="og:url" content="https://lolomaku.art"><meta property="og:site_name" content="LOLOMAKU"><meta property="og:title" content="lolomaku Art & Dev"><meta property="og:description" content="Games, web apps, sticker designs, and wallpapers by lolomaku."><meta property="twitter:card" content="summary_large_image"><meta property="twitter:site" content="@lolomaku"><link rel="apple-touch-icon" sizes="180x180" href="assets/favico/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favico/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/favico/favicon-16x16.png"><link rel="manifest" href="assets/favico/site.webmanifest"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/sections.css"><link rel="stylesheet" href="css/wizard.css"><title>LOLOMAKU | COMMISSIONS</title></head><body><header class="site-header"><div class="header-inner"><a href="../" class="logo">LOLOMAKU <span class="dot"></span></a><nav class="main-nav"><a href="../#projects">PROJECTS</a><a href="../#shop">SHOP</a></nav></div></header><div class="marquee-strip" aria-hidden="true"><div class="marquee-track" id="marquee-track"><span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span><span class="marquee-item">WALLPAPERS <span class="dot"></span></span><span class="marquee-item">GAMES <span class="dot"></span></span><span class="marquee-item">WEB APPS <span class="dot"></span></span><span class="marquee-item">ART & DEV <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span><span class="marquee-item">WALLPAPERS <span class="dot"></span></span><span class="marquee-item">GAMES <span class="dot"></span></span><span class="marquee-item">WEB APPS <span class="dot"></span></span><span class="marquee-item">ART & DEV <span class="dot"></span></span></div></div><main><section class="section status-section" id="status"><div class="container"><div class="status-grid"><div class="status-copy"><div class="status-badge" id="statusBadge"><span class="dot-pulse"></span><span id="statusBadgeText">Loading…</span></div><h1 class="section-title">Chibi Commissions</h1><p class="section-sub">Cute little portraits of your favorite characters drawn one at a time, queue posted honestly, no surprises.</p><div class="stat-row"><div class="stat"><span class="stat-value" id="slotsValue">–</span><span class="stat-label">Slots remaining</span></div><div class="stat"><span class="stat-value" id="queueValue">–</span><span class="stat-label">Active in queue</span></div><div class="stat"><span class="stat-value" id="turnaroundValue">–</span><span class="stat-label">Avg. turnaround</span></div></div><div class="hero-actions"><button type="button" class="btn btn-primary" id="startCommissionBtn">Start a commission</button><button type="button" class="btn btn-secondary" id="viewSamplesBtn">View samples</button></div></div><div class="status-check-card"><img src="assets/cornerimg.png" alt="lolomaku" class="corner-img"><h3>Already commissioned?</h3><p class="dim-text">Look yours up by Commission ID or email.</p><form id="statusCheckForm" class="status-check-form"><input type="text" id="statusQuery" placeholder="e.g. LMC20264821 or your email" required><button type="submit" class="btn btn-secondary" id="statusCheckBtn"><span>Check status</span></button></form><p class="form-error" id="statusCheckError" hidden></p></div></div></div></section><section class="section" id="info"><div class="container container-narrow"><p class="eyebrow">Before you commission</p><div class="tabs" role="tablist"><button class="tab-btn is-active" data-tab="tos" role="tab" aria-selected="true">Terms of Service</button><button class="tab-btn" data-tab="faq" role="tab" aria-selected="false">FAQ</button></div><div class="tab-panel" data-panel="tos"><div class="accordion" id="tosAccordion"></div></div><div class="tab-panel" data-panel="faq" hidden><div class="accordion" id="faqAccordion"></div></div></div></section></main><footer class="site-footer" role="contentinfo"><div class="container"><p class="footer-copy">© 2020 lolomaku</p><nav class="footer-links" aria-label="Footer links"><a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener">Tiktok</a><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/lolomaku" target="_blank" rel="noopener">Twitter</a><a href="mailto:lolomaku@outlook.com">Contact</a></nav></div></footer><aside class="social-float" aria-label="Social links"><a href="https://m.me/361948320647248" target="_blank" rel="noopener" aria-label="Messenger"><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 251 1 C 110.17 1 1 104.16 1 243.5 c 0 72.89 29.87 135.86 78.51 179.37 c 4.09 3.65 6.55 8.78 6.72 14.25 l 1.36 44.48 c 0.43 14.18 15.09 23.41 28.06 17.68 l 49.62 -21.91 c 4.21 -1.85 8.92 -2.2 13.35 -0.97 c 22.81 6.27 47.07 9.61 72.37 9.61 c 140.83 0 250 -103.16 250 -242.5 S 391.83 1 251 1 Z M 405.92 178.79 l -87.04 134.52 c -4.42 6.83 -13.53 8.78 -20.36 4.36 l -80.63 -52.17 c -3.12 -2.02 -7.16 -1.96 -10.22 0.15 l -90.88 62.68 c -13.26 9.14 -29.47 -6.59 -20.72 -20.11 l 87.05 -134.52 c 4.42 -6.83 13.53 -8.78 20.35 -4.36 l 80.65 52.18 c 3.12 2.02 7.16 1.96 10.22 -0.15 l 90.86 -62.67 c 13.26 -9.15 29.47 6.59 20.72 20.11 Z"/></svg></a><a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a><a href="https://x.com/lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></aside><div class="modal-overlay" id="statusModalOverlay" hidden><div class="modal status-modal" role="dialog" aria-modal="true" aria-labelledby="modalCommId"><button class="modal-close" id="statusModalClose" aria-label="Close">✕</button><div class="modal-header"><span class="modal-id" id="modalCommId">LMC20260000</span><span class="status-badge" id="modalStatusBadge"><span class="dot-pulse"></span><span id="modalStatusText"></span></span></div><div class="modal-body"><div class="modal-meta-grid"><div><span class="stat-label">Client</span><span class="meta-value" id="modalClient"></span></div><div><span class="stat-label">Commission</span><span class="meta-value" id="modalType"></span></div><div><span class="stat-label">Queue position</span><span class="meta-value" id="modalQueue"></span></div><div><span class="stat-label">Estimated completion</span><span class="meta-value" id="modalEta"></span></div></div><div class="artist-notes" id="modalNotesWrap" hidden><span class="stat-label">Artist notes</span><p id="modalNotes"></p></div><div class="progress-block"><div class="progress-header"><span class="stat-label">Progress</span><span class="stat-label" id="modalProgressPct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="modalProgressFill"></div></div></div><div class="timeline" id="modalTimeline"></div><div class="artist-notes" id="modalNotesWrap" hidden><span class="stat-label">Artist notes</span><p id="modalNotes"></p></div><div class="modal-upload" id="modalUploadWrap" hidden><input type="file" id="modalUploadInput" accept="image/*" multiple hidden><button class="btn btn-secondary btn-sm" id="modalUploadBtn">＋ Add reference</button><span class="dim-text small">Optional for the first 24 hours</span></div><p class="form-error" id="modalError" hidden></p></div></div></div><div class="modal-overlay" id="wizardOverlay" hidden><div class="modal wizard-modal" role="dialog" aria-modal="true" aria-labelledby="wizardTitle"><button class="modal-close" id="wizardClose" aria-label="Close">✕</button><div class="wizard-header"><h2 class="wizard-title" id="wizardTitle">Start a commission</h2><div class="wizard-progress" id="wizardProgress"><span class="wizard-dot is-active" data-step="type">1</span><span class="wizard-line"></span><span class="wizard-dot" data-step="character">2</span><span class="wizard-line"></span><span class="wizard-dot" data-step="contact">3</span><span class="wizard-line"></span><span class="wizard-dot" data-step="payment">4</span><span class="wizard-line"></span><span class="wizard-dot" data-step="review">5</span></div></div><form id="commissionForm" novalidate><div class="wizard-body"><section class="wizard-step is-active" data-step="type"><p class="wizard-step-label">Step 1 of 5 What am I drawing?</p><p class="dim-text wizard-step-intro">Use the +/− on each tier to set how many you'd like.</p><div class="type-grid" id="typeGrid"></div><p class="form-error" id="typeError" hidden>Please select at least one character to continue.</p></section><section class="wizard-step" data-step="character"><p class="wizard-step-label">Step 2 of 5 Tell me about the character</p><div class="field"><label for="fieldCharName">Character name/s</label><input type="text" id="fieldCharName" name="characterName" placeholder="Who am I drawing?"></div><div class="field"><label for="fieldCharDesc">Character description <span class="req">*</span></label><textarea id="fieldCharDesc" name="characterDescription" rows="3" placeholder="Outfit, colors, distinguishing features…"></textarea></div><div class="form-row two-col"><div class="field"><label for="fieldPose">Pose</label><input type="text" id="fieldPose" name="pose" placeholder="Standing, waving, sitting…"></div><div class="field"><label for="fieldExpression">Expression</label><input type="text" id="fieldExpression" name="expression" placeholder="Happy, smug, shy…"></div></div><div class="field"><label for="fieldBackground">Background</label><input type="text" id="fieldBackground" name="background" placeholder="Transparent, solid color, simple scene…"></div><p class="form-error" id="characterError" hidden></p></section><section class="wizard-step" data-step="contact"><p class="wizard-step-label">Step 3 of 5 How do I reach you?</p><div class="form-row two-col"><div class="field"><label for="fieldName">Name <span class="req">*</span></label><input type="text" id="fieldName" name="name" autocomplete="name"></div><div class="field"><label for="fieldEmail">Email <span class="req">*</span></label><input type="email" id="fieldEmail" name="email" autocomplete="email"></div></div><div class="field"><label>Preferred contact <span class="req">*</span></label><div class="contact-method-group" id="contactMethodGroup"></div></div><div class="field" id="contactHandleField" hidden><label for="fieldContactHandle" id="contactHandleLabel">Handle</label><input type="text" id="fieldContactHandle" placeholder=""></div><div class="field"><label for="fieldNotes">Anything else?</label><textarea id="fieldNotes" name="notes" rows="2" placeholder="Optional anything else I should know?"></textarea></div><div class="field"><label for="fieldRefs">Reference images</label><div class="file-drop" id="fileDrop"><input type="file" id="fieldRefs" name="references" accept="image/*" multiple hidden><p><strong>Click to upload</strong> or drag references here</p><p class="dim-text small">PNG or JPG, up to 5 files, 5MB each</p><div class="file-drop-list" id="fileDropList"></div></div></div><p class="form-error" id="contactError" hidden></p></section><section class="wizard-step" data-step="payment"><p class="wizard-step-label">Step 4 of 5 Payment</p><div class="pay-phase" data-phase="choose"><p class="dim-text pay-intro">Choose how you'd like to pay:</p><div class="pay-method-grid" id="payMethodGrid"></div><div class="pay-qr-wrap" id="payQrWrap" hidden><img id="payQrImage" src="" alt="Payment QR code"><p class="dim-text small" id="payNote"></p><div class="pay-qr-actions"><a class="btn btn-secondary btn-sm" id="payQrDownload" href="#" download>Download QR</a><a class="btn btn-secondary btn-sm" id="payPaypalLink" href="#" target="_blank" rel="noopener" hidden>Pay via PayPal.me</a></div><button type="button" class="btn btn-primary btn-block" id="paidBtn"><span>I've paid</span></button></div><p class="form-error" id="payMethodError" hidden>Please choose a payment method to continue.</p></div><div class="pay-phase" data-phase="confirm" hidden><p class="dim-text pay-intro"> Paid via <strong id="confirmMethodName"></strong>. Just need a couple details to verify it: </p><div class="field"><label for="fieldTxnRef">Transaction / Reference number <span class="req">*</span></label><input type="text" id="fieldTxnRef" placeholder="e.g. 0123456789"></div><div class="field"><label for="fieldPayScreenshot">Payment screenshot <span class="dim-text small">(optional but recommended, in case verification fails)</span></label><div class="file-drop" id="screenshotDrop"><input type="file" id="fieldPayScreenshot" accept="image/*" hidden><p><strong>Click to upload</strong> your payment screenshot</p><div class="file-drop-list" id="screenshotDropList"></div></div></div><p class="form-error" id="payConfirmError" hidden></p></div></section><section class="wizard-step" data-step="review"><p class="wizard-step-label">Step 5 of 5 Review &amp; confirm</p><div class="review-grid" id="reviewGrid"></div><div class="field checkbox-field"><input type="checkbox" id="fieldTerms" name="terms"><label for="fieldTerms">I've read and accept the <a href="#info" id="reviewTosLink">Terms of Service</a><span class="req">*</span></label></div><p class="form-error" id="reviewError" hidden></p></section><section class="wizard-step" data-step="success"><div class="success-card success-card-inline"><div class="success-emoji">🎉</div><h3>Thank you!</h3><p class="section-sub">Your commission is in the queue. Save your ID to check progress anytime.</p><div class="success-id-row"><span class="success-id" id="successId">LMC20260000</span><button type="button" class="btn btn-secondary btn-sm" id="copyIdBtn">Copy ID</button></div><div class="success-meta"><div><span class="stat-label">Queue position</span><span class="stat-value" id="successQueue">–</span></div><div><span class="stat-label">Estimated completion</span><span class="stat-value" id="successEta">–</span></div></div></div></section></div><div class="wizard-footer" id="wizardFooter"><button type="button" class="btn btn-secondary" id="wizardBackBtn">Back</button><button type="button" class="btn btn-primary" id="wizardNextBtn">Next</button><button type="submit" class="btn btn-primary" id="wizardSubmitBtn" hidden><span id="wizardSubmitBtnText">Submit commission</span></button><button type="button" class="btn btn-primary" id="wizardDoneBtn" hidden>Done</button></div></form></div></div><div class="modal-overlay" id="samplesOverlay" hidden><div class="modal samples-modal" role="dialog" aria-modal="true" aria-labelledby="samplesTitle"><button class="modal-close" id="samplesClose" aria-label="Close">✕</button><h2 class="wizard-title" id="samplesTitle">Samples</h2><p class="dim-text modal-intro">Select a commission tier below to view examples of my work.</p><div class="sample-tabs" id="sampleTabs"></div><div class="sample-placeholder-box" id="samplePlaceholder"><span class="placeholder-icon">🖼️</span><p class="dim-text">Select a tier to reveal a sample</p></div><div class="sample-preview" id="samplePreview" hidden><img id="samplePreviewImage" src="" alt=""><p class="dim-text small" id="samplePreviewCaption"></p></div></div></div><div class="toast" id="toast" hidden></div><script src="js/security.js"></script><script src="js/config.js"></script><script src="js/mock-data.js"></script><script src="js/api.js"></script><script src="js/accordion.js"></script><script src="js/tabs.js"></script><script src="js/type-select.js"></script><script src="js/contact-method.js"></script><script src="js/payment-select.js"></script><script src="js/status-modal.js"></script><script src="js/samples.js"></script><script src="js/wizard.js"></script><script src="js/app.js"></script></body></html><!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="lolomaku art, games, web apps and printable sticker designs. Made with love."><link rel="canonical" href="https://lolomaku.art/"><meta property="og:type" content="website"><meta property="og:url" content="https://lolomaku.art"><meta property="og:site_name" content="LOLOMAKU"><meta property="og:title" content="lolomaku Art & Dev"><meta property="og:description" content="Games, web apps, sticker designs, and wallpapers by lolomaku."><meta property="twitter:card" content="summary_large_image"><meta property="twitter:site" content="@lolomaku"><link rel="apple-touch-icon" sizes="180x180" href="assets/favico/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favico/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/favico/favicon-16x16.png"><link rel="manifest" href="assets/favico/site.webmanifest"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/sections.css"><link rel="stylesheet" href="css/wizard.css"><title>LOLOMAKU | COMMISSIONS</title></head><body><header class="site-header"><div class="header-inner"><a href="../" class="logo">LOLOMAKU <span class="dot"></span></a><nav class="main-nav"><a href="../#projects">PROJECTS</a><a href="../#shop">SHOP</a></nav></div></header><div class="marquee-strip" aria-hidden="true"><div class="marquee-track" id="marquee-track"><span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span><span class="marquee-item">WALLPAPERS <span class="dot"></span></span><span class="marquee-item">GAMES <span class="dot"></span></span><span class="marquee-item">WEB APPS <span class="dot"></span></span><span class="marquee-item">ART & DEV <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span><span class="marquee-item">WALLPAPERS <span class="dot"></span></span><span class="marquee-item">GAMES <span class="dot"></span></span><span class="marquee-item">WEB APPS <span class="dot"></span></span><span class="marquee-item">ART & DEV <span class="dot"></span></span></div></div><main><section class="section status-section" id="status"><div class="container"><div class="status-grid"><div class="status-copy"><div class="status-badge" id="statusBadge"><span class="dot-pulse"></span><span id="statusBadgeText">Loading…</span></div><h1 class="section-title">Chibi Commissions</h1><p class="section-sub">Cute little portraits of your favorite characters drawn one at a time, queue posted honestly, no surprises.</p><div class="stat-row"><div class="stat"><span class="stat-value" id="slotsValue">–</span><span class="stat-label">Slots remaining</span></div><div class="stat"><span class="stat-value" id="queueValue">–</span><span class="stat-label">Active in queue</span></div><div class="stat"><span class="stat-value" id="turnaroundValue">–</span><span class="stat-label">Avg. turnaround</span></div></div><div class="hero-actions"><button type="button" class="btn btn-primary" id="startCommissionBtn">Start a commission</button><button type="button" class="btn btn-secondary" id="viewSamplesBtn">View samples</button></div></div><div class="status-check-card"><img src="assets/cornerimg.png" alt="lolomaku" class="corner-img"><h3>Already commissioned?</h3><p class="dim-text">Look yours up by Commission ID or email.</p><form id="statusCheckForm" class="status-check-form"><input type="text" id="statusQuery" placeholder="e.g. LMC20264821 or your email" required><button type="submit" class="btn btn-secondary" id="statusCheckBtn"><span>Check status</span></button></form><p class="form-error" id="statusCheckError" hidden></p></div></div></div></section><section class="section" id="info"><div class="container container-narrow"><p class="eyebrow">Before you commission</p><div class="tabs" role="tablist"><button class="tab-btn is-active" data-tab="tos" role="tab" aria-selected="true">Terms of Service</button><button class="tab-btn" data-tab="faq" role="tab" aria-selected="false">FAQ</button></div><div class="tab-panel" data-panel="tos"><div class="accordion" id="tosAccordion"></div></div><div class="tab-panel" data-panel="faq" hidden><div class="accordion" id="faqAccordion"></div></div></div></section></main><footer class="site-footer" role="contentinfo"><div class="container"><p class="footer-copy">© 2020 lolomaku</p><nav class="footer-links" aria-label="Footer links"><a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener">Tiktok</a><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/lolomaku" target="_blank" rel="noopener">Twitter</a><a href="mailto:lolomaku@outlook.com">Contact</a></nav></div></footer><aside class="social-float" aria-label="Social links"><a href="https://m.me/361948320647248" target="_blank" rel="noopener" aria-label="Messenger"><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 251 1 C 110.17 1 1 104.16 1 243.5 c 0 72.89 29.87 135.86 78.51 179.37 c 4.09 3.65 6.55 8.78 6.72 14.25 l 1.36 44.48 c 0.43 14.18 15.09 23.41 28.06 17.68 l 49.62 -21.91 c 4.21 -1.85 8.92 -2.2 13.35 -0.97 c 22.81 6.27 47.07 9.61 72.37 9.61 c 140.83 0 250 -103.16 250 -242.5 S 391.83 1 251 1 Z M 405.92 178.79 l -87.04 134.52 c -4.42 6.83 -13.53 8.78 -20.36 4.36 l -80.63 -52.17 c -3.12 -2.02 -7.16 -1.96 -10.22 0.15 l -90.88 62.68 c -13.26 9.14 -29.47 -6.59 -20.72 -20.11 l 87.05 -134.52 c 4.42 -6.83 13.53 -8.78 20.35 -4.36 l 80.65 52.18 c 3.12 2.02 7.16 1.96 10.22 -0.15 l 90.86 -62.67 c 13.26 -9.15 29.47 6.59 20.72 20.11 Z"/></svg></a><a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a><a href="https://x.com/lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a></aside><div class="modal-overlay" id="statusModalOverlay" hidden><div class="modal status-modal" role="dialog" aria-modal="true" aria-labelledby="modalCommId"><button class="modal-close" id="statusModalClose" aria-label="Close">✕</button><div class="modal-header"><span class="modal-id" id="modalCommId">LMC20260000</span><span class="status-badge" id="modalStatusBadge"><span class="dot-pulse"></span><span id="modalStatusText"></span></span></div><div class="modal-body"><div class="modal-meta-grid"><div><span class="stat-label">Client</span><span class="meta-value" id="modalClient"></span></div><div><span class="stat-label">Commission</span><span class="meta-value" id="modalType"></span></div><div><span class="stat-label">Queue position</span><span class="meta-value" id="modalQueue"></span></div><div><span class="stat-label">Estimated completion</span><span class="meta-value" id="modalEta"></span></div></div><div class="artist-notes" id="modalNotesWrap" hidden><span class="stat-label">Artist notes</span><p id="modalNotes"></p></div><div class="progress-block"><div class="progress-header"><span class="stat-label">Progress</span><span class="stat-label" id="modalProgressPct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="modalProgressFill"></div></div></div><div class="timeline" id="modalTimeline"></div><div class="artist-notes" id="modalNotesWrap" hidden><span class="stat-label">Artist notes</span><p id="modalNotes"></p></div><div class="modal-upload" id="modalUploadWrap" hidden><input type="file" id="modalUploadInput" accept="image/*" multiple hidden><button class="btn btn-secondary btn-sm" id="modalUploadBtn">＋ Add reference</button><span class="dim-text small">Optional for the first 24 hours</span></div><p class="form-error" id="modalError" hidden></p></div></div></div><div class="modal-overlay" id="wizardOverlay" hidden><div class="modal wizard-modal" role="dialog" aria-modal="true" aria-labelledby="wizardTitle"><button class="modal-close" id="wizardClose" aria-label="Close">✕</button><div class="wizard-header"><h2 class="wizard-title" id="wizardTitle">Start a commission</h2><div class="wizard-progress" id="wizardProgress"><span class="wizard-dot is-active" data-step="type">1</span><span class="wizard-line"></span><span class="wizard-dot" data-step="character">2</span><span class="wizard-line"></span><span class="wizard-dot" data-step="contact">3</span><span class="wizard-line"></span><span class="wizard-dot" data-step="payment">4</span><span class="wizard-line"></span><span class="wizard-dot" data-step="review">5</span></div></div><form id="commissionForm" novalidate><div class="wizard-body"><section class="wizard-step is-active" data-step="type"><p class="wizard-step-label">Step 1 of 5 What am I drawing?</p><p class="dim-text wizard-step-intro">Use the +/− on each tier to set how many you'd like.</p><div class="type-grid" id="typeGrid"></div><p class="form-error" id="typeError" hidden>Please select at least one character to continue.</p></section><section class="wizard-step" data-step="character"><p class="wizard-step-label">Step 2 of 5 Tell me about the character</p><div class="field"><label for="fieldCharName">Character name/s</label><input type="text" id="fieldCharName" name="characterName" placeholder="Who am I drawing?"></div><div class="field"><label for="fieldCharDesc">Character description <span class="req">*</span></label><textarea id="fieldCharDesc" name="characterDescription" rows="3" placeholder="Outfit, colors, distinguishing features…"></textarea></div><div class="form-row two-col"><div class="field"><label for="fieldPose">Pose</label><input type="text" id="fieldPose" name="pose" placeholder="Standing, waving, sitting…"></div><div class="field"><label for="fieldExpression">Expression</label><input type="text" id="fieldExpression" name="expression" placeholder="Happy, smug, shy…"></div></div><div class="field"><label for="fieldBackground">Background</label><input type="text" id="fieldBackground" name="background" placeholder="Transparent, solid color, simple scene…"></div><p class="form-error" id="characterError" hidden></p></section><section class="wizard-step" data-step="contact"><p class="wizard-step-label">Step 3 of 5 How do I reach you?</p><div class="form-row two-col"><div class="field"><label for="fieldName">Name <span class="req">*</span></label><input type="text" id="fieldName" name="name" autocomplete="name"></div><div class="field"><label for="fieldEmail">Email <span class="req">*</span></label><input type="email" id="fieldEmail" name="email" autocomplete="email"></div></div><div class="field"><label>Preferred contact <span class="req">*</span></label><div class="contact-method-group" id="contactMethodGroup"></div></div><div class="field" id="contactHandleField" hidden><label for="fieldContactHandle" id="contactHandleLabel">Handle</label><input type="text" id="fieldContactHandle" placeholder=""></div><div class="field"><label for="fieldNotes">Anything else?</label><textarea id="fieldNotes" name="notes" rows="2" placeholder="Optional anything else I should know?"></textarea></div><div class="field"><label for="fieldRefs">Reference images</label><div class="file-drop" id="fileDrop"><input type="file" id="fieldRefs" name="references" accept="image/*" multiple hidden><p><strong>Click to upload</strong> or drag references here</p><p class="dim-text small">PNG or JPG, up to 5 files, 5MB each</p><div class="file-drop-list" id="fileDropList"></div></div></div><p class="form-error" id="contactError" hidden></p></section><section class="wizard-step" data-step="payment"><p class="wizard-step-label">Step 4 of 5 Payment</p><div class="pay-phase" data-phase="choose"><p class="dim-text pay-intro">Choose how you'd like to pay:</p><div class="pay-method-grid" id="payMethodGrid"></div><div class="pay-qr-wrap" id="payQrWrap" hidden><img id="payQrImage" src="" alt="Payment QR code"><p class="dim-text small" id="payNote"></p><div class="pay-qr-actions"><a class="btn btn-secondary btn-sm" id="payQrDownload" href="#" download>Download QR</a><a class="btn btn-secondary btn-sm" id="payPaypalLink" href="#" target="_blank" rel="noopener" hidden>Pay via PayPal.me</a></div><button type="button" class="btn btn-primary btn-block" id="paidBtn"><span>I've paid</span></button></div><p class="form-error" id="payMethodError" hidden>Please choose a payment method to continue.</p></div><div class="pay-phase" data-phase="confirm" hidden><p class="dim-text pay-intro"> Paid via <strong id="confirmMethodName"></strong>. Just need a couple details to verify it: </p><div class="field"><label for="fieldTxnRef">Transaction / Reference number <span class="req">*</span></label><input type="text" id="fieldTxnRef" placeholder="e.g. 0123456789"></div><div class="field"><label for="fieldPayScreenshot">Payment screenshot <span class="dim-text small">(optional but recommended, in case verification fails)</span></label><div class="file-drop" id="screenshotDrop"><input type="file" id="fieldPayScreenshot" accept="image/*" hidden><p><strong>Click to upload</strong> your payment screenshot</p><div class="file-drop-list" id="screenshotDropList"></div></div></div><p class="form-error" id="payConfirmError" hidden></p></div></section><section class="wizard-step" data-step="review"><p class="wizard-step-label">Step 5 of 5 Review &amp; confirm</p><div class="review-grid" id="reviewGrid"></div><div class="field checkbox-field"><input type="checkbox" id="fieldTerms" name="terms"><label for="fieldTerms">I've read and accept the <a href="#info" id="reviewTosLink">Terms of Service</a><span class="req">*</span></label></div><p class="form-error" id="reviewError" hidden></p></section><section class="wizard-step" data-step="success"><div class="success-card success-card-inline"><div class="success-emoji">🎉</div><h3>Thank you!</h3><p class="section-sub">Your commission is in the queue. Save your ID to check progress anytime.</p><div class="success-id-row"><span class="success-id" id="successId">LMC20260000</span><button type="button" class="btn btn-secondary btn-sm" id="copyIdBtn">Copy ID</button></div><div class="success-meta"><div><span class="stat-label">Queue position</span><span class="stat-value" id="successQueue">–</span></div><div><span class="stat-label">Estimated completion</span><span class="stat-value" id="successEta">–</span></div></div></div></section></div><div class="wizard-footer" id="wizardFooter"><button type="button" class="btn btn-secondary" id="wizardBackBtn">Back</button><button type="button" class="btn btn-primary" id="wizardNextBtn">Next</button><button type="submit" class="btn btn-primary" id="wizardSubmitBtn" hidden><span id="wizardSubmitBtnText">Submit commission</span></button><button type="button" class="btn btn-primary" id="wizardDoneBtn" hidden>Done</button></div></form></div></div><div class="modal-overlay" id="samplesOverlay" hidden><div class="modal samples-modal" role="dialog" aria-modal="true" aria-labelledby="samplesTitle"><button class="modal-close" id="samplesClose" aria-label="Close">✕</button><h2 class="wizard-title" id="samplesTitle">Samples</h2><p class="dim-text modal-intro">Select a commission tier below to view examples of my work.</p><div class="sample-tabs" id="sampleTabs"></div><div class="sample-placeholder-box" id="samplePlaceholder"><span class="placeholder-icon">🖼️</span><p class="dim-text">Select a tier to reveal a sample</p></div><div class="sample-preview" id="samplePreview" hidden><img id="samplePreviewImage" src="" alt=""><p class="dim-text small" id="samplePreviewCaption"></p></div></div></div><div class="toast" id="toast" hidden></div><script src="js/security.js"></script><script src="js/config.js"></script><script src="js/mock-data.js"></script><script src="js/api.js"></script><script src="js/accordion.js"></script><script src="js/tabs.js"></script><script src="js/type-select.js"></script><script src="js/contact-method.js"></script><script src="js/payment-select.js"></script><script src="js/status-modal.js"></script><script src="js/samples.js"></script><script src="js/wizard.js"></script><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="lolomaku art, games, web apps and printable sticker designs. Made with love."
+        />
+        <link rel="canonical" href="https://lolomaku.art/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lolomaku.art" />
+        <meta property="og:site_name" content="LOLOMAKU" />
+        <meta property="og:title" content="lolomaku Art & Dev" />
+        <meta property="og:description" content="Games, web apps, sticker designs, and wallpapers by lolomaku." />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:site" content="@lolomaku" />
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favico/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favico/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favico/favicon-16x16.png" />
+        <link rel="manifest" href="assets/favico/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/layout.css" />
+        <link rel="stylesheet" href="css/components.css" />
+        <link rel="stylesheet" href="css/sections.css" />
+        <link rel="stylesheet" href="css/wizard.css" />
+        <title>LOLOMAKU | COMMISSIONS</title>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-inner">
+                <a href="../" class="logo">LOLOMAKU <span class="dot"></span></a>
+                <nav class="main-nav"><a href="../#projects">PROJECTS</a><a href="../#shop">SHOP</a></nav>
+            </div>
+        </header>
+        <div class="marquee-strip" aria-hidden="true">
+            <div class="marquee-track" id="marquee-track">
+                <span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span
+                ><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span
+                ><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span
+                ><span class="marquee-item">WALLPAPERS <span class="dot"></span></span
+                ><span class="marquee-item">GAMES <span class="dot"></span></span
+                ><span class="marquee-item">WEB APPS <span class="dot"></span></span
+                ><span class="marquee-item">ART & DEV <span class="dot"></span></span
+                ><span class="marquee-item">LOLOMAKU.ART <span class="dot"></span></span
+                ><span class="marquee-item">LOLOMAKU.DEV <span class="dot"></span></span
+                ><span class="marquee-item">STICKER DESIGNS <span class="dot"></span></span
+                ><span class="marquee-item">WALLPAPERS <span class="dot"></span></span
+                ><span class="marquee-item">GAMES <span class="dot"></span></span
+                ><span class="marquee-item">WEB APPS <span class="dot"></span></span
+                ><span class="marquee-item">ART & DEV <span class="dot"></span></span>
+            </div>
+        </div>
+        <main>
+            <section class="section status-section" id="status">
+                <div class="container">
+                    <div class="status-grid">
+                        <div class="status-copy">
+                            <div class="status-badge" id="statusBadge">
+                                <span class="dot-pulse"></span><span id="statusBadgeText">Loading…</span>
+                            </div>
+                            <h1 class="section-title">Chibi Commissions</h1>
+                            <p class="section-sub">
+                                Cute little portraits of your favorite characters drawn one at a time, queue posted
+                                honestly, no surprises.
+                            </p>
+                            <div class="stat-row">
+                                <div class="stat">
+                                    <span class="stat-value" id="slotsValue">–</span
+                                    ><span class="stat-label">Slots remaining</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value" id="queueValue">–</span
+                                    ><span class="stat-label">Active in queue</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value" id="turnaroundValue">–</span
+                                    ><span class="stat-label">Avg. turnaround</span>
+                                </div>
+                            </div>
+                            <div class="hero-actions">
+                                <button type="button" class="btn btn-primary" id="startCommissionBtn">
+                                    Start a commission</button
+                                ><button type="button" class="btn btn-secondary" id="viewSamplesBtn">
+                                    View samples
+                                </button>
+                            </div>
+                        </div>
+                        <div class="status-check-card">
+                            <img src="assets/cornerimg.png" alt="lolomaku" class="corner-img" />
+                            <h3>Already commissioned?</h3>
+                            <p class="dim-text">Look yours up by Commission ID or email.</p>
+                            <form id="statusCheckForm" class="status-check-form">
+                                <input
+                                    type="text"
+                                    id="statusQuery"
+                                    placeholder="e.g. LMC20264821 or your email"
+                                    required
+                                /><button type="submit" class="btn btn-secondary" id="statusCheckBtn">
+                                    <span>Check status</span>
+                                </button>
+                            </form>
+                            <p class="form-error" id="statusCheckError" hidden></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="info">
+                <div class="container container-narrow">
+                    <p class="eyebrow">Before you commission</p>
+                    <div class="tabs" role="tablist">
+                        <button class="tab-btn is-active" data-tab="tos" role="tab" aria-selected="true">
+                            Terms of Service</button
+                        ><button class="tab-btn" data-tab="faq" role="tab" aria-selected="false">FAQ</button>
+                    </div>
+                    <div class="tab-panel" data-panel="tos"><div class="accordion" id="tosAccordion"></div></div>
+                    <div class="tab-panel" data-panel="faq" hidden><div class="accordion" id="faqAccordion"></div></div>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer" role="contentinfo">
+            <div class="container">
+                <p class="footer-copy">© 2020 lolomaku</p>
+                <nav class="footer-links" aria-label="Footer links">
+                    <a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener">Instagram</a
+                    ><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener">Tiktok</a
+                    ><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener">Facebook</a
+                    ><a href="https://x.com/lolomaku" target="_blank" rel="noopener">Twitter</a
+                    ><a href="mailto:lolomaku@outlook.com">Contact</a>
+                </nav>
+            </div>
+        </footer>
+        <aside class="social-float" aria-label="Social links">
+            <a href="https://m.me/361948320647248" target="_blank" rel="noopener" aria-label="Messenger"
+                ><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path
+                        d="M 251 1 C 110.17 1 1 104.16 1 243.5 c 0 72.89 29.87 135.86 78.51 179.37 c 4.09 3.65 6.55 8.78 6.72 14.25 l 1.36 44.48 c 0.43 14.18 15.09 23.41 28.06 17.68 l 49.62 -21.91 c 4.21 -1.85 8.92 -2.2 13.35 -0.97 c 22.81 6.27 47.07 9.61 72.37 9.61 c 140.83 0 250 -103.16 250 -242.5 S 391.83 1 251 1 Z M 405.92 178.79 l -87.04 134.52 c -4.42 6.83 -13.53 8.78 -20.36 4.36 l -80.63 -52.17 c -3.12 -2.02 -7.16 -1.96 -10.22 0.15 l -90.88 62.68 c -13.26 9.14 -29.47 -6.59 -20.72 -20.11 l 87.05 -134.52 c 4.42 -6.83 13.53 -8.78 20.35 -4.36 l 80.65 52.18 c 3.12 2.02 7.16 1.96 10.22 -0.15 l 90.86 -62.67 c 13.26 -9.15 29.47 6.59 20.72 20.11 Z"
+                    /></svg></a
+            ><a href="https://www.instagram.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Instagram"
+                ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a
+            ><a href="https://www.facebook.com/lolomaku.art" target="_blank" rel="noopener" aria-label="Facebook"
+                ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    /></svg></a
+            ><a href="https://x.com/lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                ><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                    /></svg></a
+            ><a href="https://www.tiktok.com/@lolomaku" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"
+                ><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                    /></svg
+            ></a>
+        </aside>
+        <div class="modal-overlay" id="statusModalOverlay" hidden>
+            <div class="modal status-modal" role="dialog" aria-modal="true" aria-labelledby="modalCommId">
+                <button class="modal-close" id="statusModalClose" aria-label="Close">✕</button>
+                <div class="modal-header">
+                    <span class="modal-id" id="modalCommId">LMC20260000</span
+                    ><span class="status-badge" id="modalStatusBadge"
+                        ><span class="dot-pulse"></span><span id="modalStatusText"></span
+                    ></span>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-meta-grid">
+                        <div>
+                            <span class="stat-label">Client</span><span class="meta-value" id="modalClient"></span>
+                        </div>
+                        <div>
+                            <span class="stat-label">Commission</span><span class="meta-value" id="modalType"></span>
+                        </div>
+                        <div>
+                            <span class="stat-label">Queue position</span
+                            ><span class="meta-value" id="modalQueue"></span>
+                        </div>
+                        <div>
+                            <span class="stat-label">Estimated completion</span
+                            ><span class="meta-value" id="modalEta"></span>
+                        </div>
+                    </div>
+                    <div class="artist-notes" id="modalNotesWrap" hidden>
+                        <span class="stat-label">Artist notes</span>
+                        <p id="modalNotes"></p>
+                    </div>
+                    <div class="progress-block">
+                        <div class="progress-header">
+                            <span class="stat-label">Progress</span
+                            ><span class="stat-label" id="modalProgressPct">0%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="modalProgressFill"></div></div>
+                    </div>
+                    <div class="timeline" id="modalTimeline"></div>
+                    <div class="artist-notes" id="modalNotesWrap" hidden>
+                        <span class="stat-label">Artist notes</span>
+                        <p id="modalNotes"></p>
+                    </div>
+                    <div class="modal-upload" id="modalUploadWrap" hidden>
+                        <input type="file" id="modalUploadInput" accept="image/*" multiple hidden /><button
+                            class="btn btn-secondary btn-sm"
+                            id="modalUploadBtn"
+                        >
+                            ＋ Add reference</button
+                        ><span class="dim-text small">Optional for the first 24 hours</span>
+                    </div>
+                    <p class="form-error" id="modalError" hidden></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay" id="wizardOverlay" hidden>
+            <div class="modal wizard-modal" role="dialog" aria-modal="true" aria-labelledby="wizardTitle">
+                <button class="modal-close" id="wizardClose" aria-label="Close">✕</button>
+                <div class="wizard-header">
+                    <h2 class="wizard-title" id="wizardTitle">Start a commission</h2>
+                    <div class="wizard-progress" id="wizardProgress">
+                        <span class="wizard-dot is-active" data-step="type">1</span><span class="wizard-line"></span
+                        ><span class="wizard-dot" data-step="character">2</span><span class="wizard-line"></span
+                        ><span class="wizard-dot" data-step="contact">3</span><span class="wizard-line"></span
+                        ><span class="wizard-dot" data-step="payment">4</span><span class="wizard-line"></span
+                        ><span class="wizard-dot" data-step="review">5</span>
+                    </div>
+                </div>
+                <form id="commissionForm" novalidate>
+                    <div class="wizard-body">
+                        <section class="wizard-step is-active" data-step="type">
+                            <p class="wizard-step-label">Step 1 of 5 What am I drawing?</p>
+                            <p class="dim-text wizard-step-intro">
+                                Use the +/− on each tier to set how many you'd like.
+                            </p>
+                            <div class="type-grid" id="typeGrid"></div>
+                            <p class="form-error" id="typeError" hidden>
+                                Please select at least one character to continue.
+                            </p>
+                        </section>
+                        <section class="wizard-step" data-step="character">
+                            <p class="wizard-step-label">Step 2 of 5 Tell me about the character</p>
+                            <div class="field">
+                                <label for="fieldCharName">Character name/s</label
+                                ><input
+                                    type="text"
+                                    id="fieldCharName"
+                                    name="characterName"
+                                    placeholder="Who am I drawing?"
+                                />
+                            </div>
+                            <div class="field">
+                                <label for="fieldCharDesc">Character description <span class="req">*</span></label
+                                ><textarea
+                                    id="fieldCharDesc"
+                                    name="characterDescription"
+                                    rows="3"
+                                    placeholder="Outfit, colors, distinguishing features…"
+                                ></textarea>
+                            </div>
+                            <div class="form-row two-col">
+                                <div class="field">
+                                    <label for="fieldPose">Pose</label
+                                    ><input
+                                        type="text"
+                                        id="fieldPose"
+                                        name="pose"
+                                        placeholder="Standing, waving, sitting…"
+                                    />
+                                </div>
+                                <div class="field">
+                                    <label for="fieldExpression">Expression</label
+                                    ><input
+                                        type="text"
+                                        id="fieldExpression"
+                                        name="expression"
+                                        placeholder="Happy, smug, shy…"
+                                    />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="fieldBackground">Background</label
+                                ><input
+                                    type="text"
+                                    id="fieldBackground"
+                                    name="background"
+                                    placeholder="Transparent, solid color, simple scene…"
+                                />
+                            </div>
+                            <p class="form-error" id="characterError" hidden></p>
+                        </section>
+                        <section class="wizard-step" data-step="contact">
+                            <p class="wizard-step-label">Step 3 of 5 How do I reach you?</p>
+                            <div class="form-row two-col">
+                                <div class="field">
+                                    <label for="fieldName">Name <span class="req">*</span></label
+                                    ><input type="text" id="fieldName" name="name" autocomplete="name" />
+                                </div>
+                                <div class="field">
+                                    <label for="fieldEmail">Email <span class="req">*</span></label
+                                    ><input type="email" id="fieldEmail" name="email" autocomplete="email" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Preferred contact <span class="req">*</span></label>
+                                <div class="contact-method-group" id="contactMethodGroup"></div>
+                            </div>
+                            <div class="field" id="contactHandleField" hidden>
+                                <label for="fieldContactHandle" id="contactHandleLabel">Handle</label
+                                ><input type="text" id="fieldContactHandle" placeholder="" />
+                            </div>
+                            <div class="field">
+                                <label for="fieldNotes">Anything else?</label
+                                ><textarea
+                                    id="fieldNotes"
+                                    name="notes"
+                                    rows="2"
+                                    placeholder="Optional anything else I should know?"
+                                ></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="fieldRefs">Reference images</label>
+                                <div class="file-drop" id="fileDrop">
+                                    <input
+                                        type="file"
+                                        id="fieldRefs"
+                                        name="references"
+                                        accept="image/*"
+                                        multiple
+                                        hidden
+                                    />
+                                    <p><strong>Click to upload</strong> or drag references here</p>
+                                    <p class="dim-text small">PNG or JPG, up to 5 files, 5MB each</p>
+                                    <div class="file-drop-list" id="fileDropList"></div>
+                                </div>
+                            </div>
+                            <p class="form-error" id="contactError" hidden></p>
+                        </section>
+                        <section class="wizard-step" data-step="payment">
+                            <p class="wizard-step-label">Step 4 of 5 Payment</p>
+                            <div class="pay-phase" data-phase="choose">
+                                <p class="dim-text pay-intro">Choose how you'd like to pay:</p>
+                                <div class="pay-method-grid" id="payMethodGrid"></div>
+                                <div class="pay-qr-wrap" id="payQrWrap" hidden>
+                                    <img id="payQrImage" src="" alt="Payment QR code" />
+                                    <p class="dim-text small" id="payNote"></p>
+                                    <div class="pay-qr-actions">
+                                        <a class="btn btn-secondary btn-sm" id="payQrDownload" href="#" download
+                                            >Download QR</a
+                                        ><a
+                                            class="btn btn-secondary btn-sm"
+                                            id="payPaypalLink"
+                                            href="#"
+                                            target="_blank"
+                                            rel="noopener"
+                                            hidden
+                                            >Pay via PayPal.me</a
+                                        >
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-block" id="paidBtn">
+                                        <span>I've paid</span>
+                                    </button>
+                                </div>
+                                <p class="form-error" id="payMethodError" hidden>
+                                    Please choose a payment method to continue.
+                                </p>
+                            </div>
+                            <div class="pay-phase" data-phase="confirm" hidden>
+                                <p class="dim-text pay-intro">
+                                    Paid via <strong id="confirmMethodName"></strong>. Just need a couple details to
+                                    verify it:
+                                </p>
+                                <div class="field">
+                                    <label for="fieldTxnRef"
+                                        >Transaction / Reference number <span class="req">*</span></label
+                                    ><input type="text" id="fieldTxnRef" placeholder="e.g. 0123456789" />
+                                </div>
+                                <div class="field">
+                                    <label for="fieldPayScreenshot"
+                                        >Payment screenshot
+                                        <span class="dim-text small"
+                                            >(optional but recommended, in case verification fails)</span
+                                        ></label
+                                    >
+                                    <div class="file-drop" id="screenshotDrop">
+                                        <input type="file" id="fieldPayScreenshot" accept="image/*" hidden />
+                                        <p><strong>Click to upload</strong> your payment screenshot</p>
+                                        <div class="file-drop-list" id="screenshotDropList"></div>
+                                    </div>
+                                </div>
+                                <p class="form-error" id="payConfirmError" hidden></p>
+                            </div>
+                        </section>
+                        <section class="wizard-step" data-step="review">
+                            <p class="wizard-step-label">Step 5 of 5 Review &amp; confirm</p>
+                            <div class="review-grid" id="reviewGrid"></div>
+                            <div class="field checkbox-field">
+                                <input type="checkbox" id="fieldTerms" name="terms" /><label for="fieldTerms"
+                                    >I've read and accept the <a href="#info" id="reviewTosLink">Terms of Service</a
+                                    ><span class="req">*</span></label
+                                >
+                            </div>
+                            <p class="form-error" id="reviewError" hidden></p>
+                        </section>
+                        <section class="wizard-step" data-step="success">
+                            <div class="success-card success-card-inline">
+                                <div class="success-emoji">🎉</div>
+                                <h3>Thank you!</h3>
+                                <p class="section-sub">
+                                    Your commission is in the queue. Save your ID to check progress anytime.
+                                </p>
+                                <div class="success-id-row">
+                                    <span class="success-id" id="successId">LMC20260000</span
+                                    ><button type="button" class="btn btn-secondary btn-sm" id="copyIdBtn">
+                                        Copy ID
+                                    </button>
+                                </div>
+                                <div class="success-meta">
+                                    <div>
+                                        <span class="stat-label">Queue position</span
+                                        ><span class="stat-value" id="successQueue">–</span>
+                                    </div>
+                                    <div>
+                                        <span class="stat-label">Estimated completion</span
+                                        ><span class="stat-value" id="successEta">–</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="wizard-footer" id="wizardFooter">
+                        <button type="button" class="btn btn-secondary" id="wizardBackBtn">Back</button
+                        ><button type="button" class="btn btn-primary" id="wizardNextBtn">Next</button
+                        ><button type="submit" class="btn btn-primary" id="wizardSubmitBtn" hidden>
+                            <span id="wizardSubmitBtnText">Submit commission</span></button
+                        ><button type="button" class="btn btn-primary" id="wizardDoneBtn" hidden>Done</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-overlay" id="samplesOverlay" hidden>
+            <div class="modal samples-modal" role="dialog" aria-modal="true" aria-labelledby="samplesTitle">
+                <button class="modal-close" id="samplesClose" aria-label="Close">✕</button>
+                <h2 class="wizard-title" id="samplesTitle">Samples</h2>
+                <p class="dim-text modal-intro">Select a commission tier below to view examples of my work.</p>
+                <div class="sample-tabs" id="sampleTabs"></div>
+                <div class="sample-placeholder-box" id="samplePlaceholder">
+                    <span class="placeholder-icon">🖼️</span>
+                    <p class="dim-text">Select a tier to reveal a sample</p>
+                </div>
+                <div class="sample-preview" id="samplePreview" hidden>
+                    <img id="samplePreviewImage" src="" alt="" />
+                    <p class="dim-text small" id="samplePreviewCaption"></p>
+                </div>
+            </div>
+        </div>
+        <div class="toast" id="toast" hidden></div>
+        <script src="js/security.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/mock-data.js"></script>
+        <script src="js/api.js"></script>
+        <script src="js/accordion.js"></script>
+        <script src="js/tabs.js"></script>
+        <script src="js/type-select.js"></script>
+        <script src="js/contact-method.js"></script>
+        <script src="js/payment-select.js"></script>
+        <script src="js/status-modal.js"></script>
+        <script src="js/samples.js"></script>
+        <script src="js/wizard.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
