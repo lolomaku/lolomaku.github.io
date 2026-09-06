@@ -44,6 +44,7 @@
   var playerFrozen = false;
   var CAUGHT_FREEZE_MS = 900;
   var wallFlashActive = false;
+  var TELEPORT_FADE_MS = 190;
 
   var GHOST_COLORS = {
     default: { hue: "150deg", glow: "#00f4cf" },
@@ -394,6 +395,15 @@
     if (dir) {
       var moved = nextCell(evilPos.row, evilPos.col, dir);
       if (moved) {
+        if (isTunnelWrap(evilPos.row, evilPos.col, dir)) {
+          evilDir = dir;
+          respawnSprite(evilEl, function () {
+            evilPos.row = moved.row;
+            evilPos.col = moved.col;
+            updateEvilPosition();
+          });
+          return;
+        }
         evilPos.row = moved.row;
         evilPos.col = moved.col;
         evilDir = dir;
@@ -429,17 +439,25 @@
       ghostImg.classList.add("ghost-caught");
       if (reduceMotion) draw();
       setTimeout(function () {
-        ghostPos.row = 1;
-        ghostPos.col = 1;
-        updateGhostPosition();
-        evilPos.row = EVIL_HOME.row;
-        evilPos.col = EVIL_HOME.col;
-        updateEvilPosition();
-        ghostImg.classList.remove("ghost-caught");
         wallFlashActive = false;
-        evilFrozen = false;
-        playerFrozen = false;
+        ghostImg.classList.remove("ghost-caught");
+        ghostImg.classList.add("sprite-hidden");
+        evilEl.classList.add("sprite-hidden");
         if (reduceMotion) draw();
+        setTimeout(function () {
+          ghostPos.row = 1;
+          ghostPos.col = 1;
+          updateGhostPosition();
+          evilPos.row = EVIL_HOME.row;
+          evilPos.col = EVIL_HOME.col;
+          updateEvilPosition();
+          requestAnimationFrame(function () {
+            ghostImg.classList.remove("sprite-hidden");
+            evilEl.classList.remove("sprite-hidden");
+          });
+          evilFrozen = false;
+          playerFrozen = false;
+        }, TELEPORT_FADE_MS);
       }, CAUGHT_FREEZE_MS);
     }
   }
@@ -547,6 +565,20 @@
     return null;
   }
 
+  function isTunnelWrap(row, col, dir) {
+    return row === TUNNEL_ROW && ((dir === "left" && col === 0) || (dir === "right" && col === COLS - 1));
+  }
+
+  function respawnSprite(el, applyFn) {
+    el.classList.add("sprite-hidden");
+    setTimeout(function () {
+      applyFn();
+      requestAnimationFrame(function () {
+        el.classList.remove("sprite-hidden");
+      });
+    }, TELEPORT_FADE_MS);
+  }
+
   function autoStep() {
     var dirs = ["up", "down", "left", "right"];
     var valid = dirs.filter(function (d) {
@@ -566,10 +598,19 @@
     }
     autoDir = choice;
     var moved = nextCell(ghostPos.row, ghostPos.col, choice);
-    ghostPos.row = moved.row;
-    ghostPos.col = moved.col;
-    updateGhostPosition();
-    eatPellet(moved.row, moved.col);
+    if (isTunnelWrap(ghostPos.row, ghostPos.col, choice)) {
+      respawnSprite(ghostImg, function () {
+        ghostPos.row = moved.row;
+        ghostPos.col = moved.col;
+        updateGhostPosition();
+        eatPellet(moved.row, moved.col);
+      });
+    } else {
+      ghostPos.row = moved.row;
+      ghostPos.col = moved.col;
+      updateGhostPosition();
+      eatPellet(moved.row, moved.col);
+    }
   }
 
   function tick() {
@@ -586,10 +627,19 @@
         moved = nextCell(ghostPos.row, ghostPos.col, currentDir);
       }
       if (moved) {
-        ghostPos.row = moved.row;
-        ghostPos.col = moved.col;
-        updateGhostPosition();
-        eatPellet(moved.row, moved.col);
+        if (isTunnelWrap(ghostPos.row, ghostPos.col, currentDir)) {
+          respawnSprite(ghostImg, function () {
+            ghostPos.row = moved.row;
+            ghostPos.col = moved.col;
+            updateGhostPosition();
+            eatPellet(moved.row, moved.col);
+          });
+        } else {
+          ghostPos.row = moved.row;
+          ghostPos.col = moved.col;
+          updateGhostPosition();
+          eatPellet(moved.row, moved.col);
+        }
       }
     }
     evilStep();
@@ -668,6 +718,7 @@
     }
 
     joystickBase.addEventListener("pointerdown", function (e) {
+      if (activePointerId !== null) return;
       e.preventDefault();
       activePointerId = e.pointerId;
       baseRect = joystickBase.getBoundingClientRect();
@@ -679,6 +730,7 @@
     });
     joystickBase.addEventListener("pointerup", endDrag);
     joystickBase.addEventListener("pointercancel", endDrag);
+    joystickBase.addEventListener("lostpointercapture", endDrag);
   }
 
   function initScoreToggle() {
