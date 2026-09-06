@@ -796,14 +796,20 @@
   }
 
   var pulseFrame = null;
+  var lastPulseDraw = 0;
+  var PULSE_INTERVAL_MS = 50;
 
-  function pulseLoop() {
-    draw();
+  function pulseLoop(now) {
+    if (!lastPulseDraw || now - lastPulseDraw >= PULSE_INTERVAL_MS) {
+      lastPulseDraw = now;
+      draw();
+    }
     pulseFrame = requestAnimationFrame(pulseLoop);
   }
 
   function startPulseLoop() {
     if (reduceMotion || pulseFrame) return;
+    lastPulseDraw = 0;
     pulseFrame = requestAnimationFrame(pulseLoop);
   }
 
