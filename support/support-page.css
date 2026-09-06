@@ -29,7 +29,7 @@ body.pacman-focus-mode .support-page-content{opacity:0;pointer-events:none}
 .support-bg-ghosts{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#050512;display:flex;align-items:center;justify-content:center}
 .support-bg-ghosts::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(5,5,18,.15) 0%,rgba(5,5,18,.55) 65%,rgba(5,5,18,.85) 100%);pointer-events:none}
 
-.pacman-play-overlay{position:absolute;inset:0;z-index:2;background:rgba(10,10,20,.62);-webkit-backdrop-filter:grayscale(.7);backdrop-filter:grayscale(.7);pointer-events:none;opacity:1;transition:opacity .3s ease}
+.pacman-play-overlay{position:absolute;inset:0;z-index:2;background:rgba(8,8,16,.75);pointer-events:none;opacity:1;transition:opacity .3s ease}
 body.pacman-focus-mode .pacman-play-overlay{opacity:0}
 
 .pacman-stage{position:relative}
@@ -38,6 +38,7 @@ body.pacman-focus-mode .pacman-play-overlay{opacity:0}
 .bg-ghost{position:absolute;left:0;top:0;transform:translate(-50%,-50%);--ghost-hue:150deg;--ghost-glow:#00f4cf;transition:translate .15s linear,opacity .18s ease;animation:ghostPulse 2.6s ease-in-out infinite !important}
 
 .sprite-hidden{opacity:0}
+.sprite-no-transition{transition:none !important}
 .bg-ghost.ghost-bump{animation:ghostPulse 2.6s ease-in-out infinite,ghostBump .18s ease-out !important}
 .bg-ghost.ghost-powered{animation:ghostRainbow .9s linear infinite !important}
 .bg-ghost.ghost-powered.ghost-bump{animation:ghostRainbow .9s linear infinite,ghostBump .18s ease-out !important}
@@ -100,7 +101,7 @@ body:has(#nav-toggle[aria-expanded="true"]) .pacman-joystick{z-index:1}
 
 @media (max-width:480px){
   .support-donate-panel .support-pay-btns{grid-template-columns:repeat(2,1fr)}
-  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:70px;right:12px;gap:.45rem}
+  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:80px;right:12px;gap:.45rem}
   .support-page-header{padding:1.1rem 1.25rem}
   .pacman-joystick{width:6.25rem;height:6.25rem;left:50%;bottom:14px;translate:-50% 0}
   .pacman-joystick-knob{width:2.35rem;height:2.35rem}

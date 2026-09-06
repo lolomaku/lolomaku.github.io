@@ -452,12 +452,16 @@
         evilEl.classList.add("sprite-hidden");
         if (reduceMotion) draw();
         setTimeout(function () {
-          ghostPos.row = 1;
-          ghostPos.col = 1;
-          updateGhostPosition();
-          evilPos.row = EVIL_HOME.row;
-          evilPos.col = EVIL_HOME.col;
-          updateEvilPosition();
+          applyInstant(ghostImg, function () {
+            ghostPos.row = 1;
+            ghostPos.col = 1;
+            updateGhostPosition();
+          });
+          applyInstant(evilEl, function () {
+            evilPos.row = EVIL_HOME.row;
+            evilPos.col = EVIL_HOME.col;
+            updateEvilPosition();
+          });
           requestAnimationFrame(function () {
             ghostImg.classList.remove("sprite-hidden");
             evilEl.classList.remove("sprite-hidden");
@@ -576,10 +580,17 @@
     return row === TUNNEL_ROW && ((dir === "left" && col === 0) || (dir === "right" && col === COLS - 1));
   }
 
+  function applyInstant(el, fn) {
+    el.classList.add("sprite-no-transition");
+    fn();
+    void el.offsetWidth;
+    el.classList.remove("sprite-no-transition");
+  }
+
   function respawnSprite(el, applyFn) {
     el.classList.add("sprite-hidden");
     setTimeout(function () {
-      applyFn();
+      applyInstant(el, applyFn);
       requestAnimationFrame(function () {
         el.classList.remove("sprite-hidden");
       });
