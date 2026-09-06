@@ -34,16 +34,15 @@
 <div class="support-bg-ghosts">
 <div class="pacman-stage" id="pacman-stage">
 <canvas id="pacman-canvas"></canvas>
-<img id="pacman-ghost" class="bg-ghost" src="../assets/support.png" alt="Ghost character, move it with arrow keys, WASD, swipe, or the on-screen pad">
+<img id="pacman-ghost" class="bg-ghost" src="../assets/support.png" alt="Ghost character, move it with arrow keys, WASD, swipe, or the on-screen joystick (tap the score to show it)">
 </div>
 </div>
-<div class="pacman-touch-controls" id="pacman-touch-controls">
-<button type="button" class="pacman-touch-btn pacman-touch-up" data-dir="up" aria-label="Move up">▲</button>
-<button type="button" class="pacman-touch-btn pacman-touch-left" data-dir="left" aria-label="Move left">◀</button>
-<button type="button" class="pacman-touch-btn pacman-touch-right" data-dir="right" aria-label="Move right">▶</button>
-<button type="button" class="pacman-touch-btn pacman-touch-down" data-dir="down" aria-label="Move down">▼</button>
+<div class="pacman-joystick" id="pacman-joystick" aria-hidden="true">
+<div class="pacman-joystick-base" id="pacman-joystick-base">
+<div class="pacman-joystick-knob" id="pacman-joystick-knob"></div>
 </div>
-<div class="pacman-scoreboard" id="pacman-score" aria-live="polite">Score: <span id="pacman-score-value">0</span><span class="pacman-best">Best: <span id="pacman-best-value">0</span></span></div>
+</div>
+<button type="button" class="pacman-scoreboard" id="pacman-score" aria-live="polite" aria-pressed="false" aria-label="Score. Tap to show touch controls">Score: <span id="pacman-score-value">0</span><span class="pacman-best">Best: <span id="pacman-best-value">0</span></span></button>
 
 <div class="support-page-header">
 <h1 class="text-display" id="support-page-title">Buy me a <em>coffee.</em></h1>

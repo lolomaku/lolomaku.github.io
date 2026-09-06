@@ -23,13 +23,13 @@
 .support-donate-panel #page-paypal-qr{border-color:rgba(234,179,8,.3)}
 .support-donate-panel #page-paypal-qr.visible{background:rgba(234,179,8,.1)}
 
-.support-bg-ghosts{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;overflow:hidden;background:#050512;display:flex;align-items:center;justify-content:center}
+.support-bg-ghosts{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#050512;display:flex;align-items:center;justify-content:center}
 .support-bg-ghosts::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(5,5,18,.15) 0%,rgba(5,5,18,.55) 65%,rgba(5,5,18,.85) 100%);pointer-events:none}
 
 .pacman-stage{position:relative}
 #pacman-canvas{display:block}
 
-.bg-ghost{position:absolute;transform:translate(-50%,-50%);--ghost-hue:150deg;--ghost-glow:#00f4cf;transition:left .15s linear,top .15s linear;animation:ghostPulse 2.6s ease-in-out infinite !important}
+.bg-ghost{position:absolute;left:0;top:0;transform:translate(-50%,-50%);--ghost-hue:150deg;--ghost-glow:#00f4cf;transition:translate .15s linear;animation:ghostPulse 2.6s ease-in-out infinite !important}
 .bg-ghost.ghost-bump{animation:ghostPulse 2.6s ease-in-out infinite,ghostBump .18s ease-out !important}
 .bg-ghost.ghost-powered{animation:ghostRainbow .9s linear infinite !important}
 .bg-ghost.ghost-powered.ghost-bump{animation:ghostRainbow .9s linear infinite,ghostBump .18s ease-out !important}
@@ -57,7 +57,7 @@
   50%{filter:brightness(2.2) saturate(3) drop-shadow(0 0 20px #ff2d2d)}
 }
 
-.bg-pacman{position:absolute;transform:translate(-50%,-50%);background:#ffe066;border-radius:50%;box-shadow:0 0 10px rgba(255,224,102,.85),0 0 22px rgba(255,224,102,.45);animation:pacmanChomp .28s linear infinite alternate;transition:left .15s linear,top .15s linear,background .3s ease,box-shadow .3s ease}
+.bg-pacman{position:absolute;left:0;top:0;background:#ffe066;border-radius:50%;box-shadow:0 0 10px rgba(255,224,102,.85),0 0 22px rgba(255,224,102,.45);animation:pacmanChomp .28s linear infinite alternate;transition:translate .15s linear,background .3s ease,box-shadow .3s ease}
 .bg-pacman.pacman-frightened{background:#5b6ee8;box-shadow:0 0 10px rgba(91,110,232,.85),0 0 22px rgba(91,110,232,.5)}
 .bg-pacman.pacman-eaten{opacity:0;transition:opacity .25s ease}
 
@@ -66,33 +66,34 @@
   100%{clip-path:polygon(100% 50%,100% 50%,100% 50%,100% 0,0 0,0 100%,100% 100%)}
 }
 
-.pacman-scoreboard{position:fixed;top:70px;right:18px;z-index:1000;display:flex;align-items:center;gap:.6rem;background:rgba(5,5,18,.75);border:1px solid rgba(0,244,207,.4);color:var(--color-accent);font-family:var(--font-body);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .85rem;border-radius:999px}
+.pacman-scoreboard{position:fixed;top:70px;right:18px;z-index:1000;display:flex;align-items:center;gap:.6rem;background:rgba(5,5,18,.75);border:1px solid rgba(0,244,207,.4);color:var(--color-accent);font-family:var(--font-body);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .85rem;border-radius:999px;appearance:none;cursor:pointer;touch-action:manipulation}
+.pacman-scoreboard:active{background:rgba(0,244,207,.18)}
 .pacman-best{color:#fde68a;padding-left:.6rem;border-left:1px solid rgba(253,230,138,.35)}
 
 body:has(#nav-toggle[aria-expanded="true"]) .pacman-scoreboard,
-body:has(#nav-toggle[aria-expanded="true"]) .pacman-touch-controls{z-index:1}
+body:has(#nav-toggle[aria-expanded="true"]) .pacman-joystick{z-index:1}
 
-.pacman-touch-controls{position:fixed;left:14px;bottom:14px;z-index:1000;display:none;grid-template-columns:repeat(3,2.4rem);grid-template-rows:repeat(2,2.4rem);gap:.3rem;place-items:center}
-.pacman-touch-btn{grid-row:1;background:rgba(5,5,18,.75);border:1px solid rgba(0,244,207,.45);color:var(--color-accent);border-radius:.5rem;font-size:.9rem;line-height:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0;touch-action:manipulation;user-select:none}
-.pacman-touch-btn:active{background:rgba(0,244,207,.3)}
-.pacman-touch-up{grid-column:2;grid-row:1}
-.pacman-touch-left{grid-column:1;grid-row:2}
-.pacman-touch-down{grid-column:2;grid-row:2}
-.pacman-touch-right{grid-column:3;grid-row:2}
+.pacman-joystick{position:fixed;left:20px;bottom:20px;z-index:1000;width:7.5rem;height:7.5rem;display:none;opacity:0;transform:scale(.85);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.pacman-joystick.visible{opacity:1;transform:scale(1);pointer-events:auto}
+.pacman-joystick-base{position:relative;width:100%;height:100%;border-radius:50%;background:rgba(5,5,18,.75);border:1px solid rgba(0,244,207,.45);touch-action:none}
+.pacman-joystick-knob{position:absolute;top:50%;left:50%;width:2.75rem;height:2.75rem;border-radius:50%;background:rgba(0,244,207,.35);border:1px solid rgba(0,244,207,.7);translate:-50% -50%;transition:translate .12s ease-out}
+.pacman-joystick-knob.dragging{transition:none}
 
 @media (prefers-reduced-motion:reduce){
-  .bg-ghost{animation:none;transition:left .15s linear,top .15s linear,filter .4s ease;filter:sepia(1) saturate(7) hue-rotate(var(--ghost-hue)) brightness(1.08) drop-shadow(0 0 12px var(--ghost-glow))}
+  .bg-ghost{animation:none;transition:translate .15s linear,filter .4s ease;filter:sepia(1) saturate(7) hue-rotate(var(--ghost-hue)) brightness(1.08) drop-shadow(0 0 12px var(--ghost-glow))}
   .bg-ghost.ghost-bump{animation:none}
   .bg-ghost.ghost-powered{animation:none;filter:sepia(1) saturate(7) hue-rotate(45deg) brightness(1.3) drop-shadow(0 0 16px #fff)}
   .bg-ghost.ghost-caught{animation:none;filter:brightness(2) drop-shadow(0 0 16px #ff2d2d)}
 }
 
 @media (hover:none) and (pointer:coarse){
-  .pacman-touch-controls{display:grid}
+  .pacman-joystick{display:block}
 }
 
 @media (max-width:480px){
   .support-donate-panel .support-pay-btns{grid-template-columns:repeat(2,1fr)}
-  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:60px;right:12px;gap:.45rem}
+  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:80px;right:12px;gap:.45rem}
   .support-page-header{padding:1.1rem 1.25rem}
+  .pacman-joystick{width:6.25rem;height:6.25rem;left:14px;bottom:14px}
+  .pacman-joystick-knob{width:2.35rem;height:2.35rem}
 }

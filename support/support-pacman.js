@@ -10,10 +10,15 @@
   var bestValueEl = document.getElementById("pacman-best-value");
   var ghostImg = document.getElementById("pacman-ghost");
   var container = document.querySelector(".support-bg-ghosts");
-  var touchPad = document.getElementById("pacman-touch-controls");
+  var joystickEl = document.getElementById("pacman-joystick");
+  var joystickBase = document.getElementById("pacman-joystick-base");
+  var joystickKnob = document.getElementById("pacman-joystick-knob");
   if (!stage || !canvas || !scoreEl || !ghostImg || !container) return;
 
   var ctx = canvas.getContext("2d");
+  var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var mazeLayer = document.createElement("canvas");
+  var mazeLayerCtx = mazeLayer.getContext("2d");
   var CELL = 40;
   var grid = [];
   var pellets = new Set();
@@ -31,7 +36,7 @@
   var autoDir = null;
   var idleTimer = null;
   var IDLE_MS = 3500;
-  var EVIL_HOME = { row: 9, col: 13 };
+  var EVIL_HOME = { row: 17, col: 25 };
   var evilPos = { row: EVIL_HOME.row, col: EVIL_HOME.col };
   var evilDir = "left";
   var evilEl = null;
@@ -163,7 +168,7 @@
     var fitsFixed = window.innerWidth >= DESKTOP_BREAKPOINT && w >= COLS * FIXED_CELL && h >= ROWS * FIXED_CELL;
     if (fitsFixed) return FIXED_CELL;
     var size = Math.min(FIXED_CELL, Math.floor(w / COLS), Math.floor(h / ROWS));
-    return Math.max(18, size);
+    return Math.max(8, size);
   }
 
   function isWall(r, c) {
@@ -174,19 +179,19 @@
     return { x: c * CELL + CELL / 2, y: r * CELL + CELL / 2 };
   }
 
-  function drawWalls() {
+  function drawWalls(targetCtx, flashActive) {
     var thick = CELL * 0.34;
-    var pulse = wallFlashActive ? 0.5 + 0.5 * Math.sin(performance.now() / 80) : 0;
-    var wallColor = wallFlashActive ? "rgb(255," + Math.round(30 + pulse * 70) + "," + Math.round(30 + pulse * 70) + ")" : "#2437ff";
-    var wallGlow = wallFlashActive ? "rgba(255,40,40,.9)" : "rgba(37,60,255,.85)";
-    ctx.save();
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.shadowColor = wallGlow;
-    ctx.shadowBlur = Math.max(4, CELL * 0.22);
-    ctx.strokeStyle = wallColor;
-    ctx.fillStyle = wallColor;
-    ctx.lineWidth = thick;
+    var pulse = flashActive ? (reduceMotion ? 0.5 : 0.5 + 0.5 * Math.sin(performance.now() / 80)) : 0;
+    var wallColor = flashActive ? "rgb(255," + Math.round(30 + pulse * 70) + "," + Math.round(30 + pulse * 70) + ")" : "#2437ff";
+    var wallGlow = flashActive ? "rgba(255,40,40,.9)" : "rgba(37,60,255,.85)";
+    targetCtx.save();
+    targetCtx.lineCap = "round";
+    targetCtx.lineJoin = "round";
+    targetCtx.shadowColor = wallGlow;
+    targetCtx.shadowBlur = Math.max(4, CELL * 0.22);
+    targetCtx.strokeStyle = wallColor;
+    targetCtx.fillStyle = wallColor;
+    targetCtx.lineWidth = thick;
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         if (!isWall(r, c)) continue;
@@ -194,56 +199,65 @@
         var hasNeighbor = false;
         if (isWall(r, c + 1)) {
           var nx = cellCenter(r, c + 1);
-          ctx.beginPath();
-          ctx.moveTo(center.x, center.y);
-          ctx.lineTo(nx.x, nx.y);
-          ctx.stroke();
+          targetCtx.beginPath();
+          targetCtx.moveTo(center.x, center.y);
+          targetCtx.lineTo(nx.x, nx.y);
+          targetCtx.stroke();
           hasNeighbor = true;
         }
         if (isWall(r + 1, c)) {
           var ny = cellCenter(r + 1, c);
-          ctx.beginPath();
-          ctx.moveTo(center.x, center.y);
-          ctx.lineTo(ny.x, ny.y);
-          ctx.stroke();
+          targetCtx.beginPath();
+          targetCtx.moveTo(center.x, center.y);
+          targetCtx.lineTo(ny.x, ny.y);
+          targetCtx.stroke();
           hasNeighbor = true;
         }
         if (!hasNeighbor && !isWall(r, c - 1) && !isWall(r - 1, c)) {
-          ctx.beginPath();
-          ctx.arc(center.x, center.y, thick / 2, 0, Math.PI * 2);
-          ctx.fill();
+          targetCtx.beginPath();
+          targetCtx.arc(center.x, center.y, thick / 2, 0, Math.PI * 2);
+          targetCtx.fill();
         }
       }
     }
-    ctx.shadowBlur = 0;
-    ctx.strokeStyle = "rgba(255,255,255,.4)";
-    ctx.lineWidth = thick * 0.32;
+    targetCtx.shadowBlur = 0;
+    targetCtx.strokeStyle = "rgba(255,255,255,.4)";
+    targetCtx.lineWidth = thick * 0.32;
     for (var r2 = 0; r2 < ROWS; r2++) {
       for (var c2 = 0; c2 < COLS; c2++) {
         if (!isWall(r2, c2)) continue;
         var center2 = cellCenter(r2, c2);
         if (isWall(r2, c2 + 1)) {
           var hx = cellCenter(r2, c2 + 1);
-          ctx.beginPath();
-          ctx.moveTo(center2.x, center2.y);
-          ctx.lineTo(hx.x, hx.y);
-          ctx.stroke();
+          targetCtx.beginPath();
+          targetCtx.moveTo(center2.x, center2.y);
+          targetCtx.lineTo(hx.x, hx.y);
+          targetCtx.stroke();
         }
         if (isWall(r2 + 1, c2)) {
           var hy = cellCenter(r2 + 1, c2);
-          ctx.beginPath();
-          ctx.moveTo(center2.x, center2.y);
-          ctx.lineTo(hy.x, hy.y);
-          ctx.stroke();
+          targetCtx.beginPath();
+          targetCtx.moveTo(center2.x, center2.y);
+          targetCtx.lineTo(hy.x, hy.y);
+          targetCtx.stroke();
         }
       }
     }
-    ctx.restore();
+    targetCtx.restore();
+  }
+
+  function renderMazeLayer() {
+    mazeLayer.width = canvas.width;
+    mazeLayer.height = canvas.height;
+    mazeLayerCtx.clearRect(0, 0, mazeLayer.width, mazeLayer.height);
+    mazeLayerCtx.fillStyle = "#050512";
+    mazeLayerCtx.fillRect(0, 0, mazeLayer.width, mazeLayer.height);
+    drawWalls(mazeLayerCtx, false);
   }
 
   function drawPowerPellets() {
     if (!powerPellets.size) return;
-    var pulse = 0.5 + 0.5 * Math.sin(performance.now() / 260);
+    var pulse = reduceMotion ? 0.5 : 0.5 + 0.5 * Math.sin(performance.now() / 260);
     var size = CELL * (0.95 + pulse * 0.18);
     ctx.save();
     ctx.textAlign = "center";
@@ -259,28 +273,40 @@
     ctx.restore();
   }
 
+  function drawPellets() {
+    if (!pellets.size) return;
+    ctx.save();
+    ctx.fillStyle = "rgba(255,255,255,.85)";
+    pellets.forEach(function (key) {
+      var comma = key.indexOf(",");
+      var r = parseInt(key.slice(0, comma), 10);
+      var c = parseInt(key.slice(comma + 1), 10);
+      var x = c * CELL, y = r * CELL;
+      ctx.beginPath();
+      ctx.arc(x + CELL / 2, y + CELL / 2, Math.max(2, CELL * 0.09), 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+  }
+
   function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#050512";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    drawWalls();
-    for (var r = 0; r < ROWS; r++) {
-      for (var c = 0; c < COLS; c++) {
-        if (pellets.has(r + "," + c)) {
-          var x = c * CELL, y = r * CELL;
-          ctx.beginPath();
-          ctx.fillStyle = "rgba(255,255,255,.85)";
-          ctx.arc(x + CELL / 2, y + CELL / 2, Math.max(2, CELL * 0.09), 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
+    if (wallFlashActive) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#050512";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawWalls(ctx, true);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(mazeLayer, 0, 0);
     }
+    drawPellets();
     drawPowerPellets();
   }
 
   function updateGhostPosition() {
-    ghostImg.style.left = ghostPos.col * CELL + CELL / 2 + "px";
-    ghostImg.style.top = ghostPos.row * CELL + CELL / 2 + "px";
+    var x = ghostPos.col * CELL + CELL / 2;
+    var y = ghostPos.row * CELL + CELL / 2;
+    ghostImg.style.translate = x + "px " + y + "px";
   }
 
   function createEvilPacman() {
@@ -295,30 +321,48 @@
     var size = Math.round(CELL * 1.7);
     evilEl.style.width = size + "px";
     evilEl.style.height = size + "px";
-    evilEl.style.left = evilPos.col * CELL + CELL / 2 + "px";
-    evilEl.style.top = evilPos.row * CELL + CELL / 2 + "px";
+    var gx = evilPos.col * CELL + CELL / 2;
+    var gy = evilPos.row * CELL + CELL / 2;
+    evilEl.style.translate = (gx - size / 2) + "px " + (gy - size / 2) + "px";
     var rotation = { right: 0, down: 90, left: 180, up: 270 }[evilDir] || 0;
-    evilEl.style.transform = "translate(-50%,-50%) rotate(" + rotation + "deg)";
+    evilEl.style.rotate = rotation + "deg";
   }
 
   function manhattan(a, b) {
     return Math.abs(a.row - b.row) + Math.abs(a.col - b.col);
   }
 
+  var BFS_DIRS = ["up", "down", "left", "right"];
+
   function bfsPath(start, goal) {
-    var visited = new Set([start.row + "," + start.col]);
-    var queue = [{ row: start.row, col: start.col, path: [] }];
-    var dirs = ["up", "down", "left", "right"];
-    while (queue.length) {
-      var cur = queue.shift();
-      if (cur.row === goal.row && cur.col === goal.col) return cur.path;
-      for (var i = 0; i < dirs.length; i++) {
-        var next = nextCell(cur.row, cur.col, dirs[i]);
+    var startKey = start.row + "," + start.col;
+    var goalKey = goal.row + "," + goal.col;
+    if (startKey === goalKey) return [];
+    var visited = new Set([startKey]);
+    var cameFrom = Object.create(null);
+    var queue = [start];
+    var qi = 0;
+    while (qi < queue.length) {
+      var cur = queue[qi++];
+      var curKey = cur.row + "," + cur.col;
+      for (var i = 0; i < BFS_DIRS.length; i++) {
+        var next = nextCell(cur.row, cur.col, BFS_DIRS[i]);
         if (!next) continue;
         var key = next.row + "," + next.col;
         if (visited.has(key)) continue;
         visited.add(key);
-        queue.push({ row: next.row, col: next.col, path: cur.path.concat([dirs[i]]) });
+        cameFrom[key] = { parentKey: curKey, dir: BFS_DIRS[i] };
+        if (key === goalKey) {
+          var path = [];
+          var walkKey = key;
+          while (cameFrom[walkKey]) {
+            path.push(cameFrom[walkKey].dir);
+            walkKey = cameFrom[walkKey].parentKey;
+          }
+          path.reverse();
+          return path;
+        }
+        queue.push(next);
       }
     }
     return [];
@@ -383,6 +427,7 @@
       playerFrozen = true;
       wallFlashActive = true;
       ghostImg.classList.add("ghost-caught");
+      if (reduceMotion) draw();
       setTimeout(function () {
         ghostPos.row = 1;
         ghostPos.col = 1;
@@ -394,6 +439,7 @@
         wallFlashActive = false;
         evilFrozen = false;
         playerFrozen = false;
+        if (reduceMotion) draw();
       }, CAUGHT_FREEZE_MS);
     }
   }
@@ -456,6 +502,7 @@
           evilPos.col = EVIL_HOME.col;
           updateEvilPosition();
           resetPellets();
+          renderMazeLayer();
           draw();
         }, 1200);
       }
@@ -476,6 +523,7 @@
     ghostImg.style.width = Math.round(CELL * 1.3) + "px";
     updateGhostPosition();
     updateEvilPosition();
+    renderMazeLayer();
     draw();
   }
 
@@ -577,16 +625,67 @@
     }
   }
 
-  function initTouchPad() {
-    if (!touchPad) return;
-    touchPad.querySelectorAll("[data-dir]").forEach(function (btn) {
-      var dir = btn.getAttribute("data-dir");
-      var press = function (e) {
-        e.preventDefault();
-        setDirection(dir);
-      };
-      btn.addEventListener("pointerdown", press);
-      btn.addEventListener("touchstart", press, { passive: false });
+  function initJoystick() {
+    if (!joystickEl || !joystickBase || !joystickKnob) return;
+    var activePointerId = null;
+    var baseRect = null;
+    var maxDist = 0;
+
+    function setKnob(dx, dy) {
+      joystickKnob.style.translate = "calc(-50% + " + dx + "px) calc(-50% + " + dy + "px)";
+    }
+
+    function resetKnob() {
+      joystickKnob.style.translate = "-50% -50%";
+    }
+
+    function directionFromVector(dx, dy) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 10) return null;
+      if (Math.abs(dx) > Math.abs(dy)) return dx > 0 ? "right" : "left";
+      return dy > 0 ? "down" : "up";
+    }
+
+    function handleMove(e) {
+      if (e.pointerId !== activePointerId || !baseRect) return;
+      var cx = baseRect.left + baseRect.width / 2;
+      var cy = baseRect.top + baseRect.height / 2;
+      var dx = e.clientX - cx;
+      var dy = e.clientY - cy;
+      var dist = Math.min(maxDist, Math.hypot(dx, dy));
+      var angle = Math.atan2(dy, dx);
+      setKnob(Math.cos(angle) * dist, Math.sin(angle) * dist);
+      var dir = directionFromVector(dx, dy);
+      if (dir) setDirection(dir);
+    }
+
+    function endDrag(e) {
+      if (e.pointerId !== activePointerId) return;
+      activePointerId = null;
+      baseRect = null;
+      joystickKnob.classList.remove("dragging");
+      resetKnob();
+      joystickBase.removeEventListener("pointermove", handleMove);
+    }
+
+    joystickBase.addEventListener("pointerdown", function (e) {
+      e.preventDefault();
+      activePointerId = e.pointerId;
+      baseRect = joystickBase.getBoundingClientRect();
+      maxDist = baseRect.width / 2 - joystickKnob.offsetWidth / 2;
+      joystickKnob.classList.add("dragging");
+      if (joystickBase.setPointerCapture) joystickBase.setPointerCapture(e.pointerId);
+      joystickBase.addEventListener("pointermove", handleMove);
+      handleMove(e);
+    });
+    joystickBase.addEventListener("pointerup", endDrag);
+    joystickBase.addEventListener("pointercancel", endDrag);
+  }
+
+  function initScoreToggle() {
+    if (!scoreEl || !joystickEl) return;
+    scoreEl.addEventListener("click", function () {
+      var showing = joystickEl.classList.toggle("visible");
+      scoreEl.setAttribute("aria-pressed", showing ? "true" : "false");
     });
   }
 
@@ -627,7 +726,7 @@
   }
 
   function startPulseLoop() {
-    if (pulseFrame) return;
+    if (reduceMotion || pulseFrame) return;
     pulseFrame = requestAnimationFrame(pulseLoop);
   }
 
@@ -646,7 +745,8 @@
   document.addEventListener("support:pay-selected", function (e) {
     setGhostColor(e.detail && e.detail.key);
   });
-  initTouchPad();
+  initJoystick();
+  initScoreToggle();
   initSwipe();
 
   var resizeTimer = null;
