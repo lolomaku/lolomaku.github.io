@@ -317,6 +317,13 @@
     stage.appendChild(evilEl);
   }
 
+  function createPlayOverlay() {
+    var overlay = document.createElement("div");
+    overlay.className = "pacman-play-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+    container.appendChild(overlay);
+  }
+
   function updateEvilPosition() {
     if (!evilEl) return;
     var size = Math.round(CELL * 1.7);
@@ -735,9 +742,16 @@
 
   function initScoreToggle() {
     if (!scoreEl || !joystickEl) return;
+    var focusTargets = document.querySelectorAll(".support-page-header, .support-page-content");
+    scoreEl.setAttribute("aria-label", "Score. Tap to toggle touch controls and page content");
     scoreEl.addEventListener("click", function () {
       var showing = joystickEl.classList.toggle("visible");
       scoreEl.setAttribute("aria-pressed", showing ? "true" : "false");
+      document.body.classList.toggle("pacman-focus-mode", showing);
+      focusTargets.forEach(function (el) {
+        el.setAttribute("aria-hidden", showing ? "true" : "false");
+        el.inert = showing;
+      });
     });
   }
 
@@ -789,6 +803,7 @@
 
   buildGrid();
   createEvilPacman();
+  createPlayOverlay();
   resetPellets();
   layout();
   updateScoreDisplay();

@@ -1,10 +1,13 @@
 .support-page-section{position:relative;overflow:hidden;padding:clamp(3rem,10vw,5rem) 0}
 
-.support-page-header{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto 2.5rem;padding:1.5rem 1.75rem;border-radius:var(--radius-xl);}
+.support-page-header{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto 2.5rem;padding:1.5rem 1.75rem;border-radius:var(--radius-xl);transition:opacity .25s ease}
 .support-page-header h1{margin-bottom:.85rem;text-shadow:0 2px 18px rgba(0,0,0,.65)}
 .support-page-header p{margin:0 auto;max-width:440px;color:#e7e9f5;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 
-.support-page-content{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.support-page-content{position:relative;z-index:1;max-width:640px;margin:0 auto;transition:opacity .25s ease}
+
+body.pacman-focus-mode .support-page-header,
+body.pacman-focus-mode .support-page-content{opacity:0;pointer-events:none}
 
 .support-donate-panel{border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:1.75rem}
 .support-donate-panel .support-commission{margin-top:0}
@@ -25,6 +28,9 @@
 
 .support-bg-ghosts{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#050512;display:flex;align-items:center;justify-content:center}
 .support-bg-ghosts::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(5,5,18,.15) 0%,rgba(5,5,18,.55) 65%,rgba(5,5,18,.85) 100%);pointer-events:none}
+
+.pacman-play-overlay{position:absolute;inset:0;z-index:2;background:rgba(10,10,20,.62);-webkit-backdrop-filter:grayscale(.7);backdrop-filter:grayscale(.7);pointer-events:none;opacity:1;transition:opacity .3s ease}
+body.pacman-focus-mode .pacman-play-overlay{opacity:0}
 
 .pacman-stage{position:relative}
 #pacman-canvas{display:block}
@@ -94,7 +100,7 @@ body:has(#nav-toggle[aria-expanded="true"]) .pacman-joystick{z-index:1}
 
 @media (max-width:480px){
   .support-donate-panel .support-pay-btns{grid-template-columns:repeat(2,1fr)}
-  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:80px;right:12px;gap:.45rem}
+  .pacman-scoreboard{font-size:.6rem;padding:.35rem .65rem;top:70px;right:12px;gap:.45rem}
   .support-page-header{padding:1.1rem 1.25rem}
   .pacman-joystick{width:6.25rem;height:6.25rem;left:50%;bottom:14px;translate:-50% 0}
   .pacman-joystick-knob{width:2.35rem;height:2.35rem}
